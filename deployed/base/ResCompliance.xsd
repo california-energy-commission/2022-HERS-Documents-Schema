@@ -6381,6 +6381,15 @@ Builders, Manufacturers, And Suppliers</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="xsd:boolean"/>
    </xsd:simpleType>
+   <xsd:simpleType name="GarageGTE8Vehicles">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean"/>
+   </xsd:simpleType>
    <xsd:simpleType name="GarageLightingControlsInstalled">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
@@ -9099,10 +9108,10 @@ Builders, Manufacturers, And Suppliers</xsd:documentation>
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="AthleticNA">NA: Athletic Fields/Playgrounds Lighting</dtyp:displayterm>
-            <dtyp:displayterm value="FacadeGT24Ft">NA: Facade, etc. 
-               <d:gt/>24 ft</dtyp:displayterm>
-            <dtyp:displayterm value="WallGT24Ft">NA: Wall 
-               <d:gt/>24 ft</dtyp:displayterm>
+            <dtyp:displayterm value="FacadeGTE24Ft">NA: Facade, etc. 
+               <d:gte/>24 ft</dtyp:displayterm>
+            <dtyp:displayterm value="WallGTE24Ft">NA: Wall 
+               <d:gte/>24 ft</dtyp:displayterm>
             <dtyp:displayterm value="HistoricBuildingNA">NA: Historical Building Lighting</dtyp:displayterm>
             <dtyp:displayterm value="IndustrialNA">NA: Industrial Sites Lighting</dtyp:displayterm>
             <dtyp:displayterm value="LandscapeNA">NA: Landscape Lighting</dtyp:displayterm>
@@ -9127,8 +9136,8 @@ Builders, Manufacturers, And Suppliers</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
          <xsd:enumeration value="AthleticNA"/>
-         <xsd:enumeration value="FacadeGT24Ft"/>
-         <xsd:enumeration value="WallGT24Ft"/>
+         <xsd:enumeration value="FacadeGTE24Ft"/>
+         <xsd:enumeration value="WallGTE24Ft"/>
          <xsd:enumeration value="HistoricBuildingNA"/>
          <xsd:enumeration value="IndustrialNA"/>
          <xsd:enumeration value="LandscapeNA"/>
@@ -9178,6 +9187,7 @@ Builders, Manufacturers, And Suppliers</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="AreaLT100SqFtNA">NA: Enclosed area 
                <d:lt/>100SF</dtyp:displayterm>
+            <dtyp:displayterm value="BilevelSwitchControl">Bi-level Switch</dtyp:displayterm>
             <dtyp:displayterm value="HealthcareNA">NA:  Licensed Healthcare</dtyp:displayterm>
             <dtyp:displayterm value="DimmerControl">Dimmer</dtyp:displayterm>
             <dtyp:displayterm value="LTE0_5WperSqFtNA">NA: General Ltg 
@@ -9193,6 +9203,7 @@ Builders, Manufacturers, And Suppliers</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
          <xsd:enumeration value="AreaLT100SqFtNA"/>
+         <xsd:enumeration value="BilevelSwitchControl"/>
          <xsd:enumeration value="HealthcareNA"/>
          <xsd:enumeration value="DimmerControl"/>
          <xsd:enumeration value="LTE0_5WperSqFtNA"/>
