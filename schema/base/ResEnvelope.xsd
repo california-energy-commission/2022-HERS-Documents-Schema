@@ -271,6 +271,10 @@
          <xsd:enumeration value="R38"/>
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="ConcreteFill">
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="ConcreteThickness">
       <xsd:annotation>
          <xsd:documentation>Thickness of concrete topping on metal deck roofs or reinforced concrete roofs.  Evaluated in order to assign UFactor.</xsd:documentation>
@@ -828,7 +832,7 @@ Not Shared</dtyp:displayterm>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="CECDefaultPerformance">Default 110.6</dtyp:displayterm>
             <dtyp:displayterm value="CF1R_ENV_02">Area-weighted Average Worksheet (CF1R-ENV-02)</dtyp:displayterm>
-            <dtyp:displayterm value="NA6Equations">Equatio NA 6-1 and NA 6 -2</dtyp:displayterm>
+            <dtyp:displayterm value="NA6Equations">Equations NA 6-1 and NA 6 -2</dtyp:displayterm>
             <dtyp:displayterm value="NFRCRated">NFRC</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>

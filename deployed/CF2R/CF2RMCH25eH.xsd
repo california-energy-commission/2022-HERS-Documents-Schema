@@ -192,7 +192,7 @@ NewFactoryCharge display text: New package unit factory charge;</xsd:documentati
                   <xsd:element name="B03" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">The responsible persons signature note</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this document indicates confirmation that the installed model number is currently listed as approved for Winter Setup Method on the Energy Commission website: http://www.energy.ca.gov/title24/2008standards/special_case_appliance/</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this document indicates confirmation that the installed model number is currently listed as approved for Winter Setup Method on the Energy Commission website: http://www.energy.ca.gov/rules-and-regulations/building-energy-efficiency/manufacturer-certification-building-equipment</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>

@@ -2616,7 +2616,7 @@ Document Data</dtyp:displayterm>
             <dtyp:displayterm value="Residential Alterations">Residential Alterations</dtyp:displayterm>
             <dtyp:displayterm value="Residential Performance Compliance Method">Residential Performance Compliance Method</dtyp:displayterm>
             <dtyp:displayterm value="Return Duct Design and Air Filter Device Sizing According to Tables 150 B or C">Return Duct Design and Air Filter Device Sizing According to Tables 150 B or C</dtyp:displayterm>
-            <dtyp:displayterm value="Roofing Radiant Barrier">Roofing Radiant Barrier</dtyp:displayterm>
+            <dtyp:displayterm value="Roofing-Ventilation-Radiant Barrier">Roofing-Ventilation-Radiant Barrier</dtyp:displayterm>
             <dtyp:displayterm value="Sign Lighting">Sign Lighting</dtyp:displayterm>
             <dtyp:displayterm value="Single Dwelling Unit Hot Water System Distribution">Single Dwelling Unit Hot Water System Distribution</dtyp:displayterm>
             <dtyp:displayterm value="Solar Heat Gain Coefficient (SHGC) Worksheet">Solar Heat Gain Coefficient (SHGC) Worksheet</dtyp:displayterm>
@@ -2687,7 +2687,7 @@ Document Data</dtyp:displayterm>
          <xsd:enumeration value="Residential Alterations"/>
          <xsd:enumeration value="Residential Performance Compliance Method"/>
          <xsd:enumeration value="Return Duct Design and Air Filter Device Sizing According to Tables 150 B or C"/>
-         <xsd:enumeration value="Roofing Radiant Barrier"/>
+         <xsd:enumeration value="Roofing-Ventilation-Radiant Barrier"/>
          <xsd:enumeration value="Sign Lighting"/>
          <xsd:enumeration value="Single Dwelling Unit Hot Water System Distribution"/>
          <xsd:enumeration value="Solar Heat Gain Coefficient (SHGC) Worksheet"/>
