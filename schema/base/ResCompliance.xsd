@@ -2714,7 +2714,7 @@
             <dtyp:displayterm value="Sign Lighting">Sign Lighting</dtyp:displayterm>
             <dtyp:displayterm value="Single Dwelling Unit Hot Water System Distribution">Single Dwelling Unit Hot Water System Distribution</dtyp:displayterm>
             <dtyp:displayterm value="Solar Heat Gain Coefficient (SHGC) Worksheet">Solar Heat Gain Coefficient (SHGC) Worksheet</dtyp:displayterm>
-            <dtyp:displayterm value="Solar Ready Buildings - New Construction">Solar Ready Buildings -  New Construction</dtyp:displayterm>
+            <dtyp:displayterm value="Solar Readiness - New Construction">Solar Readiness - New Construction</dtyp:displayterm>
             <dtyp:displayterm value="Solar Reflectance Index Calculation Worksheet">Solar Reflectance Index Calculation Worksheet</dtyp:displayterm>
             <dtyp:displayterm value="Solar Water Heating Systems">Solar Water Heating Systems</dtyp:displayterm>
             <dtyp:displayterm value="Space Conditioning System Airflow Rate">Space Conditioning System Airflow Rate</dtyp:displayterm>
@@ -2785,7 +2785,7 @@
          <xsd:enumeration value="Sign Lighting"/>
          <xsd:enumeration value="Single Dwelling Unit Hot Water System Distribution"/>
          <xsd:enumeration value="Solar Heat Gain Coefficient (SHGC) Worksheet"/>
-         <xsd:enumeration value="Solar Ready Buildings - New Construction"/>
+         <xsd:enumeration value="Solar Readiness - New Construction"/>
          <xsd:enumeration value="Solar Reflectance Index Calculation Worksheet"/>
          <xsd:enumeration value="Solar Water Heating Systems"/>
          <xsd:enumeration value="Space Conditioning System Airflow Rate"/>
@@ -2892,8 +2892,8 @@
             <dtyp:displayterm value="MCH27a Single Family Attached/Detached Ventilation">MCH27a Single Family Attached/Detached Ventilation</dtyp:displayterm>
             <dtyp:displayterm value="MCH27b High-rise Residential Multifamily Ventilation">MCH27b High-rise Residential Multifamily Ventilation</dtyp:displayterm>
             <dtyp:displayterm value="MCH27b Multifamily Ventilation">MCH27b Multifamily Ventilation</dtyp:displayterm>
-            <dtyp:displayterm value="MCH27c Scheduled or Real-Time Control Ventilation system">MCH27c Scheduled or Real-Time Control Ventilation system</dtyp:displayterm>
-            <dtyp:displayterm value="MCH27d Non-dwelling Unit">MCH27d Non-dwelling Unit</dtyp:displayterm>
+            <dtyp:displayterm value="MCH27c Single Family Scheduled or Real-Time Control">MCH27c Single Family Scheduled or Real-Time Control</dtyp:displayterm>
+            <dtyp:displayterm value="MCH27d Non-dwelling Unit">MCH27d Non-Dwelling Unit</dtyp:displayterm>
             <dtyp:displayterm value="MCH31a Whole House Fan Airflow and Fan Efficacy - Aiflow and watts measured per whole house fan">MCH31a Whole House Fan Airflow and Fan Efficacy - Aiflow and watts measured per whole house fan</dtyp:displayterm>
             <dtyp:displayterm value="MCH31b Whole House Fan Airflow and Fan Efficacy - Aiflow  measured per whole house fan and watts measured as a total value">MCH31b Whole House Fan Airflow and Fan Efficacy - Aiflow  measured per whole house fan and watts measured as a total value</dtyp:displayterm>
             <dtyp:displayterm value="MCH31c Whole House Fan Airflow and Fan Efficacy - Aiflow measured as a total value and watts measured per whole house fan">MCH31c Whole House Fan Airflow and Fan Efficacy - Aiflow measured as a total value and watts measured per whole house fan</dtyp:displayterm>
@@ -2948,7 +2948,7 @@
          <xsd:enumeration value="MCH27a Single Family Attached/Detached Ventilation"/>
          <xsd:enumeration value="MCH27b High-rise Residential Multifamily Ventilation"/>
          <xsd:enumeration value="MCH27b Multifamily Ventilation"/>
-         <xsd:enumeration value="MCH27c Scheduled or Real-Time Control Ventilation system"/>
+         <xsd:enumeration value="MCH27c Single Family Scheduled or Real-Time Control"/>
          <xsd:enumeration value="MCH27d Non-dwelling Unit"/>
          <xsd:enumeration value="MCH31a Whole House Fan Airflow and Fan Efficacy - Aiflow and watts measured per whole house fan"/>
          <xsd:enumeration value="MCH31b Whole House Fan Airflow and Fan Efficacy - Aiflow  measured per whole house fan and watts measured as a total value"/>
@@ -12331,7 +12331,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
             <dtyp:displayterm value="NotApplicableSubdivision">Residence not in an applicable subdivision</dtyp:displayterm>
             <dtyp:displayterm value="SmartThermostatAlternativeEfficiencyMeasure">Smart thermostats and alternative efficiency measure</dtyp:displayterm>
             <dtyp:displayterm value="SolarReadyRequirements">Building meets the solar ready requirements</dtyp:displayterm>
-            <dtyp:displayterm value="TrafficParkingOnRoof">Roof is designed for vehicle traffic or parking or for heliport (applies to low-rise multifamily only)</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
@@ -12339,7 +12338,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
          <xsd:enumeration value="NotApplicableSubdivision"/>
          <xsd:enumeration value="SmartThermostatAlternativeEfficiencyMeasure"/>
          <xsd:enumeration value="SolarReadyRequirements"/>
-         <xsd:enumeration value="TrafficParkingOnRoof"/>
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="SolarReadyAreaRequiredDocuments">
