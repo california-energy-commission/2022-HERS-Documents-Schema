@@ -120,17 +120,11 @@ End if</xsd:documentation>
                      </xsd:element>
                   </xsd:choice>
                   <xsd:choice maxOccurs="1">
-                     <xsd:element name="A07_VentilationOperationSchedule">
+                     <xsd:element name="A07_VentilationOperationSchedule" type="hvac:VentilationOperationSchedule">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Ventilation Operation Schedule</xsd:documentation>
                            <xsd:documentation source="CalculationsAndRules">If registered CF1R == CF1R-PRF-01 reference data from CF1R;  Else If A02 == NonDwellingUnit result = N/A stored in NotApplcableMessage; Else If registered CF1R == CF1R-NCB-01 Or CF1R-ADD-01  User picks from list: Continuous, display term: Continuous display term Continuous, ShortTermAverage display term Short Term Average;  If result = Continuous And A06_VentilationSystemType ==CentralFanIntegrated Display message Central Fan Integrated Ventilation System Not Allowed to Operate Continuously - Do Not Proceed</xsd:documentation>
                         </xsd:annotation>
-                        <xsd:simpleType>
-                           <xsd:restriction base="hvac:VentilationOperationSchedule">
-                              <xsd:enumeration value="Continuous"/>
-                              <xsd:enumeration value="ShortTermAverage"/>
-                           </xsd:restriction>
-                        </xsd:simpleType>
                      </xsd:element>
                      <xsd:element name="A07_NotApplicableMessage" type="comp:NotApplicableMessage">
                         <xsd:annotation>
@@ -146,6 +140,7 @@ End if</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Calculated field for Variant result: 
 If A02_ResidentialBuildingType == SingleFamilyAttached Or SingleFamilyDetached  
 And A06_VentilationSystemType == SupplyVent, ExhaustVent, Balanced,BalancedERV, BalancedHRV Or CentralFanIntegrated 
+And A07_VentilationOperationSchedule == Continuous Or ShortTermAverage
 variant result =  Mch27a Single Family Attached/Detached Ventilation; 
  
 Else If A02_ResidentialBuildingType == SingleFamilyAttached Or SingleFamilyDetached  
@@ -169,6 +164,63 @@ End If</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">Note: 
                            <d:line1/>Non-dwelling units do not meet the definition for a dwelling unit as defined in Section 100.1(b).  Non-dwelling units are not designed to provide independent living facilities and do not provide permanent provisions for living, sleeping, eating, cooking and sanitation.</xsd:documentation>
                      </xsd:annotation>
+                  </xsd:element>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Section_A2" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation source="FieldText">HRV or ERV</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This section is required If A06_VentilationSystemType == BalancedERV Or  BalancedHRV</xsd:documentation>
+               <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="HErvBeginNote1" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText"/>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="TableHrvErv">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText"/>
+                     </xsd:annotation>
+                     <xsd:complexType>
+                        <xsd:sequence>
+                           <xsd:element name="Row" minOccurs="1" maxOccurs="unbounded">
+                              <xsd:complexType>
+                                 <xsd:sequence>
+                                    <xsd:element name="Herv01_VentilationManufacturer" type="hvac:VentilationManufacturer">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Manufcturer Make</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="Herv02_VentilationModelNumber" type="hvac:VentilationModelNumber">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Manufcturer Model #</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="Herv03_FanPowerPerFlow" type="hvac:FanPowerPerFlow">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Fan Efficacy Performance Rating (W/CFM)</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
+Else user input</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="Herv04_SensibleRecoveryEfficiency" type="hvac:SensibleRecoveryEfficiency">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Sensible Recovery Efficiency (%)</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
+Else user input</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                 </xsd:sequence>
+                              </xsd:complexType>
+                           </xsd:element>
+                        </xsd:sequence>
+                     </xsd:complexType>
                   </xsd:element>
                   <xsd:element name="Mch27cNote" minOccurs="0">
                      <xsd:annotation>

@@ -327,64 +327,36 @@ End if</xsd:documentation>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
-         <xsd:element name="Section_D" minOccurs="0">
+         <xsd:element name="Section_D" minOccurs="1">
             <xsd:annotation>
-               <xsd:documentation source="FieldText">Sizing Compliance With Multifamily Central System Prescriptive Requirements:</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This section is required If A05_ComplianceMethod == PrescriptiveNewConstruction And A04_NotApplicableMessage == N/A,</xsd:documentation>
-               <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
+               <xsd:documentation source="FieldText">Mandatory Measures For Solar Water Heating Systems</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">2022.1.000 Section moved from Section_E</xsd:documentation>
+               <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
                   <xsd:element name="D01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
-                        <xsd:documentation source="AdditionalRequirements">For climate zones 1 through 9 only - the solar system has an annual solar savings fraction of 0.2</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="D02" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText"/>
-                        <xsd:documentation source="AdditionalRequirements">For climate zones 10 through 16 only - the solar system has an annual solar savings fraction of 0.35</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="DEndNote1" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-               </xsd:sequence>
-            </xsd:complexType>
-         </xsd:element>
-         <xsd:element name="Section_E" minOccurs="1">
-            <xsd:annotation>
-               <xsd:documentation source="FieldText">Mandatory Measures For Solar Water Heating Systems</xsd:documentation>
-               <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
-            </xsd:annotation>
-            <xsd:complexType>
-               <xsd:sequence>
-                  <xsd:element name="E01" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">Backup storage tanks for solar water-heating systems have R-3.5 external insulation or R-16 internal insulation where the internal insulation R-value indicated on the exterior of the tank. (
                            <d:t24refnolink/>150.0(j)1B).</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="E02" minOccurs="0">
+                  <xsd:element name="D02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">All domestic hot water piping (including solar) shall be insulated (
                            <d:t24refnolink/>150(j)2A)</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="E03" minOccurs="0">
+                  <xsd:element name="D03" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">Solar water-heating system and/or collectors are certified by the Solar Rating and Certification Corporation. (
                            <d:t24refnolink/>150.0(n)).</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="EEndNote1" minOccurs="0">
+                  <xsd:element name="DEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
