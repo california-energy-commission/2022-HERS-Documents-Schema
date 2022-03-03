@@ -168,7 +168,7 @@ End If</xsd:documentation>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
-         <xsd:element name="Section_A2" minOccurs="0">
+         <xsd:element name="Section_B" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">HRV or ERV</xsd:documentation>
                <xsd:documentation source="CalculationsAndRules">This section is required If A06_VentilationSystemType == BalancedERV Or  BalancedHRV</xsd:documentation>
@@ -209,13 +209,6 @@ End If</xsd:documentation>
 Else user input</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
-                                    <xsd:element name="Herv04_SensibleRecoveryEfficiency" type="hvac:SensibleRecoveryEfficiency">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Sensible Recovery Efficiency (%)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
-Else user input</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
                                  </xsd:sequence>
                               </xsd:complexType>
                            </xsd:element>
@@ -225,14 +218,14 @@ Else user input</xsd:documentation>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
-         <xsd:element name="Section_B" minOccurs="1" maxOccurs="1">
+         <xsd:element name="Section_C" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Compliance Statement</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="B01_MechanicalVentilationCompliance" type="comp:MechanicalVentilationCompliance">
+                  <xsd:element name="C01_MechanicalVentilationCompliance" type="comp:MechanicalVentilationCompliance">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="CalculationsAndRules">Calculated field: If A02_ResidentialBuildingType == NonDwellingUnit result = BuildingPasses display term Building Passes</xsd:documentation>

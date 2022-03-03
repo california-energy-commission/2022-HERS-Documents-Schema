@@ -526,20 +526,13 @@ End If</xsd:documentation>
                                     </xsd:element>
                                     <xsd:element name="Herv02_VentilationModelNumber" type="hvac:VentilationModelNumber">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Manufcturer Model #</xsd:documentation>
+                                          <xsd:documentation source="FieldText">Manufcturer Model Number</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">User input</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Herv03_FanPowerPerFlow" type="hvac:FanPowerPerFlow">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Fan Efficacy Performance Rating (W/CFM)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
-Else user input</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
-                                    <xsd:element name="Herv04_SensibleRecoveryEfficiency" type="hvac:SensibleRecoveryEfficiency">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Sensible Recovery Efficiency (%)</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
 Else user input</xsd:documentation>
                                        </xsd:annotation>
@@ -673,7 +666,7 @@ Else user input</xsd:documentation>
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
-                           <d:b>6.10 Air Filter Efficiency.</d:b> Supply only ventilation systems, makeup air-systems, and supply side balanced systems including HRV/ERV shall be provided with air filters having a designated efficiency equal to or greater than MERV 13 when tested in accordance with ASHRAE Standard 52.2, or a particle size efficiency rating equal to or greater than 50% in the 0.30-1.0 um range and equal to or greater than 85% in the 1.0-3.0 um range when tested in accordance with AHRI Standard 680.</xsd:documentation>
+                           <d:b>Air Filter Efficiency.</d:b> Supply only ventilation systems, makeup air-systems, and supply side balanced systems including HRV/ERV shall be provided with air filters having a designated efficiency equal to or greater than MERV 13 when tested in accordance with ASHRAE Standard 52.2, or a particle size efficiency rating equal to or greater than 50% in the 0.30-1.0 um range and equal to or greater than 85% in the 1.0-3.0 um range when tested in accordance with AHRI Standard 680.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="FEndNote1" minOccurs="0">

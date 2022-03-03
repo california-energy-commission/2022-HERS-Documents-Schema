@@ -169,7 +169,7 @@ End If</xsd:documentation>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
-         <xsd:element name="Section_A2" minOccurs="0">
+         <xsd:element name="Section_B" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">HRV or ERV</xsd:documentation>
                <xsd:documentation source="CalculationsAndRules">This section is required If A06_VentilationSystemType == BalancedERV Or  BalancedHRV</xsd:documentation>
@@ -210,13 +210,6 @@ End If</xsd:documentation>
 Else user input</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
-                                    <xsd:element name="Herv04_SensibleRecoveryEfficiency" type="hvac:SensibleRecoveryEfficiency">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Sensible Recovery Efficiency (%)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
-Else user input</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
                                  </xsd:sequence>
                               </xsd:complexType>
                            </xsd:element>
@@ -233,14 +226,14 @@ Else user input</xsd:documentation>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
-         <xsd:element name="Section_B" minOccurs="0">
+         <xsd:element name="Section_C" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Other Requirements</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="B_BeginNote1" minOccurs="0">
+                  <xsd:element name="C_BeginNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Begin Note 1</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">
@@ -248,7 +241,7 @@ Else user input</xsd:documentation>
                         </xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B01" minOccurs="0">
+                  <xsd:element name="C01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
@@ -258,21 +251,21 @@ Else user input</xsd:documentation>
                            <d:b>Compliance for Attached Dwelling Units </d:b>. One method of demonstrating compliance with Section 6.1 shall be to verify a leakage rate below a maximum of 0.3 cfm per ft<d:sup>2</d:sup> (150 L/s per 100 m2) of the dwelling unit envelope per area (i.e. the sum of the area of walls between dwelling units, exterior walls, ceiling and floor) at a test pressure of 50 Pa by a blower door test conducted in accordance with either ANSI/ASTME779 or ANSI/ASTM-E1827.   The test shall be conducted with the dwelling unit as if it were exposed to outdoor air on all sides, top and bottom by opening doors and windows of adjacent dwelling units.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B02" minOccurs="0">
+                  <xsd:element name="C02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
                            <d:b>6.2 Instructions and Labeling.</d:b> Information on the ventilation design and/or ventilation systems installed, instructions on their proper operation to meet the requirements of this standard, and instructions detailing any required maintenance (similar to that provided for HVAC systems) shall be provided to the owner and the occupant of the dwelling unit. Controls shall be labeled as to their function (unless that function is obvious, such as toilet exhaust fan switches). See Chapter 13 of Guideline 24<d:sup>5</d:sup> for information on instructions and labeling.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B03" minOccurs="0">
+                  <xsd:element name="C03" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
                            <d:b>6.3 Clothes Dryers.</d:b> Clothes dryers shall be exhausted directly to the outdoors. Exception: Condensing dryers plumbed to a drain.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B04" minOccurs="0">
+                  <xsd:element name="C04" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
@@ -283,7 +276,7 @@ Else user input</xsd:documentation>
                            <d:tab1/> 6.4.2  Where atmospherically vented combustion appliances or solid-fuel burning appliances are located inside the pressure boundary, the total net exhaust flow of the two largest exhaust fans (not including a summer cooling fan intended to be operated only when windows or other air inlets are open) shall not exceed 15 cfm/100 ft<d:sup>2</d:sup> (75 L/s per 100 m<d:sup>2</d:sup>) of occupiable space when in operation at full capacity. If the designed total net flow exceeds this limit, the net exhaust flow must be reduced by reducing the exhaust flow or providing compensating outdoor airflow. Atmospherically vented combustion appliances do not include direct-vent appliances.  Combustion appliances that pass safety testing performed according to ANSI/BPI-1200 shall be deemed as complying with Section 6.4.2</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B05" minOccurs="0">
+                  <xsd:element name="C05" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
@@ -293,7 +286,7 @@ Else user input</xsd:documentation>
                            <d:b>Garages.</d:b> When an occupiable space adjoins a garage, the design must prevent migration of contaminants to the adjoining occupiable space. Air seal the walls, ceilings, and floors that separate garages from occupiable space. To be considered air sealed, all joints, seams, penetrations, openings between door assemblies and their respective jambs and framing, and other sources of air leakage through wall and ceiling assemblies separating the garage from the residence and its attic area shall be caulked, gasketed, weather stripped, wrapped, or otherwise sealed to limit air movement. Doors between garages and occupiable spaces shall be gasketed or made substantially airtight with weather stripping.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B06" minOccurs="0">
+                  <xsd:element name="C06" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
@@ -311,7 +304,7 @@ Else user input</xsd:documentation>
                         </xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B07" minOccurs="0">
+                  <xsd:element name="C07" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
@@ -325,7 +318,7 @@ Else user input</xsd:documentation>
                         </xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B08" minOccurs="0">
+                  <xsd:element name="C08" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
@@ -333,14 +326,14 @@ Else user input</xsd:documentation>
                            <d:i>Standard for the Installation of Carbon Monoxide (CO) Detection and Warning Equipment 14</d:i>, and shall be consistent with requirements of applicable laws, codes, and standards.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B09" minOccurs="0">
+                  <xsd:element name="C09" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
-                           <d:b>6.10 Air Filter Efficiency.</d:b> Supply only ventilation systems, makeup air-systems, and supply side balanced systems including HRV/ERV shall be provided with air filters having a designated efficiency equal to or greater than MERV 13 when tested in accordance with ASHRAE Standard 52.2, or a particle size efficiency rating equal to or greater than 50% in the 0.30-1.0 um range and equal to or greater than 85% in the 1.0-3.0 um range when tested in accordance with AHRI Standard 680.</xsd:documentation>
+                           <d:b>Air Filter Efficiency.</d:b> Supply only ventilation systems, makeup air-systems, and supply side balanced systems including HRV/ERV shall be provided with air filters having a designated efficiency equal to or greater than MERV 13 when tested in accordance with ASHRAE Standard 52.2, or a particle size efficiency rating equal to or greater than 50% in the 0.30-1.0 um range and equal to or greater than 85% in the 1.0-3.0 um range when tested in accordance with AHRI Standard 680.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="BEndNote1" minOccurs="0">
+                  <xsd:element name="CEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
@@ -349,14 +342,14 @@ Else user input</xsd:documentation>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
-         <xsd:element name="Section_C" minOccurs="0">
+         <xsd:element name="Section_D" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Air Moving Equipment</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="C_BeginNote1" minOccurs="0">
+                  <xsd:element name="D_BeginNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Begin Note 1</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">
@@ -364,14 +357,14 @@ Else user input</xsd:documentation>
                         </xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="C01" minOccurs="0">
+                  <xsd:element name="D01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
                            <d:b>7.1  Selection and Installation.</d:b> Ventilation devices and equipment shall be tested and listed in accordance with ANSI/ASHRAE Standard 51/ AMCA 210, and ANSI/AMCA Standard 300, and rated in accordance with the airflow and sound rating procedures of the Home Ventilating Institute (HVI 915, 916, 920).   Installations of systems or equipment shall be carried out in accordance with manufacturers' design requirements and installation instructions.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="C02" minOccurs="0">
+                  <xsd:element name="D02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
@@ -391,7 +384,7 @@ Else user input</xsd:documentation>
                         </xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="C03" minOccurs="0">
+                  <xsd:element name="D03" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
@@ -404,14 +397,14 @@ Else user input</xsd:documentation>
                            <d:b> Single Exhaust Fan Ducted to Multiple Inlets.</d:b> Where exhaust inlets are commonly ducted across multiple dwelling units, one or more exhaust fans located downstream of the exhaust inlets shall be designed and intended to run continuously, or a system of one or more backdraft dampers shall be installed to isolate each dwelling unit from the common duct when the fan is not running.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="C04" minOccurs="0">
+                  <xsd:element name="D04" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">
                            <d:b>7.4 Supply Ducts.</d:b>  Where supply outlets are commonly ducted across multiple dwelling units, one or more supply fans located upstream of the supply inlets shall be designed and intended to run continuously, or a system of one or more backdraft dampers shall be installed to isolate each dwelling unit from the common duct when the fan is not running.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="CEndNote1" minOccurs="0">
+                  <xsd:element name="DEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>

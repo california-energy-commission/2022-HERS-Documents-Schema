@@ -357,6 +357,12 @@
          <xsd:enumeration value="West"/>
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="CavityInsulationOther">
+      <xsd:annotation>
+         <xsd:documentation>Units: none</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:Decimal"/>
+   </xsd:simpleType>
    <xsd:simpleType name="City">
       <xsd:annotation>
          <xsd:documentation>Part of an address</xsd:documentation>
@@ -569,6 +575,12 @@
          <xsd:enumeration value="Title24"/>
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="ConditionedFloorArea">
+      <xsd:annotation>
+         <xsd:documentation>Units: ft2</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative"/>
+   </xsd:simpleType>
    <xsd:simpleType name="ConditionedFloorArea5Percent">
       <xsd:annotation>
          <xsd:documentation>Units: ft2</xsd:documentation>
@@ -628,6 +640,12 @@
    </xsd:simpleType>
    <xsd:simpleType name="ContactTelephoneNumber">
       <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="ContinuousInsulationOther">
+      <xsd:annotation>
+         <xsd:documentation>Units: none</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:Decimal"/>
    </xsd:simpleType>
    <xsd:simpleType name="CoolingDegreeDays">
       <xsd:annotation>
@@ -968,6 +986,18 @@ ExtFlr/IntFlr: 0.8  Units: none</xsd:documentation>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:DecimalNonnegative"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="FuelType">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="Electric">Electric</dtyp:displayterm>
+            <dtyp:displayterm value="Gas">Gas</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="Electric"/>
+         <xsd:enumeration value="Gas"/>
+      </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="GasEquipmentLatentFraction">
       <xsd:annotation>
@@ -1472,6 +1502,12 @@ ExtFlr/IntFlr: 0.8  Units: none</xsd:documentation>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="xsd:token"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectionFactor">
+      <xsd:annotation>
+         <xsd:documentation>Ratio of the horizontal depth of the external shading projection divided by the sum of the height of the fenestration and the distance from the top of the fenestration to the bottom of the farthest point of the external shading projection, in consistent units.  Units: none</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative"/>
    </xsd:simpleType>
    <xsd:simpleType name="RSHGC">
       <xsd:annotation>
@@ -2364,6 +2400,7 @@ NOTE: For roofs, differentiate between the initial Solar Reflectance value and t
             <dtyp:displayterm value="AddLTE700sf">Add 
                <d:lte/>700ft<d:sup>2</d:sup>
             </dtyp:displayterm>
+            <dtyp:displayterm value="AnyStatus">Any Status</dtyp:displayterm>
             <dtyp:displayterm value="ExistingAlteration">Altered</dtyp:displayterm>
             <dtyp:displayterm value="ExistingUnchanged">Existing</dtyp:displayterm>
             <dtyp:displayterm value="Modified">Modified</dtyp:displayterm>
@@ -2373,6 +2410,7 @@ NOTE: For roofs, differentiate between the initial Solar Reflectance value and t
       <xsd:restriction base="dtyp:EnumerationConstant">
          <xsd:enumeration value="AddGT700sf"/>
          <xsd:enumeration value="AddLTE700sf"/>
+         <xsd:enumeration value="AnyStatus"/>
          <xsd:enumeration value="ExistingAlteration"/>
          <xsd:enumeration value="ExistingUnchanged"/>
          <xsd:enumeration value="Modified"/>
@@ -2487,19 +2525,25 @@ NOTE: For roofs, differentiate between the initial Solar Reflectance value and t
             <dtyp:displayterm>Top Level Occupancy</dtyp:displayterm>
          </xsd:appinfo>
          <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="HighRiseResidential">High-Rise Residential</dtyp:displayterm>
             <dtyp:displayterm value="HotelMotel">Hotel/Motel</dtyp:displayterm>
             <dtyp:displayterm value="LowRiseResidential">Multifamily 
                <d:lte/>3 stories</dtyp:displayterm>
             <dtyp:displayterm value="Nonresidential">Nonresidential</dtyp:displayterm>
+            <dtyp:displayterm value="OtherOccupancy">Other</dtyp:displayterm>
             <dtyp:displayterm value="RelocableSchoolBuildingAllZones">Relocable Public School Building for use in all climate zones Occupancy: E</dtyp:displayterm>
+            <dtyp:displayterm value="ResidentialMF">Multifamily</dtyp:displayterm>
             <dtyp:displayterm value="ResidentialNR">High-rise Res/ Hotel/ Motel</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="HighRiseResidential"/>
          <xsd:enumeration value="HotelMotel"/>
          <xsd:enumeration value="LowRiseResidential"/>
          <xsd:enumeration value="Nonresidential"/>
+         <xsd:enumeration value="OtherOccupancy"/>
          <xsd:enumeration value="RelocableSchoolBuildingAllZones"/>
+         <xsd:enumeration value="ResidentialMF"/>
          <xsd:enumeration value="ResidentialNR"/>
       </xsd:restriction>
    </xsd:simpleType>

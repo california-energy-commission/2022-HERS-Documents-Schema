@@ -562,20 +562,13 @@ End If</xsd:documentation>
                                     </xsd:element>
                                     <xsd:element name="Herv02_VentilationModelNumber" type="hvac:VentilationModelNumber" >
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Manufcturer Model #</xsd:documentation>
+                                          <xsd:documentation source="FieldText">Manufcturer Model Number</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">User input</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Herv03_FanPowerPerFlow" type="hvac:FanPowerPerFlow" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Fan Efficacy Performance Rating (W/CFM)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
-Else user input</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
-                                    <xsd:element name="Herv04_SensibleRecoveryEfficiency" type="hvac:SensibleRecoveryEfficiency" >
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Sensible Recovery Efficiency (%)</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
 Else user input</xsd:documentation>
                                        </xsd:annotation>
