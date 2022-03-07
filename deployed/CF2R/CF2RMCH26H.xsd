@@ -65,6 +65,7 @@
                         <xsd:documentation source="CalculationsAndRules">Switch (parent MCH01 variant) 
 case MCH-01a: 
 If A03a_EfficiencyType == EERSEER  Then 
+(D05, C07, F04, F10 in these conditions are from the MCH01a)
 If D05_ ResidentialCoolingSystemType  == CentralPackagedAC And
 C07_EfficiencyMinimumValueEER  GT 11.0 And 
 F04_EfficiencyInstalledValueEER  GT 11.0  
@@ -83,12 +84,13 @@ result = false
 End If
 
 Else If A03a_EfficiencyType == EER2SEER2  Then
+(D05, C07, F04, F10 in these conditions are from the MCH01a)
 If D05_ ResidentialCoolingSystemType  == CentralSplitAC  And 
-C07_EfficiencyMinimumValueEER  GT 11.2 And 
+C07_EfficiencyMinimumValueEER2  GT 11.2 And 
 F10_CondenserRatedCoolingCapacity GTE 45000 
 result = true; 
 Else If D05_ ResidentialCoolingSystemType  == CentralSplitAC  And 
-F04_EfficiencyInstalledValueEER  GT 11.7 And 
+F04_EfficiencyEER2  GT 11.7 And 
 F10_CondenserRatedCoolingCapacity LT 45000 
 result = true;       
 Else
@@ -97,6 +99,7 @@ End If
  
 case MCH-01d: 
 If A03a_EfficiencyType == EERSEER  Then
+(D05, C07, G04, G10 in these conditions are from the MCH01d)
 If D05_ ResidentialCoolingSystemType  == CentralPackagedAC And 
 C07_EfficiencyMinimumValueEER IsPresent And GT 11.0 And  
 G04_EfficiencyInstalledValueEER GT 11.0  
@@ -115,12 +118,13 @@ result = false
 End If
 
 Else If A03a_EfficiencyType == EER2SEER2  Then
+(D05, C07, G04, G10 in these conditions are from the MCH01d)
 If D05_ ResidentialCoolingSystemType  == CentralSplitAC And 
-C07_EfficiencyMinimumValueEER IsPresent  and  GT 11.2 And 
+C07_EfficiencyMinimumValueEER2 IsPresent  and  GT 11.2 And 
 G10_CondenserRatedCoolingCapacity GTE 45000 
 result = true; 
 Else If D05_ ResidentialCoolingSystemType  == CentralSplitAC And 
-G04_EfficiencyInstalledValueEER  GT 11.7 And 
+G04_EfficiencyEER2  GT 11.7 And 
 G10_CondenserRatedCoolingCapacity LT 45000 
 result = true; 
 Else 
@@ -139,7 +143,7 @@ End Switch.</xsd:documentation>
                   <xsd:element name="A06_VerificationRequiredHSPF" type="comp:VerificationRequiredHSPF">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status: HSPF/HSPF2 Performance Compliance Credit Check</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field; If the project CF1R flags the requirement for HERS verification of HSPF Performance then result = true; Else result = false.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field; If the project CF1R flags the requirement for HERS verification of HSPF/HSPF2 Performance then result = true; Else result = false.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A07_ProductPerformanceDirectory" type="comp:ProductPerformanceDirectory">
@@ -522,13 +526,20 @@ End Switch.</xsd:documentation>
                   <xsd:element name="D01_EfficiencyMinimumValueSEER" type="hvac:EfficiencyMinimumValueSEER">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Required minimum SEER/SEER2</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01 fields as follows
+If Mch01 C06_EfficiencyMinimumValueSEER IsPresent
+result = Mch01 C06_EfficiencyMinimumValueSEER
+Else If Mch01 C06_EfficiencyMinimumValueSEER2 IsPresent
+result = Mch01 C06_EfficiencyMinimumValueSEER2
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="D02_EfficiencyInstalledValueSEER" type="hvac:EfficiencyInstalledValueSEER">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Installed SEER/SEER2</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">user input, SEER/SEER2 listed in the Directory used to certify product performance</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">user input, SEER/SEER2 listed in the Directory used to certify product performance
+Note If Mch01 C06_EfficiencyMinimumValueSEER IsPresent and assigned to D01_EfficiencyMinimumValueSEER user must enter SEER value
+Else If Mch01 C06_EfficiencyMinimumValueSEER2 IsPresent and assigned to D01_EfficiencyMinimumValueSEER user must enter SEER2 value</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="D03_DoesCoolingEquipmentComplyWithSEER" type="comp:DoesCoolingEquipmentComplyWithSEER">
@@ -559,13 +570,20 @@ End Switch.</xsd:documentation>
                   <xsd:element name="E01_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Required minimum EER/EER2</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01 fields as follows
+If Mch01 C07_EfficiencyMinimumValueEER IsPresent
+result = Mch01 C07_EfficiencyMinimumValueEER
+Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent
+result = Mch01 C07_EfficiencyMinimumValueEER2
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="E02_EfficiencyInstalledValueEER" type="hvac:EfficiencyInstalledValueEER">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Installed EER/EER2</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">user input - EER/EER2 listed in the Directory used to certify product performance</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">user input - EER /EER2 listed in the Directory used to certify product performance 
+Note If Mch01 C07_EfficiencyMinimumValueEER IsPresent and assigned to E01_EfficiencyMinimumValueEER user must enter EER value
+Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent and assigned to E01_EfficiencyMinimumValueEER user must enter EER2 value</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="E03_DoesCoolingEquipmentComplyWithEER" type="comp:DoesCoolingEquipmentComplyWithEER">
@@ -659,13 +677,20 @@ End Switch.</xsd:documentation>
                   <xsd:element name="G01_EfficiencyMinimumValueHSPF" type="hvac:EfficiencyMinimumValueHSPF">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Required minimum HSPF/HSPF</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto-filled from CF2R-MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01 fields as follows
+If Mch01 C03_EfficiencyMinimumValueHSPF IsPresent
+result = Mch01 C03_EfficiencyMinimumValueHSPF
+Else If Mch01 C03_EfficiencyMinimumValueHSPF2 IsPresent
+result = Mch01 C03_EfficiencyMinimumValueHSPF2
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="G02_EfficiencyInstalledValueHSPF" type="hvac:EfficiencyInstalledValueHSPF">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Installed HSPF/HSPF2</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">User input, HSPF/HSPF2 listed in the Directory used to certify product performance</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input, HSPF/HSPF2 listed in the Directory used to certify product performance
+Note If Mch01 C03_EfficiencyMinimumValueHSPF IsPresent and assigned to G01_EfficiencyMinimumValueHSPF user must enter HSPF value
+Else If Mch01 C03_EfficiencyMinimumValueHSPF2 IsPresent and assigned to G01_EfficiencyMinimumValueHSPF user must enter HSPF2 value</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="G03_DoesHeatPumpHSPF_Comply" type="comp:DoesHeatPumpHSPF_Comply">
@@ -760,8 +785,8 @@ End Switch.</xsd:documentation>
             </xsd:element>
             <xsd:element name="Report" type="xsd:base64Binary"/>
          </xsd:sequence>
-         <xsd:attribute name="revision" type="xsd:string" use="required" fixed="rev 20220101"/>
-         <xsd:attribute name="doc" type="comp:ComplianceDocumentTag" use="required" fixed="CF2RMCH26H"/>
+         <xsd:attribute name="revision" use="required" type="xsd:string" fixed="rev 20220101"/>
+         <xsd:attribute name="doc" use="required" type="comp:ComplianceDocumentTag" fixed="CF2RMCH26H"/>
       </xsd:complexType>
    </xsd:element>
    <xsd:element name="cF2RMCH26H" type="CF2RMCH26H">
