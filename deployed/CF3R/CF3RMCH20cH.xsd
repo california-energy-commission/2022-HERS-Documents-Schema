@@ -15,6 +15,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent MCH-20 refers to the parent CF2R-MCH-20 and parent MCH-01 refers to the parent CF2R-MCH-01 and parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -22,31 +23,31 @@
                   <xsd:element name="A01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Space Conditioning System Identification or Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20c-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ResidentialHvacSystemAreaServed" type="hvac:ResidentialHvacSystemAreaServed">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Space Conditioning System Location or Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20c-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A03_IndoorUnitName" type="hvac:IndoorUnitName">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Indoor Unit Name or Description of Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A04_ResidentialLowriseBuildingType" type="com:ResidentialLowriseBuildingType">
                      <xsd:annotation>
-                        <xsd:documentation source="FieldText">Building Type from CF-1R</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20c-H</xsd:documentation>
+                        <xsd:documentation source="FieldText">Building Type from parent CC</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A05_VerifiedLowLeakageDuctsConditionedSpace" type="comp:VerifiedLowLeakageDuctsConditionedSpace">
                      <xsd:annotation>
-                        <xsd:documentation source="FieldText">Verified Low Leakage Ducts in Conditioned Space (VLLDCS) Credit from CF1R?</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20c-H</xsd:documentation>
+                        <xsd:documentation source="FieldText">Verified Low Leakage Ducts in Conditioned Space (VLLDCS) Credit from parent CC?</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                         <xsd:appinfo source="displayterm">
                            <dtyp:displayterm value="true">Low Leakage Ducts in Conditioned Space (LLDCS) method Mch20b should be used</dtyp:displayterm>
                         </xsd:appinfo>
@@ -54,8 +55,8 @@
                   </xsd:element>
                   <xsd:element name="A06_VerifiedLowLeakageAirHandlingUnit" type="comp:VerifiedLowLeakageAirHandlingUnit">
                      <xsd:annotation>
-                        <xsd:documentation source="FieldText">Verified Low Leakage Air Handling Unit Credit from CF1R?</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20c-H</xsd:documentation>
+                        <xsd:documentation source="FieldText">Verified Low Leakage Air Handling Unit Credit from parent CC?</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                         <xsd:appinfo source="displayterm">
                            <dtyp:displayterm value="true">Low Leakage Air Handling Unit (LLAHU) method Mch20c should be used</dtyp:displayterm>
                         </xsd:appinfo>
@@ -64,7 +65,7 @@
                   <xsd:element name="A07_DuctSystemLeakageComplianceCategory" type="comp:DuctSystemLeakageComplianceCategory">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Duct System Compliance Category</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20c-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A08_AreDuctsInGarage" type="comp:AreDuctsInGarage">
@@ -95,6 +96,7 @@
          <xsd:element name="Section_B" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Duct Leakage Diagnostic Test</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent MCH-20 refers to the parent CF2R-MCH-20</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -152,14 +154,14 @@
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Conditioned Floor Area Served by this HVAC System (ft<d:sup>2</d:sup>)</xsd:documentation>
                            <xsd:documentation source="CalculationsAndRules">If B01_AirflowMethod == DefaultAirFlowMethod user input numeric xx,xxx Else result = N/A stored in NotApplicableMessage 
-( should be consistent with CF1R zone CFA data)</xsd:documentation>
+( should be consistent with parent MCH-20 data)</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="B05_NotApplicableMessage" type="comp:NotApplicableMessage">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Conditioned Floor Area Served by this HVAC System (ft<d:sup>2</d:sup>)</xsd:documentation>
                            <xsd:documentation source="CalculationsAndRules">If B01_AirflowMethod == DefaultAirFlowMethod user input numeric xx,xxx Else result = N/A stored in NotApplicableMessage 
-( should be consistent with CF1R zone CFA data)</xsd:documentation>
+( should be consistent with parent MCH-20 data)</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
@@ -180,19 +182,19 @@
                   <xsd:element name="B07_LeakageTestCondition" type="comp:LeakageTestCondition" fixed="TestFinal">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Duct Leakage Test Conditions</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20c-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="B08_LeakageTestMethod" type="comp:LeakageTestMethod" fixed="TotalLeakage">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Duct Leakage Test Method</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20c-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="B09_DuctSystemLeakageFactor" type="comp:DuctSystemLeakageFactor">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Leakage Factor</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20c-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="B10_DuctLeakageAllowed" type="comp:DuctLeakageAllowed">
@@ -238,7 +240,10 @@ Else result = false  display term: System Fails Leakage Test</xsd:documentation>
                   <xsd:element name="B15_SectionComments" type="comp:SectionComments" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Notes:</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If CF2R-MCH-20 values for : B02_CondenserNominalCoolingCapacity, B03_IndoorUnitNominalCoolingCapacity, B04_HvacSystemHeatingCapacity or B05_ HvacSystemConditionedFloorArea Not== CF3R-MCH-20 values for same fields display text: "The installed cooling capacity, heating capacity or CFA served does not match the Installation Certificate."  Else this field is not required.  If  B12_AHU_Manufacturer or B13_AHU_ModelNumber do not match related CF2R-MCH-20 properties then display text: The Air-Handling Unit Manufacturer Name or Model Number does not match the Installation Certificate; Else this field is not required.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If CF2R-MCH-20 values for : B02_CondenserNominalCoolingCapacity, B03_IndoorUnitNominalCoolingCapacity, B04_HvacSystemHeatingCapacity or B05_ HvacSystemConditionedFloorArea != CF3R-MCH-20 values for same fields 
+display text: "The installed cooling capacity, heating capacity or CFA served does not match the Installation Certificate."  
+Else If  B12_AHU_Manufacturer or B13_AHU_ModelNumber do not match related CF2R-MCH-20 properties then display text: The Air-Handling Unit Manufacturer Name or Model Number does not match the Installation Certificate; 
+Else this field is not required.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>

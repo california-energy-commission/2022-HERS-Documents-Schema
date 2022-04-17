@@ -58,6 +58,7 @@
          <xsd:element name="Section_A" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">All references to the MCH01 in this section refer to the parent CF2R-MCH01 and all other references are to other CF2R or CF3R compliance documents.</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -152,7 +153,19 @@
                   <xsd:element name="A12_UseMinimumAirflowApprovedVerificationProcedure" type="comp:UseMinimumAirflowApprovedVerificationProcedure" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Is the system of a type that the minimum airflow can be verified for all indoor units using an approved measurement procedure (RA3.3 or RA3.3.3)?</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">For Criterion1 reference value for CanRA3_3AirflowProtocolsTestSystem as follows: MCH-01a section J J12; MCH-01b section F F11 or section G G13; MCH-01c section I  I11; or MCH-01d section K K11 or section L L13.  For Criterion2 reference data as follows: MCH-01a D07 DuctLocation; MCH-01c C06 DuctSystemType; MCH-01d D07 DuctSystemTypePerf.  For Criterion3 reference data as follows: MCH-01b C12 IndoorUnitsCount, C13 DuctedIndoorUnitsCount; MCH-01d D06 IndoorUnitsCount, D13 DuctedIndoorUnitsCount.  Evaluation:  If (Criterion1) CanRA3_3AirflowProtocolsTestSystem == false;  Or If (Criterion2) DuctLocation, DuctSystemType Or DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits Or Ductless;  Or If (Criterion3) DuctedIndoorUnitsCount LT IndoorUnitsCount  result = false, display term No, the system airflow rate measurement procedures in RA3.3 or RA3.3.3 cannot be used to verify system airflow rate requirements for all the indoor units for this system.;  Else result = true display term Yes.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Reference values from parent MCH-0! for the following evaluations
+For Criterion1 reference value for CanRA3_3AirflowProtocolsTestSystem from
+MCH-01a section J J12; MCH-01b section F F11 or section G G13; MCH-01c section I  I11; or MCH-01d section K K11 or section L L13.
+ 
+For Criterion2 reference data as follows: MCH-01a D07 DuctLocation; MCH-01c C06 DuctSystemType; MCH-01d D07 DuctSystemTypePerf.  
+ 
+For Criterion3 reference data as follows: MCH-01b C12 IndoorUnitsCount, C13 DuctedIndoorUnitsCount; MCH-01d D06 IndoorUnitsCount, D13 DuctedIndoorUnitsCount.  
+ 
+Evaluation:  If (Criterion1) CanRA3_3AirflowProtocolsTestSystem == false;  Or If (Criterion2) DuctLocation, DuctSystemType Or DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits Or Ductless;  Or If (Criterion3) DuctedIndoorUnitsCount LT IndoorUnitsCount 
+ result = false, display term No, the system airflow rate measurement procedures in RA3.3 or RA3.3.3 cannot be used to verify system airflow rate requirements for all the indoor units for this system.;  
+ 
+Else result = true display term Yes.
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A13_UseRefrigerantChargeApprovedVerificationProcedure" type="comp:UseRefrigerantChargeApprovedVerificationProcedure" >
@@ -182,7 +195,14 @@
                   <xsd:element name="A17_RefrigerantChargeVerificationMessage" type="comp:RefrigerantChargeVerificationMessage" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">HERS Verification Compliance Requirement Status</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If any of the following conditions are true: RefrigerantChargeVerifier equals HERS_Rater,  UseMinimumAirflowApprovedVerificationProcedure equals false, UseRefrigerantChargeApprovedVerificationProcedure equals false or RefrigerantChargeVerificationMethod equals WeighIn Or WeighInHERS, Then result is System does not qualify for Group Sampling;    Else If RefrigerantChargeVerificationMethod equals NewFactoryCharge, result is HERS verification of refrigerant charge not required;  Else result is System qualifies for Group Sampling</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If any of the following conditions are true: 
+RefrigerantChargeVerifier equals HERS_Rater,  UseMinimumAirflowApprovedVerificationProcedure equals false, UseRefrigerantChargeApprovedVerificationProcedure equals false or RefrigerantChargeVerificationMethod equals WeighIn Or WeighInHERS, 
+result = DoesNotQualifyForGroupSampling display term  System does not qualify for Group Sampling; 
+   
+Else If RefrigerantChargeVerificationMethod equals NewFactoryCharge, 
+result = HERS_VerificationNotRequired display term HERS verification of refrigerant charge not required;  
+Else result = QualifiesForGroupSampling display term System qualifies for Group Sampling
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A17After" minOccurs="0">
@@ -238,23 +258,33 @@
                   <xsd:element name="C01_DigitalRefrigerantGaugeCalibrationDate" type="comp:DigitalRefrigerantGaugeCalibrationDate" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Date of Digital Refrigerant Gauge Calibration</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input calibration date in valid date format</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="C02_DigitalThermocoupleCalibrationDate" type="comp:DigitalThermocoupleCalibrationDate" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Date of Digital Thermocouple Calibration</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input calibration date in valid date format</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="C03_IsDigitalRefrigerantGaugeCalibrationCurrent" type="comp:IsDigitalRefrigerantGaugeCalibrationCurrent" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Digital Refrigerant Gauge Calibration Status</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If the difference between RefrigerantChargeVerificationDate in section A and the DigitalRefrigerantGaugeCalibrationDate is greater than one month, or a negative number, the result is false  For Boolean false value, display: Digital Refrigerant Gauge requires Calibration (do not proceed),   Else If the difference is one month or less, result is true  For Boolean true value, display: Digital Refrigerant Gauge Calibration is current.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If the difference A14_RefrigerantChargeVerificationDate in section A and the C01_DigitalRefrigerantGaugeCalibrationDate is greater than one month, or a negative number, 
+result = false display term Digital Refrigerant Gauge requires Calibration (do not proceed),   
+Else If the difference is one month or less, 
+result = true  display term Calibration is current.
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="C04_IsDigitalThermocoupleCalibrationCurrent" type="comp:IsDigitalThermocoupleCalibrationCurrent" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Digital Thermocouple Calibration Status</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If the difference between RefrigerantChargeVerificationDate in section A and the DigitalThermocoupleCalibrationDate  is greater than one month, or a negative number, the result is false  For Boolean false value, display: Digital Thermocouple Gauge requires Calibration (do not proceed),   Else if the difference is one month or less, result is true  For Boolean true value, display: Digital Thermocouple Gauge Calibration is current</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If the difference between A14_RefrigerantChargeVerificationDate in section A and C02_DigitalThermocoupleCalibrationDate  is greater than one month, or a negative number,
+result = false  display term Digital Thermocouple Gauge requires Calibration (do not proceed),   
+Else if the difference is one month or less, 
+result = true  display term Calibration is current
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -292,7 +322,8 @@
          <xsd:element name="Section_E" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Minimum System Airflow Rate Verification</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">Require 1 row of data for each indoor unit listed in the "HERS Verification Requirements for Duct Systems" table in the parent MCH-01for the SC system in A02</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">All references to the MCH-01 in this section refer to the parent CF2R-MCH-01 and all other references are to other CF2R  compliance documents.  
+Require 1 row of data for each indoor unit listed in the "HERS Verification Requirements for Duct Systems" table in the parent CF2R-MCH-01for the SC system in A02</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -323,7 +354,7 @@
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Required System Airflow Rate (cfm)</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field: 
-If the CF2R-MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
+If the  parent MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
 result = RequiredVerificationTable150BC stored in MinimumAirflowRateAlternative; 
  
 Else reference numeric value  from applicable MCH23 field for the indoor unit in E01 and store result in MinimumAirflowRateRequired.   
@@ -339,7 +370,7 @@ Mch23c  - field E02
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Required System Airflow Rate (cfm)</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field: 
-If the CF2R-MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
+If the parent MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
 result = RequiredVerificationTable150BC stored in MinimumAirflowRateAlternative; 
  
 Else reference numeric value  from applicable MCH23 field for the indoor unit in E01 and store result in MinimumAirflowRateRequired.   
@@ -355,7 +386,23 @@ Mch23c  - field E02
                                     <xsd:element name="E03_MinimumAirflowRateVerificationStatus" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">System Airflow Rate Verification Status</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  If the CF2R-MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance:  then If the system has a registered CF2R-MCH-28 that indicates compliance with Table 150.0-B or C return duct design requirements, then result  = SystemCompliesUsingTable150BC display term System complies using Table 150.0-B or C alternative return duct design criteria;   Else result = SystemDoesNotComplyCF2RMCH28Required display term System does not comply.  A registered CF2R-MCH-28 is required (do not allow this MCH-25 to be registered);     ElseIf the CF2R-MCH-01 indicates a MCH-23 is required for minimum airflow rate compliance:  Then If this system has a registered CF2R-MCH-23a, CF2R-MCH-23b, CF2R-MCH23e or CF2R-MCH-23f  that meets the compliance criterion in E01, Then result = SystemComplies display term System complies with minimum airflow rate requirements;     Else If  A10_ImprovementStatus == Alteration Then If the system complies with the alternative airflow compliance method on a registered CF2R-MCH23c;  Then result= SystemCompliesUsingAlternativeRemedialActions display term  system complies using the alternative remedial actions specified in RA3.3.3.1.5. This System does not qualify for Group Sampling;   Else result = SystemDoesNotComplyCF2RMCH23Required display term  System does not comply. A registered CF2R-MCH-23 for this system is required . (do not allow this MCH-25 to be registered).</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  
+If the parent MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance: 
+If the system has a registered CF2R-MCH-28 that indicates compliance with Table 150.0-B or C return duct design requirements, 
+result  = SystemCompliesUsingTable150BC display term System complies using Table 150.0-B or C alternative return duct design criteria;   
+Else result = SystemDoesNotComplyCF2RMCH28Required display term System does not comply.  A registered CF2R-MCH-28 is required (do not allow this MCH-25 to be registered)
+End If
+   
+ElseIf the MCH-01 indicates a MCH-23 is required for minimum airflow rate compliance 
+If this system has a registered CF2R MCH-23a,  MCH-23b, MCH23e or MCH-23f that meets the compliance criterion in E02 
+result = SystemComplies display term2System complies with minimum airflow rate requirements;  
+ 
+Else If  A10_ImprovementStatus == Alteration And the system complies with the alternative airflow compliance method on a registered CF2R-MCH23c  
+result= SystemCompliesUsingAlternativeRemedialActions display term  system complies using the alternative remedial actions specified in RA3.3.3.1.5. This System does not qualify for Group Sampling;  
+ 
+Else result = SystemDoesNotComplyCF2RMCH23Required display term  System does not comply. A registered CF2R-MCH-23 for this system is required . (do not allow this MCH-25 to be registered).
+End If
+End If</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="comp:MinimumAirflowRateVerificationStatus">

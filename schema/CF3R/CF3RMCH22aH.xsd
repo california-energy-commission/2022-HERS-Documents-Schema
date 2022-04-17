@@ -58,6 +58,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Ducted Cooling System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH23 refers to the project CF3R-MCH23</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -65,25 +66,25 @@
                   <xsd:element name="A01_ResidentialCoolingSystemName" type="hvac:ResidentialCoolingSystemName" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">System Identification or Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ResidentialHvacSystemAreaServed" type="hvac:ResidentialHvacSystemAreaServed" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">System Location or Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A03_IndoorUnitName" type="hvac:IndoorUnitName" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Indoor Unit Name or Description of Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A04_ImprovementStatus" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">System Installation Type</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                      </xsd:annotation>
                      <xsd:simpleType>
                         <xsd:restriction base="hvac:ImprovementStatus">
@@ -97,13 +98,13 @@
                      <xsd:element name="A05_CondenserNominalCoolingCapacity" type="hvac:CondenserNominalCoolingCapacity" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Nominal Cooling Capacity (tons) of Condenser</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="A05_NotApplicableMessage" type="comp:NotApplicableMessage" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Nominal Cooling Capacity (tons) of Condenser</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
@@ -111,13 +112,13 @@
                      <xsd:element name="A06_CondenserSpeedType" type="hvac:CondenserSpeedType" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Condenser Speed Type</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="A06_NotApplicableMessage" type="comp:NotApplicableMessage" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Condenser Speed Type</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
@@ -125,52 +126,52 @@
                      <xsd:element name="A07_ResidentialCoolingZoneType" type="hvac:ResidentialCoolingZoneType" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Cooling System Zonal Control Type</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="A07_NotApplicableMessage" type="comp:NotApplicableMessage" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Cooling System Zonal Control Type</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
                   <xsd:element name="A08_IsVentilationSystemCFI" type="comp:IsVentilationSystemCFI" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Central  Fan Integrated (CFI) Ventilation System Status</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:choice maxOccurs="1">
                      <xsd:element name="A09_HasBypassDuct" type="hvac:HasBypassDuct" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">System Bypass Duct Status</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="A09_NotApplicableMessage" type="comp:NotApplicableMessage" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">System Bypass Duct Status</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23 which allows NotApplicable</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23 which allows NotApplicable</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
                   <xsd:element name="A10_AirflowRateMeasurementDate" type="comp:AirflowRateMeasurementDate" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Date of System Airflow Rate Measurement</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A11_AirflowRateMeasurementProtocol" type="comp:AirflowRateMeasurementProtocol" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Airflow Rate Protocol utilized</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A12_CFVCS_Type" type="comp:CFVCS_Type" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Central Fan Ventilation Cooling System Status</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF3R-MCH23</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from MCH23</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -179,6 +180,7 @@
          <xsd:element name="Section_B" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Fan Watt Measurement Apparatus and Procedure Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH23 refers to the project CF3R-MCH23</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -208,6 +210,7 @@
          <xsd:element name="Section_C" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Forced Air System Fan Efficacy Measurement</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH23 refers to the project CF3R-MCH23  and MCH-01 refers to the project CF2R-MCH-01</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>

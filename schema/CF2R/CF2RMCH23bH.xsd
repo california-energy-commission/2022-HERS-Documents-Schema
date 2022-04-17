@@ -58,6 +58,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Ducted Cooling System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH-01 refers to the project CF2R-MCH-01</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -65,19 +66,19 @@
                   <xsd:element name="A01_ResidentialCoolingSystemName" type="hvac:ResidentialCoolingSystemName" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Space Conditioning System Identification or Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from MCH-01</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ResidentialHvacSystemAreaServed" type="hvac:ResidentialHvacSystemAreaServed" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Space Conditioning System Description of Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from MCH-01</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A03_IndoorUnitName" type="hvac:IndoorUnitName" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Indoor Unit Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from MCH-01</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A04_ImprovementStatus" >
@@ -260,6 +261,7 @@
          <xsd:element name="Section_D" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Forced Air System Airflow Rate Measurement - All Zones Calling</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH-01 refers to the project CF2R-MCH-01</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -314,6 +316,7 @@ End If</xsd:documentation>
          <xsd:element name="Section_E" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Forced Air System Airflow Rate Measurement - All Other Zonal Control Modes</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH-01 refers to the project CF2R-MCH-01</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>

@@ -15,6 +15,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">General Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH-01 refers to the parent CF2R-MCH-01 and  parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -28,31 +29,31 @@
                   <xsd:element name="A01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Space Conditioning (SC) System Identification or Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from the CF2R-MCH-01 registered for this project</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from the MCH-01 registered for this project</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ResidentialHvacSystemAreaServed" type="hvac:ResidentialHvacSystemAreaServed">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">SC System Location or Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from the CF2R-MCH-01 registered for this project</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from the MCH-01 registered for this project</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A03_IndoorUnitName" type="hvac:IndoorUnitName">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Indoor Unit Name or Description of Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from the CF2R-MCH-01 registered for this project</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from theMCH-01 registered for this project</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A04_DuctsLessThan12FtUnConditionedCreditTaken" type="comp:DuctsLessThan12FtUnConditionedCreditTaken">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status - Less than 12 ft Ducts in Conditioned Space Performance Credit:</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: If CF1R performance flag indicating less than 12ft ducts are outside conditioned space == 1 (for true) then result = true display term: True.  and section B below should be displayed;   Else result = false display term: Not applicable</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: If parent CC performance flag indicating less than 12ft ducts are outside conditioned space == 1 (for true) then result = true display term: True.  and section B below should be displayed;   Else result = false display term: Not applicable</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A05_DuctsInConditionedSpaceCreditTaken" type="comp:DuctsInConditionedSpaceCreditTaken">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status - Ducts Located In Conditioned Space Performance Credit:</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: If CF1R performance flag indicating a credit was taken for Ducts Located In Conditioned Space Compliance  == 1 (for true) then result = true  display term: True and section C below should be displayed;   Else result = false  display term: Not applicable</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: If parent CC performance flag indicating a credit was taken for Ducts Located In Conditioned Space Compliance  == 1 (for true) then result = true  display term: True and section C below should be displayed;   Else result = false  display term: Not applicable</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A06_DuctSystemConditionedNoInsulationReq" type="comp:DuctSystemConditionedNoInsulationReq">

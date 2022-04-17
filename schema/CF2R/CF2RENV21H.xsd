@@ -407,7 +407,7 @@
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="I01" minOccurs="0">
+                  <xsd:element name="Sip01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"></xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">SIPs are considered an air barrier when properly sealed at top, bottom, sides and all penetrations.</xsd:documentation>
@@ -416,7 +416,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="I02" minOccurs="0">
+                  <xsd:element name="Sip02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"></xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">Air barrier is continuous across all surfaces, including between SIPs and non-SIP sections.</xsd:documentation>
@@ -425,7 +425,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="IEndNote1" minOccurs="0">
+                  <xsd:element name="SipEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
@@ -447,7 +447,7 @@
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="J01" minOccurs="0">
+                  <xsd:element name="Icf01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"></xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">ICF sections are considered an air barrier when properly sealed at top, bottom, sides and all penetrations.</xsd:documentation>
@@ -456,7 +456,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="J02" minOccurs="0">
+                  <xsd:element name="Icf02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"></xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">Air barrier is continuous across all surfaces, including between ICF and non-ICF sections.</xsd:documentation>
@@ -465,7 +465,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="JEndNote1" minOccurs="0">
+                  <xsd:element name="IcfEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>

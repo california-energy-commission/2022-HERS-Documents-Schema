@@ -58,6 +58,7 @@
          <xsd:element name="Section_A" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">All references to the MCH01 in this section refer to the parent CF2R-MCH01 and all other references are to other CF2R or CF3R compliance documents.</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -227,7 +228,8 @@
          <xsd:element name="Section_C" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Minimum System Airflow Rate Verification</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">Require 1 row of data for each indoor unit listed in the "HERS Verification Requirements for Duct Systems" table in the parent MCH-01for the SC system in A02</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">All references to the MCH-01 in this section refer to the parent CF2R-MCH-01 and all other references are to other CF2R  compliance documents.  
+Require 1 row of data for each indoor unit listed in the "HERS Verification Requirements for Duct Systems" table in the parent CF2R-MCH-01for the SC system in A02</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -258,7 +260,7 @@
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Required System Airflow Rate (cfm)</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field: 
-If the CF2R-MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
+If the parent MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
 result = RequiredVerificationTable150BC stored in MinimumAirflowRateAlternative; 
  
 Else reference numeric value  from applicable MCH23 field for the indoor unit in C01 and store result in MinimumAirflowRateRequired.   
@@ -274,7 +276,7 @@ Mch23c  - field E02
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Required System Airflow Rate (cfm)</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field: 
-If the CF2R-MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
+If the parent MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
 result = RequiredVerificationTable150BC stored in MinimumAirflowRateAlternative; 
  
 Else reference numeric value  from applicable MCH23 field for the indoor unit in C01 and store result in MinimumAirflowRateRequired.   
@@ -290,7 +292,22 @@ Mch23c  - field E02
                                     <xsd:element name="C03_MinimumAirflowRateVerificationStatus" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">System Airflow Rate Verification Status</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  If the CF2R-MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance:  then If the system has a registered CF2R-MCH-28 that indicates compliance with Table 150.0-B or C return duct design requirements, then result  = SystemCompliesUsingTable150BC display term System complies using Table 150.0-B or C alternative return duct design criteria;   Else result = SystemDoesNotComplyCF2RMCH28Required display term System does not comply.  A registered CF2R-MCH-28 is required (do not allow this MCH-25 to be registered);     ElseIf the CF2R-MCH-01 indicates a MCH-23 is required for minimum airflow rate compliance:  Then If this system has a registered CF2R-MCH-23a, CF2R-MCH-23b, CF2R-MCH23e or CF2R-MCH-23f that meets the compliance criterion in E01, Then result = SystemComplies display term System complies with minimum airflow rate requirements;     Else If  A10_ImprovementStatus == Alteration Then If the system complies with the alternative airflow compliance method on a registered CF2R-MCH23c;  Then result= SystemCompliesUsingAlternativeRemedialActions display term  system complies using the alternative remedial actions specified in RA3.3.3.1.5. This System does not qualify for Group Sampling;   Else result = SystemDoesNotComplyCF2RMCH23Required display term  System does not comply. A registered CF2R-MCH-23 for this system is required . (do not allow this MCH-25 to be registered).</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  
+If the parent MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance: 
+If the system has a registered CF2R-MCH-28 that indicates compliance with Table 150.0-B or C return duct design requirements, then result  = SystemCompliesUsingTable150BC display term System complies using Table 150.0-B or C alternative return duct design criteria;   
+Else result = SystemDoesNotComplyCF2RMCH28Required display term System does not comply.  A registered CF2R-MCH-28 is required (do not allow this MCH-25 to be registered)
+End If
+   
+ElseIf the MCH-01 indicates a MCH-23 is required for minimum airflow rate compliance 
+If this system has a registered CF2R MCH-23a,  MCH-23b, MCH23e or MCH-23f that meets the compliance criterion in C02 
+result = SystemComplies display term System complies with minimum airflow rate requirements;  
+ 
+Else If  A10_ImprovementStatus == Alteration And the system complies with the alternative airflow compliance method on a registered CF2R-MCH23c  
+result= SystemCompliesUsingAlternativeRemedialActions display term  system complies using the alternative remedial actions specified in RA3.3.3.1.5. This System does not qualify for Group Sampling;  
+ 
+Else result = SystemDoesNotComplyCF2RMCH23Required display term  System does not comply. A registered CF2R-MCH-23 for this system is required . (do not allow this MCH-25 to be registered).
+End If
+End If</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="comp:MinimumAirflowRateVerificationStatus">
@@ -311,7 +328,10 @@ Mch23c  - field E02
                   <xsd:element name="C04_DoesSystemComplyWithAirflowRateVerification" type="comp:DoesSystemComplyWithAirflowRateVerification" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Compliance Statement</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field:  If all indoor units listed in C01 have C03 == SystemCompliesUsingObservationOfWeighIn  Or SystemCompliesUsingTable150BC Or SystemComplies Or SystemCompliesUsingAlternativeRemedialActions  result = true display term SC System complies with Minimum System Airflow Rate Verification; Else result = false display term SC System does not comply with Minimum System Airflow Rate Verification   and do not allow this Mch-25 to be registered.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field:  If all indoor units listed in C01 have C03 != SystemDoesNotComplyCF2RMCH28Required And != SystemDoesNotComplyCF2RMCH23Required 
+result = true display term SC System complies with Minimum System Airflow Rate Verification; 
+Else result = false display term SC System does not comply with Minimum System Airflow Rate Verification   and do not allow this Mch-25 to be registered.
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="C04a_SectionComments" type="comp:SectionComments"  minOccurs="0">

@@ -56,6 +56,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Duct System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section references to MCH-01 refer to the CF2R-MCH-01 and MCH-29 refers to the parent CF2R-MCH-29</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -87,19 +88,19 @@
                   <xsd:element name="A04_DuctSurfaceAreaReductionRValueCreditTaken" type="comp:DuctSurfaceAreaReductionRValueCreditTaken" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status - Duct Surface Area Reduction And R-Value Compliance Credit</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If CF2R-MCH29 flags Duct Surface Area Reduction And R-Value Compliance Credit == true, then result = true.  For Boolean true value, display text: Installation should proceed according to the requirements in RA3.1.4.1.4.   Else result = false.  For Boolean false value display text: Not Applicable</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If MCH-29 flags Duct Surface Area Reduction And R-Value Compliance Credit == true, then result = true.  For Boolean true value, display text: Installation should proceed according to the requirements in RA3.1.4.1.4.   Else result = false.  For Boolean false value display text: Not Applicable</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A05_DuctsBuriedComplianceCreditTaken" type="comp:DuctsBuriedComplianceCreditTaken" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status - Buried Ducts Compliance Credit</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If CF2R-MCH29 flags Buried Ducts Compliance Credit == true , then result = true.  For Boolean true value, display text: Installation should proceed according to the requirements in RA3.1.4.1.5,    Else result = false.  For Boolean false value display text: Not Applicable</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If MCH-29 flags Buried Ducts Compliance Credit == true , then result = true.  For Boolean true value, display text: Installation should proceed according to the requirements in RA3.1.4.1.5,    Else result = false.  For Boolean false value display text: Not Applicable</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A06_DuctsDeeplyBuriedComplianceCreditTaken" type="comp:DuctsDeeplyBuriedComplianceCreditTaken" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status - Deeply Buried Ducts Compliance Credit</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If CF2R-MCH29flags Deeply Buried Ducts Compliance Credit == true then result = true.  For Boolean true value,  display text: Installation should proceed according to the requirements in RA3.1.4.1.6.    Else result = false.  For Boolean false value display text: Not Applicable</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If MCH-29 flags Deeply Buried Ducts Compliance Credit == true then result = true.  For Boolean true value,  display text: Installation should proceed according to the requirements in RA3.1.4.1.6.    Else result = false.  For Boolean false value display text: Not Applicable</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -333,7 +334,10 @@
          <xsd:element name="Section_E" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Duct System Details</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This section is required if A04_DuctSurfaceAreaReductionRValueCreditTaken  == true Or A05_DuctsBuriedComplianceCreditTaken  == true  Or A06_DuctsDeeplyBuriedComplianceCreditTaken  == true;  Data is this table is copied from CF1R-PRF-01-E</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This section is required if A04_DuctSurfaceAreaReductionRValueCreditTaken  == true Or A05_DuctsBuriedComplianceCreditTaken  == true  Or A06_DuctsDeeplyBuriedComplianceCreditTaken  == true;  
+
+All references to the parent CC refer to the parent CF1R-PRF-01-E
+Data is this table is copied from parent CC</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -350,43 +354,43 @@
                                     <xsd:element name="E01_AirSegmentName" type="hvac:AirSegmentName" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Duct Segment Identification</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="E02_DuctNominalDiameter" type="hvac:DuctNominalDiameter" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Nominal Diam. (in)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="E03_DuctRValue" type="hvac:DuctRValue" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Duct R-value</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="E04_DuctLength" type="hvac:DuctLength" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Length (ft)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="E05_InsulationRValue" type="env:InsulationRValue" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Attic insulation R-value</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="E06_InsulationThickness" type="env:InsulationThickness" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Attic Insulation Depth (in)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="E07_InsulationType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Attic Insulation Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01  Acceptable values are Fiberglass and Cellulose</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC  Acceptable values are Fiberglass and Cellulose</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="env:InsulationType">
@@ -398,20 +402,20 @@
                                     <xsd:element name="E08_BuriedDuctInsulationDevice" type="hvac:BuriedDuctInsulationDevice" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Containment System or Lowered Chase</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="E09_DuctBuriedLevel" type="hvac:DuctBuriedLevel" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Duct Burial Level</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="E09_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Duct Burial Level</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference data from CF1R-PRF-01 which allows NotApplicable</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference data from  parent CC which allows NotApplicable</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -441,6 +445,12 @@
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Compliance Statement</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">If DoesSystemComplyWithRequirements in section B  or section  C or section D equals Fail then the result is false.  For Boolean false value, display text: Does not comply: One or more specified verification protocol requirements on this document are not met.    Else the result is true.    For Boolean true value, display text:  Complies: All specified verification protocol requirements on this document are met.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="BEndNote1" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible persons signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>

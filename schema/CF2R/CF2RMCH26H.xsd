@@ -56,6 +56,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH-01 refers to the parent CF2R-MCH-01 and  parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -69,13 +70,13 @@
                   <xsd:element name="A01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Space Conditioning System Identification or Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from  parent MCH-01</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ResidentialHvacSystemAreaServed" type="hvac:ResidentialHvacSystemAreaServed" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Space Conditioning System Description of Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from parent  MCH-01</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A03a_EfficiencyType" >
@@ -95,7 +96,7 @@
                   <xsd:element name="A03_VerificationRequiredSEER" type="comp:VerificationRequiredSEER" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status:  SEER/SEER2 Performance Compliance Credit Check</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: If the project CF1R flags HERS Verification of SEER  Performance result = true display term Yes; Else result = false display term No</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: If the parent CC flags HERS Verification of SEER  Performance result = true display term Yes; Else result = false display term No</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A04_VerificationRequiredEER" type="comp:VerificationRequiredEER" >
@@ -176,13 +177,13 @@ End Switch.</xsd:documentation>
                   <xsd:element name="A05_VerificationRequiredHeatingOutputHP" type="comp:VerificationRequiredHeatingOutputHP" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status: Heat Pump Heating Output Performance Compliance Check</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: If the project CF1R flags HERS Verification of Heat Pump Heating Output  result = true display term Yes; Else result = false display term No</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: If the parent CC flags HERS Verification of Heat Pump Heating Output  result = true display term Yes; Else result = false display term No</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A06_VerificationRequiredHSPF" type="comp:VerificationRequiredHSPF" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status: HSPF/HSPF2 Performance Compliance Credit Check</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field; If the project CF1R flags the requirement for HERS verification of HSPF/HSPF2 Performance then result = true; Else result = false.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field; If the parent CC  flags the requirement for HERS verification of HSPF/HSPF2 Performance then result = true; Else result = false.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A07_ProductPerformanceDirectory" type="comp:ProductPerformanceDirectory" >
@@ -245,7 +246,9 @@ End Switch.</xsd:documentation>
          <xsd:element name="Section_B" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Rated Space Conditioning System Equipment Information  from Nameplate of the Installed System</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">If A03_VerificationRequiredSEER == true Or A04_VerificationRequiredEER == true Or A05_VerificationRequiredHeatingOutputHP == true then require one row of data for each indoor unit listed on the MCH-01if applicable; Else enter one row of data for a packaged unit on the MCH-01.  Reference applicable values as follows: For MCH-01a: G03 for split systems and J03 for packaged systems.  For MCH-01d: H03 for split systems and either K03 or L03 for packaged systems.</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH-01 refers to the parent CF2R-MCH-01 and  parent CC refers to the parent CF1R Certificate of Compliance (CC)
+
+If A03_VerificationRequiredSEER == true Or A04_VerificationRequiredEER == true Or A05_VerificationRequiredHeatingOutputHP == true then require one row of data for each indoor unit listed on the parent CF2R-MCH-01if applicable; Else enter one row of data for a packaged unit on the parent MCH-01.  Reference applicable values as follows: For MCH-01a: G03 for split systems and J03 for packaged systems.  For MCH-01d: H03 for split systems and either K03 or L03 for packaged systems.</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -273,14 +276,14 @@ End Switch.</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="B01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName" >
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System  ID/Name from CF1R</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Auto-filled from  MCH01a D01 Or MCH-01d D01.</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System  ID/Name</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Auto-filled from  parent MCH01a D01 Or MCH-01d D01.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B02_ResidentialHvacSystemAreaServed" type="hvac:ResidentialHvacSystemAreaServed" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">SC System Description of  Area Served</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Auto-filled from MCH01a D02 Or MCH-01d D02. Note that the text in the MCH01 D02 is required to be unique in each dwelling (unique within the scope of each MCH-01), thus D02 is a useful key for finding associated data in other tales in the MCH-01 for a specific system.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Auto-filled from parent MCH01a D02 Or MCH-01d D02. Note that the text in the MCH-01 D02 is required to be unique in each dwelling (unique within the scope of each MCH-01), thus D02 is a useful key for finding associated data in other talbes in the MCH-01 for a specific system.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B03_IndoorUnitName" type="hvac:IndoorUnitName" >
@@ -363,13 +366,13 @@ End Switch.</xsd:documentation>
                                        <xsd:element name="B09_HeatingUnitManufacturer" type="comp:HeatingUnitManufacturer" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Installed  Furnace Manufacturer Name</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If A09_AirHandlerFurnaceTypeRequired  != FurnaceAHU result = N/A  stored in NotApplicableMessage; Else reference data  from CF2R-MCH-01 If parent == MCH-01a auto-fill from E08; Else If parent == MCH-01d auto-fill from F08;</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_AirHandlerFurnaceTypeRequired  != FurnaceAHU result = N/A  stored in NotApplicableMessage; Else reference data  from parent MCH-01 If parent == MCH-01a auto-fill from E08; Else If parent == MCH-01d auto-fill from F08;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B09_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Installed  Furnace Manufacturer Name</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If A09_AirHandlerFurnaceTypeRequired  != FurnaceAHU result = N/A  stored in NotApplicableMessage; Else reference data  from CF2R-MCH-01 If parent == MCH-01a auto-fill from E08; Else If parent == MCH-01d auto-fill from F08;</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_AirHandlerFurnaceTypeRequired  != FurnaceAHU result = N/A  stored in NotApplicableMessage; Else reference data  from parent MCH-01 If parent == MCH-01a auto-fill from E08; Else If parent == MCH-01d auto-fill from F08;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -377,13 +380,13 @@ End Switch.</xsd:documentation>
                                        <xsd:element name="B10_HeatingUnitModelNumber" type="comp:HeatingUnitModelNumber" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Installed  Furnace  Model Number</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If A09_AirHandlerFurnaceTypeRequired  != FurnaceAHU result = N/A  stored in NotApplicableMessage; Else reference data  from CF2R-MCH-01 If parent == MCH-01a auto-fill from E09; Else If parent == MCH-01d auto-fill from F09;</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_AirHandlerFurnaceTypeRequired  != FurnaceAHU result = N/A  stored in NotApplicableMessage; Else reference data  from parent  MCH-01 If parent == MCH-01a auto-fill from E09; Else If parent == MCH-01d auto-fill from F09;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B10_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Installed  Furnace  Model Number</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If A09_AirHandlerFurnaceTypeRequired  != FurnaceAHU result = N/A  stored in NotApplicableMessage; Else reference data  from CF2R-MCH-01 If parent == MCH-01a auto-fill from E09; Else If parent == MCH-01d auto-fill from F09;</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_AirHandlerFurnaceTypeRequired  != FurnaceAHU result = N/A  stored in NotApplicableMessage; Else reference data  from parent  MCH-01 If parent == MCH-01a auto-fill from E09; Else If parent == MCH-01d auto-fill from F09;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -399,7 +402,9 @@ End Switch.</xsd:documentation>
          <xsd:element name="Section_C" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Rated Space Conditioning System Equipment Information from Directory of Certified Product Performance</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">If A03_VerificationRequiredSEER == true Or A04_VerificationRequiredEER == true Or A05_VerificationRequiredHeatingOutputHP == true then require one row of data for each indoor unit listed on the MCH-01if applicable; Else enter one row of data for a packaged unit on the MCH-01.  Reference applicable values as follows: For MCH-01a: G03 for split systems and J03 for packaged systems.  For MCH-01d: H03 for split systems and either K03 or L03 for packaged systems.</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH-01 refers to the parent CF2R-MCH-01 and  parent CC refers to the parent CF1R Certificate of Compliance (CC)
+
+If A03_VerificationRequiredSEER == true Or A04_VerificationRequiredEER == true Or A05_VerificationRequiredHeatingOutputHP == true then require one row of data for each indoor unit listed on the parent CF2R-MCH-01if applicable; Else enter one row of data for a packaged unit on the parent CF2R-MCH-01.  Reference applicable values as follows: For MCH-01a: G03 for split systems and J03 for packaged systems.  For MCH-01d: H03 for split systems and either K03 or L03 for packaged systems.</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -427,7 +432,7 @@ End Switch.</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="C01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName" >
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto-filled from  MCH01a D01 Or MCH-01d D01.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -553,7 +558,8 @@ End Switch.</xsd:documentation>
          <xsd:element name="Section_D" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Verified Cooling System SEER/SEER2</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable only If  A03_VerificationRequiredSEER == true</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This Section is applicable only If  A03_VerificationRequiredSEER == true 
+In this section MCH-01 refers to the parent CF2R-MCH-01 and  parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -561,7 +567,7 @@ End Switch.</xsd:documentation>
                   <xsd:element name="D01_EfficiencyMinimumValueSEER" type="hvac:EfficiencyMinimumValueSEER" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Required minimum SEER/SEER2</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01 fields as follows
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from parent MCH-01 fields as follows
 If Mch01 C06_EfficiencyMinimumValueSEER IsPresent
 result = Mch01 C06_EfficiencyMinimumValueSEER
 Else If Mch01 C06_EfficiencyMinimumValueSEER2 IsPresent
@@ -586,7 +592,7 @@ Else If Mch01 C06_EfficiencyMinimumValueSEER2 IsPresent and assigned to D01_Effi
                   <xsd:element name="DEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">[d:b]Signature by responsible person on this compliance document certifies that the installed cooling equipment meets or exceeds the required value listed on the CF1R.[/d:b]</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">[d:b]Signature by responsible person on this compliance document certifies that the installed cooling equipment meets or exceeds the required value listed on the parent Certificate of Compliance.[/d:b]</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -595,7 +601,8 @@ Else If Mch01 C06_EfficiencyMinimumValueSEER2 IsPresent and assigned to D01_Effi
          <xsd:element name="Section_E" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Verified Cooling System EER/EER2</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable only If  A04_VerificationRequiredEER == true</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This Section is applicable only If  A04_VerificationRequiredEER == true
+In this section MCH-01 refers to the parent CF2R-MCH-01 and  parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -603,7 +610,7 @@ Else If Mch01 C06_EfficiencyMinimumValueSEER2 IsPresent and assigned to D01_Effi
                   <xsd:element name="E01_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Required minimum EER/EER2</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01 fields as follows
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from parent MCH-01 fields as follows
 If Mch01 C07_EfficiencyMinimumValueEER IsPresent
 result = Mch01 C07_EfficiencyMinimumValueEER
 Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent
@@ -628,7 +635,7 @@ Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent and assigned to E01_Effic
                   <xsd:element name="EEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">[d:b]Signature by responsible person on this compliance document certifies that the installed cooling equipment meets or exceeds the required value listed on the CF1R.[/d:b]</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">[d:b]Signature by responsible person on this compliance document certifies that the installed cooling equipment meets or exceeds the required value listed on the parent Certificate of Compliance.[/d:b]</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -637,7 +644,8 @@ Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent and assigned to E01_Effic
          <xsd:element name="Section_F" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Verified Heat Pump Heating Output</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This section is required If A05_VerificationRequiredHeatingOutputHP == true</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This section is required If A05_VerificationRequiredHeatingOutputHP == true
+In this section MCH-01 refers to the parent CF2R-MCH-01 and  parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -645,7 +653,7 @@ Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent and assigned to E01_Effic
                   <xsd:element name="F01_HeatPumpHeatCapacity47F" type="comp:HeatPumpHeatCapacity47F" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Required Heating BTU Output at 47 Degrees F</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto-filled from CF2R-MCH-01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Auto-filled from the parent MCH-01</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="F02_HeatPumpHeatInstalledCapacity47F" type="comp:HeatPumpHeatInstalledCapacity47F" >
@@ -658,13 +666,13 @@ Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent and assigned to E01_Effic
                      <xsd:element name="F03_HeatPumpHeatCapacity17F" type="comp:HeatPumpHeatCapacity17F" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Required Heating Output at 17 Degrees F</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto-filled from CF2R-MCH-01 if available; Else result = N/A stored in NotApplicablemessage.</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto-filled from  parent MCH-01 if available; Else result = N/A stored in NotApplicablemessage.</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="F03_NotApplicableMessage" type="comp:NotApplicableMessage" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Required Heating Output at 17 Degrees F</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Auto-filled from CF2R-MCH-01 if available; Else result = N/A stored in NotApplicablemessage.</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Auto-filled from parent MCH-01 if available; Else result = N/A stored in NotApplicablemessage.</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
@@ -691,7 +699,7 @@ Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent and assigned to E01_Effic
                   <xsd:element name="FEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">Signature by responsible person on this compliance document certifies that the installed heat pump equipment meets or exceeds the required value listed on the CF1R.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">[d:b]Signature by responsible person on this compliance document certifies that the installed heat pump equipment meets or exceeds the required value listed on the parent Certificate of Compliance.[/d:b]</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -700,7 +708,8 @@ Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent and assigned to E01_Effic
          <xsd:element name="Section_G" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Verified Heat Pump HSPF/HSPF2</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This section is required If A06_VerificationRequiredHSPF_Performance == true</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This section is required If A06_VerificationRequiredHSPF_Performance == true
+In this section MCH-01 refers to the parent CF2R-MCH-01 and  parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -708,7 +717,7 @@ Else If Mch01 C07_EfficiencyMinimumValueEER2 IsPresent and assigned to E01_Effic
                   <xsd:element name="G01_EfficiencyMinimumValueHSPF" type="hvac:EfficiencyMinimumValueHSPF" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Required minimum HSPF/HSPF</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from CF2R-MCH-01 fields as follows
+                        <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from parent MCH-01 fields as follows
 If Mch01 C03_EfficiencyMinimumValueHSPF IsPresent
 result = Mch01 C03_EfficiencyMinimumValueHSPF
 Else If Mch01 C03_EfficiencyMinimumValueHSPF2 IsPresent
@@ -733,7 +742,7 @@ Else If Mch01 C03_EfficiencyMinimumValueHSPF2 IsPresent and assigned to G01_Effi
                   <xsd:element name="GEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">Signature by responsible person on this compliance document certifies that the installed heat pump equipment meets or exceeds the required value listed on the CF1R.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">[d:b]Signature by responsible person on this compliance document certifies that the installed heat pump equipment meets or exceeds the required value listed on the parent Certificate of Compliance.[/d:b]</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -784,7 +793,7 @@ Else If Mch01 C03_EfficiencyMinimumValueHSPF2 IsPresent and assigned to G01_Effi
                   <xsd:element name="J01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">TXV is properly installed</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">If a TXV is specified by the Directory of Certified Product Performance, the responsible person certifies by signing this compliance document that the TXV is properly installed and has been visually verified, including proper placement of the sensing bulb</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">If a TXV is specified by the Directory of Certified Product Performance, the responsible person certifies by signing this compliance document that the TXV is properly installed and has been visually verified, including proper placement of the sensing bulb.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>

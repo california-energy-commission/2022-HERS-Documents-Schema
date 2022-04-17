@@ -60,7 +60,7 @@
                   <xsd:element name="AEndNote2" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 2</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -112,7 +112,7 @@
                   <xsd:element name="BEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -194,7 +194,7 @@
                   <xsd:element name="CEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -282,7 +282,7 @@
                   <xsd:element name="DEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -328,7 +328,7 @@
                   <xsd:element name="EEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -373,7 +373,7 @@
                   <xsd:element name="FEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -419,7 +419,7 @@
                   <xsd:element name="GEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -459,7 +459,7 @@
                   <xsd:element name="HEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -475,7 +475,7 @@
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="I01" minOccurs="0">
+                  <xsd:element name="Sip01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">SIPs are considered an air barrier when properly sealed at top, bottom, sides and all penetrations.</xsd:documentation>
@@ -484,7 +484,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="I02" minOccurs="0">
+                  <xsd:element name="Sip02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">Air barrier is continuous across all surfaces, including between SIPs and non-SIP sections.</xsd:documentation>
@@ -493,7 +493,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="I03_DoesSystemComplyWithRequirements" type="comp:DoesSystemComplyWithRequirements">
+                  <xsd:element name="Sip03_DoesSystemComplyWithRequirements" type="comp:DoesSystemComplyWithRequirements">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Verification Status</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">For Pass choice display term: Pass - all applicable requirements are met.  For Fail choice display term: Fail - one or more applicable requirements are not met. Enter reason for failure in corrections notes field below.  For N/A choice display term: All N/A - This entire table is not applicable
@@ -504,7 +504,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="I04_SectionCorrectionNotes" type="comp:SectionCorrectionNotes" minOccurs="0">
+                  <xsd:element name="Sip04_SectionCorrectionNotes" type="comp:SectionCorrectionNotes" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Correction Notes</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">If Verification Status= Fail, then text entry in this Corrections Notes field is required.
@@ -515,10 +515,10 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="IEndNote1" minOccurs="0">
+                  <xsd:element name="SipEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                         <xsd:appinfo source="PrevName">
                            <dtyp:prevSchema version="2019.1.006" changed="section only">JEndNote1</dtyp:prevSchema>
                         </xsd:appinfo>
@@ -537,7 +537,7 @@
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="J01" minOccurs="0">
+                  <xsd:element name="Icf01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">ICF sections are considered an air barrier when properly sealed at top, bottom, sides and all penetrations.</xsd:documentation>
@@ -546,7 +546,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="J02" minOccurs="0">
+                  <xsd:element name="Icf02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">Air barrier is continuous across all surfaces, including between ICF and non-ICF sections.</xsd:documentation>
@@ -555,7 +555,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="J03_DoesSystemComplyWithRequirements" type="comp:DoesSystemComplyWithRequirements">
+                  <xsd:element name="Icf03_DoesSystemComplyWithRequirements" type="comp:DoesSystemComplyWithRequirements">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Verification Status</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">For Pass choice display term: Pass - all applicable requirements are met.  For Fail choice display term: Fail - one or more applicable requirements are not met. Enter reason for failure in corrections notes field below.  For N/A choice display term: All N/A - This entire table is not applicable
@@ -566,7 +566,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="J04_SectionCorrectionNotes" type="comp:SectionCorrectionNotes" minOccurs="0">
+                  <xsd:element name="Icf04_SectionCorrectionNotes" type="comp:SectionCorrectionNotes" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Correction Notes</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">If Verification Status= Fail, then text entry in this Corrections Notes field is required.
@@ -577,10 +577,10 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="JEndNote1" minOccurs="0">
+                  <xsd:element name="IcfEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met unless otherwise noted in the Verification Status and the Correction Notes.</xsd:documentation>
                         <xsd:appinfo source="PrevName">
                            <dtyp:prevSchema version="2019.1.006" changed="section only">KEndNote1</dtyp:prevSchema>
                         </xsd:appinfo>
@@ -599,7 +599,7 @@
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="K_BeginNote1" minOccurs="0">
+                  <xsd:element name="Comply_BeginNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Begin Note 1</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">All applicable sections of this document shall indicate compliance with the specified verification protocol requirements in order for this Certificate of Verification as a whole to be determined to be in compliance.</xsd:documentation>
@@ -608,7 +608,7 @@
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="K01_DoesCF3R_Pass" type="comp:DoesCF3R_Pass">
+                  <xsd:element name="Comply01_DoesCF3R_Pass" type="comp:DoesCF3R_Pass">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Compliance Statement</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">If  DoesSystemComplyWithRequirements equals Fail in section A or B or C or D or E or F or G or H  or I or J then the result is false. For Boolean false value, display text: Does not comply: One or more specified verification protocol requirements on this document are not met.  Else the result is true.    For Boolean true value, display text: Complies: All specified verification protocol requirements on this document are met. 

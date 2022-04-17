@@ -19,11 +19,24 @@
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="A01_ResElectricReadyScope" type="comp:ResElectricReadyScope" maxOccurs="unbounded">
+                  <xsd:element name="A01_ResidentialLowriseBuildingType" type="com:ResidentialLowriseBuildingType" maxOccurs="unbounded">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">Building Type</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User selects from Single family or Multifamily</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="A02_ResElectricReadyScope" maxOccurs="unbounded">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Project Scope</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">User selects all that apply: ReadyHeatingHP, ReadyElecCooktop, ReadyElecDryer</xsd:documentation>
                      </xsd:annotation>
+                     <xsd:simpleType>
+                        <xsd:restriction base="comp:ResElectricReadyScope">
+                           <xsd:enumeration value="ReadyElecCooktop"/>
+                           <xsd:enumeration value="ReadyElecDryer"/>
+                           <xsd:enumeration value="ReadyHeatingHP"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
                   </xsd:element>
                </xsd:sequence>
             </xsd:complexType>
@@ -35,7 +48,7 @@
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="B01" minOccurs="0">
+                  <xsd:element name="Stor01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">ESS Ready interconnection equipment with minimum backed up of 60 amps and 4 ESS branch circuits, 
@@ -43,25 +56,25 @@ OR
 A dedicated raceway from the main service to a panelboard (subpanel). The panelboard that supplies the branch circuits (subpanel) must be labeled "Subpanel shall include all backed-up load circuits."</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B02" minOccurs="0">
+                  <xsd:element name="Stor02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">A minimum of four branch circuits shall be identified and have their source of supply collocated at a single panelboard suitable to be supplied by the ESS.  At least one circuit shall supply the refrigerator, one lighting circuit near the primary egress, and at least one circuit shall supply a sleeping room receptacle outlet.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B03" minOccurs="0">
+                  <xsd:element name="Stor03" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The main panelboard shall have a minimum busbar rating of 225 amps.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="B04" minOccurs="0">
+                  <xsd:element name="Stor04" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">Sufficient space shall be reserved to allow future installation of a system isolation equipment/transfer switch within 3 feet of the main panelboard.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="BEndNote1" minOccurs="0">
+                  <xsd:element name="StorEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
@@ -78,25 +91,25 @@ A dedicated raceway from the main service to a panelboard (subpanel). The panelb
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="C01" minOccurs="0">
+                  <xsd:element name="Htp01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">A dedicated 240 volt branch circuit wiring shall be installed within 3 feet from the furnace and accessible to the furnace with no obstructions.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="C02" minOccurs="0">
+                  <xsd:element name="Htp02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The branch circuit conductors shall be rated at 30 amps minimum.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="C03" minOccurs="0">
+                  <xsd:element name="Htp03" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The blank cover shall be identified as "240V ready".</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="C04" minOccurs="0">
+                  <xsd:element name="Htp04" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">All electrical components shall be installed in accordance with the 
@@ -104,13 +117,13 @@ A dedicated raceway from the main service to a panelboard (subpanel). The panelb
                         </xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="C05" minOccurs="0">
+                  <xsd:element name="Htp05" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The main electrical service panel shall have a reserved space to allow for the installation of a double pole circuit breaker for a future heat pump space heater installation.  The reserved space shall be permanently marked as "For Future 240V use".</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="CEndNote1" minOccurs="0">
+                  <xsd:element name="HtpEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
@@ -127,25 +140,25 @@ A dedicated raceway from the main service to a panelboard (subpanel). The panelb
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="D01" minOccurs="0">
+                  <xsd:element name="Cook01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">A dedicated 240 volt branch circuit wiring shall be installed within 3 feet from the cooktop and accessible to the cooktop with no obstructions.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="D02" minOccurs="0">
+                  <xsd:element name="Cook02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The branch circuit conductors shall be rated at 50 amps minimum.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="D03" minOccurs="0">
+                  <xsd:element name="Cook03" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The blank cover shall be identified as "240V ready".</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="D04" minOccurs="0">
+                  <xsd:element name="Cook04" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">All electrical components shall be installed in accordance with the 
@@ -153,13 +166,13 @@ A dedicated raceway from the main service to a panelboard (subpanel). The panelb
                         </xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="D05" minOccurs="0">
+                  <xsd:element name="Cook05" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The main electrical service panel shall have a reserved space to allow for the installation of a double pole circuit breaker for a future electric cooktop installation.  The reserved space shall be permanently marked as "For Future 240V use".</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="DEndNote1" minOccurs="0">
+                  <xsd:element name="CookEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
@@ -176,25 +189,25 @@ A dedicated raceway from the main service to a panelboard (subpanel). The panelb
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="E01" minOccurs="0">
+                  <xsd:element name="Dry01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">A dedicated 240 volt branch circuit wiring shall be installed within 3 feet from the clothes dryer location and accessible to the clothes dryer location with no obstructions.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="E02" minOccurs="0">
+                  <xsd:element name="Dry02" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The branch circuit conductors shall be rated at 30 amps minimum.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="E03" minOccurs="0">
+                  <xsd:element name="Dry03" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The blank cover shall be identified as "240V ready".</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="E04" minOccurs="0">
+                  <xsd:element name="Dry04" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">All electrical components shall be installed in accordance with the 
@@ -202,13 +215,13 @@ A dedicated raceway from the main service to a panelboard (subpanel). The panelb
                         </xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="E05" minOccurs="0">
+                  <xsd:element name="Dry05" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The main electrical service panel shall have a reserved space to allow for the installation of a double pole circuit breaker for a future electric clothes dryer installation.  The reserved space shall be permanently marked as "For Future 240V use".</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="EEndNote1" minOccurs="0">
+                  <xsd:element name="DryEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>

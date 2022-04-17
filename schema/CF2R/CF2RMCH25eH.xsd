@@ -58,6 +58,7 @@
          <xsd:element name="Section_A" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">All references to the MCH01 in this section refer to the parent CF2R-MCH01 and all other references are to other CF2R or CF3R compliance documents.</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -152,7 +153,8 @@
                   <xsd:element name="A12_UseMinimumAirflowApprovedVerificationProcedure" type="comp:UseMinimumAirflowApprovedVerificationProcedure" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Is the system of a type that the minimum airflow can be verified for all indoor units using an approved measurement procedure (RA3.3 or RA3.3.3)?</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">For Criterion1 reference value for CanRA3_3AirflowProtocolsTestSystem as follows: MCH-01a section J J12; MCH-01b section F F11 or section G G13; MCH-01c section I  I11; or MCH-01d section K K11 or section L L13.  For Criterion2 reference data as follows: MCH-01a D07 DuctLocation; MCH-01c C06 DuctSystemType; MCH-01d D07 DuctSystemTypePerf.  For Criterion3 reference data as follows: MCH-01b C12 IndoorUnitsCount, C13 DuctedIndoorUnitsCount; MCH-01d D06 IndoorUnitsCount, D13 DuctedIndoorUnitsCount.  Evaluation:  If (Criterion1) CanRA3_3AirflowProtocolsTestSystem == false;  Or If (Criterion2) DuctLocation, DuctSystemType Or DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits Or Ductless;  Or If (Criterion3) DuctedIndoorUnitsCount LT IndoorUnitsCount  result = false, display term No, the system airflow rate measurement procedures in RA3.3 or RA3.3.3 cannot be used to verify system airflow rate requirements for all the indoor units for this system.;  Else result = true display term Yes.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Reference values from parent MCH-0! for the following evaluations
+For Criterion1 reference value for CanRA3_3AirflowProtocolsTestSystem as follows: MCH-01a section J J12; MCH-01b section F F11 or section G G13; MCH-01c section I  I11; or MCH-01d section K K11 or section L L13.  For Criterion2 reference data as follows: MCH-01a D07 DuctLocation; MCH-01c C06 DuctSystemType; MCH-01d D07 DuctSystemTypePerf.  For Criterion3 reference data as follows: MCH-01b C12 IndoorUnitsCount, C13 DuctedIndoorUnitsCount; MCH-01d D06 IndoorUnitsCount, D13 DuctedIndoorUnitsCount.  Evaluation:  If (Criterion1) CanRA3_3AirflowProtocolsTestSystem == false;  Or If (Criterion2) DuctLocation, DuctSystemType Or DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits Or Ductless;  Or If (Criterion3) DuctedIndoorUnitsCount LT IndoorUnitsCount  result = false, display term No, the system airflow rate measurement procedures in RA3.3 or RA3.3.3 cannot be used to verify system airflow rate requirements for all the indoor units for this system.;  Else result = true display term Yes.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A13_UseRefrigerantChargeApprovedVerificationProcedure" type="comp:UseRefrigerantChargeApprovedVerificationProcedure" >
@@ -175,6 +177,7 @@ Superheat, display text: Superheat (outdoor temperature must be equal to or grea
 Subcooling, display text Subcooling (outdoor temperature must be equal to or greater than 55 degF);  
 WeighIn, display text:  Weigh-in with Installer independent;  
 WeighInHERS, display text:  Weigh-in with HERS Rater observation; 
+WinterSetup display term Winter setup (applicable when outdoor temperature is less than 55 degF)
 NewFactoryCharge display text: New package unit factory charge;</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
@@ -194,7 +197,8 @@ NewFactoryCharge display text: New package unit factory charge;</xsd:documentati
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Variant MCH25e</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">MCH-25e - Refrigeration Charge Verification - Winter Setup</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Use MCH25e Winter Setup Charge Verification Procedure for remainder of this report.  NOTE this is currently an unavailable choice</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If A12_UseMinimumAirflowApprovedVerificationProcedure == true And A13_UseRefrigerantChargeApprovedVerificationProcedure == true And A15_RefrigerantChargeVerificationMethod == WinterSetup
+Use MCH25e Winter Setup Charge Verification Procedure for remainder of this report.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A17AfterNote1" minOccurs="0">
@@ -249,23 +253,33 @@ NewFactoryCharge display text: New package unit factory charge;</xsd:documentati
                   <xsd:element name="C01_DigitalRefrigerantGaugeCalibrationDate" type="comp:DigitalRefrigerantGaugeCalibrationDate" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Date of Digital Refrigerant Gauge Calibration</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input calibration date in valid date format</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="C02_DigitalThermocoupleCalibrationDate" type="comp:DigitalThermocoupleCalibrationDate" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Date of Digital Thermocouple Calibration</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input calibration date in valid date format</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="C03_IsDigitalRefrigerantGaugeCalibrationCurrent" type="comp:IsDigitalRefrigerantGaugeCalibrationCurrent" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Digital Refrigerant Gauge Calibration Status</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If the difference between RefrigerantChargeVerificationDate in section A and the DigitalRefrigerantGaugeCalibrationDate is greater than one month, or a negative number, the result is false  For Boolean false value, display: Digital Refrigerant Gauge requires Calibration (do not proceed),   Else If the difference is one month or less, result is true  For Boolean true value, display: Digital Refrigerant Gauge Calibration is current.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If the difference A14_RefrigerantChargeVerificationDate in section A and the C01_DigitalRefrigerantGaugeCalibrationDate is greater than one month, or a negative number, 
+result = false display term Digital Refrigerant Gauge requires Calibration (do not proceed),   
+Else If the difference is one month or less, 
+result = true  display term Calibration is current.
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="C04_IsDigitalThermocoupleCalibrationCurrent" type="comp:IsDigitalThermocoupleCalibrationCurrent" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Digital Thermocouple Calibration Status</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If the difference between RefrigerantChargeVerificationDate in section A and the DigitalThermocoupleCalibrationDate  is greater than one month, or a negative number, the result is false  For Boolean false value, display: Digital Thermocouple Gauge requires Calibration (do not proceed),   Else if the difference is one month or less, result is true  For Boolean true value, display: Digital Thermocouple Gauge Calibration is current</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If the difference between A14_RefrigerantChargeVerificationDate in section A and C02_DigitalThermocoupleCalibrationDate  is greater than one month, or a negative number,
+result = false  display term Digital Thermocouple Gauge requires Calibration (do not proceed),   
+Else if the difference is one month or less, 
+result = true  display term Calibration is current
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -303,7 +317,8 @@ NewFactoryCharge display text: New package unit factory charge;</xsd:documentati
          <xsd:element name="Section_E" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Minimum System Airflow Rate Verification</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">Require 1 row of data for each indoor unit listed in the "HERS Verification Requirements for Duct Systems" table in the parent MCH-01for the SC system in A02</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">All references to the MCH-01 in this section refer to the parent CF2R-MCH-01 and all other references are to other CF2R  compliance documents.  
+Require 1 row of data for each indoor unit listed in the "HERS Verification Requirements for Duct Systems" table in the parent CF2R-MCH-01for the SC system in A02</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -334,7 +349,7 @@ NewFactoryCharge display text: New package unit factory charge;</xsd:documentati
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Required System Airflow Rate (cfm)</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field: 
-If the CF2R-MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
+If the parent MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
 result = RequiredVerificationTable150BC stored in MinimumAirflowRateAlternative; 
  
 Else reference numeric value  from applicable MCH23 field for the indoor unit in E01 and store result in MinimumAirflowRateRequired.   
@@ -350,7 +365,7 @@ Mch23c  - field E02
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Required System Airflow Rate (cfm)</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field: 
-If the CF2R-MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
+If the parent MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance
 result = RequiredVerificationTable150BC stored in MinimumAirflowRateAlternative; 
  
 Else reference numeric value  from applicable MCH23 field for the indoor unit in E01 and store result in MinimumAirflowRateRequired.   
@@ -366,7 +381,22 @@ Mch23c  - field E02
                                     <xsd:element name="E03_MinimumAirflowRateVerificationStatus" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">System Airflow Rate Verification Status</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  If the CF2R-MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance:  then If the system has a registered CF2R-MCH-28 that indicates compliance with Table 150.0-B or C return duct design requirements, then result  = SystemCompliesUsingTable150BC display term System complies using Table 150.0-B or C alternative return duct design criteria;   Else result = SystemDoesNotComplyCF2RMCH28Required display term System does not comply.  A registered CF2R-MCH-28 is required (do not allow this MCH-25 to be registered);     ElseIf the CF2R-MCH-01 indicates a MCH-23 is required for minimum airflow rate compliance:  Then If this system has a registered CF2R-MCH-23a, CF2R-MCH-23b, CF2R-MCH23e or CF2R-MCH-23f that meets the compliance criterion in E01, Then result = SystemComplies display term System complies with minimum airflow rate requirements;     Else If  A10_ImprovementStatus == Alteration Then If the system complies with the alternative airflow compliance method on a registered CF2R-MCH23c;  Then result= SystemCompliesUsingAlternativeRemedialActions display term  system complies using the alternative remedial actions specified in RA3.3.3.1.5. This System does not qualify for Group Sampling;   Else result = SystemDoesNotComplyCF2RMCH23Required display term  System does not comply. A registered CF2R-MCH-23 for this system is required . (do not allow this MCH-25 to be registered).</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  
+If the parent MCH-01 indicates a MCH-28 is required for alternate minimum airflow rate compliance: 
+If the system has a registered CF2R-MCH-28 that indicates compliance with Table 150.0-B or C return duct design requirements, then result  = SystemCompliesUsingTable150BC display term System complies using Table 150.0-B or C alternative return duct design criteria;   
+Else result = SystemDoesNotComplyCF2RMCH28Required display term System does not comply.  A registered CF2R-MCH-28 is required (do not allow this MCH-25 to be registered)
+End If
+   
+ElseIf the MCH-01 indicates a MCH-23 is required for minimum airflow rate compliance 
+If this system has a registered CF2R MCH-23a,  MCH-23b, MCH23e or MCH-23f that meets the compliance criterion in E02 
+result = SystemComplies display term2System complies with minimum airflow rate requirements;  
+ 
+Else If  A10_ImprovementStatus == Alteration And the system complies with the alternative airflow compliance method on a registered CF2R-MCH23c  
+result= SystemCompliesUsingAlternativeRemedialActions display term  system complies using the alternative remedial actions specified in RA3.3.3.1.5. This System does not qualify for Group Sampling;  
+ 
+Else result = SystemDoesNotComplyCF2RMCH23Required display term  System does not comply. A registered CF2R-MCH-23 for this system is required . (do not allow this MCH-25 to be registered).
+End If
+End If</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="comp:MinimumAirflowRateVerificationStatus">
@@ -420,54 +450,65 @@ Mch23c  - field E02
                   <xsd:element name="F02_LowestReturnAirDryBulbTemperature" type="comp:LowestReturnAirDryBulbTemperature" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Lowest return air dry bulb temperature that occurred during the refrigerant charge verification procedure ([d:deg/]F)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Range for this value is  0 to 130.   In order to have a verification that complies, the return air drybulb temperature must remain above 70F during the verification procedure,</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input; Range for this value is  0 to 130.   In order to have a verification that complies, the return air drybulb temperature must remain above 70F during the verification procedure,</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="F03_CondenserEnteringDryBulbTemperature" type="comp:CondenserEnteringDryBulbTemperature" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Measured Condenser Air Entering Dry-Bulb Temperature (T[d:sub]condenser, db[/d:sub]) ([d:deg/]F)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Range for this value is  0 to 130</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input; Range for this value is  0 to 130</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="F04_DoesWinterSetupOutdoorTemperatureQualify" type="comp:DoesWinterSetupOutdoorTemperatureQualify" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Outdoor Temperature Qualification Status</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If CondenserEnteringAirDryBulbTemperature is less than  37F or greater than 70F result is false.  For Boolean false display text: Winter Setup is not allowed to be used when the outdoor temperature is less than 37F or greater than 70F - do not proceed.   Else result is true.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: 
+If F03_CondenserEnteringAirDryBulbTemperature is less than 37F or greater than 70F 
+result = false.  display term Winter Setup is not allowed to be used when the outdoor temperature is less than 37F or greater than 70F - do not proceed.   
+Else 
+result = true display term Outdoor temperature is within the allocable range for use of the Winter Setup.
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="F05_MeasuredLiquidLineTemperature" type="comp:MeasuredLiquidLineTemperature" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Measured Liquid Line Temperature (T[d:sub]liquid[/d:sub]) ([d:deg/]F)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Range for this value is  -40 to 150</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input; Range for this value is  -40 to 150</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="F06_MeasuredLiquidLinePressure" type="comp:MeasuredLiquidLinePressure" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Measured Liquid Line Pressure (P[d:sub]liquid[/d:sub]) (psig)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Range for this value is  0 to 800</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input; Range for this value is  0 to 800</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="F07_CondenserSaturationTemperature" type="comp:CondenserSaturationTemperature" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Condenser Saturation Temperature (T[d:sub]condenser, sat[/d:sub]) from Digital Gauge or P-T Table using Line F06 ([d:deg/]F)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Range for this value is  -40 to 150</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input; Range for this value is  -40 to 150</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="F08_MeasuredSubcooling" type="comp:MeasuredSubcooling" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Measured Subcool (Line F07 - Line F05) ([d:deg/]F)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Report result of  CondenserSaturationTemperature  minus MeasuredLiquidLineTemperature</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field:
+result = F07_CondenserSaturationTemperature  - F05_MeasuredLiquidLineTemperature</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="F09_TargetSubcooling" type="comp:TargetSubcooling" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Target Subcool from Manufacturer ([d:deg/]F)</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input; Range for this value is  0 to 50</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="F10_IsRefrigerantChargeWinterSetupCompliant" type="comp:IsRefrigerantChargeWinterSetupCompliant" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Compliance Statement:</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If the absolute value (ABS) of MeasuredSubcooling minus TargetSubcooling is less than or equal to  3, then result is true.  For Boolean true display text: System Refrigerant Charge Complies with Winter Charge Setup Verification Method - System is also required to pass the Metering Device Verification in the next Section.  Else result is false.  For Boolean false display text The System does not comply.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If the absolute value ABS (F08_MeasuredSubcooling - F09_TargetSubcooling) is less than or equal to  3
+result = true.  display term System Refrigerant Charge Complies with Winter Charge Setup Verification Method - System is also required to pass the Metering Device Verification in the next Section.  
+Else 
+result = false display term The System does not comply.
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -489,43 +530,54 @@ Mch23c  - field E02
                   <xsd:element name="G01_MeasuredSuctionLineTemperature" type="comp:MeasuredSuctionLineTemperature" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Measured Suction Line Temperature (T[d:sub]suction[/d:sub]) ([d:deg/]F)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Range for this value is -40 to 150</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input; Range for this value is -40 to 150</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="G02_MeasuredSuctionLinePressure" type="comp:MeasuredSuctionLinePressure" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Measured Suction Line Pressure (P[d:sub]suction[/d:sub]) (psig)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Range for this value is 0 to 400</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input; Range for this value is 0 to 400</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="G03_EvaporatorSaturationTemperature" type="comp:EvaporatorSaturationTemperature" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Evaporator Saturation Temperature (T[d:sub]evaporator, sat[/d:sub]) from Digital Gauge or P-T Table using Line G02</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">Evaporator saturation temperature from digital gauge or P-T Table using line G02 (degreeF)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Range for this value is -40 to 150</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input; Range for this value is -40 to 150</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="G04_MeasuredSuperheat" type="comp:MeasuredSuperheat" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Measured Superheat (Line G01 - Line G03) ([d:deg/]F)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Report result of MeasuredSuctionLineTemperature minus EvaporatorSaturationTemperature</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field:
+result = G01_MeasuredSuctionLineTemperature - G03_EvaporatorSaturationTemperature</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="G05_IsMeasuredSuperheatWithinCEC_Range" type="comp:IsMeasuredSuperheatWithinCEC_Range" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Measured Superheat (Line G04) is between 4[d:deg/]F and 25[d:deg/]F (inclusive)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If MeasuredSuperheat is within the range of 4 deg F minimum inclusive and 25 deg F maximum inclusive then result is true. For Boolean true value display text: Measured Superheat passes CEC requirement.  Else result is false.  For Boolean false value display text: Measured Superheat does not pass CEC requirement</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field:
+If G04_MeasuredSuperheat is InRange(4 , 25) deg F 
+result = true  display term Measured Superheat passes CEC requirement.  Else 
+result = false display term Measured Superheat does not pass CEC requirement
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="G06_MeasuredSuperheatWithinManufacturerSpec" type="comp:MeasuredSuperheatWithinManufacturerSpec" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Measured Superheat (Line G04) is within Manufacturer's Specifications (if known)</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User selects from list: WithinManufacturerRange display term Yes, documentation to be provided upon request, NotKnown display term Not known or NotWithinManufacturerRange display term No</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="G07_IsMeteringDeviceVerificationCompliant" type="comp:IsMeteringDeviceVerificationCompliant" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Compliance Statement:</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If IsMeasuredSuperheatWithinCEC_Range is true and MeasuredSuperheatWithinManufacturerSpec value is either WithinManufacturerRange or NotKnown then result is true.  For Boolean true value display text: Metering Device Verification Passes.  Else result is false.  For Boolean false value display text: Metering Device Verification Does Not Pass</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field:
+If G05_IsMeasuredSuperheatWithinCEC_Range == true and G06_MeasuredSuperheatWithinManufacturerSpec value == WithinManufacturerRange or NotKnown 
+result = true display term Metering Device Verification Passes.  
+Else 
+result = false display term Metering Device Verification Does Not Pass
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -547,13 +599,20 @@ Mch23c  - field E02
                   <xsd:element name="H01_RefrigerantPressureDifferential" type="comp:RefrigerantPressureDifferential" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">P [d:sub]high[/d:sub] -  P [d:sub]low[/d:sub] (psi)  from F06 and G02</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Report results of MeasuredLiquidLinePressure from section F  minus  MeasuredSuctionLinePressure from section G</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field:
+result = F06_MeasuredLiquidLinePressure from section F  -   G02_MeasuredSuctionLinePressure from section G</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="H02_IsRefrigerantPressureDifferentialCompliant" type="comp:IsRefrigerantPressureDifferentialCompliant" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Compliance Statement:</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If RefrigerantType in Section A is R410A and RefrigerantPressureDifferential is within the range of 160 psi minimum inclusive and 220 psi maximum inclusive  or if  RefrigerantType is R22 and RefrigerantPressureDifferential is within the range of 100 psi minimum inclusive and 145 psi maximum inclusive  then result is true.  For Boolean true value display text: Refrigerant pressure differential is within allowable range of values for the Winter Setup method and passes.  Else result is false.  For Boolean false value display text:  Refrigerant pressure differential is outside of allowable range of values for the Winter Setup method and does not pass.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If A07_RefrigerantType == R410A And H01_RefrigerantPressureDifferential is InRange (160, 220) psi 
+Or 
+If  A07_RefrigerantType == R22 And H01_RefrigerantPressureDifferential is s InRange (100, 145) psi 
+result = true display term Refrigerant pressure differential is within allowable range of values for the Winter Setup method and passes.  
+Else 
+result = false display term  Refrigerant pressure differential is outside of allowable range of values for the Winter Setup method and does not pass.
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="H02After" minOccurs="0">

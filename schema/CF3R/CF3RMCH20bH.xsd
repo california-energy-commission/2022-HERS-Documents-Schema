@@ -58,6 +58,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent MCH-20 refers to the parent CF2R-MCH-20 and parent MCH-01 refers to the parent CF2R-MCH-01 and parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -65,31 +66,31 @@
                   <xsd:element name="A01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Space Conditioning System Identification or Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ResidentialHvacSystemAreaServed" type="hvac:ResidentialHvacSystemAreaServed" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Space Conditioning System Location or Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A03_IndoorUnitName" type="hvac:IndoorUnitName" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Indoor Unit Name or Description of Area Served</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A04_ResidentialLowriseBuildingType" type="com:ResidentialLowriseBuildingType" >
                      <xsd:annotation>
-                        <xsd:documentation source="FieldText">Building Type from CF-1R</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="FieldText">Building Type from parent CC</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A05_VerifiedLowLeakageDuctsConditionedSpace" type="comp:VerifiedLowLeakageDuctsConditionedSpace" >
                      <xsd:annotation>
-                        <xsd:documentation source="FieldText">Verified Low Leakage Ducts in Conditioned Space (VLLDCS) Credit from CF1R?</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="FieldText">Verified Low Leakage Ducts in Conditioned Space (VLLDCS) Credit from parent CC?</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                         <xsd:appinfo source="displayterm">
                            <dtyp:displayterm value="true">Low Leakage Ducts in Conditioned Space (LLDCS) method Mch20b should be used</dtyp:displayterm>
                         </xsd:appinfo>
@@ -98,8 +99,8 @@
                   </xsd:element>
                   <xsd:element name="A06_VerifiedLowLeakageAirHandlingUnit" type="comp:VerifiedLowLeakageAirHandlingUnit" >
                      <xsd:annotation>
-                        <xsd:documentation source="FieldText">Verified Low Leakage Air Handling Unit Credit from CF1R?</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="FieldText">Verified Low Leakage Air Handling Unit Credit from parent CC?</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                         <xsd:appinfo source="displayterm">
                            <dtyp:displayterm value="true">Low Leakage Air Handling Unit (LLAHU) method Mch20c should be used</dtyp:displayterm>
                         </xsd:appinfo>
@@ -109,19 +110,19 @@
                   <xsd:element name="A07_DuctSystemLeakageComplianceCategory" type="comp:DuctSystemLeakageComplianceCategory" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Duct System Compliance Category</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A08_AreDuctsInGarage" type="comp:AreDuctsInGarage" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Portions of Duct Located in Garage?</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A09_IsSystemSDHV" type="hvac:IsSystemSDHV" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Is the system type Small Duct High Velocity (SDHV) ?</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If system type on the MCH-01 ==  SmallDuctHighVelocityAC Or SmallDuctHighVelocityHP result = true; Else result = false.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If system type on the parent MCH-01 ==  SmallDuctHighVelocityAC Or SmallDuctHighVelocityHP result = true; Else result = false.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A09After" minOccurs="0">
@@ -137,6 +138,7 @@
          <xsd:element name="Section_B" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Duct Leakage Diagnostic Test</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent MCH-20 refers to the parent CF2R-MCH-20</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -144,7 +146,7 @@
                   <xsd:element name="B01_AreDuctsEntirelyInConditionedSpace" type="comp:AreDuctsEntirelyInConditionedSpace" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">System compliance with visual inspection per RA3.1.4.1.3?</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                         <xsd:appinfo source="displayterm">
                            <dtyp:displayterm value="true">Duct system is located entirely in conditioned space - complies with RA3.1.4.1.3</dtyp:displayterm>
                            <dtyp:displayterm value="false">Parts of the duct system are located outside of conditioned space - does not comply with RA3.1.4.1.3</dtyp:displayterm>
@@ -155,19 +157,19 @@
                   <xsd:element name="B02_LeakageTestCondition" type="comp:LeakageTestCondition"  fixed="TestFinal">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Duct Leakage Test Conditions</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="B03_LeakageTestMethod" type="comp:LeakageTestMethod"  fixed="LeakageToOutside">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Duct Leakage Test Method</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="B04_DuctLeakageAllowed" type="comp:DuctLeakageAllowed" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Target Allowable Duct Leakage (cfm)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Data from CF2R-MCH-20b-H</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="B05_DuctLeakageTestActual" type="comp:DuctLeakageTestActual" >
