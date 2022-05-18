@@ -15,6 +15,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">General Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -22,26 +23,26 @@
                   <xsd:element name="A01_DwellingUnitName" type="com:DwellingUnitName">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling Unit Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Reference text from CF1R</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Reference text from parent CC</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ClimateZone" type="com:ClimateZone">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Climate Zone</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Reference text from CF1R</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Reference text from parent CC</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A03_DwellingUnitConditionedFloorArea" type="com:DwellingUnitConditionedFloorArea">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling Unit Total  Conditioned Floor Area (ft<d:sup>2</d:sup>)</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Value is numeric: xxxxx  
-If CF1R parent is CF1R-PRF, then 
+If parent  CC is CF1R-PRF, then 
 If project scope = Newly Constructed (Addition Alone) 
 prompt user to enter a value equal to dwelling unit existing CFA + addition CFA, 
-Else reference the value from CF1R 
+Else reference the value from CF1R PRF 
 End If        
  
-Else If CF1R parent is CF1R-NCB-01, then 
+Else If parent  CC is CF1R-NCB-01, then 
 If project scope =  AdditionGT1000 then 
 prompt user to enter a value equal to dwelling unit existing CFA + addition CFA, 
 Else If project scope = NewBuildingConstruction, then 
@@ -50,16 +51,16 @@ reference value from CF1R-NCB field A10,
 End If
 End If
  
-Else If CF1R parent is CF1R-ADD-01, then 
+Else If parent  CC  is CF1R-ADD-01, then 
 If ResidentialLowriseBuildingType = SingleFamily 
 reference value from field A08 from the CF1R-ALT-02 that is required for the dwelling unit according to CF1R-ADD-01 Section J,  
 End If
  
-Else If CF1R parent is CF1R-ALT-01, then 
+Else If parent  CC is CF1R-ALT-01, then 
 If ResidentialLowriseBuildingType = SingleFamily,  
 reference value from field A08 from the CF1R-ALT-02 that is required for the dwelling unit according to CF1R-ALT-01 Section G 
 End If
-Else If CF1R parent is CF1R-ALT-02, then reference value from CF1R-ALT-02 field A08.  
+Else If parent  CC is CF1R-ALT-02, then reference value from CF1R-ALT-02 field A08.  
 End If   
  
  Allow user to override default and input value; flag overridden values and report in project status notes field</xsd:documentation>
@@ -71,11 +72,19 @@ End If
                         <xsd:documentation source="CalculationsAndRules">integer xx; If parent is CF1R-ALT-02 doc type, then use as default the value referenced from CF1R ALT-02 Section A (field A10); or allow user to override the default and input a new value;  flag non-default values and report in project status notes field;  else if  parent is not CF1R-ALT-02 doc type, then user input the integer value</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="A05_ComplianceMethod" type="comp:ComplianceMethod">
+                  <xsd:element name="A05_ComplianceMethod">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Certificate of Compliance Type</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Reference document type property from CF1R; For choice Performance display text: performance (CF1R-PRF); for choice PrescriptiveAdditions display text:  prescriptive additions (CF1R-ADD)    For choice PrescriptiveAlterations display text: prescriptive alterations (CF1R-ALT);   For choice PrescriptiveNewConstruction display text: prescriptive newly constructed (CF1R-NCB)</xsd:documentation>
                      </xsd:annotation>
+                     <xsd:simpleType>
+                        <xsd:restriction base="comp:ComplianceMethod">
+                           <xsd:enumeration value="Performance"/>
+                           <xsd:enumeration value="PrescriptiveAdditions"/>
+                           <xsd:enumeration value="PrescriptiveAlterations"/>
+                           <xsd:enumeration value="PrescriptiveNewConstruction"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
                   </xsd:element>
                   <xsd:element name="A06_HvacLoadCalculationMethod" type="comp:HvacLoadCalculationMethod">
                      <xsd:annotation>
@@ -114,14 +123,23 @@ End If
                   <xsd:element name="A09_BedroomCount" type="com:BedroomCount">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling Unit Number of Bedrooms</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: integer xx;  If ComplianceMethod = Performance Then use as default the value referenced from the CF1F-PRF Or allow user to override  default and input a new value, flag non-default values and report of change in the project status notes field.  else if parent not CF1R-PRF doc type then user inputs integer value.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: integer xx;  If A05_ComplianceMethod == Performance Then use as default the value referenced from the parent CC Or allow user to override  default and input a new value, constrained to be GTE to default value from parent CC, flag non-default values and report of change in the project status notes field.  
+Else If ComplianceMethod != Performance  then user inputs integer value.
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A09After" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Variant MCH-01d</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">MCH-01d - Space Conditioning Systems Ducts and Fans - For use with Performance E+A+A Certificate of Compliance</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: If1 ComplianceMethod  in A05 == Performance, then if2 CF1R-PRF project scope == Addition and/or Alteration Or Newly Constructed (Addition Alone) then display doc variation MCH-01d ;   elseif  CF1R-PRF project scope == Newly Constructed display doc variation  MCH-01a endif2;     ElseIf ComplianceMethod == PrescriptiveAlterations, Or  PrescriptiveAddiitions, then display doc variation MCH-01b;  ElseIf ComplianceMethod  == PrescriptiveNewConstruction  then display doc variation MCH-01c  endif1</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: 
+If A05_ComplianceMethod  == Performance, 
+If CF1R-PRF project scope == Addition and/or Alteration Or Newly Constructed (Addition Alone) then display doc variation MCH-01d ;   
+Else If  CF1R-PRF project scope == Newly Constructed display doc variation  MCH-01a 
+End If     
+Else If A05_ComplianceMethod == PrescriptiveAlterations, Or  PrescriptiveAddiitions, then display doc variation MCH-01b;  
+Else If A05_ComplianceMethod  == PrescriptiveNewConstruction  then display doc variation MCH-01c  
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -130,7 +148,9 @@ End If
          <xsd:element name="Section_B" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Design Space Conditioning (SC) System Component Specifications from CF1R</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">Require one row of data in this table for each of the SC Systems identified on the CF1R report that is applicable to this dwelling unit.  Do not allow user to overwrite these referenced data.</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">n this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+Require one row of data in this table for each of the SC Systems identified on the CF1R report that is applicable to this dwelling unit.  Do not allow user to overwrite these referenced data.</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -152,54 +172,54 @@ End If
                                  <xsd:sequence>
                                     <xsd:element name="B01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from parent CC-PRF</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from parent CC-PRF</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B02_ResidentialSpaceConditioningSystemType" type="hvac:ResidentialSpaceConditioningSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">SC System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from parent CC-PRF</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B03_ResidentialHeatingSystemType" type="hvac:ResidentialHeatingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Heating System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If CF1R-PRF Y02_ResidentialHeatingSystemType == VCHP, 
+                                          <xsd:documentation source="CalculationsAndRules">If parent CC-PRF  Y02_ResidentialHeatingSystemType == VCHP, 
 allow user to select from list: VCHP_IndoorUnitDucted,  VCHP_IndoorUnitDuctless, VCHP_IndoorUnitDuctedAndDuctless
-Else  auto fill from CF1R;   
+Else  auto fill from parent CC-PRF;   
 End If
-Note: assuming new VCHP  and multisplit system types: VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless and VCHP_IndoorUnitDuctedAndDuctless, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctedMiniSplitHP  will be  implemented in CBECC and available in teh CF1R-PRF schema.</xsd:documentation>
+Note: assuming new VCHP  and multisplit system types: VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless and VCHP_IndoorUnitDuctedAndDuctless, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctedMiniSplitHP  will be  implemented in CBECC and available in the parent CC-PRF schema.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B04_ResidentialCoolingSystemType" type="hvac:ResidentialCoolingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Cooling System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If CF1R-PRF Y02_ResidentialCoolingSystemType == VCHP, 
+                                          <xsd:documentation source="CalculationsAndRules">If parent CC-PRF Y02_ResidentialCoolingSystemType == VCHP, 
 allow user to select from list: VCHP_IndoorUnitDucted,  VCHP_IndoorUnitDuctless, VCHP_IndoorUnitDuctedAndDuctless
-Else  auto fill from CF1R;   
+Else  auto fill from parent CC-PRF;   
 End If
-Note: assuming new VCHP and multisplit system types:  VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless,  VCHP_IndoorUnitDuctedAndDuctless, DuctedMultiSplitAC, DuctlessMultiSplitAC, DuctedDuctlessMultiSplitAC, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP DuctedMiniSplitAC, DuctedMiniSplitHP will be  implemented in CBECC and available in the CF1R-PRF schema.</xsd:documentation>
+Note: assuming new VCHP and multisplit system types:  VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless,  VCHP_IndoorUnitDuctedAndDuctless, DuctedMultiSplitAC, DuctlessMultiSplitAC, DuctedDuctlessMultiSplitAC, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP DuctedMiniSplitAC, DuctedMiniSplitHP will be  implemented in CBECC and available in the parent CC-PRF schema.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="B05_CFVCS_Type" type="comp:CFVCS_Type">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Central Fan Ventilation Cooling System Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If CF1R Central Fan Vent Cooling credit is not claimed for this system Or If value is not available from CF1R,   
+                                             <xsd:documentation source="CalculationsAndRules">If parent CC-PRF Central Fan Vent Cooling credit is not claimed for this system Or If value is not available from parent CC-PRF,   
 result = N/A stored in the  NotAppplicableMessage; 
 Else 
-autofill value from CF1R;  Allowed values are FixedCFVCS and  VariableCFVCS
+autofill value from parent CC-PRF;  Allowed values are FixedCFVCS and  VariableCFVCS
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B05_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Central Fan Ventilation Cooling System Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If CF1R Central Fan Vent Cooling credit is not claimed for this system Or If value is not available from CF1R,   
+                                             <xsd:documentation source="CalculationsAndRules">If parent CC-PRF Central Fan Vent Cooling credit is not claimed for this system Or If value is not available from parent CC-PRF,   
 result = N/A stored in the  NotAppplicableMessage; 
 Else 
-autofill value from CF1R;  Allowed values are FixedCFVCS and  VariableCFVCS
+autofill value from parent CC-PRF;  Allowed values are FixedCFVCS and  VariableCFVCS
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
@@ -208,12 +228,9 @@ End If</xsd:documentation>
                                        <xsd:element name="B06_DuctSystemTypePerf">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Distribution System Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If prescriptive CF1R
-Auto filled text referenced from CF1R
-Else If performance CF1R-PRF  Then 
-If Y02_ResidentialHeatingSystemType == VCHP_IndoorUnitDucted Or VCHP_IndoorUnitDuctedAndDuctless Or  VCHP_IndoorUnitDuctless
+                                             <xsd:documentation source="CalculationsAndRules">If parent CC-PRF Y02_ResidentialHeatingSystemType == VCHP_IndoorUnitDucted Or VCHP_IndoorUnitDuctedAndDuctless Or  VCHP_IndoorUnitDuctless
 result = NotApplicable stored in NotApplicableMessage
-Else Auto filled text: referenced from CF1R-PRF
+Else Auto filled text: referenced from parent CC-PRF
 End If</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
@@ -234,12 +251,9 @@ End If</xsd:documentation>
                                        <xsd:element name="B06_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Distribution System Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If prescriptive CF1R
-Auto filled text referenced from CF1R
-Else If performance CF1R-PRF  Then 
-If Y02_ResidentialHeatingSystemType == VCHP_IndoorUnitDucted Or VCHP_IndoorUnitDuctedAndDuctless Or  VCHP_IndoorUnitDuctless
+                                             <xsd:documentation source="CalculationsAndRules">If parent CC-PRF Y02_ResidentialHeatingSystemType == VCHP_IndoorUnitDucted Or VCHP_IndoorUnitDuctedAndDuctless Or  VCHP_IndoorUnitDuctless
 result = NotApplicable stored in NotApplicableMessage
-Else Auto filled text: referenced from CF1R-PRF
+Else Auto filled text: referenced from parent CC-PRF
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
@@ -248,7 +262,7 @@ End If</xsd:documentation>
                                        <xsd:element name="B07_ThermostatType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Required Thermostat Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R;</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from parent CC-PRF;</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:ThermostatType">
@@ -260,7 +274,7 @@ End If</xsd:documentation>
                                        <xsd:element name="B07_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Required Thermostat Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R;</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from parent CC-PRF</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -268,7 +282,7 @@ End If</xsd:documentation>
                                        <xsd:element name="B08_ResidentialCoolingZoneType" type="hvac:ResidentialCoolingZoneType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling Zoning Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:   If B04_CoolingSystemType == NoCooling, then result = N/A stored in the B08_NotApplicableMessage  Else If  on CF1R If IsZonal == true, then result = ZoneControlled stored in B08_ResidentialCoolingZoneType display term Zonally Controlled;  Else result = NotZoneControlled stored in B08_ResidentialCoolingZoneType  display term Not Zonal</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:   If B04_CoolingSystemType == NoCooling, then result = N/A stored in the B08_NotApplicableMessage  Else If  on parent CC-PRF IsZonal == true, then result = ZoneControlled stored in B08_ResidentialCoolingZoneType display term Zonally Controlled;  Else result = NotZoneControlled stored in B08_ResidentialCoolingZoneType  display term Not Zonal</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B08_NotApplicableMessage" type="comp:NotApplicableMessage">
@@ -282,7 +296,7 @@ End If</xsd:documentation>
                                        <xsd:element name="B09_CondenserSpeedType" type="hvac:CondenserSpeedType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling System Compressor Speed</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:   If B04_CoolingSystemType == NoCooling, then result = N/A stored in the B09_NotApplicableMessage  Else  if on CF1R If IsMultiSpeed == true, then result =  MultiSpeed stored in B09_CondenserSpeedType  display term Multi-Speed;  Else result = SingleSpeed stored in B09_CondenserSpeedType display term  Single Speed.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:   If B04_CoolingSystemType == NoCooling, then result = N/A stored in the B09_NotApplicableMessage  Else  if on parent CC-PRF IsMultiSpeed == true, then result =  MultiSpeed stored in B09_CondenserSpeedType  display term Multi-Speed;  Else result = SingleSpeed stored in B09_CondenserSpeedType display term  Single Speed.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B09_NotApplicableMessage" type="comp:NotApplicableMessage">
@@ -295,9 +309,9 @@ End If</xsd:documentation>
                                     <xsd:element name="B10_VerifiedLowLeakageAirHandlingUnit" type="comp:VerifiedLowLeakageAirHandlingUnit">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Low Leakage Air-Handling Unit Status</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If value from CF1R LowLkgAH == true 
+                                          <xsd:documentation source="CalculationsAndRules">If value from parent CC-PRF LowLkgAH == true 
 result = true display term: Has Low Leakage Air Handler   
-Else If value from CF1R LowLkgAH == false Or If value not available from CF1R 
+Else If value from parent CC-PRF LowLkgAH == false Or If value not available from parent CC-PRF 
 result = false display term None
 End If</xsd:documentation>
                                        </xsd:annotation>
@@ -305,7 +319,7 @@ End If</xsd:documentation>
                                     <xsd:element name="B11_StatusEAA">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">SC System Status</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Auto filled reference value from CF1R for this system; Values are: New display text New, Altered display text Altered, Existing  display text Existing</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Auto filled reference value from parent CC-PRF for this system; Values are: New display text New, Altered display text Altered, Existing  display text Existing</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="com:StatusEAA">
@@ -319,9 +333,9 @@ End If</xsd:documentation>
                                        <xsd:element name="B12_EAA_DuctSystemStatus" type="comp:EAA_DuctSystemStatus">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Duct System Status</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If B06_DuctsystemTypePerf = Ductless Or If value is not available from CF1R
+                                             <xsd:documentation source="CalculationsAndRules">If B06_DuctsystemTypePerf = Ductless Or If value is not available from parent CC-PRF
 result = N/A stored in the NotAppplicableMessage, 
-Else reference value from CF1R; Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing, ExistingPlusNew display text Existing + New.
+Else reference value fromparent CC-PRF  Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing, ExistingPlusNew display text Existing + New.
 End If</xsd:documentation>
                                              <xsd:appinfo source="displayterm">
                                                 <dtyp:displayterm value="ExistingAlteration">Altered</dtyp:displayterm>
@@ -331,9 +345,9 @@ End If</xsd:documentation>
                                        <xsd:element name="B12_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Duct System Status</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If B06_DuctsystemTypePerf = Ductless Or If value is not available from CF1R
+                                             <xsd:documentation source="CalculationsAndRules">If B06_DuctsystemTypePerf = Ductless Or If value is not available from parent CC-PRF
 result = N/A stored in the NotAppplicableMessage, 
-Else reference value from CF1R; Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing, ExistingPlusNew display text Existing + New.
+Else reference value from parent CC-PRF; Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing, ExistingPlusNew display text Existing + New.
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
@@ -355,7 +369,9 @@ End If</xsd:documentation>
          <xsd:element name="Section_C" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Design Space Conditioning (SC) System Compliance Requirements from CF1R</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">Require one row of data for each SC System in Section B;  do not allow user to overwrite these referenced data</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+Require one row of data for each SC System in Section B;  do not allow user to overwrite these referenced data</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -377,7 +393,7 @@ End If</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="C01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from  parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from B01,</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -385,7 +401,7 @@ End If</xsd:documentation>
                                        <xsd:element name="C02_EfficiencyType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C02_NotApplicableMessage  Else auto filled value referenced from CF1R for this system name</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C02_NotApplicableMessage  Else auto filled value referenced from  parent CC-PRF  for this system name</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:EfficiencyType">
@@ -399,7 +415,7 @@ End If</xsd:documentation>
                                        <xsd:element name="C02_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C02_NotApplicableMessage  Else auto filled value referenced from CF1R for this system name</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C02_NotApplicableMessage  Else auto filled value referenced from  parent CC-PRF  for this system name</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -407,31 +423,31 @@ End If</xsd:documentation>
                                        <xsd:element name="C03_EfficiencyMinimumValueAFUE" type="hvac:EfficiencyMinimumValueAFUE">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled AFUE value referenced from CF1R for this system name.  Result value is stored as fraction but displayed as percent</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled AFUE value referenced from  parent CC-PRF  for this system name.  Result value is stored as fraction but displayed as percent</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_EfficiencyMinimumValueCOP" type="hvac:EfficiencyMinimumValueCOP">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled COP value referenced from CF1R for this system name. Result value is stored as fraction but displayed as percent.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled COP value referenced from  parent CC-PRF  for this system name. Result value is stored as fraction but displayed as percent.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_EfficiencyMinimumValueHSPF" type="hvac:EfficiencyMinimumValueHSPF">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled HSPF value referenced from CF1R for this system name. Result value is stored as fraction but displayed as percent</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled HSPF value referenced from  parent CC-PRF  for this system name. Result value is stored as fraction but displayed as percent</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_EfficiencyMinimumValueHSPF2" type="hvac:EfficiencyMinimumValueHSPF2">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled HSPF2 value referenced from CF1R for this system name. Result value is stored as fraction but displayed as percent</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled HSPF2 value referenced from  parent CC-PRF  for this system name. Result value is stored as fraction but displayed as percent</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled value referenced from CF1R for this system name. Result value is stored as fraction but displayed as percent.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in C03_NotApplicableMessage  Else auto filled value referenced from  parent CC-PRF  for this system name. Result value is stored as fraction but displayed as percent.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -440,14 +456,14 @@ End If</xsd:documentation>
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heat Pump Heating Capacity at 47
                                                 <d:deg/>F</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data is available;  Else if the system type on the CF1R does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data is available;  Else if the system type on the  parent CC-PRF  does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C04_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heat Pump Heating Capacity at 47
                                                 <d:deg/>F</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data is available;  Else if the system type on the CF1R does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data is available;  Else if the system type on the  parent CC-PRF  does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -456,14 +472,14 @@ End If</xsd:documentation>
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heat Pump Heating Capacity at 17
                                                 <d:deg/>F</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data is available;  Else if the system type on the CF1R does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data is available;  Else if the system type on the  parent CC-PRF  does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C05_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heat Pump Heating Capacity at 17
                                                 <d:deg/>F</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data is available;  Else if the system type on the CF1R does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data is available;  Else if the system type on the  parent CC-PRF  does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -471,7 +487,7 @@ End If</xsd:documentation>
                                        <xsd:element name="C06a_EfficiencyType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto fill from CF1R for this system name if data is available
+                                             <xsd:documentation source="CalculationsAndRules">Auto fill from  parent CC-PRF  for this system name if data is available
 Else
 result = N/A stored in C06a_NotApplicableMessage
 End If</xsd:documentation>
@@ -491,7 +507,7 @@ End If</xsd:documentation>
                                        <xsd:element name="C06a_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto fill from CF1R for this system name if data is available
+                                             <xsd:documentation source="CalculationsAndRules">Auto fill from  parent CC-PRF  for this system name if data is available
 Else
 result = N/A
 End If</xsd:documentation>
@@ -502,19 +518,19 @@ End If</xsd:documentation>
                                        <xsd:element name="C06_EfficiencyMinimumValueSEER" type="hvac:EfficiencyMinimumValueSEER">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Cooling Efficiency SEER/SEER2</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if SEER data is available;  Else if the system type on the CF1R does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if SEER data is available;  Else if the system type on the  parent CC-PRF  does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_EfficiencyMinimumValueSEER2" type="hvac:EfficiencyMinimumValueSEER2">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Cooling Efficiency SEER/SEER2</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if SEER2 data is available;  Else if the system type on the CF1R does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if SEER2 data is available;  Else if the system type on the  parent CC-PRF  does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Cooling Efficiency SEER/SEER2</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data is available;  Else if the system type on the CF1R does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data is available;  Else if the system type on the  parent CC-PRF  does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -522,25 +538,25 @@ End If</xsd:documentation>
                                        <xsd:element name="C07_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Cooling Efficiency EER/EER2/CEER</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data for EER is available;  Else if the system type on the CF1R does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data for EER is available;  Else if the system type on the  parent CC-PRF  does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C07_EfficiencyMinimumValueEER2" type="hvac:EfficiencyMinimumValueEER2">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Cooling Efficiency EER/EER2/CEER</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data for EER2 is available;  Else if the system type on the CF1R does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data for EER2 is available;  Else if the system type on the  parent CC-PRF  does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C07_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Cooling Efficiency EER/EER2/CEER</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data for CEER is available;  Else if the system type on the CF1R does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data for CEER is available;  Else if the system type on the  parent CC-PRF  does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C07_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Cooling Efficiency EER/EER2/CEER</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data for EER, EER2 or CEER is available;  Else if the system type on the CF1R does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data for EER, EER2 or CEER is available;  Else if the system type on the  parent CC-PRF does not provide efficiency data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -548,13 +564,13 @@ End If</xsd:documentation>
                                        <xsd:element name="C08_AirflowPerUnitCoolingCapacity" type="hvac:AirflowPerUnitCoolingCapacity">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Cooling System Airflow Rate (CFM/ton)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data is available;  Else if the system type on the CF1R does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data is available;  Else if the system type on the  parent CC-PRF  does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C08_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Cooling System Airflow Rate (CFM/ton)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data is available;  Else if the system type on the CF1R does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data is available;  Else if the system type on the  parent CC-PRF  does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -562,13 +578,13 @@ End If</xsd:documentation>
                                        <xsd:element name="C09_MaximumCoolingWperCFM" type="hvac:MaximumCoolingWperCFM">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Maximum Fan Efficacy (W/CFM)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data is available;  Else if the system type on the CF1R does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data is available;  Else if the system type on the  parent CC-PRF  does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C09_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Maximum Fan Efficacy (W/CFM)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from CF1R for this system name if the data is available;  Else if the system type on the CF1R does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Auto filled text: referenced from  parent CC-PRF  for this system name if the data is available;  Else if the system type on the  parent CC-PRF  does not provide this data, then result is N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -576,13 +592,13 @@ End If</xsd:documentation>
                                        <xsd:element name="C10_DuctRValue" type="hvac:DuctRValue">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Modeled Duct R-Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If CF1R flags requirement for a Verified Duct System Design then result is RvalueVerifiedDuctSystem, display text Verified Duct System Design; else If CF1R provides R-value for this system name, result is that R-value; else result is N/A stored in the NotApplicableMessage.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If  parent CC-PRF  flags requirement for a Verified Duct System Design then result is RvalueVerifiedDuctSystem, display text Verified Duct System Design; else If  parent CC-PRF  provides R-value for this system name, result is that R-value; else result is N/A stored in the NotApplicableMessage.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C10_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Modeled R-Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If CF1R flags requirement for a Verified Duct System Design then result is RvalueVerifiedDuctSystem, display text Verified Duct System Design; else If CF1R provides R-value for this system name, result is that R-value; else result is N/A stored in the NotApplicableMessage.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If  parent CC-PRF  flags requirement for a Verified Duct System Design then result is RvalueVerifiedDuctSystem, display text Verified Duct System Design; else If  parent CC-PRF  provides R-value for this system name, result is that R-value; else result is N/A stored in the NotApplicableMessage.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -590,13 +606,13 @@ End If</xsd:documentation>
                                        <xsd:element name="C11_AirflowRequiredMinimumTarget" type="hvac:AirflowRequiredMinimumTarget">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Central Fan Ventilation Cooling Airflow</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If B05_NotApplicableMessage == N/A then result = N/a stored in NotApplicableMessage Else If B05_CFVCS_Type == FixedCFVCS result = CF1R  fixed cooling vent airflow Else If B05_CFVCS_Type == VariableCFVCS result = CF1R  maximum cooling vent airflow</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If B05_NotApplicableMessage == N/A then result = N/a stored in NotApplicableMessage Else If B05_CFVCS_Type == FixedCFVCS result =  parent CC-PRF   fixed cooling vent airflow Else If B05_CFVCS_Type == VariableCFVCS result =  parent CC-PRF   maximum cooling vent airflow</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C11_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Central Fan Ventilation Cooling Airflow</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If B05_NotApplicableMessage == N/A then result = N/a stored in NotApplicableMessage Else If B05_CFVCS_Type == FixedCFVCS result = CF1R  fixed cooling vent airflow Else If B05_CFVCS_Type == VariableCFVCS result = CF1R  maximum cooling vent airflow</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If B05_NotApplicableMessage == N/A then result = N/a stored in NotApplicableMessage Else If B05_CFVCS_Type == FixedCFVCS result =  parent CC-PRF   fixed cooling vent airflow Else If B05_CFVCS_Type == VariableCFVCS result = parent CC-PRF   maximum cooling vent airflow</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -604,13 +620,13 @@ End If</xsd:documentation>
                                        <xsd:element name="C12_FanEfficacy" type="hvac:FanEfficacy">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Central Fan Ventilation Cooling Fan Efficiency</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If B05_NotApplicableMessage == N/A then result = N/a stored in NotApplicableMessage Else  reference value from CF1R</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If B05_NotApplicableMessage == N/A then result = N/a stored in NotApplicableMessage Else  reference value from  parent CC-PRF</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C12_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Central Fan Ventilation Cooling Fan Efficiency</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If B05_NotApplicableMessage == N/A then result = N/a stored in NotApplicableMessage Else  reference value from CF1R</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If B05_NotApplicableMessage == N/A then result = N/a stored in NotApplicableMessage Else  reference value from  parent CC-PRF</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -631,7 +647,9 @@ End If</xsd:documentation>
          <xsd:element name="Section_D" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Installed Space Conditioning (SC) System Component Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">Require one row of data to be entered in this table for each space conditioning system in the count field A04_ResidentialDwellingUnitSpaceConditioningCount.  If SC system names from  CBECC are installed more than once in this dwelling unit, then duplicate SC System names are allowed in column D01; Require each entry in D02 (area served) to be unique in this dwelling unit.</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+Require one row of data to be entered in this table for each space conditioning system in the count field A04_ResidentialDwellingUnitSpaceConditioningCount.  If SC system names from  CBECC are installed more than once in this dwelling unit, then duplicate SC System names are allowed in column D01; Require each entry in D02 (area served) to be unique in this dwelling unit.</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -647,7 +665,7 @@ End If</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="D01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from  parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Require user to select applicable system name from a list comprised of the systems identified in section B, field B01.If SC system names from CBECC are installed more than once in this dwelling unit, then duplicate SC system names are allowed in this field.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -666,26 +684,26 @@ End If</xsd:documentation>
                                     <xsd:element name="D04_ResidentialHeatingSystemType" type="hvac:ResidentialHeatingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Heating System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If SC system is not shown in section B, then user selects one from list A or list B below;   Else reference value from B03 as default; If B03  is in List A do not allow user to override with value from List A;   List A:   DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless,  VCHP_IndoorUnitDuctedAndDuctless, SmallDuctHighVelocityHP,  DuctlessSplitHP (display term Ductless mini-split HP),   DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump,  RoomHP, SPVHP, PTHP;       List B: CentralGasFurnace, CentralSplitHP, CentralPackagedHP, CentralLargePackagedHP, Boiler, Hydronic, CombinedHydronic, HydronicForcedAir, CombinedHydronicForcedAir, HydronicHP,  HydronicHP_ForcedAir, GasPackagedFurnace, GasWallFurnace , GasSpaceHeater, Electric,  WoodHeat;    Flag non-default values and report in project status notes field; a revised CF1R may be required.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If SC system is not shown in section B, then user selects one from list A or list B below;   Else reference value from B03 as default; If B03  is in List A do not allow user to override with value from List A;   List A:   DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless,  VCHP_IndoorUnitDuctedAndDuctless, SmallDuctHighVelocityHP,  DuctlessSplitHP (display term Ductless mini-split HP),   DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump,  RoomHP, SPVHP, PTHP;       List B: CentralGasFurnace, CentralSplitHP, CentralPackagedHP, CentralLargePackagedHP, Boiler, Hydronic, CombinedHydronic, HydronicForcedAir, CombinedHydronicForcedAir, HydronicHP,  HydronicHP_ForcedAir, GasPackagedFurnace, GasWallFurnace , GasSpaceHeater, Electric,  WoodHeat;    Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="D05_ResidentialCoolingSystemType" type="hvac:ResidentialCoolingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Cooling System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If SC system is not listed in section B, allow user to selects one from List A; Else reference value from B04 as default, If B04_ResidentialCoolingSystemType == NoCooling then allow user to override default and pick CentralSplitAC. Flag non-default values and report in project status notes field; a revised CF1R may be required.      List A:  CentralLargePackagedAC, CentralLargePackagedHP, CentralPackagedAC, CentralPackagedHP, CentralSplitAC, CentralSplitHP, DuctedMultiSplitAC, DuctlessMultiSplitAC, DuctedDuctlessMultiSplitAC, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_AC, DuctlessVRF_HP, EvaporativeDirect, EvaporativeIndirect, EvaporativeIndirectDirect, EvaporativelyCooledCondenser, GasAbsorptionAC, HydronicHP, HydronicHP_ForcedAir, IceStorageAC, NoCooling, RoomAC, RoomHP, SmallDuctHighVelocityHP, SmallDuctHighVelocityAC, DuctlessSplitAC (display term Ductless mini-split AC) , DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitAC, DuctedMiniSplitHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctedAndDuctless, VCHP_IndoorUnitDuctless, SPVAC, SPVHP, PTAC, PTHP.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If SC system is not listed in section B, allow user to selects one from List A; Else reference value from B04 as default, If B04_ResidentialCoolingSystemType == NoCooling then allow user to override default and pick CentralSplitAC. Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required.      List A:  CentralLargePackagedAC, CentralLargePackagedHP, CentralPackagedAC, CentralPackagedHP, CentralSplitAC, CentralSplitHP, DuctedMultiSplitAC, DuctlessMultiSplitAC, DuctedDuctlessMultiSplitAC, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_AC, DuctlessVRF_HP, EvaporativeDirect, EvaporativeIndirect, EvaporativeIndirectDirect, EvaporativelyCooledCondenser, GasAbsorptionAC, HydronicHP, HydronicHP_ForcedAir, IceStorageAC, NoCooling, RoomAC, RoomHP, SmallDuctHighVelocityHP, SmallDuctHighVelocityAC, DuctlessSplitAC (display term Ductless mini-split AC) , DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitAC, DuctedMiniSplitHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctedAndDuctless, VCHP_IndoorUnitDuctless, SPVAC, SPVHP, PTAC, PTHP.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="D06_IndoorUnitsCount" type="hvac:IndoorUnitsCount">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Number of Indoor Units for this System</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If  D04_ResidentialHeatingSystemType Or D05_ResidentialCoolingSystemType == RoomHP, RoomAC, GasWallFurnace , GasSpaceHeater, Electric, WoodHeat, GasPackagedFurnace, CentralPackagedAC, CentralPackagedHP, CentralLargePackagedAC, CentralLargePackagedHP, EvaporativeDirect, EvaporativeIndirect, EvaporativeIndirectDirect, EvaporativelyCooledCondenser result = N/A stored in NotApplicableMessage; Else If B05_CFVCS_Type == FixedCFVCS Or VariableCFVCS result = 1 Else If CF1R ResidentialIAQ_StandaloneFanType == CentralFanIntegrated And IAQ_VentilationVerificationRequired == true, result = 1, Else result = 1 as default  but allow user to overwrite with integer GT 1 Or N/A</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If  D04_ResidentialHeatingSystemType Or D05_ResidentialCoolingSystemType == RoomHP, RoomAC, GasWallFurnace , GasSpaceHeater, Electric, WoodHeat, GasPackagedFurnace, CentralPackagedAC, CentralPackagedHP, CentralLargePackagedAC, CentralLargePackagedHP, EvaporativeDirect, EvaporativeIndirect, EvaporativeIndirectDirect, EvaporativelyCooledCondenser result = N/A stored in NotApplicableMessage; Else If B05_CFVCS_Type == FixedCFVCS Or VariableCFVCS result = 1 Else If parent CC-PRF ResidentialIAQ_StandaloneFanType == CentralFanIntegrated And IAQ_VentilationVerificationRequired == true, result = 1, Else result = 1 as default  but allow user to overwrite with integer GT 1 Or N/A</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="D06_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Number of Indoor Units for this System</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If  D04_ResidentialHeatingSystemType Or D05_ResidentialCoolingSystemType == RoomHP, RoomAC, GasWallFurnace , GasSpaceHeater, Electric, WoodHeat, GasPackagedFurnace, CentralPackagedAC, CentralPackagedHP, CentralLargePackagedAC, CentralLargePackagedHP, EvaporativeDirect, EvaporativeIndirect, EvaporativeIndirectDirect, EvaporativelyCooledCondenser result = N/A stored in NotApplicableMessage; Else If B05_CFVCS_Type == FixedCFVCS Or VariableCFVCS result = 1 Else If CF1R ResidentialIAQ_StandaloneFanType == CentralFanIntegrated And IAQ_VentilationVerificationRequired == true, result = 1, Else result = 1 as default  but allow user to overwrite with integer GT 1 Or N/A</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If  D04_ResidentialHeatingSystemType Or D05_ResidentialCoolingSystemType == RoomHP, RoomAC, GasWallFurnace , GasSpaceHeater, Electric, WoodHeat, GasPackagedFurnace, CentralPackagedAC, CentralPackagedHP, CentralLargePackagedAC, CentralLargePackagedHP, EvaporativeDirect, EvaporativeIndirect, EvaporativeIndirectDirect, EvaporativelyCooledCondenser result = N/A stored in NotApplicableMessage; Else If B05_CFVCS_Type == FixedCFVCS Or VariableCFVCS result = 1 Else If parent CC-PRF ResidentialIAQ_StandaloneFanType == CentralFanIntegrated And IAQ_VentilationVerificationRequired == true, result = 1, Else result = 1 as default  but allow user to overwrite with integer GT 1 Or N/A</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -708,7 +726,7 @@ End If
  
 List for DuctSystemTypePerf and display text:   ConditionedSpace display text: HVAC system(s) with all HVAC ducts located in conditioned space.  ConditionedSpaceDuctsVLL display text: Verified low-leakage ducts in conditioned space.  ConditionedSpaceExcept12ft display text: Ducts located within the conditioned space (except less than 12 lineal ft).   Ductless - display: Air distribution systems without ducts.   DuctsInMultipleLocations display text: Ducts located in multiple places.   Outdoors display text: Ducts located in exposed outdoor locations.  UnconditionedAttic display text:   Ducts located overhead in unconditioned attic.  UnconditionedCrawlSpace display text: Ducts located underfloor in unconditioned crawl space.  UnconditionedGarage display text: Ducts located in an unconditioned garage, DuctedAndDuctlessIndoorUnits display term  Multiple split Indoor Units combined Ducted and Ductless.  
  
-Flag non-default values and report in project status notes field; a revised CF1R may be required.</xsd:documentation>
+Flag non-default values and report in project status notes field; a revised parent CC-PRF  may be required.</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:DuctSystemTypePerf">
@@ -742,13 +760,13 @@ Flag non-default values and report in project status notes field; a revised CF1R
                                        <xsd:element name="D09_ResidentialCoolingZoneType" type="hvac:ResidentialCoolingZoneType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling Zoning Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  Reference value from B08 as default, which may be in B08__ResidentialCoolingZoneType or B08__NotApplicableMessage; however, If D05_CoolingSystemType == NoCooling then result = N/A stored in NotApplicableMessage; Else allow user to override default and pick from list: ZoneControlled display term Zonally Controlled, NotZoneControlled display term Not Zonal.  Flag non-default values and report in project status notes field, a revised CF1R may be required.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  Reference value from B08 as default, which may be in B08__ResidentialCoolingZoneType or B08__NotApplicableMessage; however, If D05_CoolingSystemType == NoCooling then result = N/A stored in NotApplicableMessage; Else allow user to override default and pick from list: ZoneControlled display term Zonally Controlled, NotZoneControlled display term Not Zonal.  Flag non-default values and report in project status notes field, a revised parent CC-PRF may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="D09_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling Zoning Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  Reference value from B08 as default, which may be in B08__ResidentialCoolingZoneType or B08__NotApplicableMessage; however, If D05_CoolingSystemType == NoCooling then result = N/A stored in NotApplicableMessage; Else allow user to override default and pick from list: ZoneControlled display term Zonally Controlled, NotZoneControlled display term Not Zonal.  Flag non-default values and report in project status notes field, a revised CF1R may be required.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  Reference value from B08 as default, which may be in B08__ResidentialCoolingZoneType or B08__NotApplicableMessage; however, If D05_CoolingSystemType == NoCooling then result = N/A stored in NotApplicableMessage; Else allow user to override default and pick from list: ZoneControlled display term Zonally Controlled, NotZoneControlled display term Not Zonal.  Flag non-default values and report in project status notes field, a revised parent CC-PRF may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -756,33 +774,33 @@ Flag non-default values and report in project status notes field; a revised CF1R
                                        <xsd:element name="D10_CondenserSpeedType" type="hvac:CondenserSpeedType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling System Compressor Speed Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  Reference value from B09 as default;  Else If CoolingSystemType (D05) ==  NoCooling, then result = N/A stored in the NotApplicableMessage and display text:  N/A;  Else allow user to override the default and pick from list:  MultiSpeed display term Multi-speed, SingleSpeed display term Single Speed.    Flag non-default values and report in project status notes field; a revised CF1R may be required.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  Reference value from B09 as default;  Else If CoolingSystemType (D05) ==  NoCooling, then result = N/A stored in the NotApplicableMessage and display text:  N/A;  Else allow user to override the default and pick from list:  MultiSpeed display term Multi-speed, SingleSpeed display term Single Speed.    Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="D10_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling System Compressor Speed Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  Reference value from B09 as default;  Else If CoolingSystemType (D05) ==  NoCooling, then result = N/A stored in the NotApplicableMessage and display text:  N/A;  Else allow user to override the default and pick from list:  MultiSpeed display term Multi-speed, SingleSpeed display term Single Speed.    Flag non-default values and report in project status notes field; a revised CF1R may be required.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  Reference value from B09 as default;  Else If CoolingSystemType (D05) ==  NoCooling, then result = N/A stored in the NotApplicableMessage and display text:  N/A;  Else allow user to override the default and pick from list:  MultiSpeed display term Multi-speed, SingleSpeed display term Single Speed.    Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:element name="D11_EAA_SpaceConditionSystemStatus" type="comp:EAA_SpaceConditionSystemStatus">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">SC System Status</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  if SC system is listed in section B, reference value from B11 as default but allow user to override,  else if SC system is not listed in section B. user selects from list;   Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing;  Flag non-default values and report in project status notes field; a revised CF1R may be required.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  if SC system is listed in section B, reference value from B11 as default but allow user to override,  else if SC system is not listed in section B. user selects from list;   Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing;  Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="D12_EAA_DuctSystemStatus" type="comp:EAA_DuctSystemStatus">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Duct System Status</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If D07 DuctsystemTypePerf = Ductless then result = N/A stored in the NotAppplicableMessage, else if SC system is listed in section B, reference value from B12 as default but allow user to override,  else if SC system is not listed in section B. user selects from list;   Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing, ExistingPlusNew display text Existing + New.  Flag non-default values and report in project status notes field; a revised CF1R may be required.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If D07 DuctsystemTypePerf = Ductless then result = N/A stored in the NotAppplicableMessage, else if SC system is listed in section B, reference value from B12 as default but allow user to override,  else if SC system is not listed in section B. user selects from list;   Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing, ExistingPlusNew display text Existing + New.  Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="D12_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Duct System Status</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If D07 DuctsystemTypePerf = Ductless then result = N/A stored in the NotAppplicableMessage, else if SC system is listed in section B, reference value from B12 as default but allow user to override,  else if SC system is not listed in section B. user selects from list;   Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing, ExistingPlusNew display text Existing + New.  Flag non-default values and report in project status notes field; a revised CF1R may be required.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field: If D07 DuctsystemTypePerf = Ductless then result = N/A stored in the NotAppplicableMessage, else if SC system is listed in section B, reference value from B12 as default but allow user to override,  else if SC system is not listed in section B. user selects from list;   Values are: New display text New, ExistingAlteration display text Altered, ExistingUnchanged display text Existing, ExistingPlusNew display text Existing + New.  Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -817,7 +835,9 @@ Flag non-default values and report in project status notes field; a revised CF1R
          <xsd:element name="Section_E" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Space Conditioning (SC) System Alteration Type Determination</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable only if one or more systems in section D has either D11 ==  ExistingAlteration or ExistingUnchanged, Or D12 == ExistingAlteration ExistingUnchanged or ExistingPlusNew.  Require one row of data for each SC system that satisfies one of these conditions</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+This Section is applicable only if one or more systems in section D has either D11 ==  ExistingAlteration or ExistingUnchanged, Or D12 == ExistingAlteration ExistingUnchanged or ExistingPlusNew.  Require one row of data for each SC system that satisfies one of these conditions</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -833,7 +853,7 @@ Flag non-default values and report in project status notes field; a revised CF1R
                                  <xsd:sequence>
                                     <xsd:element name="E01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto fill from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -864,12 +884,12 @@ Flag non-default values and report in project status notes field; a revised CF1R
                                     <xsd:element name="E06_Installing25PlusLinearFeetDucts" type="comp:Installing25PlusLinearFeetDucts">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Does work include installing more than 25 feet of ducts?</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Calculated field: As default If CF1R value is GT25 ft  
+                                          <xsd:documentation source="CalculationsAndRules">Calculated field: As default If parent CC-PRF value is GT25 ft  
 result = true;  
-Else If CF1R value is LTE 25 ft Or value == N/A no ducts  
+Else If parent CC-PRFvalue is LTE 25 ft Or value == N/A no ducts  
 result = false; 
-Else If no CF1R value available 
-result = false.  Allow user to override default and select from list: Yes (true value)  and No (false value).</xsd:documentation>
+Else If no parent CC-PRF value available 
+result = false.  Allow user to override default and select from list: Yes (true value)  and No (false value).Flag non-default values and report in project status notes; a revised parent CC-PRF may be required</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="E07_DuctSystemAllAccessibleForSealingWithPlus75PercentNewReplaced" type="comp:DuctSystemAllAccessibleForSealingWithPlus75PercentNewReplaced">
@@ -947,7 +967,16 @@ result = false.  Allow user to override default and select from list: Yes (true 
          <xsd:element name="Section_F" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Installed Heating  Equipment Information (not heat pumps)</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable only if at least one SC system in section D has D04_ResidentialHeatingSystemType != to a heating system in this list:  CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless.   AND section E applies and has at least one SC system with E10_ResidentialHvacHeatiingComponentType != NoHeatingComponentsAltered.     For each of the SC Systems listed in Section D that meet BOTH of the following 2 criteria:  D11_EAA_SpaceConditionSystemStatus == New and D04  != one of the heat pump types in the list above do the following: 1. Require one row of data in this table for each SC in section D D02 for which D06_NotApplicablemessage  == N/A.   2.  ALSO If Section E applies the for each SC system that meets BOTH of the following criteria: 1. D11_EAA_SpaceConditionSystemStatus == Altered  2. E05_InstallingNewComponents == true, do the following: For each of the SC Systems in Section E for which E10_ResidentialHvacHeatiingComponentType == GasFurnaceAHU, GasWallFurnace, Or Boiler;  require one row of data for each in indoor unit specified in D06_IndoorUnitCount for that system;  If E10_ResidentialHvacHeatiingComponentType == GasPackagedFurnace require one row of data to be entered for that system.</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+This Section is applicable only if at least one SC system in section D has D04_ResidentialHeatingSystemType != to a heating system in this list:  CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless.   AND section E applies and has at least one SC system with E10_ResidentialHvacHeatiingComponentType != NoHeatingComponentsAltered.     
+ 
+For each of the SC Systems listed in Section D that meet BOTH of the following 2 criteria:  D11_EAA_SpaceConditionSystemStatus == New and D04  != one of the heat pump types in the list above 
+do the following: 
+1. Require one row of data in this table for each SC in section D D02 for which D06_NotApplicablemessage  == N/A.   
+2.  ALSO If Section E applies   for each SC system that meets BOTH of the following criteria: 1. D11_EAA_SpaceConditionSystemStatus == Altered  2. E05_InstallingNewComponents == true, 
+do the following: For each of the SC Systems in Section E for which E10_ResidentialHvacHeatiingComponentType == GasFurnaceAHU, GasWallFurnace, Or Boiler;  require one row of data for each in indoor unit specified in D06_IndoorUnitCount for that system;  
+If E10_ResidentialHvacHeatiingComponentType == GasPackagedFurnace require one row of data to be entered for that system.</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -963,7 +992,7 @@ result = false.  Allow user to override default and select from list: Yes (true 
                                  <xsd:sequence>
                                     <xsd:element name="F01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto fill from D01,  ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1007,7 +1036,7 @@ result = false.  Allow user to override default and select from list: Yes (true 
                                        <xsd:element name="F06_EfficiencyType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If SC system is not listed in section C, user picks from list: AFUE, COP, HSPF, HSPF2 and N/A stored in NotApplicableMessage; Else as default reference value from C02_EfficiencyType but allow user to override and select from same list;   Flag non-default values and report in project status notes field; a revised CF1R may be required</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If SC system is not listed in section C, user picks from list: AFUE, COP, HSPF, HSPF2 and N/A stored in NotApplicableMessage; Else as default reference value from C02_EfficiencyType but allow user to override and select from same list;   Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:EfficiencyType">
@@ -1021,7 +1050,7 @@ result = false.  Allow user to override default and select from list: Yes (true 
                                        <xsd:element name="F06_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If SC system is not listed in section C, user picks from list: AFUE, COP, HSPF and N/A stored in NotApplicableMessage; Else as default reference value from C02_EfficiencyType but allow user to override and select from same list;   Flag non-default values and report in project status notes field; a revised CF1R may be required</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If SC system is not listed in section C, user picks from list: AFUE, COP, HSPF and N/A stored in NotApplicableMessage; Else as default reference value from C02_EfficiencyType but allow user to override and select from same list;   Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -1116,7 +1145,7 @@ End If</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="G01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto fill from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1290,7 +1319,9 @@ End If
          <xsd:element name="Section_H" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Installed Split System Indoor Unit ( Coil or Fan Coil) Equipment Information - applicable to DX or hydronic heating or cooling, coils and fan coil units</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable only if one or more systems in section D has  D04_ResidentialHeatingSystemType
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+This Section is applicable only if one or more systems in section D has  D04_ResidentialHeatingSystemType
   Or D05_ResidentialCoolingSystemType == CentralSplitAC, CentralSplitHP, DuctedMultiSplitAC, DuctlessMultiSplitAC, DuctedDuctlessMultiSplitAC, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessSplitAC (display term Ductless mini-split AC), DuctlessSplitHP (display term Ductless mini-split HP), DuctlessVRF_AC, DuctlessVRF_HP, EvaporativelyCooledCondenser, GasAbsorptionAC, CombinedHydronicForcedAir, HydronicForcedAir, HydronicHP_ForcedAir, IceStorageAC, SmallDuctHighVelocityHP, SmallDuctHighVelocityAC, DuctedMiniSplitAC, DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless Or VCHP_IndoorUnitDuctedAndDuctless;   For each SC system listed in Section D that meets both of the following 2 criteria: D11_EAA_SpaceConditionSystemStatus== New, D04 or D05 = one of the systems in the above list, require one row of data for each indoor unit specified in the quantity D06_IndoorUnitCount for that system;   ALSO if Section E applies, for each SC system in Section E that meets ALL of the following 3 criteria: D11_EAA_SpaceConditionSystemStatus== Altered And E05_InstallingNewComponents == true, and E10_ResidentialHvacHeatingComponentType or E11_ResidentialHvacCoolingComponentType == FancoilAHU, IndoorCoil Or NonFurnaceAHU,  require a minimum of one row of data for each indoor unit specified in the quantity D06_IndoorUnitCount for that system</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
@@ -1313,7 +1344,7 @@ End If
                                  <xsd:sequence>
                                     <xsd:element name="H01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto-filled from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1344,7 +1375,11 @@ End If
                                     <xsd:element name="H06_DoesUnitProvideCFI_IAQ" type="comp:DoesUnitProvideCFI_IAQ">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Does Indoor Unit Provide CFI IAQ Ventilation?</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If D06_IndoorUnitsCount  GTE 1 And all of the following conditions are true:  F01 == H01 And F02 == H02 And D04 == CentralGasFurnace result = F04_DoesUnitProvideCFI_IAQ;  Else If any of these conditions are true D06_IndoorUnitsCount  GT 1 Or CF1R VentilationSystemType for this dwelling unit  == Balanced then result = false display term No; Else user selects Yes (true value) or No (false value)</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If D06_IndoorUnitsCount  GTE 1 And all of the following conditions are true:  F01 == H01 And F02 == H02 And D04 == CentralGasFurnace 
+result = F04_DoesUnitProvideCFI_IAQ;  
+Else If any of these conditions are true D06_IndoorUnitsCount  GT 1 Or parent CC-PRF VentilationSystemType for this dwelling unit  == Balanced Or parent CC-PRF building type == Multifamily then 
+result = false display term No; Else user selects Yes (true value) or No (false value)
+End If</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
@@ -1422,7 +1457,7 @@ End If
                                  <xsd:sequence>
                                     <xsd:element name="I01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto-filled from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1507,7 +1542,7 @@ End If
                                  <xsd:sequence>
                                     <xsd:element name="J01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto-filled from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1682,7 +1717,9 @@ End If
             <xsd:annotation>
                <xsd:documentation source="FieldText">Altered Space Conditioning System Duct Information (
                   <d:lt/> 75% of duct system is altered; or duct system is not altered)</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable if  section E is applicable.  For each SC system in section E for which has E03_DuctedSystem == true And E09_ResidentialHvacAlterationType  == DuctSystemExistingExtended Or SpaceConditioningSystemAltered  do the following:  
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+This Section is applicable if  section E is applicable.  For each SC system in section E for which has E03_DuctedSystem == true And E09_ResidentialHvacAlterationType  == DuctSystemExistingExtended Or SpaceConditioningSystemAltered  do the following:  
  
 A. require one row of data for each space conditioning system in section F field F02 for which D04_ResidentialHeatingSystemType  == GasPackagedFurnace; 
  
@@ -1714,7 +1751,7 @@ G.  require one row of data for each indoor unit in the quantity specified by D1
                                  <xsd:sequence>
                                     <xsd:element name="K01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto fill from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1822,7 +1859,7 @@ result complies;
  
 Else If result  GTE K05_DuctRvalueLimit 
 result complies; 
-Else flag result as non-compliance value and report in project status notes field; a revised CF1R or revised installation may be required.
+Else flag result as non-compliance value and report in project status notes field; a revised parent CC-PRFor revised installation may be required.
 End if</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
@@ -2000,7 +2037,9 @@ Compliance check: If result == false then report in project status notes field t
          <xsd:element name="Section_L" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Installed New or Complete  Replacement Duct System Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable if at least one SC system in section D has D07_DuctSystemTypePerf != Ductless And either at least one system has D12_EAA_DuctSystemStatus == New Or Section E applies and at least one system has E07_ DuctSystemAllAccessibleForSealingWithPlus75PercentNewReplaced == true.  For all systems that satisfy these conditions require one row of data for the following:  
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+This Section is applicable if at least one SC system in section D has D07_DuctSystemTypePerf != Ductless And either at least one system has D12_EAA_DuctSystemStatus == New Or Section E applies and at least one system has E07_ DuctSystemAllAccessibleForSealingWithPlus75PercentNewReplaced == true.  For all systems that satisfy these conditions require one row of data for the following:  
  
 A.  require one row of data for each space conditioning system in section F field F02 for which D04_ResidentialHeatingSystemType  == GasPackagedFurnace; 
  
@@ -2032,7 +2071,7 @@ G.   enter one row of data for each indoor unit in the quantity specified by D13
                                  <xsd:sequence>
                                     <xsd:element name="L01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto-filled from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -2069,7 +2108,7 @@ G.   enter one row of data for each indoor unit in the quantity specified by D13
                                     <xsd:element name="L06_SupplyDuctLocation" type="hvac:SupplyDuctLocation">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Supply Duct Location</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If D07_DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits user selects from list below; Else reference value from D07_DuctSystemTypePerf   as default.  Allow user to overwrite only the following default values from D07_DuctSystemTypePerf: UnconditionedAttic, UnconditionedGarage , or Outdoors.  If overriding, user selects from this list: ConditionedSpace, ConditionedSpaceDuctsVLL, ConditionedSpaceExcep12ft,  ControlledVentilationCrawlSpace, Outdoors, UnconditionedAttic, UnconditionedBasement, UnconditionedCrawlSpace, UnconditionedGarage, DuctsInMultipleLocations.   Flag non-default values and report in project status notes field.  a revised CF1R may be required.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If D07_DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits user selects from list below; Else reference value from D07_DuctSystemTypePerf   as default.  Allow user to overwrite only the following default values from D07_DuctSystemTypePerf: UnconditionedAttic, UnconditionedGarage , or Outdoors.  If overriding, user selects from this list: ConditionedSpace, ConditionedSpaceDuctsVLL, ConditionedSpaceExcep12ft,  ControlledVentilationCrawlSpace, Outdoors, UnconditionedAttic, UnconditionedBasement, UnconditionedCrawlSpace, UnconditionedGarage, DuctsInMultipleLocations.   Flag non-default values and report in project status notes field.  a revised parent CC-PRF may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="L07_DuctRValue">
@@ -2102,7 +2141,7 @@ End If</xsd:documentation>
                                     <xsd:element name="L08_ReturnDuctLocation" type="hvac:ReturnDuctLocation">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Return Duct Location</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If D07_DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits user selects from list below; Else reference value from D07_DuctSystemTypePerf   as default.  Allow user to overwrite only the following default values from D07_DuctSystemTypePerf: UnconditionedAttic, UnconditionedGarage , or Outdoors.  If overriding, user picks from this list: ConditionedSpace, ConditionedSpaceDuctsVLL, ConditionedSpaceExcep12ft,  ControlledVentilationCrawlSpace, Outdoors, UnconditionedAttic, UnconditionedBasement, UnconditionedCrawlSpace, UnconditionedGarage, DuctsInMultipleLocations.   Flag non-default values and report in project status notes field.  a revised CF1R may be required.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If D07_DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits user selects from list below; Else reference value from D07_DuctSystemTypePerf   as default.  Allow user to overwrite only the following default values from D07_DuctSystemTypePerf: UnconditionedAttic, UnconditionedGarage , or Outdoors.  If overriding, user picks from this list: ConditionedSpace, ConditionedSpaceDuctsVLL, ConditionedSpaceExcep12ft,  ControlledVentilationCrawlSpace, Outdoors, UnconditionedAttic, UnconditionedBasement, UnconditionedCrawlSpace, UnconditionedGarage, DuctsInMultipleLocations.   Flag non-default values and report in project status notes field.  a revised parent CC-PRF may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="L09_DuctRValue">
@@ -2207,7 +2246,7 @@ result = true; display term Yes;
 Else user selects from list: Yes (Boolean true value), No (Boolean false value). 
 End if
  
- Compliance check: If result == false then report in project status notes field that exemption from mandatory HERS verification of system airflow has been claimed.  Enforcement agency confirmation is recommended.   Also report in project status notes field that better than minimum SEER or EER cannot not be claimed for performance compliance credit if the system cannot comply with the required HERS verification; a revised CF1R may be required.</xsd:documentation>
+ Compliance check: If result == false then report in project status notes field that exemption from mandatory HERS verification of system airflow has been claimed.  Enforcement agency confirmation is recommended.   Also report in project status notes field that better than minimum SEER or EER cannot not be claimed for performance compliance credit if the system cannot comply with the required HERS verification; a revised parent CC-PRF may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="L14_CanFanEfficacyProtocolsTestSystem" type="comp:CanFanEfficacyProtocolsTestSystem">
@@ -2224,7 +2263,7 @@ result = CanTest display term Yes ;
 Else  user selects from list: CanTest display term Yes, CanNotTest display term No. 
 End If 
  
-Compliance check: If result == CanNotTest  then report in project status notes field that exemption from mandatory HERS verification of system fan efficacy has been claimed.  Enforcement agency confirmation is recommended.   Also report in project status notes field that better than minimum SEER or EER cannot not be claimed for performance compliance credit if the system cannot comply with the required HERS verification; a revised CF1R may be required.</xsd:documentation>
+Compliance check: If result == CanNotTest  then report in project status notes field that exemption from mandatory HERS verification of system fan efficacy has been claimed.  Enforcement agency confirmation is recommended.   Also report in project status notes field that better than minimum SEER or EER cannot not be claimed for performance compliance credit if the system cannot comply with the required HERS verification; a revised parent CC-PRF may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
@@ -2280,7 +2319,7 @@ Compliance check: If result == CanNotTest  then report in project status notes f
                                  <xsd:sequence>
                                     <xsd:element name="M01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/Name from parent CC-PR</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto fill from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -2449,7 +2488,9 @@ Compliance check: If result == CanNotTest  then report in project status notes f
          <xsd:element name="Section_O" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">HERS Verification Requirements for Duct Systems</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This section applies if section K or section L applies;  Require one row of data for each of the indoor units listed in L03; Also require one row of data for each of the indoor units listed in K03</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">n this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+This section applies if section K or section L applies;  Require one row of data for each of the indoor units listed in L03; Also require one row of data for each of the indoor units listed in K03</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -2465,7 +2506,7 @@ Compliance check: If result == CanNotTest  then report in project status notes f
                                  <xsd:sequence>
                                     <xsd:element name="O01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/ Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/ Name from parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto fill from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -2495,7 +2536,7 @@ Compliance check: If result == CanNotTest  then report in project status notes f
                                           <xsd:documentation source="CalculationsAndRules">Calculated field:  If O04_DuctLeakageTestExemption != NoExemptions  result = false display term No; 
 Else If D04_ResidentialHeatingSystemType  Or D05_ResidentialCoolingSystemType  == VCHP_IndoorUnitDucted Or  VCHP_IndoorUnitDuctedAndDuctless And D11_EAA_SpaceConditionSystemStatus  == New result = true display term Yes;
  
-Else If the CF1R flags the requirement for HERS verification of duct leakage of system ID/name in O01 result = true display term Yes,  Else If Section E applies, then determine the result for this field by the user responses in E03, E04, E05 , E06, E07, E08, and use of Logic Table (inserted below section E); constrain user input for fields E03-E08 to allow only the available combinations of responses given in the Logic Table in rows a through t, and determine result for this field as follows:  If the term DctLk appears in the HERS column, then result = true, else result = false.</xsd:documentation>
+Else If the parent CC-PRF flags the requirement for HERS verification of duct leakage of system ID/name in O01 result = true display term Yes,  Else If Section E applies, then determine the result for this field by the user responses in E03, E04, E05 , E06, E07, E08, and use of Logic Table (inserted below section E); constrain user input for fields E03-E08 to allow only the available combinations of responses given in the Logic Table in rows a through t, and determine result for this field as follows:  If the term DctLk appears in the HERS column, then result = true, else result = false.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="O06_DuctsInConditionedSpaceVerification" type="comp:DuctsInConditionedSpaceVerification">
@@ -2551,7 +2592,7 @@ result is false.</xsd:documentation>
                                           <xsd:documentation source="FieldText">MCH-29 
                                              <d:line1/>Supply Duct Surface Area R-Value Buried Ducts</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Calculated field: If D04_ResidentialHeatingSystemType  Or D05_ResidentialCoolingSystemType  == VCHP_IndoorUnitDucted Or  VCHP_IndoorUnitDuctedAndDuctless And D11_EAA_SpaceConditionSystemStatus  == New result = false display term No;
-Else If  the CF1R flags the requirement for HERS verified duct design ( Supply Duct Surface Area R-Value or Buried Ducts) then result = true; else result = false.</xsd:documentation>
+Else If  the parent CC-PRF flags the requirement for HERS verified duct design ( Supply Duct Surface Area R-Value or Buried Ducts) then result = true; else result = false.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="O11_VentilationCoolingCreditVerificationRequired" type="comp:VentilationCoolingCreditVerificationRequired">
@@ -2579,7 +2620,9 @@ Else If  the CF1R flags the requirement for HERS verified duct design ( Supply D
          <xsd:element name="Section_P" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">HERS Verification Requirements For Space Conditioning Equipment</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This section is required If Section G has data Or If Section I has data. 
+               <xsd:documentation source="CalculationsAndRules">n this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
+ 
+This section is required If Section G has data Or If Section I has data. 
 Require one row of data for each SC System listed in G01_ResidentialSpaceConditioningSystemName and I01_ResidentialSpaceConditioningSystemName ALSO If section E applies enter one row of data for SC systems for which D11_EAA_SpaceConditionSystemStatus == ExistingUnchanged And E04 == true</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
@@ -2596,7 +2639,7 @@ Require one row of data for each SC System listed in G01_ResidentialSpaceConditi
                                  <xsd:sequence>
                                     <xsd:element name="P01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/ Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/ Name from parent CC-PRF</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto-filled from D01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -2610,7 +2653,7 @@ Require one row of data for each SC System listed in G01_ResidentialSpaceConditi
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">MCH-25 
                                              <d:line3/>Refrigerant Charge</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Calculated Field: If B11_EAA_SpaceConditionSystemStatus == New Or ExistingAlteration And If the CF1R reports that  HERS verification of Refrigerant Charge is required then result = true; Else If CF1R reports that  HERS verification of Refrigerant Charge is not required then result = false; Else If section E applies and the following conditions are true: D11_EAA_SpaceConditionSystemStatus == ExistingUnchanged And E04_ IncludesComponentWithRefrigerant == true
+                                          <xsd:documentation source="CalculationsAndRules">Calculated Field: If B11_EAA_SpaceConditionSystemStatus == New Or ExistingAlteration And If the parent CC-PRF reports that  HERS verification of Refrigerant Charge is required then result = true; Else If parent CC-PRF reports that  HERS verification of Refrigerant Charge is not required then result = false; Else If section E applies and the following conditions are true: D11_EAA_SpaceConditionSystemStatus == ExistingUnchanged And E04_ IncludesComponentWithRefrigerant == true
   result = true;  Else result = false. Display Yes and No to represent Boolean values true and false.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>

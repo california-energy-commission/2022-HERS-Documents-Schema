@@ -15,6 +15,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">General Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC)</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -22,26 +23,26 @@
                   <xsd:element name="A01_DwellingUnitName" type="com:DwellingUnitName">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling Unit Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Reference text from CF1R</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Reference text from parent CC</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ClimateZone" type="com:ClimateZone">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Climate Zone</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Reference text from CF1R</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Reference text from parent CC</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A03_DwellingUnitConditionedFloorArea" type="com:DwellingUnitConditionedFloorArea">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling Unit Total Conditioned Floor Area (ft<d:sup>2</d:sup>)</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Value is numeric: xxxxx  
-If CF1R parent is CF1R-PRF, then 
+If parent  CC is CF1R-PRF, then 
 If project scope = Newly Constructed (Addition Alone) 
 prompt user to enter a value equal to dwelling unit existing CFA + addition CFA, 
-Else reference the value from CF1R 
+Else reference the value from CF1R PRF 
 End If        
  
-Else If CF1R parent is CF1R-NCB-01, then 
+Else If parent  CC is CF1R-NCB-01, then 
 If project scope =  AdditionGT1000 then 
 prompt user to enter a value equal to dwelling unit existing CFA + addition CFA, 
 Else If project scope = NewBuildingConstruction, then 
@@ -50,16 +51,16 @@ reference value from CF1R-NCB field A10,
 End If
 End If
  
-Else If CF1R parent is CF1R-ADD-01, then 
+Else If parent  CC  is CF1R-ADD-01, then 
 If ResidentialLowriseBuildingType = SingleFamily 
 reference value from field A08 from the CF1R-ALT-02 that is required for the dwelling unit according to CF1R-ADD-01 Section J,  
 End If
  
-Else If CF1R parent is CF1R-ALT-01, then 
+Else If parent  CC is CF1R-ALT-01, then 
 If ResidentialLowriseBuildingType = SingleFamily,  
 reference value from field A08 from the CF1R-ALT-02 that is required for the dwelling unit according to CF1R-ALT-01 Section G 
 End If
-Else If CF1R parent is CF1R-ALT-02, then reference value from CF1R-ALT-02 field A08.  
+Else If parent  CC is CF1R-ALT-02, then reference value from CF1R-ALT-02 field A08.  
 End If   
  
  Allow user to override default and input value; flag overridden values and report in project status notes field</xsd:documentation>
@@ -68,14 +69,25 @@ End If
                   <xsd:element name="A04_ResidentialDwellingUnitSpaceConditioningCount" type="hvac:ResidentialDwellingUnitSpaceConditioningCount">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Number of Space Conditioning Systems in this Dwelling Unit.</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">integer xx; If parent is CF1R-ALT-02 doc type, then use as default the value referenced from CF1R ALT-02 Section A (field A10); or allow user to override the default and input a new value;  flag non-default values and report in project status notes field;  else if  parent is not CF1R-ALT-02 doc type, then user input the integer value</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If parent CC is CF1R-ALT-02, use value from parent Section A A10 as default Or allow user to ovrride default value and flag non-default values and report in project status notes field
+Else 
+user input the integer value xx
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="A05_ComplianceMethod" type="comp:ComplianceMethod">
+                  <xsd:element name="A05_ComplianceMethod">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Certificate of Compliance Type</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Reference document type property from CF1R; For choice Performance display text: performance (CF1R-PRF); for choice PrescriptiveAdditions display text:  prescriptive additions (CF1R-ADD)    For choice PrescriptiveAlterations display text: prescriptive alterations (CF1R-ALT);   For choice PrescriptiveNewConstruction display text: prescriptive newly constructed (CF1R-NCB)</xsd:documentation>
                      </xsd:annotation>
+                     <xsd:simpleType>
+                        <xsd:restriction base="comp:ComplianceMethod">
+                           <xsd:enumeration value="Performance"/>
+                           <xsd:enumeration value="PrescriptiveAdditions"/>
+                           <xsd:enumeration value="PrescriptiveAlterations"/>
+                           <xsd:enumeration value="PrescriptiveNewConstruction"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
                   </xsd:element>
                   <xsd:element name="A06_HvacLoadCalculationMethod" type="comp:HvacLoadCalculationMethod">
                      <xsd:annotation>
@@ -114,14 +126,23 @@ End If
                   <xsd:element name="A09_BedroomCount" type="com:BedroomCount">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling Unit Number of Bedrooms</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: integer xx;  If ComplianceMethod = Performance Then use as default the value referenced from the CF1F-PRF Or allow user to override  default and input a new valueconstrained to be GTE default value from CF1R-PRF,  which requires a flag the non-default value and report of change in the project status notes field.  Else (parent not CF1R-PRF) user inputs integer value.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: integer xx;  If A05_ComplianceMethod == Performance Then use as default the value referenced from the parent CC Or allow user to override  default and input a new value, constrained to be GTE to default value from parent CC, flag non-default values and report of change in the project status notes field.  
+Else If ComplianceMethod != Performance  then user inputs integer value.
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A09After" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Variant MCH-01b</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">MCH-01b - Space Conditioning Systems Ducts and Fans - Prescriptive Alterations</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: If1 ComplianceMethod  in A05 = Performance, then if2 CF1R-PRF project scope = Addition and/or Alteration Or Newly Constructed (Addition Alone) then display doc variation MCH-01d ;   elseif  CF1R-PRF project scope = Newly Constructed display doc variation  MCH-01a endif2;     ElseIf ComplianceMethod = PrescriptiveAlterations, Or  PrescriptiveAddiitions, then display doc variation MCH-01b;  ElseIf ComplianceMethod  equals PrescriptiveNewConstruction  then display doc variation MCH-01c  endif1</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: 
+If A05_ComplianceMethod  == Performance, 
+If CF1R-PRF project scope == Addition and/or Alteration Or Newly Constructed (Addition Alone) then display doc variation MCH-01d ;   
+Else If  CF1R-PRF project scope == Newly Constructed display doc variation  MCH-01a 
+End If     
+Else If A05_ComplianceMethod == PrescriptiveAlterations, Or  PrescriptiveAddiitions, then display doc variation MCH-01b;  
+Else If A05_ComplianceMethod  == PrescriptiveNewConstruction  then display doc variation MCH-01c  
+End If</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -130,7 +151,9 @@ End If
          <xsd:element name="Section_B" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Space Conditioning (SC) System Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">For this table every field except the last should reference values from CF1R as default; allow user to override the default and input a new value;  flag non-default values and report in project status notes field; a revised CF1R may be required</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC)
+Require a row of dat for each of the quantity of space conditioning systems in A04
+For this table every field except the last should reference values from parent CC as default; allow user to override the default and input a new value;  flag non-default values and report in project status notes field; a revised parent CC may be required</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -146,56 +169,58 @@ End If
                                  <xsd:sequence>
                                     <xsd:element name="B01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/ Name from CF1R</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from CF1R as default; allow user to override the default and input a new value; flag non-default values and report in project status notes field; a revised CF1R may be required.</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/ Name from parent CC</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as default; allow user to override the default and input a new value; flag non-default values and report in project status notes field; a revised parent CC may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B02_ResidentialHvacSystemAreaServed" type="hvac:ResidentialHvacSystemAreaServed">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">SC System Description of Area Served</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from CF1R as default; allow user to override the default and input a new value; flag non-default values and report in project status notes field; a revised CF1R may be required.  Require each entry to be unique in this dwelling unit i.e. unique within the scope of this instance of the MCH-01</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as default; allow user to override the default and input a new value; flag non-default values and report in project status notes field; a revised parent CC may be required.  Require each entry to be unique in this dwelling unit i.e. unique within the scope of this instance of the MCH-01</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B03_ResidentialHvacSystemConditionedArea" type="hvac:ResidentialHvacSystemConditionedArea">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">CFA served by this SC System (ft<d:sup>2</d:sup>)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If parent is CF1R-ALT-02, then reference values from CF1R as default, Else If parent is CF1R-PRF, then prompt user to enter value;  do not duplicate system names to be used</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as default.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B04_DuctedSystem" type="comp:DuctedSystem">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Is the SC system a ducted system?</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If parent is CF1R-ALT-02, then reference values from CF1R as default, Else If parent is CF1R-PRF, then prompt user to enter value;  do not duplicate system names to be used.   Display Yes and No to represent Boolean values true and false</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as default.  Display Yes and No to represent Boolean values true and false</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B05_IncludesComponentWithRefrigerant" type="comp:IncludesComponentWithRefrigerant">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Does work include installing a refrigerant containing component?</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If parent is CF1R-ALT-02, then reference values from CF1R as default, Else If parent is CF1R-PRF, then prompt user to enter value;  do not duplicate system names to be used   Display Yes and No to represent Boolean values true and false</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as default. 
+Display Yes and No to represent Boolean values true and false</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B06_InstallingNewComponents" type="comp:InstallingNewComponents">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Does work include installing new SC system components?</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If parent is CF1R-ALT-02, then reference values from CF1R as default, Else If parent is CF1R-PRF, then prompt user to enter value;  do not duplicate system names to be used.   Display Yes and No to represent Boolean values true and false</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as default.   
+Display Yes and No to represent Boolean values true and false</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B07_Installing25PlusLinearFeetDucts" type="comp:Installing25PlusLinearFeetDucts">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Does work include installing more than 25 feet of ducts?</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If parent is CF1R-ALT-02, then reference values from CF1R as default, Else If parent is CF1R-PRF, then prompt user to enter value;  do not duplicate system names to be used.   Display Yes and No to represent Boolean values true and false</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as default.   Display Yes and No to represent Boolean values true and false</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B08_DuctSystemAllAccessibleForSealingWithPlus75PercentNewReplaced" type="comp:DuctSystemAllAccessibleForSealingWithPlus75PercentNewReplaced">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Does work include installing an "entirely new duct system"?</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If parent is CF1R-ALT-02, then reference values from CF1R as default Else If parent is CF1R-PRF, then prompt user to enter value;  do not duplicate system names to be used.   Display Yes and No to represent Boolean values true and false</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as default.   Display Yes and No to represent Boolean values true and false</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B09_AllNewOrReplacedHvacSystem" type="comp:AllNewOrReplacedHvacSystem">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Does work include installing an "entirely new SC system"?</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If parent is CF1R-ALT-02, then reference values from CF1R as default, Else If parent is CF1R-PRF, then prompt user to enter value;  do not duplicate system names to be used.   Display Yes and No to represent Boolean values true and false</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as default.  Display Yes and No to represent Boolean values true and false</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B10_ResidentialHvacAlterationType" type="hvac:ResidentialHvacAlterationType">
@@ -221,7 +246,9 @@ End If
          <xsd:element name="Section_C" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Space Conditioning (SC) System Alterations Compliance Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">Require one row of data in this table for each of the SC Systems listed in Section B for which B10_ResidentialHvacAlterationType != NoAlterationsPerformed</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC)
+ 
+Require one row of data in this table for each of the SC Systems listed in Section B for which B10_ResidentialHvacAlterationType != NoAlterationsPerformed</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -237,7 +264,7 @@ End If
                                  <xsd:sequence>
                                     <xsd:element name="C01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/ Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/ Name from parent CC</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Reference value from B01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -250,7 +277,7 @@ End If
                                     <xsd:element name="C03_ResidentialHeatingSystemType" type="hvac:ResidentialHeatingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Heating System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from CF1R as default; 
+                                          <xsd:documentation source="CalculationsAndRules">Reference value from parent CC as default; 
  
 If result == NoHeating then check: there must be at least one heating system entered in this section C04 to comply, 
  
@@ -261,7 +288,7 @@ End If</xsd:documentation>
                                     <xsd:element name="C04_ResidentialHvacHeatingComponentType" type="hvac:ResidentialHvacHeatingComponentType" maxOccurs="unbounded">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Altered Heating Component</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from CF1R as default; allow user to override the default and pick as many as are applicable from list: GasFurnaceAHU, FancoilAHU, OutdoorCondensingUnit, IndoorCoil, Boiler, TXV_EXV, Compressor, RefrigerantLineset, NoHeatingComponentsAltered.  Flag non-default values and report in project status notes field; a revised CF1R may be required.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference value from parent CC as default; allow user to override the default and pick as many as are applicable from list: GasFurnaceAHU, FancoilAHU, OutdoorCondensingUnit, IndoorCoil, Boiler, TXV_EXV, Compressor, RefrigerantLineset, NoHeatingComponentsAltered.  Flag non-default values and report in project status notes field; a revised parent CC may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
@@ -270,9 +297,9 @@ End If</xsd:documentation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If C04_ResidentialHvacHeatiingComponentType == NoHeatingComponentsAltered result = NotApplicable stored in NotApplicablemessage; 
 Else If C03_ResidentialHeatingSystemType == Hydronic, CombinedHydronic, HydronicForcedAir, CombinedHydronicForcedAir, HydronicHP,  Or HydronicHP_ForcedAir  result = NotApplicable stored in NotApplicableMessage; 
-Else reference value from CF1R as default but allow user to override the default and pick one from list:  AFUE, HSPF, HSPF2, COP.  
+Else reference value from parent CC as default but allow user to override the default and pick one from list:  AFUE, HSPF, HSPF2, COP.  
  
-Flag non-default values and report in project status notes field; a revised CF1R may be required</xsd:documentation>
+Flag non-default values and report in project status notes field; a revised parent CC may be required</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:EfficiencyType">
@@ -288,9 +315,9 @@ Flag non-default values and report in project status notes field; a revised CF1R
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If C04_ResidentialHvacHeatiingComponentType == NoHeatingComponentsAltered result = NotApplicable stored in NotApplicablemessage; 
 Else If C03_ResidentialHeatingSystemType == Hydronic, CombinedHydronic, HydronicForcedAir, CombinedHydronicForcedAir, HydronicHP,  Or HydronicHP_ForcedAir  result = NotApplicable stored in NotApplicableMessage; 
-Else reference value from CF1R as default but allow user to override the default and pick one from list:  AFUE, HSPF, HSPF2, COP.  
+Else reference value from parent CC as default but allow user to override the default and pick one from list:  AFUE, HSPF, HSPF2, COP.  
  
-Flag non-default values and report in project status notes field; a revised CF1R may be required</xsd:documentation>
+Flag non-default values and report in project status notes field; a revised parent CC may be required</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -301,9 +328,9 @@ Flag non-default values and report in project status notes field; a revised CF1R
                                              <xsd:documentation source="CalculationsAndRules">If C05_NotApplicableMessage IsPresent
 result = NotApplicable stored in NotApplicablemessage
 Else If C05_EfficiencyType == AFUE
- reference AFUE value from CF1R as default; but allow user to override the default to enter numeric value xx.x;  
+ reference AFUE value from parent CC as default; but allow user to override the default to enter numeric value xx.x;  
 End If
-Check: default minimum value for AFUE= 0.80 display term 80%; Flag non-default values and report in project status notes field a revised CF1R may be required.</xsd:documentation>
+Check: default minimum value for AFUE= 0.80 display term 80%; Flag non-default values and report in project status notes field a revised parent CC may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_EfficiencyMinimumValueCOP" type="hvac:EfficiencyMinimumValueCOP">
@@ -312,9 +339,9 @@ Check: default minimum value for AFUE= 0.80 display term 80%; Flag non-default v
                                              <xsd:documentation source="CalculationsAndRules">If C05_NotApplicableMessage IsPresent
 result = NotApplicable stored in NotApplicablemessage
 Else If C05_EfficiencyType == COP; 
-reference COP value from CF1R as default; but allow user to override the default to enter numeric value xx.x;  
+reference COP value from parent CC as default; but allow user to override the default to enter numeric value xx.x;  
 End If
-Flag non-default values and report in project status notes field a revised CF1R may be required.</xsd:documentation>
+Flag non-default values and report in project status notes field a revised parent CC may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_EfficiencyMinimumValueHSPF" type="hvac:EfficiencyMinimumValueHSPF">
@@ -323,9 +350,9 @@ Flag non-default values and report in project status notes field a revised CF1R 
                                              <xsd:documentation source="CalculationsAndRules">If C05_NotApplicableMessage IsPresent
 result = NotApplicable stored in NotApplicablemessage
 Else If C05_EfficiencyType == HSPF; 
-reference HSPF value from CF1R as default; but allow user to override the default to enter numeric value xx.x;  
+reference HSPF value from parent CC as default; but allow user to override the default to enter numeric value xx.x;  
 End If
-Check: default minimum value  for HSPF=8.0  Flag non-default values and report in project status notes field a revised CF1R may be required.</xsd:documentation>
+Check: default minimum value  for HSPF=8.0  Flag non-default values and report in project status notes field a revised parent CC may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_EfficiencyMinimumValueHSPF2" type="hvac:EfficiencyMinimumValueHSPF2">
@@ -334,9 +361,9 @@ Check: default minimum value  for HSPF=8.0  Flag non-default values and report i
                                              <xsd:documentation source="CalculationsAndRules">If C05_NotApplicableMessage IsPresent
 result = NotApplicable stored in NotApplicablemessage
 Else If C05_EfficiencyType == HSPF2 
-reference HSPF2 value from CF1R as default; but allow user to override the default to enter numeric value xx.x;  
+reference HSPF2 value from parent CC as default; but allow user to override the default to enter numeric value xx.x;  
 End If
-Check: default minimum value  for HSPF2=6.7  Flag non-default values and report in project status notes field a revised CF1R may be required.</xsd:documentation>
+Check: default minimum value  for HSPF2=6.7  Flag non-default values and report in project status notes field a revised parent CC may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_NotApplicableMessage" type="comp:NotApplicableMessage">
@@ -351,20 +378,20 @@ End If</xsd:documentation>
                                     <xsd:element name="C07_ResidentialCoolingSystemType" type="hvac:ResidentialCoolingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Cooling System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from CF1R as default;</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference value from parent CC as default;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="C08_ResidentialHvacCoolingComponentType" type="hvac:ResidentialHvacCoolingComponentType" maxOccurs="unbounded">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Altered Cooling Component</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from CF1R as default; allow user to override the default and pick as many as are applicable from list: OutdoorCondensingUnit, FancoilAHU,  IndoorCoil, TXV_EXV, Compressor, RefrigerantLineset, NoCoolingComponentsAltered. Flag non-default values and report in project status notes field; a revised CF1R may be required</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference value from parent CC as default; allow user to override the default and pick as many as are applicable from list: OutdoorCondensingUnit, FancoilAHU,  IndoorCoil, TXV_EXV, Compressor, RefrigerantLineset, NoCoolingComponentsAltered. Flag non-default values and report in project status notes field; a revised parent CC may be required</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="C09_EfficiencyType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from CF1R as default; If C08_ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered, then result is NotApplicable stored in NotApplicableMessage, Else allow user to override the default by picking from list:  SEER, SEER2, EER, EER2, CEER, EERSEER, EER2SEER2.  Flag non-default values and report in project status notes field; a revised CF1R may be required</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference value from parent CC as default; If C08_ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered, then result is NotApplicable stored in NotApplicableMessage, Else allow user to override the default by picking from list:  SEER, SEER2, EER, EER2, CEER, EERSEER, EER2SEER2.  Flag non-default values and report in project status notes field; a revised parent CC may be required</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:EfficiencyType">
@@ -381,7 +408,7 @@ End If</xsd:documentation>
                                        <xsd:element name="C09_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Cooling Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from CF1R as default; If C08_ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered, then result is NotApplicable stored in NotApplicableMessage
+                                             <xsd:documentation source="CalculationsAndRules">Reference value from parent CC as default; If C08_ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered, then result is NotApplicable stored in NotApplicableMessage
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
@@ -392,7 +419,7 @@ End If</xsd:documentation>
                                              <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If C09_NotApplicableMessage IsPresent
 result  is NotApplicable stored in NotApplicableMessage
-Else If C09_EfficiencyType == SEER  Or EERSEER Reference SEER value from CF1R as default and allow user to override the default to enter SEER value: xx.x;  default minimum value for SEER=14;  allow user to overwrite default value, but flag non-default values and report in project status notes field a revised CF1R may be required</xsd:documentation>
+Else If C09_EfficiencyType == SEER  Or EERSEER Reference SEER value from parent CC as default and allow user to override the default to enter SEER value: xx.x;  default minimum value for SEER=14;  allow user to overwrite default value, but flag non-default values and report in project status notes field a revised parent CC may be required</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C10_EfficiencyMinimumValueSEER2" type="hvac:EfficiencyMinimumValueSEER2">
@@ -400,7 +427,7 @@ Else If C09_EfficiencyType == SEER  Or EERSEER Reference SEER value from CF1R as
                                              <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If C09_NotApplicableMessage IsPresent
 result  is NotApplicable stored in NotApplicableMessage
-Else If C09_EfficiencyType == SEER2   Or EER2SEER2 Reference SEER2 value from CF1R as default andallow user to override the default to enter SEER2 value: xx.x;   default minimum value for SEER2=13.4;  allow user to overwrite default value, but flag non-default values and report in project status notes field a revised CF1R may be required</xsd:documentation>
+Else If C09_EfficiencyType == SEER2   Or EER2SEER2 Reference SEER2 value from parent CC as default andallow user to override the default to enter SEER2 value: xx.x;   default minimum value for SEER2=13.4;  allow user to overwrite default value, but flag non-default values and report in project status notes field a revised parent CC may be required</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C10_NotApplicableMessage" type="comp:NotApplicableMessage">
@@ -418,7 +445,7 @@ End If</xsd:documentation>
                                              <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If C09_NotApplicableMessage IsPresent
 result  is NotApplicable stored in NotApplicableMessage
-Else If C09_EfficiencyType == EER  Or EERSEER Reference EER value from CF1R as default and allow user to override the default to enter EER value: xx.x;  default minimum value for EER=11.7;  allow user to overwrite default value, but flag non-default values and report in project status notes field a revised CF1R may be required</xsd:documentation>
+Else If C09_EfficiencyType == EER  Or EERSEER Reference EER value from parent CC as default and allow user to override the default to enter EER value: xx.x;  default minimum value for EER=11.7;  allow user to overwrite default value, but flag non-default values and report in project status notes field a revised parent CC may be required</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C10b_EfficiencyMinimumValueEER2" type="hvac:EfficiencyMinimumValueEER2">
@@ -426,7 +453,7 @@ Else If C09_EfficiencyType == EER  Or EERSEER Reference EER value from CF1R as d
                                              <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If C09_NotApplicableMessage IsPresent
 result  is NotApplicable stored in NotApplicableMessage
-Else If C09_EfficiencyType == EER2  Or EER2SEER2 Reference EER2 value from CF1R as default and allow user to override the default to enter EER2 value: xx.x;;  default minimum value for EER2=11.2;  allow user to overwrite default value, but flag non-default values and report in project status notes field a revised CF1R may be required</xsd:documentation>
+Else If C09_EfficiencyType == EER2  Or EER2SEER2 Reference EER2 value from parent CC as default and allow user to override the default to enter EER2 value: xx.x;;  default minimum value for EER2=11.2;  allow user to overwrite default value, but flag non-default values and report in project status notes field a revised parent CC may be required</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C10b_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER">
@@ -434,7 +461,7 @@ Else If C09_EfficiencyType == EER2  Or EER2SEER2 Reference EER2 value from CF1R 
                                              <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If C09_NotApplicableMessage IsPresent
 result  is NotApplicable stored in NotApplicableMessage
-Else If C09_EfficiencyType ==CEER Reference CEER value from CF1R as default and  allow user to override the default to enter EER2 value: xx.x;;    allow user to overwrite default value, but flag non-default values and report in project status notes field a revised CF1R may be required</xsd:documentation>
+Else If C09_EfficiencyType ==CEER Reference CEER value from parent CC as default and  allow user to override the default to enter EER2 value: xx.x;;    allow user to overwrite default value, but flag non-default values and report in project status notes field a revised parent CC may be required</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C10b_NotApplicableMessage" type="comp:NotApplicableMessage">
@@ -535,7 +562,7 @@ End If</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="D01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/ Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/ Name from parent CC</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Reference value from B01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -692,7 +719,7 @@ End If</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="E01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/ Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/ Name from parent CC</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Reference value from B01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -839,7 +866,7 @@ End If</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="F01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/ Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/ Name from parent CC</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Reference value from B01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1151,7 +1178,7 @@ End If</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="G01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/ Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/ Name from parent CC</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Reference value from B01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1405,7 +1432,7 @@ End If</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="H01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System Identification or Name</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System Identification or Name from parent CC</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Reference value from B01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1658,8 +1685,8 @@ Display Yes if result ==  true and No if result == false.</xsd:documentation>
                                     <xsd:element name="J09_ReturnDuctDesignVerificationRequired" type="comp:ReturnDuctDesignVerificationRequired">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">MCH-28 
-                                             <d:line2/>Return Duct Design - Table 150.0-B or C</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  If G11_DuctFilterGrilleSizingComplianceMethod == HERS_ReturnDuctDesignTable150BC then result = true;  Else result = false.   Display Yes if result ==  true and No if result == false.</xsd:documentation>
+                                             <d:line2/>Return Duct Design - Table 160.3-A or B</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Calculated field:  If G11_DuctFilterGrilleSizingComplianceMethod == HERS_ReturnDuctDesignTable160_3 then result = true;  Else result = false.   Display Yes if result ==  true and No if result == false.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                  </xsd:sequence>
@@ -1695,7 +1722,7 @@ Display Yes if result ==  true and No if result == false.</xsd:documentation>
                                  <xsd:sequence>
                                     <xsd:element name="K01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName">
                                        <xsd:annotation>
-                                          <xsd:documentation source="FieldText">SC System ID/ Name from CF1R</xsd:documentation>
+                                          <xsd:documentation source="FieldText">SC System ID/ Name from parent CC</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">Auto-filled from B01_ResidentialSpaceConditioningSystemName</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
