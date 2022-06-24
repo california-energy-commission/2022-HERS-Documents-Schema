@@ -56,6 +56,7 @@
          <xsd:element name="Section_A" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">VCHP System Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the CF1R Certificate of Compliance (CC) and MCH-01 refers to the CF2R-MCH-01 and MCH-25 refers to the CF2R-MCH-25</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -68,7 +69,7 @@
                   </xsd:element>
                   <xsd:element name="A01_ResidentialSpaceConditioningSystemName" type="hvac:ResidentialSpaceConditioningSystemName" >
                      <xsd:annotation>
-                        <xsd:documentation source="FieldText">SC System ID/Name from CF1R</xsd:documentation>
+                        <xsd:documentation source="FieldText">SC System ID/Name from parent CC</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">auto filled text: referenced from MCH01</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
@@ -87,7 +88,7 @@
                   <xsd:element name="A04_DoesMCH25VerifyRefrigCharge" type="comp:DoesMCH25VerifyRefrigCharge" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status: Refrigerant charge verification from MCH-25</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If the system has a registered CF2R-MCH-25 that indicates compliance with the refrigerant charge verification requirement, then result = true display term System Complies with Refrigerant Charge verification Requirements; Else result = false display term System does not comply.  A registered MCH-25 for this sytem is required</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If the system has a registered MCH-25 that indicates compliance with the refrigerant charge verification requirement, then result = true display term System Complies with Refrigerant Charge verification Requirements; Else result = false display term System does not comply.  A registered MCH-25 for this sytem is required</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A05_DoesIndoorUnitSupplyAllRooms" type="comp:DoesIndoorUnitSupplyAllRooms" >
@@ -102,7 +103,9 @@
          <xsd:element name="Section_B" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">VCHP Indoor Unit Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">Provide one row of data for each of the indoor units listed on the MCH-01 that are associated with the SC system ID and area served data in A01 and A02.  For indoor unit information refer to MCH-01a Section G or J; otherwise refer to MCH-01d Section H, K, L</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the CF1R Certificate of Compliance (CC) and MCH-01 refers to the CF2R-MCH-01 and MCH-23 refers to the CF2R-MCH-23
+ 
+Provide one row of data for each of the indoor units listed on the MCH-01 that are associated with the SC system ID and area served data in A01 and A02.  For indoor unit information refer to MCH-01a Section G or J; otherwise refer to MCH-01d Section H, K, L</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -159,7 +162,8 @@
                                     <xsd:element name="B04_IndoorUnitAreaServed" type="hvac:IndoorUnitAreaServed" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Conditioned Floor Area served By The Indoor Unit (ft[d:sup]2[/d:sup])</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from CF2R-MCH-33 B04 as default and allow the user to override the default value and enter a different numeric value xxxx.x.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference value from MCH-33 as default but let User override the default and enter a different numeric value xxxx.x.
+Require that the sum of the values in this column are equal to A03_ResidentialHvacSystemAreaServed as condition for completing this report.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
@@ -194,7 +198,7 @@
                                        <xsd:element name="B07_DoesMCH23VerifyAirFlowRate" type="comp:DoesMCH23VerifyAirFlowRate" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Status: Airflow Rate Verification from MCH-23</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If B03_IndoorUnitDuct == Ductless  result = N/A stored in NotApplicablemessage; Else If system has registered CF2R-MCH-23 that indicates compliance with minimum airflow rate requirement, result = true display term  System complies with airflow rate verification requirements; Else result = false display term System does not comply.  A registered MCH-23 for this system is required</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If B03_IndoorUnitDuct == Ductless  result = N/A stored in NotApplicablemessage; Else If system has registered MCH-23 that indicates compliance with minimum airflow rate requirement, result = true display term  System complies with airflow rate verification requirements; Else result = false display term System does not comply.  A registered MCH-23 for this system is required</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B07_NotApplicableMessage" type="comp:NotApplicableMessage" >
@@ -208,7 +212,7 @@
                                        <xsd:element name="B08_VerifyFanNonContinuousOperation" type="comp:VerifyFanNonContinuousOperation" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Is Field Verification of Default Non-Continuous Fan Operation Required?</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If B03_IndoorUnitDuct == Ductless  result = N/A stored in NotApplicablemessage; Else If CF1R-PRF indicates credit for [Certified Auto-Fan] operation was specified result = true display term Yes; Else result = false display term No</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If B03_IndoorUnitDuct == Ductless  result = N/A stored in NotApplicablemessage; Else If parent CC indicates credit for [Certified Auto-Fan] operation was specified result = true display term Yes; Else result = false display term No</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B08_NotApplicableMessage" type="comp:NotApplicableMessage" >
@@ -504,7 +508,9 @@
          <xsd:element name="Section_G" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Verification: Installed Air Filter Sizing and Pressure Drop - RA3.1.4.7 and RA3.1.4.8</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">The section is required if in section B at least one indoor unit has B03 != Ductless; Require one row of data for each in the quantity reported in B05_DuctSystemAirFilterDeviceCount for each indoor unit in B01 that satisfies this requirement</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section MCH01 refers to the CF2R-MCH-01
+ 
+The section is required if in section B at least one indoor unit has B03 != Ductless; Require one row of data for each in the quantity reported in B05_DuctSystemAirFilterDeviceCount for each indoor unit in B01 that satisfies this requirement</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>

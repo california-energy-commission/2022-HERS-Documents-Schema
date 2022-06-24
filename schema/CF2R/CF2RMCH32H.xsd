@@ -56,6 +56,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Local Mechanical Exhaust - General Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC) and Mch01 refers to the CF2R-Mch-01</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -69,13 +70,13 @@
                   <xsd:element name="A01_DwellingUnitName" type="com:DwellingUnitName" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling Unit Name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Referenced data from Mch01</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Referenced data from parent CC</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ResidentialBuildingTypeMechExhaust" type="com:ResidentialBuildingTypeMechExhaust" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Building Type</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Referenced data from CF1R, Values MultiFamily display term Multifamily, SingleFamilyAttached display term Single family attached, SingleFamilyDetached display term Single family detached</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Referenced data from parent CC, Values MultiFamily display term Multifamily, SingleFamilyAttached display term Single family attached, SingleFamilyDetached display term Single family detached</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:choice maxOccurs="1">
@@ -200,7 +201,7 @@ End If</xsd:documentation>
                   </xsd:element>
                   <xsd:element name="B_Table150G" minOccurs="0">
                      <xsd:annotation>
-                        <xsd:documentation source="FieldText">Table 150.0_G  Kitchen Rnge Hood Aiflow Rates (cfm) and ASTM E3087 Capture Efficiency(CE) Ratings According to Dwelling Unit Floor Area and Kitchen Range Fuel Type</xsd:documentation>
+                        <xsd:documentation source="FieldText">Table 150.0_G  Kitchen Range Hood Aiflow Rates (cfm) and ASTM E3087 Capture Efficiency(CE) Ratings According to Dwelling Unit Floor Area and Kitchen Range Fuel Type</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Insert in report Table 150.0-G from 2022 T24 Standards as shown in the layout doc</xsd:documentation>
                         <xsd:appinfo source="filenameterm">
                            <dtyp:filenameterm>2019Mch32Table5.html</dtyp:filenameterm>
@@ -494,13 +495,13 @@ End If</xsd:documentation>
                      <xsd:element name="D01_TotalContinuousAirflow" type="comp:TotalContinuousAirflow" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Total Continuous Ventilation Airflow</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">If no system has C08_KitchenExhaustOperation == ContinuousOperation result = N/A stored in NotApplicableMessage; Else for all systems where C08_KitchenExhaustOperation == ContinuousOperation result = SUM ALL (C05_SystemRatedAirflowHVI)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">If NO system has C08_KitchenExhaustOperation == ContinuousOperation result = N/A stored in NotApplicableMessage; Else for all systems where C08_KitchenExhaustOperation == ContinuousOperation result = SUM ALL (C05_SystemRatedAirflowHVI)</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="D01_NotApplicableMessage" type="comp:NotApplicableMessage" >
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Total Continuous Ventilation Airflow</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">If no system has C08_KitchenExhaustOperation == ContinuousOperation result = N/A stored in NotApplicableMessage; Else for all systems where C08_KitchenExhaustOperation == ContinuousOperation result = SUM ALL (C05_SystemRatedAirflowHVI)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">If NO system has C08_KitchenExhaustOperation == ContinuousOperation result = N/A stored in NotApplicableMessage; Else for all systems where C08_KitchenExhaustOperation == ContinuousOperation result = SUM ALL (C05_SystemRatedAirflowHVI)</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
@@ -558,7 +559,7 @@ End If</xsd:documentation>
                   <xsd:element name="Cap03_CaptureEfficiency" type="comp:CaptureEfficiency" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">CEC-Approved Directory Listed Rated Capture Efficiency (%)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">User input numeric efficiecy in percentage units</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User input numeric efficiency in percentage units</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="Cap04_MinimumRequiredCaptureEfficiency" type="comp:MinimumRequiredCaptureEfficiency" >

@@ -15,6 +15,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Local Mechanical Exhaust - General Information</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC) and Mch01 refers to the CF2R-Mch-01</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -35,7 +36,7 @@
                   <xsd:element name="A02_ResidentialBuildingTypeMechExhaust" type="com:ResidentialBuildingTypeMechExhaust">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Building Type</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Referenced data from CF1R, Values MultiFamily display term Multifamily, SingleFamilyAttached display term Single family attached, SingleFamilyDetached display term Single family detached</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Referenced data from parent CC, Values MultiFamily display term Multifamily, SingleFamilyAttached display term Single family attached, SingleFamilyDetached display term Single family detached</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:choice maxOccurs="1">
