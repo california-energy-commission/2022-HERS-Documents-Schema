@@ -60,13 +60,7 @@
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="A01_ResidentialLowriseBuildingType" type="com:ResidentialLowriseBuildingType"  maxOccurs="unbounded">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">Building Type</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">User selects from Single family or Multifamily</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="A02_ResElectricReadyScope"  maxOccurs="unbounded">
+                  <xsd:element name="A01_ResElectricReadyScope"  maxOccurs="unbounded">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Project Scope</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">User selects all that apply: ReadyHeatingHP, ReadyElecCooktop, ReadyElecDryer</xsd:documentation>
