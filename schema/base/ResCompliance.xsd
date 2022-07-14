@@ -3937,7 +3937,7 @@
             <dtyp:displayterm value="LED_PowerSupplyGTE80percentEfficient">LED + pwr supply 80%+ eff.</dtyp:displayterm>
             <dtyp:displayterm value="MetalHalideBallastGTE80PercentEfficient">Metal halide (pulse start that are 320 watts or smaller, are not 250 watt or 175 watt lamps) + ballast  80%+ eff.</dtyp:displayterm>
             <dtyp:displayterm value="MetalHalideBallastGTE88PercentEfficient">Metal halide lamps (pulse start or ceramic) + ballast  88%+ eff.</dtyp:displayterm>
-            <dtyp:displayterm value="NeonOrColdCathodeWithPowerGTE68PercentEfficient">Neon/cold cathode + trans./pwr (of supply output current [d:lt/]50mA) 68%+ eff.</dtyp:displayterm>
+            <dtyp:displayterm value="NeonOrColdCathodeWithPowerGTE68PercentEfficient">Neon/cold cathode + trans./pwr (of supply output current [d:gte/]50mA) 68%+ eff.</dtyp:displayterm>
             <dtyp:displayterm value="NeonOrColdCathodeWithPowerGTE75PercentEfficient">Neon/cold cathode + trans./pwr (of supply output current [d:lt/]50mA) 75%+ eff.</dtyp:displayterm>
             <dtyp:displayterm value="T20CompliantSingleVoltageExternalPower">NA: Title 20 compliant single voltage extrnl pwr supply</dtyp:displayterm>
          </xsd:appinfo>
@@ -18966,6 +18966,22 @@ Document Data</dtyp:displayterm>
          <xsd:element name="header04_InputFilenameEXC" type="comp:BuildingInputFileName" ></xsd:element>
       </xsd:sequence>
    </xsd:complexType>
+   <xsd:complexType name="HeaderHERS">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>Compliance Document Header</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="header01_ProjectName" type="comp:ProjectName" ></xsd:element>
+         <xsd:element name="header02_EnforcementAgency" type="comp:EnforcementAgency" ></xsd:element>
+         <xsd:element name="header03_PermitNumber" type="comp:PermitNumber" ></xsd:element>
+         <xsd:element name="header04_ProjectAddress" type="comp:StreetAddress" ></xsd:element>
+         <xsd:element name="header05_City" type="comp:City" ></xsd:element>
+         <xsd:element name="header06_Zipcode" type="comp:Zipcode" ></xsd:element>
+         <xsd:element name="header07_PermitDate" type="comp:ComplianceApplicationDate" ></xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>   
    <xsd:complexType name="HeaderLMCC">
       <xsd:annotation>
          <xsd:appinfo source="displaytermType">

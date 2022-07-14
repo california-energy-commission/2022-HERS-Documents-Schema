@@ -314,7 +314,7 @@ All references to MCH-28 in this section refer to the parent CF2R-MCH-28</xsd:do
             <xsd:element name="DocumentData">
                <xsd:complexType>
                   <xsd:sequence>
-                     <xsd:element name="Header" type="comp:HeaderCF2R_3R"/>
+                     <xsd:element name="Header" type="comp:HeaderHERS"/>
                      <xsd:element ref="cF3RMCH28H"/>
                      <xsd:element name="DocAuthor" type="comp:DocumentAuthor"/>
                      <xsd:element name="RespPerson" type="comp:ResponsiblePersonCF3R"/>

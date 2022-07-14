@@ -2165,7 +2165,7 @@ If at least one water heating system has A2 Hpd07_ResidentialDHWDwellingUnitDist
             <xsd:element name="DocumentData">
                <xsd:complexType>
                   <xsd:sequence>
-                     <xsd:element name="Header" type="comp:HeaderCF2R_3R"/>
+                     <xsd:element name="Header" type="comp:HeaderHERS"/>
                      <xsd:element ref="cF2RPLB22H"/>
                      <xsd:element name="DocAuthor" type="comp:DocumentAuthor"/>
                      <xsd:element name="RespPerson" type="comp:ResponsiblePersonCF2R_H"/>
