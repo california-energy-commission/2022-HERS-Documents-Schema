@@ -233,61 +233,6 @@
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="Ctrl01" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">150.0(k)2E Lighting in Drawers/Cabinets</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">150.0(k)2E: For lighting internal to drawers and cabinetry with opaque fronts or doors, controls that turn light off when the drawer or door is closed shall be provided.</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="Ctrl02" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">150.0(k)2F</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">150.0(k)2F: Lighting in living rooms, dining rooms, kitchens, bedrooms, and other habitable spaces, shall have readily accessible wall-mounted dimming controls that allow the lighting to be manually adjusted up and down.  Forward phase cut dimmers controlling LED light sources in these spaces shall comply with NEMA SSL 7A.
-                           <d:line2/>Exception: Luminaires connected to a circuit with controlled lighting power less than 20 watts; or 
-                           <d:line1/>Exception: Luminaires controlled by an occupancy or vacancy sensor providing automatic-off functionality.</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="Ctrl03" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">Wall mounted controls</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">150.0(k)2A Lighting has readily accessible wall-mounted controls that allow the lighting to be manually turned ON and  OFF.</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="Ctrl04" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">150.0(k)2B No Bypass of Dimmer or Vacancy sensor</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">150.0(k)2B: No control bypasses a dimmer, occupancy sensor or vacancy sensor function where that dimmer or sensor has been installed to comply with Section 150.0(k)</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="Ctrl05" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">150.0(k)2C Section 110.9 Requirements</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">150.0(k)2C: Lighting controls comply with the applicable requirements in Section 110.9.</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="Ctrl06" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">150.0(k)2D Energy Management Control Systems</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">150.0(k)2D: An Energy Management Control System (EMCS) or a multiscene programmable control can be used to comply with dimming, occupancy, and lighting control requirements in Section 150.0(k)2 if it provides the functionality of the specified control in accordance with Section 110.9, and the physical controls (readily accessible wall-mounted controls that allow the lighting to be manually turned ON and OFF).</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="Ctrl07" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">150.0(k)2G</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">150.0(k)2G: Independent Controls: 
-                           <d:l t="*">
-                              <d:list> Integrated lighting of exhaust fans is controlled independently from the fans. </d:list>
-                              <d:list> Undercabinet lighting, undershelf lighting, interior lighting of display cabinets, and switched outlets are controlled separately from ceiling installed lighting.</d:list>
-                           </d:l>
-                        </xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="CtrlEndNote1" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
@@ -330,6 +275,12 @@
                            <d:b>bathrooms, garages, laundry rooms, utility rooms and walk-in closets</d:b>, at least one installed luminaire is controlled by an occupancy or vacancy sensor providing automatic-off functionality.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
+                  <xsd:element name="EEndNote1" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
@@ -341,7 +292,57 @@
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="EEndNote1" minOccurs="0">
+                  <xsd:element name="Ctrl01" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">150.0(k)2E Lighting in Drawers/Cabinets</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">150.0(k)2Eii: For lighting internal to drawers and cabinetry with opaque fronts or doors, controls that turn light off when the drawer or door is closed shall be provided.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Ctrl02" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">150.0(k)2F</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">150.0(k)2F: Lighting in habitable spaces, including but not limited to living rooms, dining rooms, kitchens, and bedrooms, have readily accessible wall-mounted dimming controls that allow the lighting to be manually adjusted up and down.  Forward phase cut dimmers controlling LED light sources in these spaces shall comply with NEMA SSL 7A.
+                           <d:line2/>EXCEPTION 1: Ceiling fans may provide control of integrated lighting via a remote control. 
+                           <d:line1/> EXCEPTION 2:Luminaires connected to a circuit with controlled lighting power less than 20 watts; or controlled by an occupancy or vacancy sensor providing automatic-off functionality.
+                           <d:line1/>EXCEPTION 3: Navigation lighting such as night lights, step lights, and path lights less than 5 watts, and lighting internal to drawers and cabinetry with opaque fronts or doors or with automatic off controls.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Ctrl03" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">Wall mounted controls</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">150.0(k)2A Lighting has readily accessible wall-mounted controls that allow the lighting to be manually turned ON and  OFF.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Ctrl04" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">150.0(k)2B No Bypass of Dimmer or Vacancy sensor</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">150.0(k)2B: No control bypasses a dimmer, occupancy sensor or vacancy sensor function where that dimmer or sensor has been installed to comply with Section 150.0(k)</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Ctrl05" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">150.0(k)2C Section 110.9 Requirements</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">150.0(k)2C: Lighting controls comply with the applicable requirements in Section 110.9.</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Ctrl06" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">150.0(k)2D Energy Management Control Systems</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">150.0(k)2D: An Energy Management Control System (EMCS) or a multiscene programmable control can be used to comply with dimming, occupancy, and lighting control requirements in Section 150.0(k)2 if it provides the functionality of the specified control in accordance with Section 110.9, and the physical controls (readily accessible wall-mounted controls that allow the lighting to be manually turned ON and OFF).</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="Ctrl07" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">150.0(k)2G</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">150.0(k)2G: Independent Controls: 
+                           <d:l t="*">
+                              <d:list> Integrated lighting of exhaust fans is controlled independently from the fans. </d:list>
+                              <d:list> Undercabinet lighting, undershelf lighting, interior lighting of display cabinets, and switched outlets are controlled separately from ceiling installed lighting.</d:list>
+                           </d:l>
+                        </xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="CtrlEndNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">End Note 1</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">The responsible person's signature on this compliance document affirms that all applicable requirements in this table have been met.</xsd:documentation>
