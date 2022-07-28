@@ -6800,7 +6800,7 @@
    </xsd:simpleType>
    <xsd:simpleType name="EDR_ProposedSourceEnergy">
       <xsd:annotation>
-         <xsd:documentation>  Units: kBtu per ft2 per yr</xsd:documentation>
+         <xsd:documentation>  Units: none</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal1Place">
       </xsd:restriction>
@@ -6821,7 +6821,7 @@
    </xsd:simpleType>
    <xsd:simpleType name="EDR_StandardSourceEnergy">
       <xsd:annotation>
-         <xsd:documentation>  Units: kBtu per ft2 per yr</xsd:documentation>
+         <xsd:documentation>  Units: none</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal1Place">
       </xsd:restriction>
@@ -8923,6 +8923,20 @@
       <xsd:restriction base="dtyp:String50Char">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="HeatPumpCoolCapacity82F">
+      <xsd:annotation>
+         <xsd:documentation>  Units: Btu per h</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="HeatPumpCoolCapacity95F">
+      <xsd:annotation>
+         <xsd:documentation>  Units: Btu per h</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="HeatPumpDistRequirement">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
@@ -8951,6 +8965,13 @@
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="HeatPumpHeatCapacity47F">
+      <xsd:annotation>
+         <xsd:documentation>  Units: Btu per h</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="HeatPumpHeatCapacity5F">
       <xsd:annotation>
          <xsd:documentation>  Units: Btu per h</xsd:documentation>
       </xsd:annotation>
@@ -11789,6 +11810,13 @@
       <xsd:restriction base="dtyp:DecimalNonnegative">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="MarginEUI">
+      <xsd:annotation>
+         <xsd:documentation>  Units: kBtu per ft2 per yr</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:Decimal">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="MarginGrossEUI">
       <xsd:annotation>
          <xsd:documentation>  Units: kBtu per ft2 per yr</xsd:documentation>
@@ -13971,6 +13999,13 @@
    <xsd:simpleType name="ProposedDesignEfficiency">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:Decimal">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProposedDesignEUI">
+      <xsd:annotation>
+         <xsd:documentation>  Units: kBtu per ft2 per yr</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -16431,6 +16466,13 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    <xsd:simpleType name="StandardDesignEfficiency">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:Decimal">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="StandardDesignEUI">
+      <xsd:annotation>
+         <xsd:documentation>  Units: kBtu per ft2 per yr</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -18994,6 +19036,7 @@ Document Data</dtyp:displayterm>
          <xsd:element name="DocumentAuthor" type="comp:DocumentAuthor" ></xsd:element>
          <xsd:element name="Footer" type="comp:Footer" ></xsd:element>
          <xsd:element name="HeaderHERS" type="comp:HeaderHERS" ></xsd:element>
+         <xsd:element name="HeaderHERSCC" type="comp:HeaderHERSCC" ></xsd:element>
          <xsd:element name="HeaderNRCV" type="comp:HeaderNRCV" ></xsd:element>
          <xsd:element name="Payload" type="comp:Payload" ></xsd:element>
          <xsd:element name="ResponsiblePersonNRCV" type="comp:ResponsiblePersonNRCV" ></xsd:element>
@@ -19099,6 +19142,22 @@ Document Data</dtyp:displayterm>
          <xsd:element name="header05_City" type="comp:City" ></xsd:element>
          <xsd:element name="header06_Zipcode" type="comp:Zipcode" ></xsd:element>
          <xsd:element name="header07_PermitDate" type="comp:Header07_PermitDate" ></xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="HeaderHERSCC">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>Compliance Document Header</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="header01_ProjectName" type="comp:ProjectName" ></xsd:element>
+         <xsd:element name="header02_EnforcementAgency" type="comp:EnforcementAgency" ></xsd:element>
+         <xsd:element name="header03_PermitNumberCC" type="comp:PermitNumber" minOccurs="0" ></xsd:element>
+         <xsd:element name="header04_ProjectAddress" type="comp:StreetAddress" ></xsd:element>
+         <xsd:element name="header05_City" type="comp:City" ></xsd:element>
+         <xsd:element name="header06_Zipcode" type="comp:Zipcode" ></xsd:element>
+         <xsd:element name="header07_PermitDateCC" type="comp:PermitDate" minOccurs="0" ></xsd:element>
       </xsd:sequence>
    </xsd:complexType>
    <xsd:complexType name="HeaderLMCC">
