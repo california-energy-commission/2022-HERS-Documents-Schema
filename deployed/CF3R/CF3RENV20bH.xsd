@@ -451,7 +451,7 @@ End If</xsd:documentation>
                         <xsd:documentation source="FieldText">Correction Notes</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">If G04_DoesSystemComplyWithRequirements value == Fail, then text entry in this Corrections Notes field is required</xsd:documentation>
                         <xsd:appinfo source="PrevName">
-                           <dtyp:prevSchema version="2022.0.000" changed="cell number">G06_SectionCorrectionNotes</dtyp:prevSchema>
+                           <dtyp:prevSchema version="2019.1.006" changed="cell number">G06_SectionCorrectionNotes</dtyp:prevSchema>
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>

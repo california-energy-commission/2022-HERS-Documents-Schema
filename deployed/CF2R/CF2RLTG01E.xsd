@@ -134,7 +134,7 @@
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Blank Electrical Boxes installed more than 5 feet from finished floor (See Section J)</xsd:documentation>
                         <xsd:appinfo source="PrevName">
-                           <dtyp:prevSchema version="2022.0.000" changed="cell number">A11_BlankElectricalBoxesInstalled</dtyp:prevSchema>
+                           <dtyp:prevSchema version="2019.1.006" changed="cell number">A11_BlankElectricalBoxesInstalled</dtyp:prevSchema>
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>

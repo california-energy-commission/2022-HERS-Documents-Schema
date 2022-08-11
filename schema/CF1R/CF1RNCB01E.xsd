@@ -102,17 +102,11 @@
                         <xsd:documentation source="CalculationsAndRules">User input:  Zipcode</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="A08_SiteFuelType" >
+                  <xsd:element name="A08_SiteFuelType" type="com:SiteFuelType" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Fuel Type</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">User selects from list: Natural Gas, Propane</xsd:documentation>
                      </xsd:annotation>
-                     <xsd:simpleType>
-                        <xsd:restriction base="com:SiteFuelType">
-                           <xsd:enumeration value="NaturalGas"/>
-                           <xsd:enumeration value="Propane"/>
-                        </xsd:restriction>
-                     </xsd:simpleType>
                   </xsd:element>
                   <xsd:element name="A09_ClimateZone" type="com:ClimateZone" >
                      <xsd:annotation>

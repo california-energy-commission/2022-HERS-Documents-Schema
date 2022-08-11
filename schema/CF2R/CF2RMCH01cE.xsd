@@ -1517,10 +1517,10 @@ This Section is applicable only if  one or more systems in section C has  value 
                                           </xsd:restriction>
                                        </xsd:simpleType>
                                     </xsd:element>
-                                    <xsd:element name="I08_DuctMinimumRValueExceptions" type="comp:DuctMinimumRValueExceptions"  maxOccurs="unbounded">
+                                    <xsd:element name="I08_DuctMinimumRValueExceptions" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Exception from Min R-Value for Ducts In Conditioned Space</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">default result = NoException; Allow user to override and select one or more from list; Allow user to override default and select one or both of the following: 
+                                          <xsd:documentation source="CalculationsAndRules">default result = NoException; Allow user to override and select one from list; 
 UninsulatedInDirectConditioning display term Portions of ducts uninsulated  or less than R-6 in conditioned space
  
 ALSO 
@@ -1529,6 +1529,13 @@ allow user to select  RValueLT6EntirelyInConditioned   display term Ducts uninsu
  
 End if</xsd:documentation>
                                        </xsd:annotation>
+                                       <xsd:simpleType>
+                                          <xsd:restriction base="comp:DuctMinimumRValueExceptions">
+                                             <xsd:enumeration value="NoException"/>
+                                             <xsd:enumeration value="RValueLT6EntirelyInConditioned"/>
+                                             <xsd:enumeration value="UninsulatedInDirectConditioning"/>
+                                          </xsd:restriction>
+                                       </xsd:simpleType>
                                     </xsd:element>
                                     <xsd:element name="I09_DuctFilterGrilleSizingComplianceMethod" >
                                        <xsd:annotation>

@@ -572,7 +572,7 @@
                                              <xsd:documentation source="FieldText">Exterior Floor Insulation R-value</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Auto-filled from CF1R but user can override with value GTE the CF1R value; Else result is N/A stored in the NotApplicableMessage</xsd:documentation>
                                              <xsd:appinfo source="PrevName">
-                                                <dtyp:prevSchema version="2022.0.000" changed="cell number">D09_NotApplicableMessage</dtyp:prevSchema>
+                                                <dtyp:prevSchema version="2019.1.006" changed="cell number">D09_NotApplicableMessage</dtyp:prevSchema>
                                              </xsd:appinfo>
                                           </xsd:annotation>
                                        </xsd:element>

@@ -9,7 +9,7 @@
    <xsd:import namespace="http://www.lmonte.com/besm/lit" schemaLocation="../base/ResLighting.xsd"/>
    <xsd:complexType name="CF2RMCH23bH">
       <xsd:annotation>
-         <xsd:documentation>Space Conditioning System Airflow Rate - MCH23b Newly Installed Zoned Single-Speed Compressor Systems</xsd:documentation>
+         <xsd:documentation>Space Conditioning System Airflow Rate - MCH23b Forced Air System Airflow Rate Measurement -  Newly Installed Zoned Single-Speed Compressor Systems</xsd:documentation>
       </xsd:annotation>
       <xsd:sequence>
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
@@ -439,7 +439,7 @@ End If</xsd:documentation>
                   <xsd:attribute name="doc" type="comp:ComplianceDocumentTag" fixed="CF2RMCH23bH"/>
                   <xsd:attribute name="docType" type="comp:ComplianceDocumentType" fixed="CERTIFICATE OF INSTALLATION"/>
                   <xsd:attribute name="docTitle" type="comp:ComplianceDocumentTitleRes" fixed="Space Conditioning System Airflow Rate"/>
-                  <xsd:attribute name="docVariantSubtitle" type="comp:ComplianceDocumentVariantSubtitle" fixed="MCH23b Newly Installed Zoned Single-Speed Compressor Systems"/>
+                  <xsd:attribute name="docVariantSubtitle" type="comp:ComplianceDocumentVariantSubtitle" fixed="MCH23b Forced Air System Airflow Rate Measurement -  Newly Installed Zoned Single-Speed Compressor Systems"/>
                   <xsd:attribute name="docVariantLetter" type="comp:ComplianceDocumentVariant" fixed="b"/>
                </xsd:complexType>
             </xsd:element>

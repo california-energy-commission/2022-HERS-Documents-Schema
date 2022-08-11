@@ -27,7 +27,7 @@
                <xsd:complexType>
                   <xsd:attribute name="doc" type="comp:ComplianceDocumentTag" fixed="CF1RADD01E"/>
                   <xsd:attribute name="docType" type="comp:ComplianceDocumentType" fixed="CERTIFICATE OF COMPLIANCE"/>
-                  <xsd:attribute name="docTitle" type="comp:ComplianceDocumentTitleRes" fixed="Prescriptive Residential Additions"/>
+                  <xsd:attribute name="docTitle" type="comp:ComplianceDocumentTitleRes" fixed="Prescriptive Additions 1000 Ft2 or Less"/>
                </xsd:complexType>
             </xsd:element>
             <xsd:element name="Payload" type="comp:Payload"/>
@@ -50,7 +50,7 @@
    </xsd:element>
    <xsd:complexType name="CF1RADD01E">
       <xsd:annotation>
-         <xsd:documentation>Prescriptive Residential Additions</xsd:documentation>
+         <xsd:documentation>Prescriptive Additions 1000 Ft2 or Less</xsd:documentation>
       </xsd:annotation>
       <xsd:sequence>
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">

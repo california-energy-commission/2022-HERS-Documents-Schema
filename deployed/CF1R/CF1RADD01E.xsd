@@ -9,7 +9,7 @@
    <xsd:import namespace="http://www.lmonte.com/besm/lit" schemaLocation="../base/ResLighting.xsd"/>
    <xsd:complexType name="CF1RADD01E">
       <xsd:annotation>
-         <xsd:documentation>Prescriptive Residential Additions</xsd:documentation>
+         <xsd:documentation>Prescriptive Additions 1000 Ft2 or Less</xsd:documentation>
       </xsd:annotation>
       <xsd:sequence>
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
@@ -1889,7 +1889,7 @@ result = StandardDistribution</xsd:documentation>
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Comments</xsd:documentation>
                                           <xsd:appinfo source="PrevName">
-                                             <dtyp:prevSchema version="2022.0.000" changed="section only">N01_ComplianceDocumentTableComments</dtyp:prevSchema>
+                                             <dtyp:prevSchema version="2019.1.006" changed="section only">N01_ComplianceDocumentTableComments</dtyp:prevSchema>
                                           </xsd:appinfo>
                                        </xsd:annotation>
                                     </xsd:element>
@@ -1911,7 +1911,7 @@ result = StandardDistribution</xsd:documentation>
                <xsd:complexType>
                   <xsd:attribute name="doc" type="comp:ComplianceDocumentTag" fixed="CF1RADD01E"/>
                   <xsd:attribute name="docType" type="comp:ComplianceDocumentType" fixed="CERTIFICATE OF COMPLIANCE"/>
-                  <xsd:attribute name="docTitle" type="comp:ComplianceDocumentTitleRes" fixed="Prescriptive Residential Additions"/>
+                  <xsd:attribute name="docTitle" type="comp:ComplianceDocumentTitleRes" fixed="Prescriptive Additions 1000 Ft2 or Less"/>
                </xsd:complexType>
             </xsd:element>
             <xsd:element name="Payload" type="comp:Payload"/>

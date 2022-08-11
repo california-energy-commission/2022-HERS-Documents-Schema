@@ -615,7 +615,7 @@
 
 2022.0.000 MOVED FROM L01_DoesCF3R_Pass</xsd:documentation>
                         <xsd:appinfo source="PrevName">
-                           <dtyp:prevSchema version="2022.0.000" changed="section only">L01_DoesCF3R_Pass</dtyp:prevSchema>
+                           <dtyp:prevSchema version="2019.1.006" changed="section only">L01_DoesCF3R_Pass</dtyp:prevSchema>
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>

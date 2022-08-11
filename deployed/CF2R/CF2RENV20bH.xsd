@@ -433,7 +433,7 @@ End If</xsd:documentation>
                         <xsd:documentation source="FieldText"/>
                         <xsd:documentation source="AdditionalRequirements">The procedure for the conduct of the enclosure air leakage test shall conform to the One-Point Airtightness Test specified in RESNET 380-2019 Section 3.4.1</xsd:documentation>
                         <xsd:appinfo source="PrevName">
-                           <dtyp:prevSchema version="2022.0.000" changed="cell number">G04</dtyp:prevSchema>
+                           <dtyp:prevSchema version="2019.1.006" changed="cell number">G04</dtyp:prevSchema>
                         </xsd:appinfo>
                      </xsd:annotation>
                   </xsd:element>
