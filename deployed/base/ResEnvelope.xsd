@@ -2754,12 +2754,16 @@ Not Shared</dtyp:displayterm>
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="DoublePane">Double Pane</dtyp:displayterm>
+            <dtyp:displayterm value="DoublePaneDivided">Double Pane- divided lite</dtyp:displayterm>
+            <dtyp:displayterm value="DoubleWithSpacers">Double Pane- w/ spacers</dtyp:displayterm>
             <dtyp:displayterm value="GlassBlock">Glass Block</dtyp:displayterm>
             <dtyp:displayterm value="SinglePane">Single Pane</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
          <xsd:enumeration value="DoublePane"/>
+         <xsd:enumeration value="DoublePaneDivided"/>
+         <xsd:enumeration value="DoubleWithSpacers"/>
          <xsd:enumeration value="GlassBlock"/>
          <xsd:enumeration value="SinglePane"/>
       </xsd:restriction>

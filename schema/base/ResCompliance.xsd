@@ -12,9 +12,6 @@
    <xsd:import namespace="http://www.lmonte.com/besm/bld" schemaLocation="ResBuilding.xsd"/>
    <xsd:import namespace="http://www.lmonte.com/besm/dtyp" schemaLocation="DataTypes.xsd"/>
    <xsd:simpleType name="_DocumentationOnly">
-      <xsd:annotation>
-         <xsd:documentation source="propertyrules">This a property that indicates a text only entry in the XML schema generated for a compliance document</xsd:documentation>
-      </xsd:annotation>
       <xsd:restriction base="xsd:string">
       </xsd:restriction>
    </xsd:simpleType>
@@ -1089,6 +1086,17 @@
       <xsd:restriction base="xsd:token">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="AsBuiltSetDate">
+      <xsd:annotation>
+         <xsd:documentation>  Units: none</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:date">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="AsBuiltSetName">
+      <xsd:restriction base="xsd:string">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="ASTM_E779_10Software">
       <xsd:annotation>
          <xsd:documentation>This is the name of the ASTM_E779_10 compliance software used in a multi-point air leakage test.</xsd:documentation>
@@ -1108,6 +1116,10 @@
          <xsd:enumeration value="1Per300"/>
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="AuthorityHavingJurisdiction">
+      <xsd:restriction base="dtyp:ObjectNamePermissive">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="AutoManualControlsReq">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
@@ -1121,8 +1133,8 @@
    <xsd:simpleType name="AutoScheduleControlsOutdoors">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
-            <dtyp:displayterm value="AutoSchedule">Yes</dtyp:displayterm>
-            <dtyp:displayterm value="EMCS">Yes - EMCS</dtyp:displayterm>
+            <dtyp:displayterm value="AutoSchedule">Provided</dtyp:displayterm>
+            <dtyp:displayterm value="EMCS">Provided - EMCS</dtyp:displayterm>
             <dtyp:displayterm value="MultifamilyLightingNA">NA: MF Complying w [d:t24refnolink/]160.5(a)</dtyp:displayterm>
             <dtyp:displayterm value="NotPermittedNA">NA: Not permitted by H&amp;LS</dtyp:displayterm>
             <dtyp:displayterm value="TunnelsNA">NA: Lighting in Tunnels</dtyp:displayterm>
@@ -1561,7 +1573,6 @@
    <xsd:simpleType name="BuildingTurnoverBeginDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage begins in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Building Turnover Begin Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -1572,7 +1583,6 @@
    <xsd:simpleType name="BuildingTurnoverEndDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage ends in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Building Turnover End Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -2333,7 +2343,6 @@
    <xsd:simpleType name="ComplianceApplicationDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Format is yyyy-mm-dd</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="xsd:dateTime">
       </xsd:restriction>
@@ -2450,8 +2459,8 @@
             <dtyp:displayterm value="LMCC-LTI-01-E">LMCC-LTI-01-E</dtyp:displayterm>
             <dtyp:displayterm value="LMCC-LTO-01-E">LMCC-LTO-01-E</dtyp:displayterm>
             <dtyp:displayterm value="LMCC-LTS-01-E">LMCC-LTS-01-E</dtyp:displayterm>
-            <dtyp:displayterm value="LMCC-MCH-01E">LMCC-MCH-01E</dtyp:displayterm>
-            <dtyp:displayterm value="LMCC-PLB-01E">LMCC-PLB-01E</dtyp:displayterm>
+            <dtyp:displayterm value="LMCC-MCH-01-E">LMCC-MCH-01-E</dtyp:displayterm>
+            <dtyp:displayterm value="LMCC-PLB-01-E">LMCC-PLB-01-E</dtyp:displayterm>
             <dtyp:displayterm value="LMCC-PRC-01-E">LMCC-PRC-01-E</dtyp:displayterm>
             <dtyp:displayterm value="LMCC-PRF-01-E">LMCC-PRF-01-E</dtyp:displayterm>
             <dtyp:displayterm value="LMCC-SAB-01-E">LMCC-SAB-01-E</dtyp:displayterm>
@@ -2472,6 +2481,7 @@
             <dtyp:displayterm value="LMCI-MCH-22-H">LMCI-MCH-22-H</dtyp:displayterm>
             <dtyp:displayterm value="LMCI-MCH-23-H">LMCI-MCH-23-H</dtyp:displayterm>
             <dtyp:displayterm value="LMCI-MCH-24-H">LMCI-MCH-24-H</dtyp:displayterm>
+            <dtyp:displayterm value="LMCI-MCH-25-E">LMCI-MCH-25-E</dtyp:displayterm>
             <dtyp:displayterm value="LMCI-MCH-25-H">LMCI-MCH-25-H</dtyp:displayterm>
             <dtyp:displayterm value="LMCI-MCH-26-H">LMCI-MCH-26-H</dtyp:displayterm>
             <dtyp:displayterm value="LMCI-MCH-27-H">LMCI-MCH-27-H</dtyp:displayterm>
@@ -2611,8 +2621,8 @@
          <xsd:enumeration value="LMCC-LTI-01-E"/>
          <xsd:enumeration value="LMCC-LTO-01-E"/>
          <xsd:enumeration value="LMCC-LTS-01-E"/>
-         <xsd:enumeration value="LMCC-MCH-01E"/>
-         <xsd:enumeration value="LMCC-PLB-01E"/>
+         <xsd:enumeration value="LMCC-MCH-01-E"/>
+         <xsd:enumeration value="LMCC-PLB-01-E"/>
          <xsd:enumeration value="LMCC-PRC-01-E"/>
          <xsd:enumeration value="LMCC-PRF-01-E"/>
          <xsd:enumeration value="LMCC-SAB-01-E"/>
@@ -2633,6 +2643,7 @@
          <xsd:enumeration value="LMCI-MCH-22-H"/>
          <xsd:enumeration value="LMCI-MCH-23-H"/>
          <xsd:enumeration value="LMCI-MCH-24-H"/>
+         <xsd:enumeration value="LMCI-MCH-25-E"/>
          <xsd:enumeration value="LMCI-MCH-25-H"/>
          <xsd:enumeration value="LMCI-MCH-26-H"/>
          <xsd:enumeration value="LMCI-MCH-27-H"/>
@@ -2789,7 +2800,6 @@
    </xsd:simpleType>
    <xsd:simpleType name="ComplianceDocumentTag">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">This value represents the compliance document alphanumeric symbol. There are no spaces or dashes and all letters are capitalized except the ending letter that defines a specific variation of a compliance document. For example CF2RMCH20a</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="CF1RADD01E">CF1RADD01E</dtyp:displayterm>
             <dtyp:displayterm value="CF1RALT01E">CF1RALT01E</dtyp:displayterm>
@@ -2959,17 +2969,17 @@
             <dtyp:displayterm value="LMCCSAB01E">LMCCSAB01E</dtyp:displayterm>
             <dtyp:displayterm value="LMCIELC01">LMCIELC01</dtyp:displayterm>
             <dtyp:displayterm value="LMCIELC01E">LMCIELC01E</dtyp:displayterm>
-            <dtyp:displayterm value="LMCIENV01">LMCIENV01</dtyp:displayterm>
+            <dtyp:displayterm value="LMCIENV01E">LMCIENV01E</dtyp:displayterm>
             <dtyp:displayterm value="LMCIENV20aH">LMCIENV20aH</dtyp:displayterm>
             <dtyp:displayterm value="LMCIENV20bH">LMCIENV20bH</dtyp:displayterm>
             <dtyp:displayterm value="LMCIENV21H">LMCIENV21H</dtyp:displayterm>
             <dtyp:displayterm value="LMCIENV22H">LMCIENV22H</dtyp:displayterm>
             <dtyp:displayterm value="LMCILTG01E">LMCIELC01E</dtyp:displayterm>
             <dtyp:displayterm value="LMCILTG02E">LMCIELC02E</dtyp:displayterm>
-            <dtyp:displayterm value="LMCILTI01">LMCILTI01</dtyp:displayterm>
-            <dtyp:displayterm value="LMCILTO01">LMCILTO01</dtyp:displayterm>
-            <dtyp:displayterm value="LMCILTS01">LMCILTS01</dtyp:displayterm>
-            <dtyp:displayterm value="LMCIMCH01">LMCIMCH01</dtyp:displayterm>
+            <dtyp:displayterm value="LMCILTI01E">LMCILTI01E</dtyp:displayterm>
+            <dtyp:displayterm value="LMCILTO01E">LMCILTO01E</dtyp:displayterm>
+            <dtyp:displayterm value="LMCILTS01E">LMCILTS01E</dtyp:displayterm>
+            <dtyp:displayterm value="LMCIMCH01E">LMCIMCH01E</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH01aE">LMCIMCH01aE</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH01bE">LMCIMCH01bE</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH01cE">LMCIMCH01cE</dtyp:displayterm>
@@ -2996,7 +3006,7 @@
             <dtyp:displayterm value="LMCIMCH25bH">LMCIMCH25bH</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH25cH">LMCIMCH25cH</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH25eH">LMCIMCH25eH</dtyp:displayterm>
-            <dtyp:displayterm value="LMCIMCH25fH">LMCIMCH25fH</dtyp:displayterm>
+            <dtyp:displayterm value="LMCIMCH25fE">LMCIMCH25fE</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH25H">LMCIMCH25H</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH26H">LMCIMCH26H</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH27bH">LMCIMCH27bH</dtyp:displayterm>
@@ -3004,13 +3014,12 @@
             <dtyp:displayterm value="LMCIMCH29H">LMCIMCH29H</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH32H">LMCIMCH32H</dtyp:displayterm>
             <dtyp:displayterm value="LMCIMCH33H">LMCIMCH33H</dtyp:displayterm>
-            <dtyp:displayterm value="LMCIPLB01">LMCIPLB01</dtyp:displayterm>
             <dtyp:displayterm value="LMCIPLB01E">LMCIPLB01E</dtyp:displayterm>
             <dtyp:displayterm value="LMCIPLB02E">LMCIPLB02E</dtyp:displayterm>
             <dtyp:displayterm value="LMCIPLB21H">LMCIPLB21H</dtyp:displayterm>
             <dtyp:displayterm value="LMCIPLB22H">LMCIPLB22H</dtyp:displayterm>
-            <dtyp:displayterm value="LMCIPRC01">LMCIPRC01</dtyp:displayterm>
-            <dtyp:displayterm value="LMCISAB01">LMCISAB01</dtyp:displayterm>
+            <dtyp:displayterm value="LMCIPRC01E">LMCIPRC01E</dtyp:displayterm>
+            <dtyp:displayterm value="LMCISAB01E">LMCISAB01E</dtyp:displayterm>
             <dtyp:displayterm value="LMCVENV20aH">LMCVENV20aH</dtyp:displayterm>
             <dtyp:displayterm value="LMCVENV20bH">LMCVENV20bH</dtyp:displayterm>
             <dtyp:displayterm value="LMCVENV21H">LMCVENV21H</dtyp:displayterm>
@@ -3231,17 +3240,17 @@
          <xsd:enumeration value="LMCCSAB01E"/>
          <xsd:enumeration value="LMCIELC01"/>
          <xsd:enumeration value="LMCIELC01E"/>
-         <xsd:enumeration value="LMCIENV01"/>
+         <xsd:enumeration value="LMCIENV01E"/>
          <xsd:enumeration value="LMCIENV20aH"/>
          <xsd:enumeration value="LMCIENV20bH"/>
          <xsd:enumeration value="LMCIENV21H"/>
          <xsd:enumeration value="LMCIENV22H"/>
          <xsd:enumeration value="LMCILTG01E"/>
          <xsd:enumeration value="LMCILTG02E"/>
-         <xsd:enumeration value="LMCILTI01"/>
-         <xsd:enumeration value="LMCILTO01"/>
-         <xsd:enumeration value="LMCILTS01"/>
-         <xsd:enumeration value="LMCIMCH01"/>
+         <xsd:enumeration value="LMCILTI01E"/>
+         <xsd:enumeration value="LMCILTO01E"/>
+         <xsd:enumeration value="LMCILTS01E"/>
+         <xsd:enumeration value="LMCIMCH01E"/>
          <xsd:enumeration value="LMCIMCH01aE"/>
          <xsd:enumeration value="LMCIMCH01bE"/>
          <xsd:enumeration value="LMCIMCH01cE"/>
@@ -3268,7 +3277,7 @@
          <xsd:enumeration value="LMCIMCH25bH"/>
          <xsd:enumeration value="LMCIMCH25cH"/>
          <xsd:enumeration value="LMCIMCH25eH"/>
-         <xsd:enumeration value="LMCIMCH25fH"/>
+         <xsd:enumeration value="LMCIMCH25fE"/>
          <xsd:enumeration value="LMCIMCH25H"/>
          <xsd:enumeration value="LMCIMCH26H"/>
          <xsd:enumeration value="LMCIMCH27bH"/>
@@ -3276,13 +3285,12 @@
          <xsd:enumeration value="LMCIMCH29H"/>
          <xsd:enumeration value="LMCIMCH32H"/>
          <xsd:enumeration value="LMCIMCH33H"/>
-         <xsd:enumeration value="LMCIPLB01"/>
          <xsd:enumeration value="LMCIPLB01E"/>
          <xsd:enumeration value="LMCIPLB02E"/>
          <xsd:enumeration value="LMCIPLB21H"/>
          <xsd:enumeration value="LMCIPLB22H"/>
-         <xsd:enumeration value="LMCIPRC01"/>
-         <xsd:enumeration value="LMCISAB01"/>
+         <xsd:enumeration value="LMCIPRC01E"/>
+         <xsd:enumeration value="LMCISAB01E"/>
          <xsd:enumeration value="LMCVENV20aH"/>
          <xsd:enumeration value="LMCVENV20bH"/>
          <xsd:enumeration value="LMCVENV21H"/>
@@ -3547,7 +3555,6 @@
    </xsd:simpleType>
    <xsd:simpleType name="ComplianceDocumentVariantSubtitle">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">This value is text for the variation subtitle of a compliance document.  This field is marked optional because not all compliance documents have different variations.  For example MCH20a Completely New Duct system</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="ENV20a Single Point Air Tightness Test With Manual Meter">ENV20a Single Point Air Tightness Test With Manual Meter</dtyp:displayterm>
             <dtyp:displayterm value="ENV20b Single Point Air Tightness Test With Automatic Meter">ENV20b Single Point Air Tightness Test With Automatic Meter</dtyp:displayterm>
@@ -3672,7 +3679,6 @@
    <xsd:simpleType name="ComplianceMarginIAQ_VentilationEast">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3680,7 +3686,6 @@
    <xsd:simpleType name="ComplianceMarginIAQ_VentilationNorth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3688,7 +3693,6 @@
    <xsd:simpleType name="ComplianceMarginIAQ_VentilationSouth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3696,7 +3700,6 @@
    <xsd:simpleType name="ComplianceMarginIAQ_VentilationWest">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3704,7 +3707,6 @@
    <xsd:simpleType name="ComplianceMarginPV_CreditEast">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3712,7 +3714,6 @@
    <xsd:simpleType name="ComplianceMarginPV_CreditNorth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3720,7 +3721,6 @@
    <xsd:simpleType name="ComplianceMarginPV_CreditSouth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3728,7 +3728,6 @@
    <xsd:simpleType name="ComplianceMarginPV_CreditWest">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3743,7 +3742,6 @@
    <xsd:simpleType name="ComplianceMarginSpaceCoolingEast">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3751,7 +3749,6 @@
    <xsd:simpleType name="ComplianceMarginSpaceCoolingNorth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3759,7 +3756,6 @@
    <xsd:simpleType name="ComplianceMarginSpaceCoolingSouth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3767,7 +3763,6 @@
    <xsd:simpleType name="ComplianceMarginSpaceCoolingWest">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3775,7 +3770,6 @@
    <xsd:simpleType name="ComplianceMarginSpaceHeatingEast">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3783,7 +3777,6 @@
    <xsd:simpleType name="ComplianceMarginSpaceHeatingNorth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3791,7 +3784,6 @@
    <xsd:simpleType name="ComplianceMarginSpaceHeatingSouth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3799,7 +3791,6 @@
    <xsd:simpleType name="ComplianceMarginSpaceHeatingWest">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3814,7 +3805,6 @@
    <xsd:simpleType name="ComplianceMarginTotalEast">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the total compliance margin for all end uses in this orientation.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3822,7 +3812,6 @@
    <xsd:simpleType name="ComplianceMarginTotalNorth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the total compliance margin for all end uses in this orientation.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3830,7 +3819,6 @@
    <xsd:simpleType name="ComplianceMarginTotalSouth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the total compliance margin for all end uses in this orientation.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3838,7 +3826,6 @@
    <xsd:simpleType name="ComplianceMarginTotalWest">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the total compliance margin for all end uses in this orientation.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3846,7 +3833,6 @@
    <xsd:simpleType name="ComplianceMarginWaterHeatingEast">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3854,7 +3840,6 @@
    <xsd:simpleType name="ComplianceMarginWaterHeatingNorth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3862,7 +3847,6 @@
    <xsd:simpleType name="ComplianceMarginWaterHeatingSouth">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3870,7 +3854,6 @@
    <xsd:simpleType name="ComplianceMarginWaterHeatingWest">
       <xsd:annotation>
          <xsd:documentation>  Units: kTDV per ft2 per yr</xsd:documentation>
-         <xsd:documentation source="propertyrules">This is the difference between the total energy uses of the  Standard Design and the Proposed Design.  If it is a negative number, the Proposed Design does not pass.</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Decimal">
       </xsd:restriction>
@@ -3927,6 +3910,28 @@
          <xsd:enumeration value="NA"/>
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="ComplianceResultCI">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="EqualBetter">INSTALLED FEATURES EQUAL OR BETTER THAN PERMITTED CERTIFICATE OF COMPLIANCE</dtyp:displayterm>
+            <dtyp:displayterm value="ExactMatch">INSTALLED FEATURES EXACTLY MATCH DESIGN ON PERMITTED CERTIFICATE OF COMPLIANCE</dtyp:displayterm>
+            <dtyp:displayterm value="FormNotComplete">FORM NOT COMPLETE</dtyp:displayterm>
+            <dtyp:displayterm value="MayComplyNoCCData">NO CERTIFICATE OF COMPLIANCE DATA AVAILABLE TO ESTABLISH COMPLIANCE</dtyp:displayterm>
+            <dtyp:displayterm value="MayNotComply">INSTALLED FEATURES MAY NOT COMPLY UNLESS PERMITTED CERTIFICATE OF COMPLIANCE REVISED</dtyp:displayterm>
+            <dtyp:displayterm value="NotInScope">NOT IN INSTALLER SCOPE</dtyp:displayterm>
+            <dtyp:displayterm value="TableIncomplete">INCOMPLETE</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="EqualBetter"/>
+         <xsd:enumeration value="ExactMatch"/>
+         <xsd:enumeration value="FormNotComplete"/>
+         <xsd:enumeration value="MayComplyNoCCData"/>
+         <xsd:enumeration value="MayNotComply"/>
+         <xsd:enumeration value="NotInScope"/>
+         <xsd:enumeration value="TableIncomplete"/>
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="ComplianceResultEDR">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
@@ -3939,6 +3944,20 @@
          <xsd:enumeration value="EdrComplies"/>
          <xsd:enumeration value="EdrFails"/>
          <xsd:enumeration value="EdrFailsUMLH"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ComplianceResultMessageCI">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="ExactEqualBetterText">[d:b]Documented as-built conditions should be verified by inspector from Authority Having Jurisdiction to comply.[/d:b]</dtyp:displayterm>
+            <dtyp:displayterm value="MayComplyNoCCDataText">[d:b]This Certificate of Installation was completed with no available Certificate of Compliance data and therefore compliance can only be  verified by inspector from Authority Having Jurisdiction.[/d:b]</dtyp:displayterm>
+            <dtyp:displayterm value="MayNotComplyText">[d:b]The Certificate of Compliance should be revised to confirm as-built conditions comply and this Certificate of Installation updated accordingly.[/d:b]</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="ExactEqualBetterText"/>
+         <xsd:enumeration value="MayComplyNoCCDataText"/>
+         <xsd:enumeration value="MayNotComplyText"/>
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="ComplianceRunFilename">
@@ -3977,7 +3996,7 @@
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="CFL_NoMedScrewSockets">Compact fluorescent  w/o med. screw based sockets</dtyp:displayterm>
-            <dtyp:displayterm value="FluorescentWithGTE80CRI_OrGTE20kHzBallast">Fluorescent + CRI [d:gte/] 80 OR Elec ballast output freq. [d:gt/] 20kHz</dtyp:displayterm>
+            <dtyp:displayterm value="FluorescentWithGTE80CRI_OrGTE20kHzBallast">Fluorescent + CRI [d:gte/] 80 OR Elec ballast output freq. [d:gte/] 20kHz</dtyp:displayterm>
             <dtyp:displayterm value="HighPressureSodium">High Pressure Sodium Lamps</dtyp:displayterm>
             <dtyp:displayterm value="LED_PowerSupplyGTE80percentEfficient">LED + pwr supply 80%+ eff.</dtyp:displayterm>
             <dtyp:displayterm value="MetalHalideBallastGTE80PercentEfficient">Metal halide (pulse start that are 320 watts or smaller, are not 250 watt or 175 watt lamps) + ballast  80%+ eff.</dtyp:displayterm>
@@ -4421,7 +4440,6 @@
    <xsd:simpleType name="ConstructionBeginDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage begins in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Construction Begin Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -4432,7 +4450,6 @@
    <xsd:simpleType name="ConstructionDocumentsBeginDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage begins in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Construction Documents Begin Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -4443,7 +4460,6 @@
    <xsd:simpleType name="ConstructionDocumentsEndDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage ends in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Construction Documents End Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -4454,7 +4470,6 @@
    <xsd:simpleType name="ConstructionEndDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage ends in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Construction End Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -4521,9 +4536,8 @@
             <dtyp:displayterm value="ClockNA">NA: Clock [d:gte/] 6 Ft Above Floor</dtyp:displayterm>
             <dtyp:displayterm value="DataReceptacleNA">NA: Data Equipment Receptacle</dtyp:displayterm>
             <dtyp:displayterm value="HealthNA">NA: Healthcare Facility</dtyp:displayterm>
-            <dtyp:displayterm value="NrccNA">NA</dtyp:displayterm>
             <dtyp:displayterm value="RefrigWaterNA">NA: Refrigerator/Water Dispenser Receptacle</dtyp:displayterm>
-            <dtyp:displayterm value="UninterruptibleNA">NA: Uninterruptible Power Supply Receptacle</dtyp:displayterm>
+            <dtyp:displayterm value="UninterruptibleNA">NA: Uninterruptible Power Supply Receptacle intended for 24/7/365</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
@@ -4531,7 +4545,6 @@
          <xsd:enumeration value="ClockNA"/>
          <xsd:enumeration value="DataReceptacleNA"/>
          <xsd:enumeration value="HealthNA"/>
-         <xsd:enumeration value="NrccNA"/>
          <xsd:enumeration value="RefrigWaterNA"/>
          <xsd:enumeration value="UninterruptibleNA"/>
       </xsd:restriction>
@@ -4750,9 +4763,6 @@
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="DataRegistryProvider">
-      <xsd:annotation>
-         <xsd:documentation source="propertyrules">This value is a string representing the data registry provider that generated the compliance document</xsd:documentation>
-      </xsd:annotation>
       <xsd:restriction base="dtyp:ObjectNamePermissive">
       </xsd:restriction>
    </xsd:simpleType>
@@ -4877,7 +4887,6 @@
    <xsd:simpleType name="DesignDevelopmentBeginDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage begins in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Design Development Begin Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -4888,7 +4897,6 @@
    <xsd:simpleType name="DesignDevelopmentEndDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage ends in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Design Development End Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -5010,9 +5018,6 @@
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="DigitalSignatureLabel">
-      <xsd:annotation>
-         <xsd:documentation source="propertyrules">This is a string with text indicating that the compliance document has been digitally signed by the data registry provider</xsd:documentation>
-      </xsd:annotation>
       <xsd:restriction base="xsd:string">
       </xsd:restriction>
    </xsd:simpleType>
@@ -6905,10 +6910,10 @@
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="AddAltFeederBranchNA">NA: Add/Alt to feeders and branch circuits only</dtyp:displayterm>
             <dtyp:displayterm value="Code517NA">NA: System subject to CA Elec Code Article 517</dtyp:displayterm>
-            <dtyp:displayterm value="Method1ControlBoardsDisaggregateLoads">Method 1</dtyp:displayterm>
-            <dtyp:displayterm value="Method2DistributionEquipmentWithLoadsDisaggregated">Method 2</dtyp:displayterm>
-            <dtyp:displayterm value="Method3BranchCircuitServesLoadTypes">Method 3</dtyp:displayterm>
-            <dtyp:displayterm value="Method4MeteringReportsLoadsByType">Method 4</dtyp:displayterm>
+            <dtyp:displayterm value="Method1ControlBoardsDisaggregateLoads">Method 1: Switchboards, motor control centers, or panelboard loads disaggregated for each load type</dtyp:displayterm>
+            <dtyp:displayterm value="Method2DistributionEquipmentWithLoadsDisaggregated">Method 2: Switchboards/ motor control centers/ panelboard supply other distribution equipment with loads disaggregated for each load type</dtyp:displayterm>
+            <dtyp:displayterm value="Method3BranchCircuitServesLoadTypes">Method 3: Branch circuits serve load types individually &amp; provisions for adding future branch curcuit monitoring</dtyp:displayterm>
+            <dtyp:displayterm value="Method4MeteringReportsLoadsByType">Method 4: Complete metering system measures and reports loads by type</dtyp:displayterm>
             <dtyp:displayterm value="NewServiceMeterNA">NA: New or replacement service meter only</dtyp:displayterm>
             <dtyp:displayterm value="OtherComplianceMethod">Other</dtyp:displayterm>
          </xsd:appinfo>
@@ -7826,9 +7831,6 @@
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="EnforcementAgency">
-      <xsd:annotation>
-         <xsd:documentation source="propertyrules">This is a string identifying the enforcement agency for the project.</xsd:documentation>
-      </xsd:annotation>
       <xsd:restriction base="dtyp:ObjectNamePermissive">
       </xsd:restriction>
    </xsd:simpleType>
@@ -8149,6 +8151,251 @@
          <xsd:enumeration value="CalculatorOutputAttachedForH"/>
          <xsd:enumeration value="SubAreaComplianceInF"/>
          <xsd:enumeration value="UserChangedSelectionInCI"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ExceptionalConditionMessageCIELCE">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>NRCI-ELC-E Exceptional Condition Message</dtyp:displayterm>
+         </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="CircuitsNotInScope">A circuit for a Load Type  was selected as Not in Scope in the Separation of Electrical Circuits for Energy Monitoring Table.  Please ensure that this circuit was claimed as in scope in this table on another another Certificate of Installation  CI-ELC Electrical Power Distribution form</dtyp:displayterm>
+            <dtyp:displayterm value="CtrlNotInScope">A space was selected as Not in Scope in the Circuit Controls and Controlled Receptacles subtable.  Please ensure that this space was claimed as in scope in this table on another another Certificate of Installation  CI-ELC Electrical Power Distribution form</dtyp:displayterm>
+            <dtyp:displayterm value="MeteringNoMatch">Metering capabilities on the Electrical Metering subtable do no match what was permitted on the Certificate of Compliance.  Please verify installation meets metering capability requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="MeterNotInScope">A Electrical Service  was selected as Not in Scope in the Service Electrical Metering Table.  Please ensure that this Electrical Service  was claimed as in scope in this table on another another Certificate of Installation  CI-ELC Electrical Power Distribution form</dtyp:displayterm>
+            <dtyp:displayterm value="NoExceptionNote">No exceptional condition notes for this Certificate of Installation</dtyp:displayterm>
+            <dtyp:displayterm value="ReceptControlNoMatch">Receptacle controls on the Controlled Receptacles subtable do no match what was permitted on the Certificate of Compliance.  Please verify installation meets control requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="VoltageNotInScope">A Electrical Service was selected as Not in Scope in the Feeder and Branch Circuit Conductor Voltage Drop Table.  Please ensure that this Electrical Service was claimed as in scope on this table another another Certificate of Installation  CI-ELC Electrical Power Distribution form</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="CircuitsNotInScope"/>
+         <xsd:enumeration value="CtrlNotInScope"/>
+         <xsd:enumeration value="MeteringNoMatch"/>
+         <xsd:enumeration value="MeterNotInScope"/>
+         <xsd:enumeration value="NoExceptionNote"/>
+         <xsd:enumeration value="ReceptControlNoMatch"/>
+         <xsd:enumeration value="VoltageNotInScope"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ExceptionalConditionMessageCIENVE">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>NRCI-ENV-E Exceptional Condition Message</dtyp:displayterm>
+         </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="DoorNotInScope">A Door assembly was selected as Not in Scope in the Exterior Doors Table.  Please ensure that this Door assembly  was claimed as in scope in this table on another another Certificate of Installation  CI-ENV form</dtyp:displayterm>
+            <dtyp:displayterm value="FenNotInScope">A Fenestration assembly was selected as Not in Scope in the Vertical Fenestration, Skylights, and Glazed Doors Table.  Please ensure that this Fenestration assembly  was claimed as in scope in this table on another another Certificate of Installation  CI-ENV form</dtyp:displayterm>
+            <dtyp:displayterm value="FloorNotInScope">A Floor assembly was selected as Not in Scope in the Floors Table.  Please ensure that this Floor assembly  was claimed as in scope in this table on another another Certificate of Installation  CI-ENV form</dtyp:displayterm>
+            <dtyp:displayterm value="NoExceptionNote">No exceptional condition notes for this Certificate of Installation</dtyp:displayterm>
+            <dtyp:displayterm value="RoofInsNotInScope">A Roof assembly was selected as Not in Scope in the Roof Insulation Table.  Please ensure that this Roof assembly  was claimed as in scope in this table on another another Certificate of Installation  CI-ENV form</dtyp:displayterm>
+            <dtyp:displayterm value="RoofMatNotInScope">A Roof assembly was selected as Not in Scope in the Roof Surface Material Table.  Please ensure that this Roof assembly  was claimed as in scope in this table on another another Certificate of Installation  CI-ENV form</dtyp:displayterm>
+            <dtyp:displayterm value="UserChangedCASelection">Selections made in CA Certificate Table  have been changed by the permit applicant.  See Table E. Additional Remarks for permit applicant's explanation.</dtyp:displayterm>
+            <dtyp:displayterm value="WallNotInScope">A Wall assembly was selected as Not in Scope in the Walls Table.  Please ensure that this Wall assembly  was claimed as in scope in this table on another another Certificate of Installation  CI-ENV form</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="DoorNotInScope"/>
+         <xsd:enumeration value="FenNotInScope"/>
+         <xsd:enumeration value="FloorNotInScope"/>
+         <xsd:enumeration value="NoExceptionNote"/>
+         <xsd:enumeration value="RoofInsNotInScope"/>
+         <xsd:enumeration value="RoofMatNotInScope"/>
+         <xsd:enumeration value="UserChangedCASelection"/>
+         <xsd:enumeration value="WallNotInScope"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ExceptionalConditionMessageCILTIE">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>NRCI-LTI-E Exceptional Condition Message</dtyp:displayterm>
+         </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="CtrlNotInScope">A control was selected as Not in Scope in the Indoor Lighting Controls subtable.  Please ensure that this luminaire control was claimed as in scope on anoher another Certificate of Installation  CI-LTI Indoor Lighting form</dtyp:displayterm>
+            <dtyp:displayterm value="LightControlNoMatch">Control requirements on the Control By Space subtable do no match what was permitted on the Certificate of Compliance.  Please verify installation meets controls requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="LumNotInScope">A luminaire was selected as Not in Scope in the Indoor Lighting Fixture Schedule Table.  Please ensure that this luminaire was claimed as in scope on anoher another Certificate of Installation  CI-LTI Indoor Lighting form</dtyp:displayterm>
+            <dtyp:displayterm value="NoExceptionNote">No exceptional condition notes for this Certificate of Installation</dtyp:displayterm>
+            <dtyp:displayterm value="PafNotInScope">A PAF was selected as Not in Scope in the Controls for Additional Wattage Credit (Power Adjustment Factor) Table.  Please ensure that this PAF was claimed as in scope on another another Certificate of Installation  CI-LTI Indoor Lighting form</dtyp:displayterm>
+            <dtyp:displayterm value="UserChangedCASelection">Selections made in CA Certificate Table  have been changed by the permit applicant.  See Table E. Additional Remarks for permit applicant's explanation.</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="CtrlNotInScope"/>
+         <xsd:enumeration value="LightControlNoMatch"/>
+         <xsd:enumeration value="LumNotInScope"/>
+         <xsd:enumeration value="NoExceptionNote"/>
+         <xsd:enumeration value="PafNotInScope"/>
+         <xsd:enumeration value="UserChangedCASelection"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ExceptionalConditionMessageCILTOE">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>NRCI-LTO-E Exceptional Condition Message</dtyp:displayterm>
+         </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="CtrlNotInScope">An outdoor lighting control was selected as Not in Scope in the Outdoor Lighting Controls subtable.  Please ensure that this outdoor lighting control was claimed as in scope on another Certificate of Installation  Outdoor Lighting form, CC-LTO-E</dtyp:displayterm>
+            <dtyp:displayterm value="LumNotInScope">A luminaire was selected as Not in Scope in the Outdoor Lighting Fixture Schedule Table.  Please ensure that this luminaire was claimed as in scope on another Certificate of Installation Outdoor Lighting form, CC-LTO-E</dtyp:displayterm>
+            <dtyp:displayterm value="NoExceptionNote">No exceptional condition notes for this Certificate of Installation</dtyp:displayterm>
+            <dtyp:displayterm value="OutdoorLightControlNoMatch">Control requirements on the Outdoor Lighting Controls subtable do no match what was permitted on the Certificate of Compliance.  Please verify installation meets controls requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="UserChangedCASelection">Selections made in CA Certificate Table  have been changed by the permit applicant.  See Table E. Additional Remarks for permit applicant's explanation.</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="CtrlNotInScope"/>
+         <xsd:enumeration value="LumNotInScope"/>
+         <xsd:enumeration value="NoExceptionNote"/>
+         <xsd:enumeration value="OutdoorLightControlNoMatch"/>
+         <xsd:enumeration value="UserChangedCASelection"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ExceptionalConditionMessageCILTSE">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>NRCI-LTS-E Exceptional Condition Message</dtyp:displayterm>
+         </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="CtrlNotInScope">A lighted sign control was selected as Not in Scope in the Sign Lighting Controls subtable.  Please ensure that this sign control was claimed as in scope on anoher another Certificate of Installation  CI-LTS Sign Lighting form</dtyp:displayterm>
+            <dtyp:displayterm value="NoExceptionNote">No exceptional condition notes for this Certificate of Installation</dtyp:displayterm>
+            <dtyp:displayterm value="SignLightControlNoMatch">Control requirements on the Sign Lighting Controls subtable do no match what was permitted on the Certificate of Compliance.  Please verify installation meets controls requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="SignNotInScope">A lighted sign was selected as Not in Scope in the Sign Lighting Compliance Table.  Please ensure that this luminaire was claimed as in scope on anoher another Certificate of Installation  CI-LTS Sign Lighting form</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="CtrlNotInScope"/>
+         <xsd:enumeration value="NoExceptionNote"/>
+         <xsd:enumeration value="SignLightControlNoMatch"/>
+         <xsd:enumeration value="SignNotInScope"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ExceptionalConditionMessageCIMCHE">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>NRCI-MCH-E Exceptional Condition Message</dtyp:displayterm>
+         </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="BlrNotInScope">A Boiler was selected as Not in Scope in the Boiler Table.  Please ensure that this Boiler  was claimed as in scope in this table on another another Certificate of Installation  CI-MCH Mechanical Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="BoilerNoMatch">Control requirements on the Boiler Efficiency and Controls subtable do not match what was permitted on the Certificate of Compliance.  Please verify installation meets controls requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="ChillerNoMatch">Control requirements on the Chililer Efficiency and Controls subtable do not match what was permitted on the Certificate of Compliance.  Please verify installation meets controls requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="ChlrNotInScope">A Chiller was selected as Not in Scope in the Chiller Table.  Please ensure that this Chiller  was claimed as in scope in this table on another another Certificate of Installation  CI-MCH Mechanical Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="CtrlNotInScope">A Control was selected as Not in Scope in the System Controls Table.  Please ensure that this Control was claimed as in scope in this table on another another Certificate of Installation  CI-MCH Mechanical Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="DwellingNoKitchenBath">The permit applicant has indicated their multifamily dwelling units do not contain a kitchen or bathroom.  See Table J Multifamily Dwelling Unit Ventilation for details.</dtyp:displayterm>
+            <dtyp:displayterm value="EHeatNotInScope">An Electric Resistance Heating equipment was selected as Not in Scope in the Electric Resistance Heating Table.  Please ensure that this equipment  was claimed as in scope in this table on another another Certificate of Installation  CI-MCH Mechanical Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="FanEconNoMatch">Fan economizer requirements on the Fans and Air Economizer  subtable do not match what was permitted on the Certificate of Compliance.  Please verify installation meets economizer requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="FanNotInScope">A Fan was selected as Not in Scope in the Fan Table.  Please ensure that this Fan  was claimed as in scope in this table on another another Certificate of Installation  CI-MCH Mechanical Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="HeatRejNoMatch">Control requirements on the Heat Rejection subtable do not match what was permitted on the Certificate of Compliance.  Please verify installation meets controls requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="HrejNotInScope">A Heat Rejection equipment was selected as Not in Scope in the Heat Rejection Table.  Please ensure that this Heat Rejection equipment  was claimed as in scope in this table on another Certificate of Installation  CI-MCH Mechanical Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="NoExceptionNote">No exceptional condition notes for this Certificate of Installation</dtyp:displayterm>
+            <dtyp:displayterm value="PumpNotInScope">A Pump was selected as Not in Scope in the Pump Table.  Please ensure that this Pump  was claimed as in scope in this table on another Certificate of Installation CI-MCH Mechanical Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="PumpsNoMatch">Control requirements on the Pumps subtable do not match what was permitted on the Certificate of Compliance.  Please verify installation meets controls requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="SysControlsNoMatch">Control requirements on the System Controls subtable do not match what was permitted on the Certificate of Compliance.  Please verify installation meets controls requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="UserChangedCASelection">Selections made in CA Certificate Table  have been changed by the permit applicant.  See Table E. Additional Remarks for permit applicant's explanation.</dtyp:displayterm>
+            <dtyp:displayterm value="VentNoMatch">Control requirements on the Ventilation subtable do not match what was permitted on the Certificate of Compliance.  Please verify installation meets controls requirements.</dtyp:displayterm>
+            <dtyp:displayterm value="VentnrNotInScope">A Ventilation System was selected as Not in Scope in the Nonresidential and Hotel/ Motel Ventilation SystemsTable.  Please ensure that this Ventilation System  was claimed as in scope in this table on another Certificate of Installation CI-MCH Mechanical Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="VentresNotInScope">A Ventilation System was selected as Not in Scope in the High-rise Residential Dwelling Unit Ventilation SystemsTable.  Please ensure that this Ventilation System  was claimed as in scope in this table on another Certificate of Installation CI-MCH Mechanical Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="ZoneNotInScope">A Zone/System/VAV Box was selected as Not in Scope in the Terminal Box Controls Table.  Please ensure that this Zone/System/VAV Box  was claimed as in scope in this table on another Certificate of Installation CI-MCH Mechanical Systems form</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="BlrNotInScope"/>
+         <xsd:enumeration value="BoilerNoMatch"/>
+         <xsd:enumeration value="ChillerNoMatch"/>
+         <xsd:enumeration value="ChlrNotInScope"/>
+         <xsd:enumeration value="CtrlNotInScope"/>
+         <xsd:enumeration value="DwellingNoKitchenBath"/>
+         <xsd:enumeration value="EHeatNotInScope"/>
+         <xsd:enumeration value="FanEconNoMatch"/>
+         <xsd:enumeration value="FanNotInScope"/>
+         <xsd:enumeration value="HeatRejNoMatch"/>
+         <xsd:enumeration value="HrejNotInScope"/>
+         <xsd:enumeration value="NoExceptionNote"/>
+         <xsd:enumeration value="PumpNotInScope"/>
+         <xsd:enumeration value="PumpsNoMatch"/>
+         <xsd:enumeration value="SysControlsNoMatch"/>
+         <xsd:enumeration value="UserChangedCASelection"/>
+         <xsd:enumeration value="VentNoMatch"/>
+         <xsd:enumeration value="VentnrNotInScope"/>
+         <xsd:enumeration value="VentresNotInScope"/>
+         <xsd:enumeration value="ZoneNotInScope"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ExceptionalConditionMessageCIPLBE">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>NRCI-PLB-E Exceptional Condition Message</dtyp:displayterm>
+         </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="DHWNotInScope">A DHW equipment was selected as Not in Scope in the Domestic Hot Water Equipment Efficiency Table.  Please ensure that this DHW equipment  was claimed as in scope in this table on another Certificate of Installation CI-PLB Domestic Water Heating System form</dtyp:displayterm>
+            <dtyp:displayterm value="NoExceptionNote">No exceptional condition notes for this Certificate of Installation</dtyp:displayterm>
+            <dtyp:displayterm value="UserChangedCVSelection">Selections made in CV Certificate Table  have been changed by the permit applicant.  See Table E. Additional Remarks for permit applicant's explanation.</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="DHWNotInScope"/>
+         <xsd:enumeration value="NoExceptionNote"/>
+         <xsd:enumeration value="UserChangedCVSelection"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ExceptionalConditionMessageCIPRCE">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>NRCI-PLB-E Exceptional Condition Message</dtyp:displayterm>
+         </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="CairNotInScope">A Compressed Air System was selected as Not in Scope in the Compressed Air Systems Table.  Please ensure that this Compressed Air System was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="CompNotInScope">A Space was selected as Not in Scope in the Computer Room Systems Table.  Please ensure that this Space was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="CRcaseNotInScope">A Lighting Control was selected as Not in Scope in the Refrigerated Display Cases Table.  Please ensure that this Lighting Control was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="CRcomNotInScope">A Component was selected as Not in Scope in the Compressors and Condensing Units Serving Commercial Refrigeration System Table.  Please ensure that this Component was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="CRconNotInScope">A Condenser was selected as Not in Scope in the Condensers Serving Commercial Refrigeration System Table.  Please ensure that this Condenser was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="CRheatNotInScope">Heat Recovery was selected as Not in Scope in the Heat Recovery of Refrigeration System Table.  Please ensure that this Heat Recovery was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="ElevLtiNotInScope">A Lighting Fixture was selected as Not in Scope in the Elevator Lighting Table.  Please ensure that this Lighting Fixture was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="ElevLtiNotInScope">A Elevator Ventilation was selected as Not in Scope in the Elevator Ventilation Table.  Please ensure that this Elevator Ventilation was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="HoodsNotInScope">A Kitchen Hood was selected as Not in Scope in the Kitchen Hood Table.  Please ensure that this Kitchen Hood was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="LabNotInScope">A  Zone/System was selected as Not in Scope in the Laboratory And Factory Exhaust And Fume Hoods Table.  Please ensure that this Zone/System was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="NoExceptionNote">No exceptional condition notes for this Certificate of Installation</dtyp:displayterm>
+            <dtyp:displayterm value="ParkNotInScope">An Exhaust Fan was selected as Not in Scope in the Enclosed Parking Garage Exhaust Table.  Please ensure that this Exhaust Fan was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="RbarNotInScope">A Space was selected as Not in Scope in the Refrigerated Warehouse/Space Infiltration Barriers Table.  Please ensure that this Space  was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="RcomNotInScope">A Compressor was selected as Not in Scope in the Refrigerated Warehouse/Space Compressors Table.  Please ensure that this Compressor  was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="RconNotInScope">A Condenser was selected as Not in Scope in the Refrigerated Warehouse/Space Condensers Table.  Please ensure that this Condenser was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="RfanNotInScope">A Fan was selected as Not in Scope in the Refrigerated Warehouse/Space Fan Powered Evaporators Table.  Please ensure that this Fan  was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="RslabNotInScope">A Space was selected as Not in Scope in the Refrigerated Warehouse/Space Underslab Heating Table.  Please ensure that this Space was claimed as in scope in this table on another Certificate of Installation CI-PRC Process Systems form</dtyp:displayterm>
+            <dtyp:displayterm value="UserChangedCASelection">Selections made in CA Certificate Table  have been changed by the permit applicant.  See Table E. Additional Remarks for permit applicant's explanation.</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="CairNotInScope"/>
+         <xsd:enumeration value="CompNotInScope"/>
+         <xsd:enumeration value="CRcaseNotInScope"/>
+         <xsd:enumeration value="CRcomNotInScope"/>
+         <xsd:enumeration value="CRconNotInScope"/>
+         <xsd:enumeration value="CRheatNotInScope"/>
+         <xsd:enumeration value="ElevLtiNotInScope"/>
+         <xsd:enumeration value="ElevLtiNotInScope"/>
+         <xsd:enumeration value="HoodsNotInScope"/>
+         <xsd:enumeration value="LabNotInScope"/>
+         <xsd:enumeration value="NoExceptionNote"/>
+         <xsd:enumeration value="ParkNotInScope"/>
+         <xsd:enumeration value="RbarNotInScope"/>
+         <xsd:enumeration value="RcomNotInScope"/>
+         <xsd:enumeration value="RconNotInScope"/>
+         <xsd:enumeration value="RfanNotInScope"/>
+         <xsd:enumeration value="RslabNotInScope"/>
+         <xsd:enumeration value="UserChangedCASelection"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ExceptionalConditionMessageCISABE">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>NRCI-SRA-E Exceptional Condition Message</dtyp:displayterm>
+         </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="NoExceptionNote">No exceptional condition notes for this Certificate of Installation</dtyp:displayterm>
+            <dtyp:displayterm value="SolarZoneNotInScope">A SolarZone was selected as Not in Scope in the Allocated Solar Zone on Roof for Future Use  Table.  Please ensure that this SolarZone was claimed as in scope in this table on another Certificate of Installation CI-SAB Process Systems form</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="NoExceptionNote"/>
+         <xsd:enumeration value="SolarZoneNotInScope"/>
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="ExceptionalConditionMessageNRCCPRFE">
@@ -9020,7 +9267,6 @@
    <xsd:simpleType name="Header07_PermitDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">This value is am xsd:date data type with the format yyyy-mm-dd  For example 2013-12-17</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="xsd:date">
       </xsd:restriction>
@@ -10110,6 +10356,16 @@
       <xsd:restriction base="dtyp:DecimalNonnegative">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="InstalledSameAsCC">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="Installing25PlusLinearFeetDucts">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
@@ -10644,8 +10900,8 @@
    <xsd:simpleType name="IsMethodEnergyVerifiedLabel">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
-            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
-            <dtyp:displayterm value="false">No</dtyp:displayterm>
+            <dtyp:displayterm value="true">ENERGY VERIFIED Sign Installed</dtyp:displayterm>
+            <dtyp:displayterm value="false">No ENERGY VERIFIED Label</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="xsd:boolean">
@@ -11871,7 +12127,7 @@
    <xsd:simpleType name="LuminairePowerCutoffCompliance">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
-            <dtyp:displayterm value="CutoffGTE6200Lumens">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="CutoffGTE6200Lumens">Provided</dtyp:displayterm>
             <dtyp:displayterm value="CutoffLT6200Lumens">NA: [d:lt/] 6200 lumens</dtyp:displayterm>
             <dtyp:displayterm value="CutoffLtgZone0">NA: Ltg Zone LZ-0</dtyp:displayterm>
             <dtyp:displayterm value="NotPermittedNA">NA: Not permitted by H&amp;LS</dtyp:displayterm>
@@ -11879,7 +12135,7 @@
             <dtyp:displayterm value="ResControlledNA">NA: Controlled by dwelling unit/guest rm</dtyp:displayterm>
             <dtyp:displayterm value="RightOfWayNA">NA: Illuminate public right-of-way</dtyp:displayterm>
             <dtyp:displayterm value="SignageNA">NA: Signage</dtyp:displayterm>
-            <dtyp:displayterm value="StructuresNA">NA: Facade, monument, statue, bridge</dtyp:displayterm>
+            <dtyp:displayterm value="StructuresNA">NA: Facade, monument, statue, bridge, public art</dtyp:displayterm>
             <dtyp:displayterm value="TempLightNA">NA: Temporary Lighting</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
@@ -11969,18 +12225,20 @@
    <xsd:simpleType name="MandatoryLightingDemandResponseNR">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="HealthcareNA">NA: Licensed Healthcare</dtyp:displayterm>
+            <dtyp:displayterm value="NA_LTE40PctPreAltLP">NA:  [d:lte/] 40 % lower compared to pre-alteration LP</dtyp:displayterm>
             <dtyp:displayterm value="NA_LTE80PctAllowedLP">NA:  [d:lte/] 80 % LP (alt only)</dtyp:displayterm>
             <dtyp:displayterm value="NotRequiredHealthSafety">NA: per H&amp;LS</dtyp:displayterm>
-            <dtyp:displayterm value="HealthcareNA">NA: Licensed Healthcare</dtyp:displayterm>
             <dtyp:displayterm value="NotRequiredLT4000W">NA  [d:lt/] 4,000W subject to multilevel</dtyp:displayterm>
             <dtyp:displayterm value="RequiredGTE4000W">Required [d:gte/] 4,000W subject to multilevel</dtyp:displayterm>
             <dtyp:displayterm value="RequiredUsingPAF">Required: Using PAF (Table P)</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="HealthcareNA"/>
+         <xsd:enumeration value="NA_LTE40PctPreAltLP"/>
          <xsd:enumeration value="NA_LTE80PctAllowedLP"/>
          <xsd:enumeration value="NotRequiredHealthSafety"/>
-         <xsd:enumeration value="HealthcareNA"/>
          <xsd:enumeration value="NotRequiredLT4000W"/>
          <xsd:enumeration value="RequiredGTE4000W"/>
          <xsd:enumeration value="RequiredUsingPAF"/>
@@ -12302,12 +12560,33 @@
    <xsd:simpleType name="MeetingDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date of a project meeting in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Meeting Date</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="xsd:date">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="MeteringCapabilitiesAsBuilt">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="ElectCode517NA">NA: Subject to California Electrical Code Article 517</dtyp:displayterm>
+            <dtyp:displayterm value="InstalledLTE1000NA">NA: Installed kVA [d:lte/]1,000</dtyp:displayterm>
+            <dtyp:displayterm value="InstalledLTE250NA">NA: Installed kVA [d:lte/]250</dtyp:displayterm>
+            <dtyp:displayterm value="ProvidedAtFeeder">Capability provided at feeder(s)</dtyp:displayterm>
+            <dtyp:displayterm value="ProvidedAtPanel">Capability provided at panel(s)</dtyp:displayterm>
+            <dtyp:displayterm value="ProvidedAtService">Capability provided at service(s)</dtyp:displayterm>
+            <dtyp:displayterm value="UtilityProvidedNA">NA: Utility Provided Metering System</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:EnumerationConstant">
+         <xsd:enumeration value="ElectCode517NA"/>
+         <xsd:enumeration value="InstalledLTE1000NA"/>
+         <xsd:enumeration value="InstalledLTE250NA"/>
+         <xsd:enumeration value="ProvidedAtFeeder"/>
+         <xsd:enumeration value="ProvidedAtPanel"/>
+         <xsd:enumeration value="ProvidedAtService"/>
+         <xsd:enumeration value="UtilityProvidedNA"/>
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="MeteringDemandRequired">
@@ -12459,11 +12738,11 @@
             <dtyp:displayterm value="LandscapeNA">NA: Landscape Lighting</dtyp:displayterm>
             <dtyp:displayterm value="LuminaireLT40NA">NA: Each Luminaire [d:lt/] 40 Watts</dtyp:displayterm>
             <dtyp:displayterm value="MonumentNA">NA: Public Monument Lighting</dtyp:displayterm>
-            <dtyp:displayterm value="MotionSensorCompliant">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="MotionSensorCompliant">Provided</dtyp:displayterm>
             <dtyp:displayterm value="MultifamilyLightingNA">NA: MF Complying w [d:t24refnolink/]160.5(a)</dtyp:displayterm>
             <dtyp:displayterm value="NotPermittedNA">NA: Not permitted by H&amp;LS</dtyp:displayterm>
             <dtyp:displayterm value="OutdoorTheaterNA">NA: Outdoor Theater</dtyp:displayterm>
-            <dtyp:displayterm value="ParkingLuminaireLT78NA">NA: Parking Lot each Luminaire [d:lt/] 48 Watts</dtyp:displayterm>
+            <dtyp:displayterm value="ParkingLuminaireLT78NA">NA: Parking Lot each Luminaire [d:lt/] 78 Watts</dtyp:displayterm>
             <dtyp:displayterm value="PublicRoadNA">NA: Lighting for Public Roadways</dtyp:displayterm>
             <dtyp:displayterm value="RegulatedNA">NA: Regulated by FAA or Coast Guard</dtyp:displayterm>
             <dtyp:displayterm value="SignageNA">NA: Signage</dtyp:displayterm>
@@ -12543,7 +12822,6 @@
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="AreaLT100SqFtNA">NA: Enclosed area [d:lt/]100SF</dtyp:displayterm>
-            <dtyp:displayterm value="BilevelSwitchControl">Bi-level Switch</dtyp:displayterm>
             <dtyp:displayterm value="HealthcareNA">NA:  Licensed Healthcare</dtyp:displayterm>
             <dtyp:displayterm value="DimmerControl">Dimmer</dtyp:displayterm>
             <dtyp:displayterm value="LTE0_5WperSqFtNA">NA: General Ltg [d:lte/] 0.5W/SF</dtyp:displayterm>
@@ -12556,7 +12834,6 @@
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
          <xsd:enumeration value="AreaLT100SqFtNA"/>
-         <xsd:enumeration value="BilevelSwitchControl"/>
          <xsd:enumeration value="HealthcareNA"/>
          <xsd:enumeration value="DimmerControl"/>
          <xsd:enumeration value="LTE0_5WperSqFtNA"/>
@@ -12818,6 +13095,10 @@
       <xsd:restriction base="dtyp:DecimalNonnegative">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="NotApplicableExplanation">
+      <xsd:restriction base="xsd:string">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="NotApplicableLRMF">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
@@ -12843,6 +13124,7 @@
             <dtyp:displayterm value="N/A - not a central DHW system">N/A - not a central DHW system</dtyp:displayterm>
             <dtyp:displayterm value="N/A.   External calculations are required.">N/A.   External calculations are required.</dtyp:displayterm>
             <dtyp:displayterm value="NoData">---</dtyp:displayterm>
+            <dtyp:displayterm value="NoDataGrayedOut">NO DATA</dtyp:displayterm>
             <dtyp:displayterm value="Not Applicable">Not applicable</dtyp:displayterm>
             <dtyp:displayterm value="NotApplicable">N/A</dtyp:displayterm>
             <dtyp:displayterm value="NotApplicableRequirement">[d:i]This requirement does not apply.[/d:i]</dtyp:displayterm>
@@ -12857,6 +13139,7 @@
          <xsd:enumeration value="N/A - not a central DHW system"/>
          <xsd:enumeration value="N/A.   External calculations are required."/>
          <xsd:enumeration value="NoData"/>
+         <xsd:enumeration value="NoDataGrayedOut"/>
          <xsd:enumeration value="Not Applicable"/>
          <xsd:enumeration value="NotApplicable"/>
          <xsd:enumeration value="NotApplicableRequirement"/>
@@ -13606,7 +13889,6 @@
    <xsd:simpleType name="PermitDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date of the permit set in format yyyy-mm-dd</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="xsd:date">
       </xsd:restriction>
@@ -13630,6 +13912,17 @@
          <xsd:documentation>The permit number is assigned by the enforcement agency and is required on installation and field verification compliance reports</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="xsd:token">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="PermitSetDate">
+      <xsd:annotation>
+         <xsd:documentation>  Units: none</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:date">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="PermitSetName">
+      <xsd:restriction base="xsd:string">
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="PermitYear">
@@ -13937,6 +14230,7 @@
             <dtyp:displayterm value="GarageLT60NA">NA: Garage General Ltg [d:lt/] 60W</dtyp:displayterm>
             <dtyp:displayterm value="GlazingLT24Ft2NA">NA: Rm [d:lt/] 24sf Glazing</dtyp:displayterm>
             <dtyp:displayterm value="Included">Included</dtyp:displayterm>
+            <dtyp:displayterm value="NA_LTE40PctPreAltLP">NA:  [d:lte/] 40 % lower compared to pre-alteration LP</dtyp:displayterm>
             <dtyp:displayterm value="NA_LTE80PctAllowedLP">NA:  [d:lte/] 80 % LP (alt only)</dtyp:displayterm>
             <dtyp:displayterm value="OverhangRatioNA">NA: Overhang</dtyp:displayterm>
             <dtyp:displayterm value="PrimaryLT120NA">NA: General Ltg [d:lt/] 120W</dtyp:displayterm>
@@ -13950,6 +14244,7 @@
          <xsd:enumeration value="GarageLT60NA"/>
          <xsd:enumeration value="GlazingLT24Ft2NA"/>
          <xsd:enumeration value="Included"/>
+         <xsd:enumeration value="NA_LTE40PctPreAltLP"/>
          <xsd:enumeration value="NA_LTE80PctAllowedLP"/>
          <xsd:enumeration value="OverhangRatioNA"/>
          <xsd:enumeration value="PrimaryLT120NA"/>
@@ -14005,6 +14300,16 @@
       <xsd:restriction base="xsd:boolean">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasBatteryStorage">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="ProjectHasBoilers">
       <xsd:annotation>
          <xsd:appinfo source="displaytermType">
@@ -14032,6 +14337,16 @@
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="ProjectHasCommercialKitchen">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasCondSpace">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
@@ -14069,6 +14384,46 @@
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Cooling Towers</dtyp:displayterm>
          </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasDaylightControl">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasDecorLight">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasDemandControl">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasDimmerControl">
+      <xsd:annotation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -14162,7 +14517,57 @@
       <xsd:restriction base="xsd:boolean">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasGenLight">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="ProjectHasHeatingAirSystem">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasInterlockControl">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasLoadSeparation">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasLuminaires">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasMultilevelControl">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
@@ -14195,6 +14600,46 @@
       <xsd:restriction base="xsd:boolean">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasReceptacleControl">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasSensorControl">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasServiceMeter">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasShutOffControl">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="ProjectHasSystemPiping">
       <xsd:annotation>
          <xsd:appinfo source="displaytermType">
@@ -14208,11 +14653,61 @@
       <xsd:restriction base="xsd:boolean">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasTimerControl">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasTuningControl">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasUncondSpace">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="ProjectHasVentilation">
       <xsd:annotation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Ventilation</dtyp:displayterm>
          </xsd:appinfo>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasVideoControl">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="ProjectHasVoltDrop">
+      <xsd:annotation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -14245,6 +14740,11 @@
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="ProjectID">
+      <xsd:annotation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>Compliance ID</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
       <xsd:restriction base="xsd:string">
       </xsd:restriction>
    </xsd:simpleType>
@@ -14374,18 +14874,54 @@
          </xsd:appinfo>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="AdditionComplete">Complete Addition</dtyp:displayterm>
+            <dtyp:displayterm value="AdditionEnvelope">Envelope Addition</dtyp:displayterm>
+            <dtyp:displayterm value="AdditionEnvelopeAndLighting">Envelope and Lighting Addition</dtyp:displayterm>
+            <dtyp:displayterm value="AdditionEnvelopeAndLightingAndPartialMechanical"></dtyp:displayterm>
+            <dtyp:displayterm value="AdditionEnvelopeAndMechanical">Envelope and Mechanical  Addition</dtyp:displayterm>
+            <dtyp:displayterm value="AdditionEnvelopeAndPartialLighting">Envelope and Partial Lighting Addition</dtyp:displayterm>
+            <dtyp:displayterm value="AdditionEnvelopeAndPartialLightingAndPartialMechanical"></dtyp:displayterm>
+            <dtyp:displayterm value="AdditionMechanical">Mechanical  Addition</dtyp:displayterm>
+            <dtyp:displayterm value="AdditionMechanicalAndLighting">Mechanical and Lighting Addition</dtyp:displayterm>
+            <dtyp:displayterm value="AdditionMechanicalAndPartialLighting">Mechanical and Partial Lighting Addition</dtyp:displayterm>
             <dtyp:displayterm value="ExistingAddition">Existing addition</dtyp:displayterm>
             <dtyp:displayterm value="ExistingAdditionAndAlteration">Existing addition and alteration</dtyp:displayterm>
             <dtyp:displayterm value="ExistingAlteration">Existing alteration</dtyp:displayterm>
             <dtyp:displayterm value="NewComplete">New complete scope</dtyp:displayterm>
+            <dtyp:displayterm value="NewEnvelope">New envelope</dtyp:displayterm>
+            <dtyp:displayterm value="NewEnvelopeAndLighting">New envelope and lighting</dtyp:displayterm>
+            <dtyp:displayterm value="NewEnvelopeAndLightingAndPartialMechanical">New envelope and lighting and partial mechanical</dtyp:displayterm>
+            <dtyp:displayterm value="NewEnvelopeAndMechanical">New envelope and mechanical</dtyp:displayterm>
+            <dtyp:displayterm value="NewEnvelopeAndPartialLighting">New envelope and partial lighting</dtyp:displayterm>
+            <dtyp:displayterm value="NewEnvelopeAndPartialLightingAndPartialMechanical">New envelope and partial lighting and partial mechanical</dtyp:displayterm>
+            <dtyp:displayterm value="NewMechanical">New mechanical</dtyp:displayterm>
+            <dtyp:displayterm value="NewMechanicalAndLighting">New mechanical and lighting</dtyp:displayterm>
+            <dtyp:displayterm value="NewMechanicalAndPartialLighting">New mechanical and  partial lighting</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
          <xsd:enumeration value="AdditionComplete"/>
+         <xsd:enumeration value="AdditionEnvelope"/>
+         <xsd:enumeration value="AdditionEnvelopeAndLighting"/>
+         <xsd:enumeration value="AdditionEnvelopeAndLightingAndPartialMechanical"/>
+         <xsd:enumeration value="AdditionEnvelopeAndMechanical"/>
+         <xsd:enumeration value="AdditionEnvelopeAndPartialLighting"/>
+         <xsd:enumeration value="AdditionEnvelopeAndPartialLightingAndPartialMechanical"/>
+         <xsd:enumeration value="AdditionMechanical"/>
+         <xsd:enumeration value="AdditionMechanicalAndLighting"/>
+         <xsd:enumeration value="AdditionMechanicalAndPartialLighting"/>
          <xsd:enumeration value="ExistingAddition"/>
          <xsd:enumeration value="ExistingAdditionAndAlteration"/>
          <xsd:enumeration value="ExistingAlteration"/>
          <xsd:enumeration value="NewComplete"/>
+         <xsd:enumeration value="NewEnvelope"/>
+         <xsd:enumeration value="NewEnvelopeAndLighting"/>
+         <xsd:enumeration value="NewEnvelopeAndLightingAndPartialMechanical"/>
+         <xsd:enumeration value="NewEnvelopeAndMechanical"/>
+         <xsd:enumeration value="NewEnvelopeAndPartialLighting"/>
+         <xsd:enumeration value="NewEnvelopeAndPartialLightingAndPartialMechanical"/>
+         <xsd:enumeration value="NewMechanical"/>
+         <xsd:enumeration value="NewMechanicalAndLighting"/>
+         <xsd:enumeration value="NewMechanicalAndPartialLighting"/>
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="ProjectScopePerformance">
@@ -14418,7 +14954,6 @@
    <xsd:simpleType name="ProjectZipcode">
       <xsd:annotation>
          <xsd:documentation>This value represents the zipcode and must have 5 numbers which optionally can be followed by a dash and 4 numbers.  For example  94117 or 94117-1528 are both valid</xsd:documentation>
-         <xsd:documentation source="propertyrules">This value represents the zipcode and must have 5 numbers which optionally can be followed by a dash and 4 numbers.  For example  94117 or 94117-1528 are both valid</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Zipcode">
       </xsd:restriction>
@@ -15118,7 +15653,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCALto02A">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15129,7 +15663,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCIElc01E">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15200,7 +15733,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCILto01E">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15211,7 +15743,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCILts01E">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15352,7 +15883,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCIPlb01E">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15363,7 +15893,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCIPrc01E">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15374,7 +15903,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCISab01E">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15385,7 +15913,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCISth01E">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15436,7 +15963,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCVMch04H">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15447,7 +15973,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCVMch24H">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15458,7 +15983,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCVMch27H">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15469,7 +15993,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireLMCVMch32H">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15484,7 +16007,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireNRCAEnv03F">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15495,7 +16017,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireNRCALti02A">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15506,7 +16027,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireNRCALti03A">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15517,7 +16037,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireNRCALti04A">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15528,7 +16047,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireNRCALti05A">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15539,7 +16057,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    </xsd:simpleType>
    <xsd:simpleType name="RequireNRCILti01E">
       <xsd:annotation>
-         <xsd:documentation source="propertyrules">Boolean value: true if compliance document is required and false if it is not.  If using integers, zero must represent false and one represent true</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="true">Yes</dtyp:displayterm>
             <dtyp:displayterm value="false">No</dtyp:displayterm>
@@ -15891,9 +16408,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="SampleGroupNumber">
-      <xsd:annotation>
-         <xsd:documentation source="propertyrules">This value is a string uniquely identifying a sample group being tested by the HERS Rater</xsd:documentation>
-      </xsd:annotation>
       <xsd:restriction base="xsd:token">
       </xsd:restriction>
    </xsd:simpleType>
@@ -15915,7 +16429,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    <xsd:simpleType name="SchematicDesignBeginDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage begins in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Schematic Design Begin Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -15926,7 +16439,6 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    <xsd:simpleType name="SchematicDesignEndDate">
       <xsd:annotation>
          <xsd:documentation>  Units: none</xsd:documentation>
-         <xsd:documentation source="propertyrules">Date a construction stage ends in format yyyy-mm-dd</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Schematic Design End Date</dtyp:displayterm>
          </xsd:appinfo>
@@ -15978,6 +16490,16 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
       <xsd:restriction base="xsd:boolean">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="ScopeIncludesFixture">
+      <xsd:annotation>
+         <xsd:appinfo source="displayterm">
+            <dtyp:displayterm value="true">Yes</dtyp:displayterm>
+            <dtyp:displayterm value="false">No, by others</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="ScrewBasedLuminaires">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
@@ -16010,6 +16532,7 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
             <dtyp:displayterm value="GarageLT60NA">NA: Garage General Ltg [d:lt/] 60W</dtyp:displayterm>
             <dtyp:displayterm value="GlazingLT24Ft2NA">NA: Rm [d:lt/] 24sf Glazing</dtyp:displayterm>
             <dtyp:displayterm value="Included">Included</dtyp:displayterm>
+            <dtyp:displayterm value="NA_LTE40PctPreAltLP">NA:  [d:lte/] 40 % lower compared to pre-alteration LP</dtyp:displayterm>
             <dtyp:displayterm value="NA_LTE80PctAllowedLP">NA:  [d:lte/] 80 % LP (alt only)</dtyp:displayterm>
             <dtyp:displayterm value="OverhangRatioNA">NA: Overhang</dtyp:displayterm>
             <dtyp:displayterm value="PrimaryLT120NA">NA: General Ltg [d:lt/] 120W</dtyp:displayterm>
@@ -16023,6 +16546,7 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
          <xsd:enumeration value="GarageLT60NA"/>
          <xsd:enumeration value="GlazingLT24Ft2NA"/>
          <xsd:enumeration value="Included"/>
+         <xsd:enumeration value="NA_LTE40PctPreAltLP"/>
          <xsd:enumeration value="NA_LTE80PctAllowedLP"/>
          <xsd:enumeration value="OverhangRatioNA"/>
          <xsd:enumeration value="PrimaryLT120NA"/>
@@ -16203,7 +16727,7 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
             <dtyp:displayterm value="AstronomicalTimer">Astronomical Timer</dtyp:displayterm>
             <dtyp:displayterm value="MultifamilyLightingNA">NA: MF Complying w [d:t24refnolink/]160.5(a)</dtyp:displayterm>
             <dtyp:displayterm value="NotPermittedNA">NA: Not permitted by H&amp;LS</dtyp:displayterm>
-            <dtyp:displayterm value="OtherTechnology">Other Control Technology</dtyp:displayterm>
+            <dtyp:displayterm value="OtherTechnology">Other Control</dtyp:displayterm>
             <dtyp:displayterm value="Photocontrol">Photocontrol</dtyp:displayterm>
             <dtyp:displayterm value="TunnelsNA">NA: Lighting in Tunnels</dtyp:displayterm>
          </xsd:appinfo>
@@ -16231,14 +16755,12 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="LTE15kwNA">NA: [d:lte/]15 kW</dtyp:displayterm>
-            <dtyp:displayterm value="DemandResponseNA">NA</dtyp:displayterm>
             <dtyp:displayterm value="PowerReduced30">Power reduced 30%+</dtyp:displayterm>
             <dtyp:displayterm value="Exempt">Exempt by Health/LS reg.</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
          <xsd:enumeration value="LTE15kwNA"/>
-         <xsd:enumeration value="DemandResponseNA"/>
          <xsd:enumeration value="PowerReduced30"/>
          <xsd:enumeration value="Exempt"/>
       </xsd:restriction>
@@ -16246,14 +16768,12 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    <xsd:simpleType name="SignDimmingControls">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
-            <dtyp:displayterm value="DimmingNA">NA</dtyp:displayterm>
             <dtyp:displayterm value="PowerReduced65">Power reduced 65%+</dtyp:displayterm>
-            <dtyp:displayterm value="OutdoorUse24x7NA">NA: Outdoor 24x7 use</dtyp:displayterm>
+            <dtyp:displayterm value="OutdoorUse24x7NA">NA: Outdoor 24x7x365 use</dtyp:displayterm>
             <dtyp:displayterm value="TunnelsNA">NA: Lighting in Tunnels</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
-         <xsd:enumeration value="DimmingNA"/>
          <xsd:enumeration value="PowerReduced65"/>
          <xsd:enumeration value="OutdoorUse24x7NA"/>
          <xsd:enumeration value="TunnelsNA"/>
@@ -16262,12 +16782,13 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
    <xsd:simpleType name="SignShutOffControls">
       <xsd:annotation>
          <xsd:appinfo source="displayterm">
-            <dtyp:displayterm value="AstronomicalTime">Astronomical Timer</dtyp:displayterm>
-            <dtyp:displayterm value="AstronomicalTimeSwitch">Astronomical Time Switch</dtyp:displayterm>
-            <dtyp:displayterm value="AutoTimeSwitch">Automatic Timer</dtyp:displayterm>
-            <dtyp:displayterm value="AutoTimeSwitchPhotoControl">Automatic Time Switch + Photocontrol</dtyp:displayterm>
-            <dtyp:displayterm value="Other">Other*</dtyp:displayterm>
-            <dtyp:displayterm value="OutdoorUse24x7NA">NA: Outdoor 24x7 use</dtyp:displayterm>
+            <dtyp:displayterm value="AstronomicalTime">Astronomical Timer (indoor)</dtyp:displayterm>
+            <dtyp:displayterm value="AstronomicalTimeSwitch">Astronomical Time Switch (outdoor)</dtyp:displayterm>
+            <dtyp:displayterm value="AutoTimeSwitch">Automatic Timer (indoor)</dtyp:displayterm>
+            <dtyp:displayterm value="AutoTimeSwitchPhotoControl">Automatic Time Switch + Photocontrol (outdoor)</dtyp:displayterm>
+            <dtyp:displayterm value="OtherIndoor">Other (indoor)</dtyp:displayterm>
+            <dtyp:displayterm value="OtherOutdoor">Other (outdoor)</dtyp:displayterm>
+            <dtyp:displayterm value="OutdoorUse24x7NA">NA: Outdoor 24x7x365 use</dtyp:displayterm>
             <dtyp:displayterm value="TunnelsNA">NA: Lighting in Tunnels</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
@@ -16276,7 +16797,8 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
          <xsd:enumeration value="AstronomicalTimeSwitch"/>
          <xsd:enumeration value="AutoTimeSwitch"/>
          <xsd:enumeration value="AutoTimeSwitchPhotoControl"/>
-         <xsd:enumeration value="Other"/>
+         <xsd:enumeration value="OtherIndoor"/>
+         <xsd:enumeration value="OtherOutdoor"/>
          <xsd:enumeration value="OutdoorUse24x7NA"/>
          <xsd:enumeration value="TunnelsNA"/>
       </xsd:restriction>
@@ -16724,6 +17246,10 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
          <xsd:documentation>This is a list of special features used in a residential building that are non standard</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="AdvancedWallFraming">Advanced wall framing included (see opaque surface constructions)</dtyp:displayterm>
+            <dtyp:displayterm value="AlteredElecResistanceSpaceHeatingClimateZones678or15">Electric resistance space heating system replacement in CZs 6, 7, 8 or 15</dtyp:displayterm>
+            <dtyp:displayterm value="AlteredElecResistanceSpaceHeatingClimateZones7or15">Electric resistance space heating system replacement in CZs 7 or 15</dtyp:displayterm>
+            <dtyp:displayterm value="AlteredElecResistanceSpaceHeatingNoDuctedCooling">Ducted electric resistance space heating system replacement with no ducts replaced or altered</dtyp:displayterm>
+            <dtyp:displayterm value="AlteredElecResistanceSpaceHeatingNonDucted">Non-ducted electric resistance space heating system replacement</dtyp:displayterm>
             <dtyp:displayterm value="AtticReliefVentFreeArea">Attic Relief Vent Free Area</dtyp:displayterm>
             <dtyp:displayterm value="BalancedIAQVentilation">Indoor air quality, balanced fan</dtyp:displayterm>
             <dtyp:displayterm value="BatterySystem">Battery System</dtyp:displayterm>
@@ -16796,6 +17322,10 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
          <xsd:enumeration value="AdvancedWallFraming"/>
+         <xsd:enumeration value="AlteredElecResistanceSpaceHeatingClimateZones678or15"/>
+         <xsd:enumeration value="AlteredElecResistanceSpaceHeatingClimateZones7or15"/>
+         <xsd:enumeration value="AlteredElecResistanceSpaceHeatingNoDuctedCooling"/>
+         <xsd:enumeration value="AlteredElecResistanceSpaceHeatingNonDucted"/>
          <xsd:enumeration value="AtticReliefVentFreeArea"/>
          <xsd:enumeration value="BalancedIAQVentilation"/>
          <xsd:enumeration value="BatterySystem"/>
@@ -18933,6 +19463,27 @@ Time Dependent Valuation (TDV) Gas Propane energy is calculated by multiplying t
       <xsd:restriction base="xsd:boolean">
       </xsd:restriction>
    </xsd:simpleType>
+   <xsd:simpleType name="VoltageDropAfterFeeders">
+      <xsd:annotation>
+         <xsd:documentation>  Units: percent</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="VoltageDropToFeeders">
+      <xsd:annotation>
+         <xsd:documentation>  Units: percent</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative">
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="VoltageDropTotal">
+      <xsd:annotation>
+         <xsd:documentation>  Units: percent</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative">
+      </xsd:restriction>
+   </xsd:simpleType>
    <xsd:simpleType name="WallAssemblyBOD">
       <xsd:annotation>
          <xsd:appinfo source="displaytermType">
@@ -19364,7 +19915,6 @@ Time Dependent Valuation (TDV) Gas Propane energy is calculated by multiplying t
    <xsd:simpleType name="Zipcode">
       <xsd:annotation>
          <xsd:documentation>This value represents the zipcode and must have 5 numbers which optionally can be followed by a dash and 4 numbers.  For example  94117 or 94117-1528 are both valid</xsd:documentation>
-         <xsd:documentation source="propertyrules">This value represents the zipcode and must have 5 numbers which optionally can be followed by a dash and 4 numbers.  For example  94117 or 94117-1528 are both valid</xsd:documentation>
       </xsd:annotation>
       <xsd:restriction base="dtyp:Zipcode">
       </xsd:restriction>
