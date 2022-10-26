@@ -3723,6 +3723,7 @@ Not Shared</dtyp:displayterm>
             <dtyp:displayterm value="Polyurethane">Polyurethane</dtyp:displayterm>
             <dtyp:displayterm value="SprayFoam">Spray Foam Insulation  (SPF)</dtyp:displayterm>
             <dtyp:displayterm value="UreaFormaldehyde">Urea formaldehyde</dtyp:displayterm>
+            <dtyp:displayterm value="NoInsulation">None</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
       <xsd:restriction base="dtyp:EnumerationConstant">
@@ -3737,6 +3738,7 @@ Not Shared</dtyp:displayterm>
          <xsd:enumeration value="Polyurethane"/>
          <xsd:enumeration value="SprayFoam"/>
          <xsd:enumeration value="UreaFormaldehyde"/>
+         <xsd:enumeration value="NoInsulation"/>
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="InsulationUFactor">

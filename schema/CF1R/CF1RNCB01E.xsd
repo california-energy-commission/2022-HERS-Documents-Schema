@@ -137,10 +137,10 @@
                         <xsd:documentation source="CalculationsAndRules">User input: IntegerNonnegative</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="A13_ProjectScopeNew" type="comp:ProjectScopeNew"  maxOccurs="unbounded">
+                  <xsd:element name="A13_ProjectScopeNew" type="comp:ProjectScopeNew"  maxOccurs="1">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Project Scope</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">User can select as many as are applicable from list.  NewConstruction display term Newly Constructed, NewConstructionNoKitchen display term Newly Constructed without Kitchen, AdditionAlone display term Newly constructed (addition alone), AdditionAloneNoKitchen display term Newly constructed without Kitchen (addition alone)</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">User can select one from list.  NewConstruction display term Newly Constructed, NewConstructionNoKitchen display term Newly Constructed without Kitchen, AdditionAlone display term Newly constructed (addition alone), AdditionAloneNoKitchen display term Newly constructed without Kitchen (addition alone)</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A14_FenestrationExceptionForUfactorSHGC"  maxOccurs="unbounded">
@@ -1621,8 +1621,8 @@ End If</xsd:documentation>
                                                 <xsd:enumeration value="CEER"/>
                                                 <xsd:enumeration value="EER"/>
                                                 <xsd:enumeration value="EER2"/>
-                                                <xsd:enumeration value="SEER"/>
-                                                <xsd:enumeration value="SEER2"/>
+						<xsd:enumeration value="EERSEER"/>
+                                                <xsd:enumeration value="EER2SEER2"/>
                                              </xsd:restriction>
                                           </xsd:simpleType>
                                        </xsd:element>
@@ -1887,6 +1887,7 @@ End If</xsd:documentation>
                                           <xsd:documentation source="FieldText">System Option (from [d:t24ref/]150.1(c)8</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">User selects from list: OptionSingleHWH display term 1, OptionTier3SingleHWH display term 2, OptionSolarWH display term 3, OptionInstantaneousWH display term 4, OptionElectInstantaneous display term 5</xsd:documentation>
                                           <xsd:appinfo source="displayterm">
+                                             <dtyp:displayterm value="OptionSingleHWH">1</dtyp:displayterm>
                                              <dtyp:displayterm value="OptionTier3SingleHWH">2</dtyp:displayterm>
                                              <dtyp:displayterm value="OptionSolarWH">3</dtyp:displayterm>
                                              <dtyp:displayterm value="OptionInstantaneousWH">4</dtyp:displayterm>
