@@ -66,19 +66,19 @@
                                     <xsd:element name="A01_ResidentialDwellingUnitName" type="com:ResidentialDwellingUnitName">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Dwelling Unit Name</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from NRCC;</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="A02_WaterHeatingSystemName" type="hvac:WaterHeatingSystemName">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Water Heating System ID or Name</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC (see header for rules)</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="A03_ResidentialWaterHeatingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Water Heating System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC Allowed values are: DHW display term: DHW, HydronicSpaceConditioningDHW display term: Combined Hydronic and Hydronic display term</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list: DHW,  Combined Hydronic, Hydronic</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:ResidentialWaterHeatingSystemType">
@@ -91,19 +91,19 @@
                                     <xsd:element name="A04_ResidentialWaterHeaterType" type="hvac:ResidentialWaterHeaterType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Water-Heater Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC Allowed values are: BoilerWaterHeater display term: Boiler, IndirectWaterHeating display term:  Indirect, InstantaneousCommercial display term: Commercial Instantaneous, InstantaneousResDutyCommercial display term: Residential-Duty Commercial Instantaneous, InstantaneousConsumer display term: Consumer Instantaneous,   StorageCommercial display term: Commercial Storage, StorageResDutyCommercial display term: Residential-Duty Commercial Storage,   StorageConsumer display term: Consumer Storage</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list (Boiler, Indirect, Consumer Instantaneous, Commercial Instantaneous, Consumer Storage, Commercial Storage, Residential-Duty Commercial Storage, or Residential-Duty Commercial Instantaneous)</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="A05_WaterHeaterTotalSystemCount" type="hvac:WaterHeaterTotalSystemCount">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText"># of Like (or Identical) Water Heaters in System</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input, value must be greater than or equal to 1;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="A06_WaterHeaterFuelSource">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Fuel Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC Allowed values: Electricity display term Electricity, NaturalGas display term Natural Gas, PropaneGas display term Propane gas, WaterHeatingHP display term Heat Pump</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list Natural Gas, Propane, Electric Resistance, Heat Pump;</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:WaterHeaterFuelSource">
@@ -118,13 +118,13 @@
                                        <xsd:element name="A07_WaterHeaterRatedInputUnits" type="hvac:WaterHeaterRatedInputUnits">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Rated Input Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If A06_WaterHeaterFuelSource == WaterHeatingHP result = N/A stored in _NotApplicableMessage; Else  reference value from parent CC.  Allowed values: If A06_WaterHeaterFuelSource == NaturalGas Or PropaneGas result = BtuHr Else If A06_WaterHeaterFuelSource == Electricity result = kW</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A06 = Heat Pump result = N/A stored in _NotApplicableMessage; Else  reference value from parent NRCC.  Allowed values: If A06_WaterHeaterFuelSource == NaturalGas Or PropaneGas result = BtuHr Else If A06_WaterHeaterFuelSource == Electricity result = kW</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="A07_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Rated Input Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If A06_WaterHeaterFuelSource == WaterHeatingHP result = N/A stored in _NotApplicableMessage; Else  reference value from parent CC.  Allowed values: If A06_WaterHeaterFuelSource == NaturalGas Or PropaneGas result = BtuHr Else If A06_WaterHeaterFuelSource == Electricity result = kW</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A06 = Heat Pump result = N/A stored in _NotApplicableMessage; Else  reference value from parent NRCC.  Allowed values: If A06_WaterHeaterFuelSource == NaturalGas Or PropaneGas result = BtuHr Else If A06_WaterHeaterFuelSource == Electricity result = kW</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -132,51 +132,67 @@
                                        <xsd:element name="A08_WaterHeaterElectricFiredRatedInput" type="hvac:WaterHeaterElectricFiredRatedInput">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Rated Input Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If A06_WaterHeaterFuelSource == WaterHeatingHP result = N/A stored in the NotApplicableMessage;  Else If prescriptive parent CC result = N/A  stored in the NotApplicableMessage; Else If performance parent CC reference value from parent CC.  If A07_WaterHeaterRatedInputUnits == kW store result in WaterHeaterElectricFiredRatedInput Else store result in WaterHeaterGasFiredRatedInput</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input if A06 = Heat Pump, then result = NA;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="A08_WaterHeaterGasFiredRatedInput" type="hvac:WaterHeaterGasFiredRatedInput">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Rated Input Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If A06_WaterHeaterFuelSource == WaterHeatingHP result = N/A stored in the NotApplicableMessage;  Else If prescriptive parent CC result = N/A  stored in the NotApplicableMessage; Else If performance parent CC reference value from parent CC.  If A07_WaterHeaterRatedInputUnits == kW store result in WaterHeaterElectricFiredRatedInput Else store result in WaterHeaterGasFiredRatedInput</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input if A06 = Heat Pump, then result = NA;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="A08_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Rated Input Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If A06_WaterHeaterFuelSource == WaterHeatingHP result = N/A stored in the NotApplicableMessage;  Else If prescriptive parent CC result = N/A  stored in the NotApplicableMessage; Else If performance parent CC reference value from parent CC.  If A07_WaterHeaterRatedInputUnits == kW store result in WaterHeaterElectricFiredRatedInput Else store result in WaterHeaterGasFiredRatedInput</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input if A06 = Heat Pump, then result = NA;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:element name="A09_IsDHW_Central" type="comp:IsDHW_Central">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Central DHW System Distribution Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If water heating system in parent CC is Central DHW system result = true display term Yes Else result = false display term NA</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Default value = N/A</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="A10_ResidentialDHWDwellingUnitDistributionType" type="hvac:ResidentialDHWDwellingUnitDistributionType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Dwelling Unit DHW System Distribution Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If performance parent CC, Then 
-If A09_IsDHW_Central == false  allowed values are: StandardDistribution display term: Standard Distribution System; PointOfUse display term: Point Of Use, StandardDistributionCentralParallelPiping display term: Parallel Piping;  RecirculationNonDemand display term:  Recirculation System Non-Demand Control; DemandRecirculationManualControl display term: Demand Recirculation Manual Control;  DemandRecirculationSensorControls display term: Demand Recirculation Sensor Control; StandardDistributionInsulatedPipesHERS display term HERS Verified Pipe Insulation credit, StandardDistributionCentralParallelPipingHERS display term HERS Verified Parallel Piping, DemandRecirculationManualControlHERS display term HERS Verified Demand Recirculation Manual Control, DemandRecirculationSensorControlsHERSHERS display term Verified Demand Recirculation Sensor Controls; 
-
-Else  If A09_IsDHW_Central == true allowed values are: StandardDistribution. Display term: Standard Distribution System, StandardDistributionInsulatedPipesHERS display term HERS Verified Pipe Insulation credit;  
-End If
-
-Else If prescriptive parent CC  allowed values are: StandardDistribution display term: Standard Distribution System; DemandRecirculationManualControl display term: Demand Recirculation Manual Control;  DemandRecirculation display term Demand Recirculation;  
-End If</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list: 
+                                             *Standard Distribution System
+                                             * Point of Use
+                                             * Parallel Piping 
+                                             *Recirculation System Non-Demand Control
+                                             * Demand Recirculation Manual Control 
+                                             * Demand Recirculation Sensor Control 
+                                             *HERS-Verified Pipe Insulation Credit
+                                             * HERS-Verified Parallel Piping 
+                                             * HERS-Verified Demand Recirculation Manual Control 
+                                             * HERS-Verified Demand Recirculation Sensor Control; 
+                                             Else if A09 ≠ NA then allowed values are
+                                             * Standard Distribution System
+                                             *HERS-Verified Pipe Insulation Credit;
+                                             Else if prescriptive,  
+                                             Allowed values are 
+                                             *Standard Distribution System
+                                             *Demand Recirculation
+                                             * Demand Recirculation Manual Control</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="A11_CompactDistributionType" type="hvac:CompactDistributionType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Compact Distrib.</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC  Allowed values are BasicType display term Basic, Expanded display term Expanded, NotCompact display term None</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list:
+                                             *Basic
+                                             *Expanded
+                                             *None</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="A12_DWHR_Type" type="hvac:DWHR_Type">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Drain Water Heat Recovery</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC  Allowed values are DWHR display term Yes and NoDWHR display term No</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list: 
+                                             *Yes
+                                             *None</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                  </xsd:sequence>
@@ -214,78 +230,91 @@ End If</xsd:documentation>
                                     <xsd:element name="Hpd01_ResidentialDwellingUnitName" type="com:ResidentialDwellingUnitName">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Dwelling Unit Name</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from NRCC.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd02_WaterHeatingSystemName" type="hvac:WaterHeatingSystemName">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Water Heating System ID or Name</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd03_HeatPumpWaterHeaterModel" type="hvac:HeatPumpWaterHeaterModel">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Modeled Equipment Make and Model</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If  prescriptive parent CC result = Tier3NEEA; Else reference value from performance parent CC</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list (see NEEA HPWH Official List – Individual HPWH tab);</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd04_WaterHeaterTotalSystemCount" type="hvac:WaterHeaterTotalSystemCount">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText"># of Like (or Identical) Water Heaters in System</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input, value must be greater than or equal to 1;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd05_TankLocation" type="hvac:TankLocation">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Tank Location</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from parent CC</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list 
+                                             * Attic
+                                             * Conditioned
+                                             * Crawl Space
+                                             * Garage
+                                             * TankZone
+                                             * Unconditioned;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="Hpd06_ExteriorTankInsulation" type="hvac:ExteriorTankInsulation">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Exterior Tank Insulation R-Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from performance parent CC Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpd06_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Exterior Tank Insulation R-Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from perofrmance parent CC Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:element name="Hpd07_ResidentialDHWDwellingUnitDistributionType" type="hvac:ResidentialDHWDwellingUnitDistributionType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Dwelling Unit DHW System Distribution Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference parent CC as follows: 
-If performance parent CC values are: 
-StandardDistribution display term: Standard Distribution System; PointOfUse display term: Point Of Use, StandardDistributionCentralParallelPiping display term: Parallel Piping;  RecirculationNonDemand display term:  Recirculation System Non-Demand Control; DemandRecirculationManualControl display term: Demand Recirculation Manual Control;  DemandRecirculationSensorControls display term: Demand Recirculation Sensor Control; StandardDistributionInsulatedPipesHERS display term HERS Verified Pipe Insulation credit, StandardDistributionCentralParallelPipingHERS display term HERS Verified Parallel Piping, DemandRecirculationManualControlHERS display term HERS Verified Demand Recirculation Manual Control, DemandRecirculationSensorControlsHERS display term HERS Verified Demand Recirculation Sensor Controls; 
-
-Else If prescriptive parent CC values are: StandardDistribution display term: Standard Distribution System; DemandRecirculationManualControl display term: Demand Recirculation Manual Control;   DemandRecirculation display term Demand Recirculation;  
-End If</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list:
+                                             *Standard Distribution System
+                                             * Point of Use
+                                             * Parallel Piping 
+                                             * Recirculation System Non-Demand Control
+                                             * Demand Recirculation Manual Control 
+                                             * Demand Recirculation Sensor Control 
+                                             * HERS-Verified Pipe Insulation Credit
+                                             * HERS-Verified Parallel Piping 
+                                             * HERS-Verified Demand Recirculation Manual Control 
+                                             * HERS-Verified Demand Recirculation Sensor Control</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd08_CompactDistributionType" type="hvac:CompactDistributionType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Compact Distribution</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC   Allowed values:   
-BasicType display term Basic, 
-Expanded display term Expanded,
-NotCompact display term None</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list:
+                                             *Basic
+                                             *Expanded
+                                             *None</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd09_DWHR_Type" type="hvac:DWHR_Type">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Drain Water Heat Recovery</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC  Allowed values are DWHR display term Yes and NoDWHR display term None</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list
+                                             *Yes
+                                             *None</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd10_HeatPumpWaterHeaterSimulationGroup" type="hvac:HeatPumpWaterHeaterSimulationGroup" minOccurs="0">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">NOT REPORTED IN PDF</xsd:documentation>
                                           <xsd:documentation source="AdditionalRequirements">Simulated Equipment Make and Model</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If prescriptive parent CC, this field is not required; Else If performance parent CC reference values from XML   This field IS NOT part of the printed report and is not displayed to the user.  It is used for equivalency lookup</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Do not require field.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                  </xsd:sequence>
@@ -940,12 +969,15 @@ End If</xsd:documentation>
                                        <xsd:element name="C02_EfficiencyType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If parent == prescriptive parent CC result = N/A stored in NotApplicableMessage; Else reference value from performance parent CC;  Allowed values:  UniformEnergyFactor, AFUE, ThermalEfficiency</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list:
+                                                *Uniform Energy Factor
+                                                *AFUE
+                                                *Thermal Efficiency</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:EfficiencyType">
                                                 <xsd:enumeration value="AFUE"/>
-                                                <xsd:enumeration value="EnergyFactor"/>
+                                                <!--                                                <xsd:enumeration value="EnergyFactor"/>-->
                                                 <xsd:enumeration value="ThermalEfficiency"/>
                                                 <xsd:enumeration value="UniformEnergyFactor"/>
                                              </xsd:restriction>
@@ -954,7 +986,10 @@ End If</xsd:documentation>
                                        <xsd:element name="C02_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If parent == prescriptive parent CC result = N/A stored in NotApplicableMessage; Else reference value from performance parent CC;  Allowed values:  UniformEnergyFactor, AFUE, ThermalEfficiency</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list:
+                                                *Uniform Energy Factor
+                                                *AFUE
+                                                *Thermal Efficiency</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -962,25 +997,25 @@ End If</xsd:documentation>
                                        <xsd:element name="C03_UniformEnergyFactor" type="hvac:UniformEnergyFactor">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference Uniform Energy Factor value from performance parent CC;; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input-UEF;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_WaterHeaterAFUE" type="hvac:WaterHeaterAFUE">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference AFUE value from performance parent CC;; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input-AFUE;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_ThermalEfficiency" type="hvac:ThermalEfficiency">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference Thermal Efficiency value from performance parent CC;; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input-Thermal Efficiency;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from performance parent CC;; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -988,13 +1023,13 @@ End If</xsd:documentation>
                                        <xsd:element name="C04_WaterHeatingStandbyLossPercent" type="hvac:WaterHeatingStandbyLossPercent">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Standby Loss (%)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from performance parent CC; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C04_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Standby Loss (%)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from performance parent CC;; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -1002,13 +1037,13 @@ End If</xsd:documentation>
                                        <xsd:element name="C05_ExteriorTankInsulation" type="hvac:ExteriorTankInsulation">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Exterior Insul. R-Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from performance parent CC;; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C05_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Exterior Insul. R-Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from performance parent CC; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -1016,13 +1051,13 @@ End If</xsd:documentation>
                                        <xsd:element name="C06_StorageCapacity" type="hvac:StorageCapacity">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Water Heater Storage Volume (gal)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from parent CC. N/A is allowed   If  water heater system is from Section A2 TableHpwhd Or if B04_ResidentialWaterHeaterType == InstantaneousCommercial, InstantaneousConsumer Or InstantaneousResDutyCommercial</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A if Water Heater Type = Consumer Instantaneous, Commercial Instantaneous, or Residential-Duty Commercial Instantaneous ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Water Heater Storage Volume (gal)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from parent CC. N/A is allowed  N/A is allowed If  water heater system is from Section A2 TableHpwhd Or if B04_ResidentialWaterHeaterType == InstantaneousCommercial, InstantaneousConsumer Or InstantaneousResDutyCommercial</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A if Water Heater Type = Consumer Instantaneous, Commercial Instantaneous, or Residential-Duty Commercial Instantaneous ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -1030,13 +1065,13 @@ End If</xsd:documentation>
                                        <xsd:element name="C07_TankLocation" type="hvac:TankLocation">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Tank Location</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from parent CC</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (Attic, Conditioned, Crawl Space, Garage, Outside, TankZone, Unconditioned);</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C07_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Tank Location</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from parent CC</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (Attic, Conditioned, Crawl Space, Garage, Outside, TankZone, Unconditioned);</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -1364,98 +1399,65 @@ This section is applicable if at least one dwelling has B11_CompactDistributionT
                                        <xsd:element name="G02_TotalStoryCount" type="com:TotalStoryCount">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Number of Stories</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If prescriptive parent CC   user select from list:  1,2 or 3; Else If performance parent CC result = N/A stored in NotApplicableMessage;</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list: 1, 2, 3;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="G02_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Number of Stories</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If prescriptive parent CC   user select from list:  1,2 or 3; Else If performance parent CC result = N/A stored in NotApplicableMessage;</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list: 1, 2, 3;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:element name="G03_WaterHeaterToBath" type="comp:WaterHeaterToBath">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Master Bath distance of furthest fixture to Water Heater in feet</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If performance parent CC result = parent CC  value; 
-Else If prescriptive parent CC or not available in XML,
- user input
-End If</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="G04_WaterHeaterToKitchen" type="comp:WaterHeaterToKitchen">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Kitchen distance of furthest fixture to Water Heater in feet</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If performance parent CC result = parent CC  value; 
-Else If prescriptive parent CC or not available in XML,
-user input
-End If</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="G05_WaterHeaterToFurthest3rdFixture" type="comp:WaterHeaterToFurthest3rdFixture">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Furthest Third furthest fixture to Water Heater in feet. (Avg for multiple water heaters)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If performance parent CC result = parent CC  value; 
-Else If prescriptive parent CC or not available in XML,
-user input
-End If</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="G06_WaterHeaterWeightedDistance" type="comp:WaterHeaterWeightedDistance">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Weighted Distance</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If performance parent CC result = parent CC  value; 
-Else If prescriptive parent CC or not available in XML,
- Then
-If G01_ResidentialDwellingUnitName is loaded from A01_ResidentialDwellingUnitName Then
-If A10_ResidentialDHWDwellingUnitDistributionType == StandardDistribution 
-result =  (G03_WaterHeaterToBath x  0.4)  +  (G04_WaterHeaterToKitchen x 0.4)  + (G05_WaterHeaterToFurthest3rdFixture x 0.2); 
- 
-Else If A10_ResidentialDHWDwellingUnitDistributionType == DemandRecirculationManualControl 
-result = G05_WaterHeaterToFurthest3rdFixture
-End If
- 
-Else If G01_ResidentialDwellingUnitName is loaded from Hpd01_ResidentialDwellingUnitName Then
-If Hpd07_ResidentialDHWDwellingUnitDistributionType == StandardDistribution 
-result =  (G03_WaterHeaterToBath x  0.4)  +  (G04_WaterHeaterToKitchen x 0.4)  + (G05_WaterHeaterToFurthest3rdFixture x 0.2); 
- 
-Else If Hpd07_ResidentialDHWDwellingUnitDistributionType == DemandRecirculationManualControl 
-result = G05_WaterHeaterToFurthest3rdFixture
-End If
-End If</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Calculated value: 
+                                             If A10 or A2-07 = Standard Distribution System, then value = (G03*0.4) +(G04*0.4) +(G05*0.2);
+                                             else if A10 or A2-07 = Demand Recirculation Manual Control, then value = G05;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="G07_WaterHeaterQualificationDistance" type="comp:WaterHeaterQualificationDistance">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Qualification Distance</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If performance parent CC result = parent CC  value; 
-Else If prescriptive parent CC or not available in XML,
-If G01_ResidentialDwellingUnitName is loaded from A01_ResidentialDwellingUnitName Then
-result =  ((CompactDistCoefA + CompactDistCoefB x CFA) / A05_WaterHeaterTotalSystemCount); 
-
-Else If G01_ResidentialDwellingUnitName is loaded from Hpd01_ResidentialDwellingUnitName Then
-result =  ((CompactDistCoefA + CompactDistCoefB x CFA) / Hpd04_WaterHeaterTotalSystemCount);
-End If 
-Values for CompactDistCoefA,CompactDistCoefB are found in the Table  4.4.6-2 Coefficients for the Qualification Distance Calculation following section G.  Value for CFA (conditioned floor area)  comes from parent CC.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Calculated value =  
+                                             ((a+b *CFA)/n) &amp;gt;&amp;gt;
+                                             Where:
+                                             a, b = Qualification distance coefficients from Table 4.4.6-2 below,
+                                             CFA = Conditioned floor area of the dwelling unit (ft2) from NRCC, and
+                                             n = Number of water heaters in the dwelling unit from A05
+                                             or A2-04  (unitless);</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="G08_CompactFactor" type="comp:CompactFactor">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Design Compactness Factor</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If performance parent CC 
-reference value from parent CC and store in CompactFactor
-Else If prescriptive parent CC
-result = NotApplicable stored in NotApplicableMessage
-End If</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Default value = N/A;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="G08_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Design Compactness Factor</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If prescriptive parent CC
-result = NotApplicable stored in NotApplicableMessage
-End If</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Default value = N/A;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -1463,12 +1465,7 @@ End If</xsd:documentation>
                                        <xsd:element name="G09_CompactFactorCalculated" type="comp:CompactFactorCalculated">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Calculated Compactness Factor</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:
-result = 0.3 + 0.4 x (G06_WaterHeaterWeightedDistance / G07_WaterHeaterQualificationDistance)
- 
-If performance parent CC  result must be LTE G08_CompactFactor
-Else If prescriptive parent CC result must be LTE 0.7
-End If</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated value = 0.3 + 0.4 * (G06/G07) value must be ≤ 0.7;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="G09_NotApplicableMessage" type="comp:NotApplicableMessage">

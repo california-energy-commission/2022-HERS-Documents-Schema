@@ -341,12 +341,11 @@ End If</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:DuctLocation">
-                                             <xsd:enumeration value="ConditionedSpaceExcept12ft"/>
-                                             <xsd:enumeration value="DuctedAndDuctlessIndoorUnits"/>
-                                             <xsd:enumeration value="Ductless"/>
+                                             <xsd:enumeration value="ConditionedSpace"/>
                                              <xsd:enumeration value="DuctsInMultipleLocations"/>
                                              <xsd:enumeration value="Outdoors"/>
                                              <xsd:enumeration value="UnconditionedAttic"/>
+                                             <xsd:enumeration value="UnconditionedBasement"/>
                                              <xsd:enumeration value="UnconditionedCrawlSpace"/>
                                              <xsd:enumeration value="UnconditionedGarage"/>
                                           </xsd:restriction>
@@ -460,12 +459,11 @@ Require one row of data to be entered in this table for each space conditioning 
                                     <xsd:element name="C07_DuctLocation">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Duct Location</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value for DuctLocation from B09 as default;   Allow user to override and pick from list.  Choices for DuctLocation and display text:   ConditionedSpace display text: HVAC system(s) with all HVAC ducts located in conditioned space.    ConditionedSpaceExcept12ft display text: Ducts located within the conditioned space (except less than 12 lineal ft).    DuctsInMultipleLocations display text: Ducts located in multiple places.   Outdoors display text: Ducts located in exposed outdoor locations.  UnconditionedAttic display text: Ducts located overhead in unconditioned attic.  UnconditionedCrawlSpace display text: Ducts located underfloor in unconditioned crawl space.  UnconditionedGarage display text: Ducts located in an unconditioned garage.  Flag non-default values and report in project status notes field; a revised parent CC may be required.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference value for DuctLocation from B09 as default;   Allow user to override and pick from list.  Choices for DuctLocation and display text:   ConditionedSpace display text: HVAC system(s) with all HVAC ducts located in conditioned space.      DuctsInMultipleLocations display text: Ducts located in multiple places.   Outdoors display text: Ducts located in exposed outdoor locations.  UnconditionedAttic display text: Ducts located overhead in unconditioned attic.  UnconditionedCrawlSpace display text: Ducts located underfloor in unconditioned crawl space.  UnconditionedGarage display text: Ducts located in an unconditioned garage.  Flag non-default values and report in project status notes field; a revised parent CC may be required.</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:DuctLocation">
                                              <xsd:enumeration value="ConditionedSpace"/>
-                                             <xsd:enumeration value="ConditionedSpaceExcept12ft"/>
                                              <xsd:enumeration value="DuctsInMultipleLocations"/>
                                              <xsd:enumeration value="Outdoors"/>
                                              <xsd:enumeration value="UnconditionedAttic"/>
@@ -560,7 +558,7 @@ Else If parent CC requires CFI IAQ Ventilation system, result = 1, Else result =
                <xsd:documentation source="FieldText">Installed Heating Equipment Information (not heat pumps)</xsd:documentation>
                <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC)
  
-This Section is applicable only if at least one row in C04_ResidentialHeatingSystemType != one of these Heat Pump types: CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP),  DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless . For each SC that satisfies this condition, do one of the following:  If SC system in C02 has C11_NotApplicableMessage value, require one row of data; Else If  SC System has C11_IndoorUnitsCount GTE 1 And C04 == CentralGasFurnace require one row of data for each of the quantity of indoor units specified in C11 for that system.</xsd:documentation>
+This Section is applicable only if at least one row in C04_ResidentialHeatingSystemType != one of these Heat Pump types: CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP),  DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless, SPVHP, PTHP . For each SC that satisfies this condition, do one of the following:  If SC system in C02 has C11_NotApplicableMessage value, require one row of data; Else If  SC System has C11_IndoorUnitsCount GTE 1 And C04 == CentralGasFurnace require one row of data for each of the quantity of indoor units specified in C11 for that system.</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -721,7 +719,7 @@ End If</xsd:documentation>
                <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC)
  
 This Section is applicable only if  one or more systems in section C has  C05_ResidentialCoolingSystemType
-  != NoCooling And  != CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, DuctedMultiSplitHP, DuctlessMultiSplitHP,  DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless;    Require one row of data in this table for each of the SC Systems listed in Section C where C05_ResidentialCoolingSystemType satisfies both of these conditions</xsd:documentation>
+!= NoCooling And  != CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, DuctedMultiSplitHP, DuctlessMultiSplitHP,  DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless, SPVHP, PTHP;    Require one row of data in this table for each of the SC Systems listed in Section C where C05_ResidentialCoolingSystemType satisfies both of these conditions</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -785,7 +783,8 @@ If B07_EfficiencyMinimumValueSEER2 IsPresent Then
 If result  GTE B07_EfficiencyMinimumValueSEER2, result complies
 Else result does not comply
 End If
-Else If B07_NotApplicableMessage IsPresent And  If E03_EfficiencyType == SEER2  or EER2SEER2  result must be GTE 13.4 to comply;  
+Else If B07_NotApplicableMessage IsPresent And  If E03_EfficiencyType == SEER2  or EER2SEER2  result must be GTE 13.4
+Elseif E03 = CEER, then value = N/A to comply;  
 Else result does not comply
 End If
 Flag non-compliant values and do not let registration proceed if not in compliance.</xsd:documentation>
@@ -1043,7 +1042,7 @@ End If</xsd:documentation>
          <xsd:element name="Section_G" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Installed Heat Pump System - Split System Condensing Unit or Package Unit Equipment Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable only if at least one  system in section C has C04_ResidentialHeatingSystemType Or C05_ResidentialCoolingSystemType == CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump,  DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless.    Require one row of data in this table for each of the SC Systems listed in Section C that has a system in this list.</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This Section is applicable only if at least one  system in section C has C04_ResidentialHeatingSystemType Or C05_ResidentialCoolingSystemType == CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump,  DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless, SPVHP, PTHP.    Require one row of data in this table for each of the SC Systems listed in Section C that has a system in this list.</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -1130,7 +1129,7 @@ End If</xsd:documentation>
                <xsd:documentation source="FieldText">Installed Heat Pump System - Efficiency and Performance Compliance Information</xsd:documentation>
                <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC)
  
-This Section is applicable only if at least one system in section C has C04_ResidentialHeatingSystemType  Or C05_ResidentialCoolingSystemType == CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump,  DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless.    Require one row of data in this table for each of the SC Systems for which the system type  is in this list.</xsd:documentation>
+ This Section is applicable only if at least one system in section C has C04_ResidentialHeatingSystemType  Or C05_ResidentialCoolingSystemType == CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump,  DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless, SPVHP, PTHP.    Require one row of data in this table for each of the SC Systems for which the system type  is in this list.</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -1294,6 +1293,7 @@ Flag non-compliant values and do not let registration proceed if not in complian
  If B07_NotApplicableMessage IsPresent   
 If E03_EfficiencyType == SEER2 or EER2SEER2 Then 
 If result GTE 13.4 result complies
+Elseif H07 = CEER, then value = N/A
 Else result does not comply
 End If
 End If
@@ -1427,10 +1427,11 @@ This Section is applicable only if  one or more systems in section C has  value 
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:SupplyDuctLocation">
                                              <xsd:enumeration value="ConditionedSpace"/>
-                                             <xsd:enumeration value="ConditionedSpaceExcept12ft"/>
+                                             <xsd:enumeration value="ControlledVentilationCrawlSpace"/>
                                              <xsd:enumeration value="DuctsInMultipleLocations"/>
                                              <xsd:enumeration value="Outdoors"/>
                                              <xsd:enumeration value="UnconditionedAttic"/>
+                                             <xsd:enumeration value="UnconditionedBasement"/>
                                              <xsd:enumeration value="UnconditionedCrawlSpace"/>
                                              <xsd:enumeration value="UnconditionedGarage"/>
                                           </xsd:restriction>
@@ -1461,10 +1462,11 @@ This Section is applicable only if  one or more systems in section C has  value 
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:ReturnDuctLocation">
                                              <xsd:enumeration value="ConditionedSpace"/>
-                                             <xsd:enumeration value="ConditionedSpaceExcept12ft"/>
+                                             <xsd:enumeration value="ControlledVentilationCrawlSpace"/>
                                              <xsd:enumeration value="DuctsInMultipleLocations"/>
                                              <xsd:enumeration value="Outdoors"/>
                                              <xsd:enumeration value="UnconditionedAttic"/>
+                                             <xsd:enumeration value="UnconditionedBasement"/>
                                              <xsd:enumeration value="UnconditionedCrawlSpace"/>
                                              <xsd:enumeration value="UnconditionedGarage"/>
                                           </xsd:restriction>

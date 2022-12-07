@@ -254,7 +254,7 @@ End If</xsd:documentation>
                                              <xsd:documentation source="FieldText">Required Minimum Ventilation Rate (if demand controlled)</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field (results are in CFM): 
 If B09a_HoodExhaustComplianceMethod == CaptureEfficiency
-result = N/A stored in NotApplicableMessage
+result = N/A - C2  stored in NotApplicableMessage display term N/A - See Table C2
 Else If B09a_HoodExhaustComplianceMethod == Airflow 
 If B08_KitchenExhaustOperation == DemandControl: 
 If B03_KitchenExhaustSystemType  == VentedRangeHood And A08_FuelType == Electric
@@ -287,21 +287,28 @@ End If
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
-                                       <xsd:element name="B09_NotApplicableMessage" type="comp:NotApplicableMessage" >
+                                       <xsd:element name="B09_NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Required Minimum Ventilation Rate (if demand controlled)</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field (results are in CFM
 If B09a_HoodExhaustComplianceMethod == CaptureEfficiency
-result = N/A stored in NotApplicableMessage
+result = N/A - C2 stored in NotApplicableMessage display term N/A - See Table C2
 Else If B08_KitchenExhaustOperation == ContinuousOperation: 
 result = N/A stored in NotApplicableMessage display term N/A - See Table C
 End If
 End If</xsd:documentation>
+                                             <!-- This appinfo is not used.  Moved into base-->
                                              <xsd:appinfo source="displayterm">
                                                 <dtyp:displayterm value="N/A">N/A - See Table C</dtyp:displayterm>
+                                                <dtyp:displayterm value="N/A - C2">N/A - See Table C2</dtyp:displayterm>
                                              </xsd:appinfo>
-                                             
                                           </xsd:annotation>
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="comp:NotApplicableMessage">
+                                                <xsd:enumeration value="N/A-C"/>
+                                                <xsd:enumeration value="N/A-C2"/>                                                  
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:element name="B10a_SoundRatingException" type="comp:SoundRatingException" >

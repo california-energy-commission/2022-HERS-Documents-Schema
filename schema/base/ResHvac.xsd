@@ -4854,7 +4854,7 @@
             <dtyp:displayterm value="RheemCanada">Rheem Canada</dtyp:displayterm>
             <dtyp:displayterm value="Richmond">Richmond</dtyp:displayterm>
             <dtyp:displayterm value="Ruud">Ruud</dtyp:displayterm>
-            <dtyp:displayterm value="Sanden">Sanden</dtyp:displayterm>
+<!--            <dtyp:displayterm value="Sanden">Sanden</dtyp:displayterm>-->
             <dtyp:displayterm value="State">State</dtyp:displayterm>
             <dtyp:displayterm value="Stiebel">Stiebel Eltron</dtyp:displayterm>
             <dtyp:displayterm value="USCraftmaster">US Craftmaster</dtyp:displayterm>
@@ -11462,6 +11462,13 @@
          <xsd:enumeration value="RoomAC_SliderCasement"/>
          <xsd:enumeration value="RoomACHP_Louvers"/>
          <xsd:enumeration value="RoomACHP_NoLouvers"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="RoundTripEfficiency">
+      <xsd:annotation>
+         <xsd:documentation>  Units: none</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative">
       </xsd:restriction>
    </xsd:simpleType>
    <xsd:simpleType name="Sanden40SimulationGroup">

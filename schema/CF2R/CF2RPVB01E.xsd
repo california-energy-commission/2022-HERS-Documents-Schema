@@ -112,7 +112,7 @@ Or allow user input; Else result = NotApplicable store in NotApplicableMessage</
          <xsd:element name="Section_B" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Design Photovoltaic Systems Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This section is required If A05_PhotoVoltaicExceptionRes !=  LimitedSolarAccess Or CommunitySolar Or DeclaredEmergencyArea Or SnowLoad Or Section10_109k</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This section is required If A05_PhotoVoltaicExceptionRes !=  LimitedSolarAccess Or CommunitySolar Or DeclaredEmergencyArea Or SnowLoad Or Section10_109k Or LT1_8kWdcRequired</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -359,7 +359,7 @@ End If</xsd:documentation>
          <xsd:element name="Section_C" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Installed Photovoltaic Systems Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This section is required If A05_PhotoVoltaicExceptionRes !=  LT1_8kWdcRequired, LimitedSolarAccess Or CommunitySolar Or DeclaredEmergencyArea Or SnowLoad Or Section10_109k.  For each record in Section B TableDesign, require a record in TableInstalled.  If an array has B05_CFI_PV == true, allow user to add a new record for that array in the TableInstalled.</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This section is required If A05_PhotoVoltaicExceptionRes !=  LT1_8kWdcRequired, LimitedSolarAccess Or CommunitySolar Or DeclaredEmergencyArea Or SnowLoad Or Section10_109k Or LT1_8kWdcRequired.  For each record in Section B TableDesign, require a record in TableInstalled.  If an array has B05_CFI_PV == true, allow user to add a new record for that array in the TableInstalled.</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -665,6 +665,12 @@ End If</xsd:documentation>
                   <xsd:element name="G01_PV_SystemTotalRatedPowerDC" type="hvac:PV_SystemTotalRatedPowerDC" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Required kW</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Value loaded from CF1R-PRF</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="G02a" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">Standard Design kW (CFI1 orientation and 98% Annual Solar Access)</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Value loaded from CF1R-PRF</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>

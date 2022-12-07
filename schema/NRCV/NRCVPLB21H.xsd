@@ -72,7 +72,7 @@
          <xsd:element name="Section_B" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Design HERS Verified Central Water Heating Systems Information (other than CHPWH)</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This  section is required if the NRCC parent  has any non-HPWH systems, Require one row of data for each non-HPWH system identified on the NRCC</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This  section is required if the NRCC parent  has any non-CHPWH systems, Require one row of data for each non-HPWH system identified on the NRCC</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -95,14 +95,14 @@
                                     <xsd:element name="B01_WaterHeatingSystemName" type="hvac:WaterHeatingSystemName" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Water Heating System ID or Name</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from NRCC.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input; </xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="B02_ResidentialWaterHeatingSystemType" type="hvac:ResidentialWaterHeatingSystemType" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Water Heating System Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Performance, reference values from NRCC-PRF; Allowed values are: DHW display term DHW,  Hydronic display term Hydronic and  HydronicSpaceConditioningDHW display term Combined Hydronic; Else If Prescriptive result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Allow user to select from list (DHW, Hydronic, or Combined Hydronic)</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B02_NotApplicableMessage" type="comp:NotApplicableMessage" >
@@ -115,26 +115,26 @@
                                     <xsd:element name="B03_ResidentialWaterHeaterType" type="hvac:ResidentialWaterHeaterType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Water-Heater Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from NRCC Allowed values are: BoilerWaterHeater display term: Boiler,   IndirectWaterHeating display term:  Indirect, InstantaneousCommercial display term: Commercial Instantaneous, InstantaneousResDutyCommercial display term: Residential-Duty Commercial Instantaneous, InstantaneousConsumer display term: Consumer Instantaneous,   StorageCommercial display term: Commercial Storage, StorageResDutyCommercial display term: Residential-Duty Commercial Storage,   StorageConsumer display term: Consumer Storage.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules"> Allow user to select from list: (Boiler, Indirect, Consumer Instantaneous, Commercial Instantaneous, Consumer Storage, Commercial Storage, Residential-Duty Commercial Storage, or Residential-Duty Commercial Instantaneous )>></xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="B04_WaterHeaterTotalSystemCount" type="hvac:WaterHeaterTotalSystemCount" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Number of Water Heaters in System</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from NRCC</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input, value must be greater than or equal to 1</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="B05_StorageCapacity" type="hvac:StorageCapacity" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Water Heater Storage Volume (gal)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC; N/A is allowed only if B03_ResidentialWaterHeaterType == InstantaneousCommercial, InstantaneousResDutyCommercial Or InstantaneousConsumer</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input;  If B03 =   Consumer Instantaneous, Commercial Instantaneous, or  Residential-Duty Commercial Instantaneous then allow N/A;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B05_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Water Heater Storage Volume (gal)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC; N/A is allowed only if B03_ResidentialWaterHeaterType == InstantaneousCommercial, InstantaneousResDutyCommercial Or InstantaneousConsumer</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input,  If B03 =   Consumer Instantaneous, Commercial Instantaneous, or  Residential-Duty Commercial Instantaneous then allow N/A;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -170,19 +170,19 @@
                                        <xsd:element name="B08_WaterHeaterElectricFiredRatedInput" type="hvac:WaterHeaterElectricFiredRatedInput" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Rated Input Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If B03_ResidentialWaterHeaterType == HeatPumpWaterHeater then result = N/A stored in NotApplicableMessage; Else If Performance  reference value from NRCC-PRF  for electric fired or gas fired water heater; Else If Prescriptive result = N/A stored in NotApplicableMessage.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If B03_ResidentialWaterHeaterType == HeatPumpWaterHeater then result = N/A stored in NotApplicableMessage; Else User Input for electric fired or gas fired water heater; Else If Prescriptive result = N/A stored in NotApplicableMessage.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B08_WaterHeaterGasFiredRatedInput" type="hvac:WaterHeaterGasFiredRatedInput" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Rated Input Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If B03_ResidentialWaterHeaterType == HeatPumpWaterHeater then result = N/A stored in NotApplicableMessage; Else If Performance  reference value from NRCC-PRF  for electric fired or gas fired water heater; Else If Prescriptive result = N/A stored in NotApplicableMessage.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If B03_ResidentialWaterHeaterType == HeatPumpWaterHeater then result = N/A stored in NotApplicableMessage; Else User Input for electric fired or gas fired water heater; </xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B08_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Rated Input Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If B03_ResidentialWaterHeaterType == HeatPumpWaterHeater then result = N/A stored in NotApplicableMessage; Else If Performance  reference value from NRCC-PRF  for electric fired or gas fired water heater; Else If Prescriptive result = N/A stored in NotApplicableMessage.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If B03_ResidentialWaterHeaterType == HeatPumpWaterHeater then result = N/A stored in NotApplicableMessage; Else User Input for electric fired or gas fired water heater; </xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -190,12 +190,11 @@
                                        <xsd:element name="B09_EfficiencyType" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Performance reference values from NRCC-PRF for efficiency type  Allowed values are: AFUE, EnergyFactor, ThermalEfficiency, Uniform Energy Factor; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (AFUE, Thermal Efficiency, Uniform Energy Factor)</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:EfficiencyType">
                                                 <xsd:enumeration value="AFUE"/>
-                                                <xsd:enumeration value="EnergyFactor"/>
                                                 <xsd:enumeration value="ThermalEfficiency"/>
                                                 <xsd:enumeration value="UniformEnergyFactor"/>
                                              </xsd:restriction>
@@ -204,7 +203,7 @@
                                        <xsd:element name="B09_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Performance reference values from NRCC-PRF for efficiency type  Allowed values are: AFUE, EnergyFactor, ThermalEfficiency, Uniform Energy Factor; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (AFUE, Thermal Efficiency, Uniform Energy Factor)</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -212,31 +211,31 @@
                                        <xsd:element name="B10_WaterHeaterAFUE" type="hvac:WaterHeaterAFUE" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Performance reference values from NRCC-PRF Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B10_EnergyFactor" type="hvac:EnergyFactor" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Performance reference values from NRCC-PRF Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B10_UniformEnergyFactor" type="hvac:UniformEnergyFactor" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Performance reference values from NRCC-PRF Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B10_ThermalEfficiency" type="hvac:ThermalEfficiency" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Performance reference values from NRCC-PRF Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B10_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Performance reference values from NRCC-PRF Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A ;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -244,13 +243,13 @@
                                        <xsd:element name="B11_WaterHeatingStandbyLossPercent" type="hvac:WaterHeatingStandbyLossPercent" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Standby Loss (%)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If  Performance reference value from NRCC-PRF-01 Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B11_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Standby Loss (%)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If  Performance reference value from NRCC-PRF-01 Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -258,13 +257,13 @@
                                        <xsd:element name="B12_ExteriorTankInsulation" type="hvac:ExteriorTankInsulation" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Exterior Insulation R-Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If  Performance reference value from NRCC-PRF-01 Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="B12_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Exterior Insulation R-Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If  Performance reference value from NRCC-PRF-01 Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input, but allow N/A;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -303,49 +302,46 @@
                                     <xsd:element name="Hpd01_WaterHeatingSystemName" type="hvac:WaterHeatingSystemName" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Water Heating System ID or Name</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from NRCC.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="Hpd02_HeatPumpWaterHeaterBrand" type="hvac:HeatPumpWaterHeaterBrand" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Modeled Equipment Make and Model</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If  prescriptive NRCC
-default value = Sanden stored in HeatPumpWaterHeaterBrand
-End If</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (see NEEA HPWH Official List – CHPWH tab);</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpd02_HeatPumpWaterHeaterModel" type="hvac:HeatPumpWaterHeaterModel" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Modeled Equipment Make and Model</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If performance NRCC reference value from NRCC-PRF and store in HeatPumpWaterHeaterModel
-End If</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (see NEEA HPWH Official List – CHPWH tab);</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:element name="Hpd03_CompressorCountCHPWH" type="hvac:CompressorCountCHPWH" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText"># of Water Heaters/ Compressors</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from NRCC</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input, value must be greater than or equal to 1</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd04_TankLocation" type="hvac:TankLocation" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Primary Tank Location</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from NRCC.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User select from list (Attic, Conditioned, Crawl Space, Garage, TankZone,  Unconditioned)</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="Hpd05_StorageCapacity" type="hvac:StorageCapacity" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Primary Tank Volume</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC which may be NA.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpd05_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Primary Tank Volume</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC which may be NA.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -353,13 +349,13 @@ End If</xsd:documentation>
                                        <xsd:element name="Hpd06_PrimaryTankTotalInsulation" type="hvac:PrimaryTankTotalInsulation" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Primary Tank Total Insulation</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC which may be NA.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Default to R-16, but allow user to override and enter a higher value;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpd06_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Primary Tank Total Insulation</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC which may be NA.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Default to R-16, but allow user to override and enter a higher value;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -367,13 +363,13 @@ End If</xsd:documentation>
                                        <xsd:element name="Hpd07_TankLocation" type="hvac:TankLocation" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Tank Location</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (Attic, Conditioned, Crawl Space, Garage, TankZone, Unconditioned);</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpd07_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Tank Location</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC which may be NA</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (Attic, Conditioned, Crawl Space, Garage, TankZone, Unconditioned);</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -381,13 +377,13 @@ End If</xsd:documentation>
                                        <xsd:element name="Hpd08_LoopTankCapacity" type="hvac:LoopTankCapacity" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Tank Volume</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC which may be NA.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpd08_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Tank Volume</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -395,13 +391,13 @@ End If</xsd:documentation>
                                        <xsd:element name="Hpd09_LoopTankTotalInsulation" type="hvac:LoopTankTotalInsulation" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Tank Total Insulation</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC which may be NA.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input;.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpd09_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Tank Total Insulation</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -409,13 +405,13 @@ End If</xsd:documentation>
                                        <xsd:element name="Hpd10_PipeInsulationThickness" type="hvac:PipeInsulationThickness" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Pipe Insulation Thickness</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC which may be NA.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpd10_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Pipe Insulation Thickness</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -423,13 +419,13 @@ End If</xsd:documentation>
                                        <xsd:element name="Hpd11_LoopTankType" type="hvac:LoopTankType" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Tank Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (Commercial HPWH, Electric Resistance, Large Compressor, NEEA);</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpd11_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Loop Tank Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from NRCC which may be NA</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User select from list (Commercial HPWH, Electric Resistance, Large Compressor, NEEA);</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -688,9 +684,7 @@ If prescriptive, this field is not required; Else If performance reference value
                                        <xsd:element name="Hpi02_HeatPumpWaterHeaterBrand" type="hvac:HeatPumpWaterHeaterBrand" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Modeled Equipment Make and Model</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Prescriptive NRCC
-result = Sanden stored in HeatPumpWaterHeaterBrand
-End If</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules"></xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="Hpi02_HeatPumpWaterHeaterModel" type="hvac:HeatPumpWaterHeaterModel" >
@@ -997,7 +991,7 @@ Else result = false dsiplay term System does not comply</xsd:documentation>
          <xsd:element name="Section_D" minOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Design  HERS Verified Central Water Heating Distribution Systems Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">Require one row of data for each water heating system identified on the NRCC-PRF</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">Require one row of data for each water heating system identified on the NRCC-PRF.  If prescriptive compliance, then display the section does not apply message; </xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -1020,19 +1014,18 @@ Else result = false dsiplay term System does not comply</xsd:documentation>
                                     <xsd:element name="D01_WaterHeatingSystemName" type="hvac:WaterHeatingSystemName" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Water Heating System ID or Name</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from NRCC.  (See rule in header)</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from from B01 or B2.01.  (See rule in header)</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="D02_ResidentialDHWCentralDistributionType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Central DHW System Distribution Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from NRCC-PRF.  Allowed values:  RecirculationMF display term Multi-family: Recirculation,  NoRecirculation  display term Multi-family: No Recirculation
-Else If prescriptive compliance result = RecirculatingDemandControlMF  display term Multi-family: Recirculating demand control;</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Allowed values:  RecirculationMF display term Multi-family: Recirculation,  NoRecirculation  display term Multi-family: No Recirculation;</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:ResidentialDHWCentralDistributionType">
                                              <xsd:enumeration value="NoRecirculationMF"/>
-                                             <xsd:enumeration value="RecirculatingDemandControlMF"/>
+<!--                                             <xsd:enumeration value="RecirculatingDemandControlMF"/>-->
                                              <xsd:enumeration value="RecirculationMF"/>
                                           </xsd:restriction>
                                        </xsd:simpleType>
@@ -1040,7 +1033,11 @@ Else If prescriptive compliance result = RecirculatingDemandControlMF  display t
                                     <xsd:element name="D03_ResidentialDHWDwellingUnitDistributionType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Dwelling Unit DHW System Distribution Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from NRCC-PRF;  Allowed values:  StandardDistribution display term Standard distribution system, StandardDistributionInsulatedPipesHERS  display term HERS Verified Pipe Insulation; Else If prescriptive compliance result =  StandardDistribution display term Standard distribution system.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input. 
+                                             Allowed values are
+                                             *Standard Distribution System
+                                             *HERS-Verified Pipe Insulation 
+                                          </xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:ResidentialDHWDwellingUnitDistributionType">

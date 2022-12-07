@@ -1777,7 +1777,7 @@ Else
 user selects from list: Yes (Boolean true display text) or No  (Boolean false display text).  
 End If
  
-Check: If result == false, report in project status notes field that exemption from mandatory HERS verification of system airflow has been claimed. Enforcement agency confirmation is recommended.  Also report in project status notes field that better than minimum SEER or EER cannot not be claimed for performance compliance credit if the system cannot comply with the required HERS verification; a revised parent CC-PRF may be required.</xsd:documentation>
+Check: If result == false, report in project status notes field that exemption from mandatory HERS verification of system airflow has been claimed. Enforcement agency confirmation is recommended.  Also report in project status notes field that better than minimum EER or SEER cannot not be claimed for performance compliance credit if the system cannot comply with the required HERS verification; a revised parent CC-PRF may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="J13_CanFanEfficacyProtocolsTestSystem" type="comp:CanFanEfficacyProtocolsTestSystem" >
@@ -1795,7 +1795,7 @@ result = CanTest display term Yes;
 Else user selects from list: CanTest display term Yes or CanNotTest  display term No. 
 End If 
  
-Check: if result == CanNotTest, report in project status notes field that exemption from mandatory HERS verification of system airflow has been claimed. Enforcement agency confirmation is recommended.  Also report in project status notes field that better than minimum SEER or EER cannot not be claimed for performance compliance credit if the system cannot comply with the required HERS verification; a revised parent CC-PRF may be required.</xsd:documentation>
+Check: if result == CanNotTest, report in project status notes field that exemption from mandatory HERS verification of system airflow has been claimed. Enforcement agency confirmation is recommended.  Also report in project status notes field that better than minimum EER or SEER cannot not be claimed for performance compliance credit if the system cannot comply with the required HERS verification; a revised parent CC-PRF may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="J14_IndoorUnitDucts" type="hvac:IndoorUnitDucts" >

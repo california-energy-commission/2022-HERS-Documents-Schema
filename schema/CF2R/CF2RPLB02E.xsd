@@ -199,13 +199,14 @@ End If</xsd:documentation>
                                        <xsd:element name="A10_CompactDistributionType" type="hvac:CompactDistributionType" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Compact Distrib.</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as folows:
-If parent CC is prescriptive ALT
-result = NotApplicable stored in NotApplicableMessage
-Else allowed values are 
-BasicType display term Basic, 
-NotCompact display term None
-End If</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If parent CF1R = NCB-01, then if NCB-01 Field M09 = CompactHotWaterDistributionSystemHERS or CompactHotWaterDistributionSystemBasic or CompactDistributionDrainHeatRecoveryHERS then value is BasicType else NotCompact;
+                                                Else if parent CF1R = ALT-01 or ADD-01, then value = NotCompact;
+                                                Else if information not available from PRF-01, allow user select. Allowed values are
+                                                *Basic
+                                                *Expanded
+                                                *NotCompact;
+                                                Else use value from PRF-01;
+                                             </xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="A10_NotApplicableMessage" type="comp:NotApplicableMessage" >
@@ -331,13 +332,14 @@ End If</xsd:documentation>
                                        <xsd:element name="A2hp08_CompactDistributionType" type="hvac:CompactDistributionType" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Compact Distribution</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from parent CC as follows:   
-If parent CC is prescriptive ALT
-result = NotApplicable stored in NotApplicableMessage
-Else allowed values are 
-BasicType display term Basic, 
-NotCompact display term None
-End If</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If parent CF1R = NCB-01, then if NCB-01 Field M09 = CompactHotWaterDistributionSystemHERS or CompactHotWaterDistributionSystemBasic or CompactDistributionDrainHeatRecoveryHERS then value is BasicType else NotCompact;
+                                                Else if parent CF1R = ALT-01 or ADD-01, then value = NotCompact;
+                                                Else if information not available from PRF-01, allow user select. Allowed values are
+                                                *Basic
+                                                *Expanded
+                                                *NotCompact;
+                                                Else use value from PRF-01;
+                                             </xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="A2hp08_NotApplicableMessage" type="comp:NotApplicableMessage" >
@@ -1099,15 +1101,16 @@ Require one row of data for each water heater identified in Section A TableDesig
                                        <xsd:element name="C06_StorageCapacity" type="hvac:StorageCapacity" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Water Heater Storage Volume (gal)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from parent CC N/A is allowed If  water heater system is from Section A2 TableHpwhd
- Or If water heater system is from Section_A TableDesignSystem And A03_ResidentialWaterHeaterType == InstantaneousCommercial, InstantaneousConsumer Or InstantaneousResDutyCommercial</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference values from CF1R as default, but if information is not available then allow user input.
+                                                NA is allowed if Water Heater Type = Consumer Instantaneous, Commercial Instantaneous, or Residential-Duty Commercial Instantaneous 
+                                             </xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Water Heater Storage Volume (gal)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference values from parent CC . N/A is allowed If  water heater system is from Section A2 TableHpwhd
- Or If water heater system is from Section_A TableDesignSystem And A03_ResidentialWaterHeaterType == InstantaneousCommercial, InstantaneousConsumer Or InstantaneousResDutyCommercial</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference values from CF1R as default, but if information is not available then allow user input.
+                                                NA is allowed if Water Heater Type = Consumer Instantaneous, Commercial Instantaneous, or Residential-Duty Commercial Instantaneous</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -1167,12 +1170,15 @@ Require one row of data for each water heater identified in Section A TableDesig
                                        <xsd:element name="D02_EfficiencyType" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from C02 which may be N/A</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If C02 = N/A then allow user to select from list: 
+                                                   *Uniform Energy Factor
+                                                   *AFUE
+                                                   *Thermal Efficiency; 
+                                                   else reference value from C02 as default </xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:EfficiencyType">
                                                 <xsd:enumeration value="AFUE"/>
-                                                <xsd:enumeration value="EnergyFactor"/>
                                                 <xsd:enumeration value="ThermalEfficiency"/>
                                                 <xsd:enumeration value="UniformEnergyFactor"/>
                                              </xsd:restriction>

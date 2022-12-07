@@ -56,7 +56,7 @@
          <xsd:element name="Section_A" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Local Mechanical Exhaust - General Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC) and Mch01 refers to the CF2R-Mch-01</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">In this section parent CC refers to the parent CF1R Certificate of Compliance (CC) and Mch01 refers to the CF2R-Mch-01 or Prescriptive CF1R; else if information is not available then allow user input;</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -76,7 +76,7 @@
                   <xsd:element name="A02_ResidentialBuildingTypeMechExhaust" type="com:ResidentialBuildingTypeMechExhaust" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Building Type</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Referenced data from parent CC, Values MultiFamily display term Multifamily, SingleFamilyAttached display term Single family attached, SingleFamilyDetached display term Single family detached</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Referenced data from CF1R, else if information is not available then allow user input. Allowed Values SingleFamilyAttached display term Single family attached, SingleFamilyDetached display term Single family detached</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:choice maxOccurs="1">
@@ -155,7 +155,7 @@ End If</xsd:documentation>
                   <xsd:element name="A07_DwellingUnitConditionedFloorArea" type="com:DwellingUnitConditionedFloorArea" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling Unit Total Floor Area</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: data loaded from Mch01 A03_DwellingUnitConditionedFloorArea</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: data loaded from Mch01 A03_DwellingUnitConditionedFloorArea or Prescriptive CF1R; else if information is not available then allow user input;</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A08_FuelType" type="com:FuelType" >
@@ -257,103 +257,60 @@ End If</xsd:documentation>
                                              <xsd:documentation source="FieldText">Required Minimum Ventilation Rate (if demand controlled)</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field (results are in CFM): 
  
-If B09a_HoodExhaustComplianceMethod == CaptureEfficiency
-result = N/A stored in NotApplicableMessage display term "N/A - See Table E"
-Else If B09a_HoodExhaustComplianceMethod == Airflow
+ if B09a = Capture Efficiency, then result = NA – See Table C2; 
+ Elseif B09a = Airflow, then calculate the following as default:
+ If the following three conditions are met: (1) B08=Demand Control, (2) B03=Vent Range Hood, and (3) A08=Electric, AND
+ If A07 GT 1500, then result = 110;
+ Elseif A07 = 1,000-1,500, then result = 110;
+ Elseif A07 = 750-1,000, then result = 130; Elseif A07 LT 750, then result = 160; End if;
  
-If B08_KitchenExhaustOperation == DemandControl: 
-If B03_KitchenExhaustSystemType  == VentedRangeHood 
-If A07_DwellingUnitConditionedFloorArea GT 1500 Then
-If A08_FuelType == Electric
-result 110
-Else If A08_FuelType == Gas
-result = 180
-End If
+ Elseif the following three conditions are met: (1) B08=Demand Control, (2) B03=Vent Range Hood, and (3) A08 = Natural Gas, AND
+ If A07 GT 1,500, then result = 180;
+ Elseif A07 = 1,000-1,500, then result = 250;
+ Elseif A07 = 750-1,000, then result = 280; Elseif A07 LT 750, then result = 280; End if;
  
-Else If A07_DwellingUnitConditionedFloorArea InRange (1,000, 1,500)
-If A08_FuelType == Electric
-result 110
-Else If A08_FuelType == Gas
-result = 250
-End If
+ Elseif the following three conditions are met: (1) B08=Demand Control, (2) A06 = Enclosed, and B03 = Other or Downdraft, then result is the lesser of 300 cfm or (5*(A05/60));
  
-Else If A07_DwellingUnitConditionedFloorArea InRange (750, 1,000) 
-If A08_FuelType == Electric
-result 130
-Else If A08_FuelType == Gas
-result = 280
-End If
-Else If A07_DwellingUnitConditionedFloorArea LT750
-If A08_FuelType == Electric
-result 160
-End if
-End If
+ Elseif the following three conditions are met: (1) B08=Demand Control, (2) A06 = Nonenclosed, and (3) B03 = Other or Downdraft, then result = 300;
  
-Else If B03_KitchenExhaustSystemType  ==  Other Or DownDraft 
-If A06_Enclosed == true 
-result = Smallest (300,  (5 x ( A05_SpaceVolume) / 60)) 
-Else If A06_Enclosed == false
-result = 300; 
-End If
-End If
-Else result = N/A - See Table D
-End If
-End If</xsd:documentation>
+ Else result = N/A – See Table C
+                                             
+                                             
+                                             </xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
-                                       <xsd:element name="B09_NotApplicableMessage" type="comp:NotApplicableMessage" >
+                                       <xsd:element name="B09_NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Required Minimum Ventilation Rate (if demand controlled)</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field (results are in CFM): 
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field (results are in CFM):  If B09a = Capture Efficiency, then result = NA – See Table C2; 
+ Elseif B09a = Airflow, then calculate the following as default:
+ If the following three conditions are met: (1) B08=Demand Control, (2) B03=Vent Range Hood, and (3) A08=Electric, AND
+ If A07 GT 1500, then result = 110;
+ Elseif A07 = 1,000-1,500, then result = 110;
+ Elseif A07 = 750-1,000, then result = 130; Elseif A07 LT 750, then result = 160; End if;
  
-If B09a_HoodExhaustComplianceMethod == CaptureEfficiency
-result = N/A stored in NotApplicableMessage display term "N/A - See Table E"
-Else If B09a_HoodExhaustComplianceMethod == Airflow
+ Elseif the following three conditions are met: (1) B08=Demand Control, (2) B03=Vent Range Hood, and (3) A08 = Natural Gas, AND
+ If A07 GT 1,500, then result = 180;
+ Elseif A07 = 1,000-1,500, then result = 250;
+ Elseif A07 = 750-1,000, then result = 280; Elseif A07 LT 750, then result = 280; End if;
  
-If B08_KitchenExhaustOperation == DemandControl: 
-If B03_KitchenExhaustSystemType  == VentedRangeHood 
-If A07_DwellingUnitConditionedFloorArea GT 1500 Then
-If A08_FuelType == Electric
-result 110
-Else If A08_FuelType == Gas
-result = 180
-End If
+ Elseif the following three conditions are met: (1) B08=Demand Control, (2) A06 = Enclosed, and B03 = Other or Downdraft, then result is the lesser of 300 cfm or (5*(A05/60));
  
-Else If A07_DwellingUnitConditionedFloorArea InRange (1,000, 1,500)
-If A08_FuelType == Electric
-result 110
-Else If A08_FuelType == Gas
-result = 250
-End If
+ Elseif the following three conditions are met: (1) B08=Demand Control, (2) A06 = Nonenclosed, and (3) B03 = Other or Downdraft, then result = 300;
  
-Else If A07_DwellingUnitConditionedFloorArea InRange (750, 1,000) 
-If A08_FuelType == Electric
-result 130
-Else If A08_FuelType == Gas
-result = 280
-End If
-Else If A07_DwellingUnitConditionedFloorArea LT750
-If A08_FuelType == Electric
-result 160
-End if
-End If
- 
-Else If B03_KitchenExhaustSystemType  ==  Other Or DownDraft 
-If A06_Enclosed == true 
-result = Smallest (300,  (5 x ( A05_SpaceVolume) / 60)) 
-Else If A06_Enclosed == false
-result = 300; 
-End If
-End If
-Else result = N/A - See Table D
-End If
-End If</xsd:documentation>
+ Else result = N/A – See Table C</xsd:documentation>
+                                             <!-- This appinfo is not used.  Moved into base-->
                                              <xsd:appinfo source="displayterm">
                                                 <dtyp:displayterm value="N/A">N/A - See Table C</dtyp:displayterm>
                                                 <dtyp:displayterm value="N/A">N/A - See Table C2</dtyp:displayterm>
-                                             </xsd:appinfo>
-                                             
+                                             </xsd:appinfo>                                             
                                           </xsd:annotation>
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="comp:NotApplicableMessage">
+                                                <xsd:enumeration value="N/A-C"/>
+                                                <xsd:enumeration value="N/A-C2"/>                                                  
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:element name="B10a_SoundRatingException" type="comp:SoundRatingException" >

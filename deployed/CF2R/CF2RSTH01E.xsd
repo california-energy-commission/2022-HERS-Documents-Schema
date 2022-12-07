@@ -64,16 +64,28 @@ allow user input
 End If</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
-                                    <xsd:element name="A05_SolarWaterHeatingCollectorCount" type="hvac:SolarWaterHeatingCollectorCount">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText"># of Collectors</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If  data is available
-reference value from CF1R, 
-Else  
-allow user input
-End If</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="A05_SolarWaterHeatingCollectorCount" type="hvac:SolarWaterHeatingCollectorCount">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText"># of Collectors</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If  data is available
+                                                reference value from CF1R, 
+                                                Else  
+                                                allow user input or N/A if SRCC Certification Type = OG-300
+                                                End If</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="A05_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText"># of Collectors</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If  data is available
+                                                reference value from CF1R, 
+                                                Else  
+                                                allow user input or N/A if SRCC Certification Type = OG-300
+                                                End If</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
                                     <xsd:element name="A06_SolarWaterHeatingCollectorAngleFromNorth" type="comp:SolarWaterHeatingCollectorAngleFromNorth">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Azimuth from North (in degrees)</xsd:documentation>
@@ -94,16 +106,28 @@ allow user input
 End If</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
-                                    <xsd:element name="A08_StorageCapacity" type="hvac:StorageCapacity">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Tank Volume (gal)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If  data is available
-reference value from CF1R, 
-Else  
-allow user input
-End If</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="A08_StorageCapacity" type="hvac:StorageCapacity">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume (gal)</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If  data is available
+                                                reference value from CF1R, 
+                                                Else  
+                                                allow user input or N/A if SRCC Certification Type = OG-300
+                                                End If</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="A08_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText"># of Collectors</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If  data is available
+                                                reference value from CF1R, 
+                                                Else  
+                                                allow user input or N/A if SRCC Certification Type = OG-300
+                                                End If</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
                                     <xsd:element name="A09_SolarWaterSystemSRCC_CertificationNumber" type="hvac:SolarWaterSystemSRCC_CertificationNumber">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">SRCC/IAPMO  Number</xsd:documentation>

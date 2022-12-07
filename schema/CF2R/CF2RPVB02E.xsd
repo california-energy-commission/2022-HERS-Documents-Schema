@@ -147,6 +147,21 @@
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
+                  <xsd:choice maxOccurs="1">
+                     <xsd:element name="B05_RoundTripEfficiency" type="hvac:RoundTripEfficiency" >
+                        <xsd:annotation>
+                           <xsd:documentation source="FieldText">Round Trip Efficiency (%)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">From CF1R-PRF-01; 
+                              Else, if prescriptive, value = N/A
+                           </xsd:documentation>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element name="B05_NotApplicableMessage" type="comp:NotApplicableMessage" >
+                        <xsd:annotation>
+                           <xsd:documentation source="FieldText">Discharging Efficiency (%)</xsd:documentation>
+                        </xsd:annotation>
+                     </xsd:element>
+                  </xsd:choice>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
@@ -190,6 +205,12 @@
                   <xsd:element name="C06_DischargingEfficiency" type="hvac:DischargingEfficiency" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Discharging Efficiency (%)</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Reference B04_DischargingEffiency as default; allow user to override value only if result is GTE B04_DischargingEffiency;  If B04_NotApplicableMessage == N/A,, user input</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="C06a_DischargingEfficiency" type="hvac:RoundTripEfficiency">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">Round Trip Efficiency (%)</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Reference B04_DischargingEffiency as default; allow user to override value only if result is GTE B04_DischargingEffiency;  If B04_NotApplicableMessage == N/A,, user input</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>

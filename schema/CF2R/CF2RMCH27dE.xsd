@@ -71,7 +71,7 @@
                   <xsd:element name="A01_DwellingUnitName" type="com:DwellingUnitName" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling unit name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: Referenced data from Mch01, A01_DwellingUnitName</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: Referenced data from Mch01, A01_DwellingUnitName, Else If information not available then allow user input;</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ResidentialBuildingType" >
@@ -125,14 +125,14 @@
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Total Conditioned Floor Area of Dwelling Unit</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">(For addition projects the conditioned floor area equals existing area plus addition area. )</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: reference value from MCH-01; A03 DwellingUnitConditionedFloorArea</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: reference value from MCH-01; A03 DwellingUnitConditionedFloorArea, Else If information not available then allow user input;</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A05_BedroomCount" type="com:BedroomCount" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Number of Bedrooms in Dwelling Unit</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">(For addition projects the number of bedrooms equals the existing bedrooms plus addition bedrooms)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: default value referenced from MCH-01 A09 BedroomCount; If result = 0, replace with result = 1</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: default value referenced from MCH-01 A09 BedroomCount; If result = 0, replace with result = 1, Else If information not available then allow user input;</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:choice maxOccurs="1">
@@ -185,10 +185,6 @@ And A06_VentilationSystemType == SupplyVent, ExhaustVent, Balanced,BalancedERV, 
 And A07_VentilationOperationSchedule == Continuous Or ShortTermAverage
 variant result =  Mch27a Single Family Attached/Detached Ventilation; 
  
-Else If A02_ResidentialBuildingType == SingleFamilyAttached Or SingleFamilyDetached   
-And A06_VentilationSystemType == SupplyVent, ExhaustVent, Balanced, BalancedERV Or BalancedHRV And A07_VentilationOperationSchedule == Scheduled Or  RealTimeControl 
-variant result = Mch27c - Schedule or Real-Time Control Ventilation System; 
- 
 Else If A02_ResidentialBuildingType == NonDwellingUnit 
 variant result = Mch27d - Non-dwelling Unit
 End If</xsd:documentation>
@@ -209,64 +205,14 @@ End If</xsd:documentation>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
-         <xsd:element name="Section_B" minOccurs="0">
-            <xsd:annotation>
-               <xsd:documentation source="FieldText">HRV or ERV</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This section is required If A06_VentilationSystemType == BalancedERV Or  BalancedHRV</xsd:documentation>
-               <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
-            </xsd:annotation>
-            <xsd:complexType>
-               <xsd:sequence>
-                  <xsd:element name="HErvBeginNote1" minOccurs="0">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText"></xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
-                  <xsd:element name="TableHrvErv" >
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText"></xsd:documentation>
-                     </xsd:annotation>
-                     <xsd:complexType>
-                        <xsd:sequence>
-                           <xsd:element name="Row" minOccurs="1" maxOccurs="unbounded">
-                              <xsd:complexType>
-                                 <xsd:sequence>
-                                    <xsd:element name="Herv01_VentilationManufacturer" type="hvac:VentilationManufacturer" >
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Manufcturer Make</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">User input</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
-                                    <xsd:element name="Herv02_VentilationModelNumber" type="hvac:VentilationModelNumber" >
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Manufcturer Model #</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">User input</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
-                                    <xsd:element name="Herv03_FanPowerPerFlow" type="hvac:FanPowerPerFlow" >
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Fan Efficacy Performance Rating (W/CFM)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
-Else user input</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
-                                 </xsd:sequence>
-                              </xsd:complexType>
-                           </xsd:element>
-                        </xsd:sequence>
-                     </xsd:complexType>
-                  </xsd:element>
-               </xsd:sequence>
-            </xsd:complexType>
-         </xsd:element>
-         <xsd:element name="Section_C" minOccurs="1" maxOccurs="1">
+         <xsd:element name="Section_B" minOccurs="1" maxOccurs="1">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Compliance Statement</xsd:documentation>
                <xsd:documentation source="MinOccurs">This section is required.</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
                <xsd:sequence>
-                  <xsd:element name="C01_MechanicalVentilationCompliance" type="comp:MechanicalVentilationCompliance" >
+                  <xsd:element name="B01_MechanicalVentilationCompliance" type="comp:MechanicalVentilationCompliance" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"></xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Calculated field: If A02_ResidentialBuildingType == NonDwellingUnit result = BuildingPasses display term Building Passes</xsd:documentation>

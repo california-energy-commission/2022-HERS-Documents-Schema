@@ -29,7 +29,7 @@
                   <xsd:element name="A01_DwellingUnitName" type="com:DwellingUnitName">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling unit name</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: Referenced data from Mch01, A01_DwellingUnitName</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: Referenced data from Mch01, A01_DwellingUnitName, Else If information not available then allow user input;</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A02_ResidentialBuildingType">
@@ -83,14 +83,14 @@
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Total Conditioned Floor Area of Dwelling Unit</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">(For addition projects the conditioned floor area equals existing area plus addition area. )</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: reference value from MCH-01; A03 DwellingUnitConditionedFloorArea</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: reference value from MCH-01; A03 DwellingUnitConditionedFloorArea, Else If information not available then allow user input;</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A05_BedroomCount" type="com:BedroomCount">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Number of Bedrooms in Dwelling Unit</xsd:documentation>
                         <xsd:documentation source="AdditionalRequirements">(For addition projects the number of bedrooms equals the existing bedrooms plus addition bedrooms)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: default value referenced from MCH-01 A09 BedroomCount; If result = 0, replace with result = 1</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: default value referenced from MCH-01 A09 BedroomCount; If result = 0, replace with result = 1, Else If information not available then allow user input;</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:choice maxOccurs="1">
@@ -142,10 +142,6 @@ If A02_ResidentialBuildingType == SingleFamilyAttached Or SingleFamilyDetached
 And A06_VentilationSystemType == SupplyVent, ExhaustVent, Balanced,BalancedERV, BalancedHRV Or CentralFanIntegrated 
 And A07_VentilationOperationSchedule == Continuous Or ShortTermAverage
 variant result =  Mch27a Single Family Attached/Detached Ventilation; 
- 
-Else If A02_ResidentialBuildingType == SingleFamilyAttached Or SingleFamilyDetached 
-And A06_VentilationSystemType == SupplyVent, ExhaustVent, Balanced, BalancedERV Or BalancedHRV And A07_VentilationOperationSchedule == Scheduled Or  RealTimeControl 
-variant result = Mch27c - Schedule or Real-Time Control Ventilation System; 
  
 End If</xsd:documentation>
                      </xsd:annotation>
@@ -530,7 +526,7 @@ End If</xsd:documentation>
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Fan Efficacy Performance Rating (W/CFM)</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">If CF1R-PRF parent and  data available, load from the CF1R
-Else user input</xsd:documentation>
+                                             Else user input; Range check: User entered value must be Less than or Equal to 1.0;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                  </xsd:sequence>

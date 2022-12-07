@@ -201,13 +201,7 @@ End If
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
-                                    </xsd:choice>
-                                    <xsd:element name="A09_IsDHW_Central" type="comp:IsDHW_Central" >
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Central DHW System Distribution Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If water heating system in parent CC is Central DHW system result = true display term Yes Else result = false display term NA</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
+                                    </xsd:choice>                                  
                                     <xsd:element name="A10_ResidentialDHWDwellingUnitDistributionType" type="hvac:ResidentialDHWDwellingUnitDistributionType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Dwelling Unit DHW System Distribution Type</xsd:documentation>
@@ -226,13 +220,26 @@ End If</xsd:documentation>
                                     <xsd:element name="A11_CompactDistributionType" type="hvac:CompactDistributionType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Compact Distrib.</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC Allowed values are BasicType display term Basic, Expanded display term Expanded, NotCompact display term None</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If parent CF1R = NCB-01, then if NCB-01 Field M09 = CompactHotWaterDistributionSystemHERS or CompactHotWaterDistributionSystemBasic or CompactDistributionDrainHeatRecoveryHERS then value is BasicType else NotCompact;
+                                             Else if parent CF1R = ALT-01 or ADD-01, then value = NotCompact;
+                                             Else if information not available from PRF-01, allow user select. Allowed values are
+                                             *Basic
+                                             *Expanded
+                                             *NotCompact;
+                                             Else use value from PRF-01;
+                                          </xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="A12_DWHR_Type" type="hvac:DWHR_Type" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Drain Water Heat Recovery</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC  Allowed values are DWHR display term Yes and NoDWHR display term No</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If parent CF1R = NCB-01, then if NCB-01 Field M09 = CompactDistriutionDrainHeatRecoveryHERS or DrainWaterHeatRecoveryHERS then value is DWHR else NoDWHR;
+                                             Else if parent CF1R = ALT-01 or ADD-01, then value = NoDWHR;
+                                             Else if information not available from PRF-01, allow user select. Allowed values are
+                                             *DWHR
+                                             *NoDWHR;
+                                             Else use value from PRF-01;
+                                          </xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                  </xsd:sequence>
@@ -325,16 +332,26 @@ End If</xsd:documentation>
                                     <xsd:element name="Hpd08_CompactDistributionType" type="hvac:CompactDistributionType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Compact Distribution</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC allowed values are:   
-BasicType display term Basic, 
-Expanded display term Expanded,
-NotCompact display term None</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If parent CF1R = NCB-01, then if NCB-01 Field M09 = CompactHotWaterDistributionSystemHERS or CompactHotWaterDistributionSystemBasic or CompactDistributionDrainHeatRecoveryHERS then value is BasicType else NotCompact;
+                                             Else if parent CF1R = ALT-01 or ADD-01, then value = NotCompact;
+                                             Else if information not available from PRF-01, allow user select. Allowed values are
+                                             *Basic
+                                             *Expanded
+                                             *NotCompact;
+                                             Else use value from PRF-01;
+                                          </xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd09_DWHR_Type" type="hvac:DWHR_Type" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Drain Water Heat Recovery</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from parent CC  Allowed values are DWHR display term Yes and NoDWHR display term None</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If parent CF1R = NCB-01, then if NCB-01 Field M09 = CompactDistributionDrainHeatRecoveryHERS or DrainWaterHeatRecoveryHERS then value is DWHR else NoDWHR;
+                                             Else if parent CF1R = ALT-01 or ADD-01, then value = NoDWHR;
+                                             Else if information not available from PRF-01, allow user select. Allowed values are
+                                             *DWHR
+                                             *NoDWHR;
+                                             Else use value from PRF-01;
+                                          </xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="Hpd10_HeatPumpWaterHeaterSimulationGroup" type="hvac:HeatPumpWaterHeaterSimulationGroup"  minOccurs="0">
@@ -461,13 +478,7 @@ Require one row of data for each water heater identified in Section_A TableDesig
                                              <xsd:documentation source="CalculationsAndRules">If A08_NotApplicableMessage == N/A result = N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
-                                    </xsd:choice>
-                                    <xsd:element name="B09_IsDHW_Central" type="comp:IsDHW_Central" >
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Central DHW System Distribution Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from A09</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
+                                    </xsd:choice>                                   
                                     <xsd:element name="B10_ResidentialDHWDwellingUnitDistributionType" type="hvac:ResidentialDHWDwellingUnitDistributionType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Dwelling Unit DHW System Distribution Type</xsd:documentation>
@@ -1138,12 +1149,15 @@ N/A is allowed If  water heater system is from Section A2 TableHpwhd
                                        <xsd:element name="D02_EfficiencyType" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Reference value from C02 which may be N/A</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If C02 = N/A then allow user to select from list:
+                                                *Uniform Energy Factor
+                                                *AFUE
+                                                *Thermal Efficiency; 
+                                                else reference value from C02 as default;</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:EfficiencyType">
                                                 <xsd:enumeration value="AFUE"/>
-                                                <xsd:enumeration value="EnergyFactor"/>
                                                 <xsd:enumeration value="ThermalEfficiency"/>
                                                 <xsd:enumeration value="UniformEnergyFactor"/>
                                              </xsd:restriction>

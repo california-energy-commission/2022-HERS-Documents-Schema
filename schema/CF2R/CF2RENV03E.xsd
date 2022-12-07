@@ -133,7 +133,7 @@
                                     <xsd:element name="A06_InsulationType" type="env:InsulationType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Insulation Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">User selects from list of insulation types: Cellulose, Cement EPS compound, Expanded polystyrene, Extruded polystyrene, Fiberglass, Insulation other, Mineral wool, Plastic polyisocyanurate, Plastic polystyrene, Polyurethane, Spray Foam Insulation (SPF), Urea formaldehyde;   If the insulation they used is not listed they should select Insulation Other.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User selects from list of insulation types: Cellulose, Cement EPS compound, Expanded polystyrene, Extruded polystyrene, Fiberglass, Insulation other, Mineral wool, Plastic polyisocyanurate, Plastic polystyrene, Polyurethane, Spray Foam Insulation (SPF), Urea formaldehyde or None, (NoInsulation);   If the insulation they used is not listed they should select Insulation Other.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:choice maxOccurs="1">

@@ -277,12 +277,12 @@ Require one row of data in this table for each of the SC Systems listed in Secti
                                     <xsd:element name="C03_ResidentialHeatingSystemType" type="hvac:ResidentialHeatingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Heating System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from parent CC as default; 
- 
-If result == NoHeating then check: there must be at least one heating system entered in this section C04 to comply, 
- 
-Else flag noncompliant condition (no heating installed) and do not allow registration to continue.  
-End If</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">&amp;gt;Reference value from CF1R as default; allow user to override the default and pick one from list: CentralGasFurnace, CentralSplitHP, CentralPackagedHP, CentralLargePackagedHP, DuctlessSplitHP (display term Ductless mini-split HP), RoomHP, Boiler, Hydronic, CombinedHydronic, HydronicForcedAir, CombinedHydronicForcedAir, HydronicHP,  HydronicHP_ForcedAir, GasPackagedFurnace, GasWallFurnace , GasSpaceHeater, Electric, NonAirSourceHP, WoodHeat, SmallDuctHighVelocityHP, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP,  VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctedAndDuctless, VCHP_IndoorUnitDuctless, DuctedMiniSplitHP, SPVHP, PTHP  and NoHeating.  
+                                             
+                                             If result == NoHeating then check: there must be at least one heating system entered in this section C04 to comply, 
+                                             
+                                             Else flag noncompliant condition (no heating installed) and do not allow registration to continue.   Flag non-default values and report in project status notes field; a revised CF1R may be required
+                                             End If</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="C04_ResidentialHvacHeatingComponentType" type="hvac:ResidentialHvacHeatingComponentType" maxOccurs="unbounded">
@@ -330,7 +330,7 @@ result = NotApplicable stored in NotApplicablemessage
 Else If C05_EfficiencyType == AFUE
  reference AFUE value from parent CC as default; but allow user to override the default to enter numeric value xx.x;  
 End If
-Check: default minimum value for AFUE= 0.80 display term 80%; Flag non-default values and report in project status notes field a revised parent CC may be required.</xsd:documentation>
+Check: default minimum value for AFUE= 0.80 display term 0.80; Flag non-default values and report in project status notes field a revised parent CC may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_EfficiencyMinimumValueCOP" type="hvac:EfficiencyMinimumValueCOP">
@@ -378,7 +378,7 @@ End If</xsd:documentation>
                                     <xsd:element name="C07_ResidentialCoolingSystemType" type="hvac:ResidentialCoolingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Cooling System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from parent CC as default;</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference value from CF1R as default; allow user to override the default and pick one from list: CentralLargePackagedAC, CentralLargePackagedHP, CentralPackagedAC, CentralPackagedHP, CentralSplitAC, CentralSplitHP, DuctedMultiSplitAC, DuctedMultiSplitHP, DuctlessMultiSplitAC, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitAC, DuctedDuctlessMultiSplitHP, DuctlessSplitAC (display term Ductless mini-split AC) , DuctlessSplitHP (display term Ductless mini-split HP), DuctlessVRF_AC, DuctlessVRF_HP, EvaporativeDirect, EvaporativeIndirect, EvaporativeIndirectDirect, EvaporativelyCooledCondenser, GasAbsorptionAC, GroundSourceHeatPump, Hydronic, HydronicHP, HydronicHP_ForcedAir, IceStorageAC, NoCooling, NonAirCooledAC, NonAirSourceHP, RoomAC, RoomHP, SmallDuctHighVelocityHP, SmallDuctHighVelocityAC, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctedAndDuctless, VCHP_IndoorUnitDuctless. DuctedMiniSplitAC, DuctedMiniSplitHP, SPVAC, SPVHP, PTAC, PTHP.    Flag non-default values and report in project status notes field; a revised CF1R may be required;</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="C08_ResidentialHvacCoolingComponentType" type="hvac:ResidentialHvacCoolingComponentType" maxOccurs="unbounded">
@@ -917,24 +917,31 @@ End If</xsd:documentation>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:choice maxOccurs="1">
-                                       <xsd:element name="F06_SupplyDuctLocation" type="hvac:SupplyDuctLocation">
+                                       <xsd:element name="F06_SupplyDuctLocation">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Installed New Supply Duct Location</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If F04_NewDuctingInstalled ==  NoNewDucts Or ReturnOnly 
- result = NotApplicable stored in NotApplicableMessage; 
- 
-Else If F04_NewDuctingInstalled ==  SupplyAndReturn Or SupplyOnly 
-user selects from list: 
-ConditionedSpace display term Conditioned space-entirely 
-UnconditionedAttic display term Unconditioned attic 
-UnconditionedCrawlSpace display term Unconditioned crawl space
-ControlledVentilationCrawlSpace display term Controlled ventilation crawl space
-UnconditionedGarage display term Unconditioned garage 
-UnconditionedBasement display term Unconditioned basement 
-Outdoors display term Outdoors
- 
-End if</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If F04_NewDuctingInstalled ==  NoNewDucts Or ReturnOnly result = NotApplicable stored in NotApplicableMessage; 
+                                                Else If F04_NewDuctingInstalled ==  SupplyAndReturn Or SupplyOnly 
+                                                user selects from list: 
+                                                ConditionedSpace display term Conditioned space-entirely 
+                                                UnconditionedAttic display term Unconditioned attic 
+                                                UnconditionedCrawlSpace display term Unconditioned crawl space
+                                                ControlledVentilationCrawlSpace display term Controlled ventilation crawl space
+                                                UnconditionedGarage display term Unconditioned garage 
+                                                UnconditionedBasement display term Unconditioned basement 
+                                                Outdoors display term Outdoors End if</xsd:documentation>
                                           </xsd:annotation>
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="hvac:SupplyDuctLocation">
+                                                <xsd:enumeration value="ConditionedSpace"/>
+                                                <xsd:enumeration value="ControlledVentilationCrawlSpace"/>
+                                                <xsd:enumeration value="Outdoors"/>
+                                                <xsd:enumeration value="UnconditionedAttic"/>
+                                                <xsd:enumeration value="UnconditionedBasement"/>
+                                                <xsd:enumeration value="UnconditionedCrawlSpace"/>
+                                                <xsd:enumeration value="UnconditionedGarage"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
                                        </xsd:element>
                                        <xsd:element name="F06_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
@@ -988,23 +995,32 @@ End if</xsd:documentation>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:choice maxOccurs="1">
-                                       <xsd:element name="F08_ReturnDuctLocation" type="hvac:ReturnDuctLocation">
+                                       <xsd:element name="F08_ReturnDuctLocation">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Installed New Return Duct Location</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If F04_NewDuctingInstalled ==  NoNewDucts Or SupplyOnly 
-result = NotApplicable stored in NotApplicableMessage; 
- 
-Else If F04_NewDuctingInstalled ==  SupplyAndReturn Or ReturnOnly 
-user selects from list: 
- ConditionedSpace display term Conditioned space-entirely
-UnconditionedAttic display term Unconditioned attic
-UnconditionedCrawlSpace display term Unconditioned crawl space
-ControlledVentilationCrawlSpace display term Controlled ventilation crawl space
-UnconditionedGarage display term Unconditioned garage
-UnconditionedBasement display term Unconditioned basement
-Outdoors display term Outdoors
-End If</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If F04_NewDuctingInstalled ==  NoNewDucts Or SupplyOnly result = NotApplicable stored in NotApplicableMessage; 
+                                             Else If F04_NewDuctingInstalled ==  SupplyAndReturn Or ReturnOnly 
+                                             user selects from list: 
+                                              ConditionedSpace display term Conditioned space-entirely
+                                             UnconditionedAttic display term Unconditioned attic
+                                             UnconditionedCrawlSpace display term Unconditioned crawl space
+                                             ControlledVentilationCrawlSpace display term Controlled ventilation crawl space
+                                             UnconditionedGarage display term Unconditioned garage
+                                             UnconditionedBasement display term Unconditioned basement
+                                             Outdoors display term Outdoors
+                                             End If</xsd:documentation>
                                           </xsd:annotation>
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="hvac:ReturnDuctLocation">
+                                                <xsd:enumeration value="ConditionedSpace"/>
+                                                <xsd:enumeration value="ControlledVentilationCrawlSpace"/>
+                                                <xsd:enumeration value="Outdoors"/>
+                                                <xsd:enumeration value="UnconditionedAttic"/>
+                                                <xsd:enumeration value="UnconditionedBasement"/>
+                                                <xsd:enumeration value="UnconditionedCrawlSpace"/>
+                                                <xsd:enumeration value="UnconditionedGarage"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
                                        </xsd:element>
                                        <xsd:element name="F08_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
@@ -1219,11 +1235,22 @@ End If</xsd:documentation>
                                           </xsd:restriction>
                                        </xsd:simpleType>
                                     </xsd:element>
-                                    <xsd:element name="G06_SupplyDuctLocation" type="hvac:SupplyDuctLocation">
+                                    <xsd:element name="G06_SupplyDuctLocation">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Supply Duct Location</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">User selects from list: ConditionedSpace display term Conditioned space-entirely, ConditionedSpaceExcept12ft display term Conditioned space - except 12ft, UnconditionedCrawlSpace display term Unconditioned crawl space, ControlledVentilationCrawlSpace display term Controlled ventilation crawl space, UnconditionedAttic display term Unconditioned attic, UnconditionedBasement display term Unconditioned basement, UnconditionedGarage display term Unconditioned garage, Outdoors display term Outdoors</xsd:documentation>
                                        </xsd:annotation>
+                                       <xsd:simpleType>
+                                          <xsd:restriction base="hvac:SupplyDuctLocation">
+                                             <xsd:enumeration value="ConditionedSpace"/>
+                                             <xsd:enumeration value="ControlledVentilationCrawlSpace"/>
+                                             <xsd:enumeration value="Outdoors"/>
+                                             <xsd:enumeration value="UnconditionedAttic"/>
+                                             <xsd:enumeration value="UnconditionedBasement"/>
+                                             <xsd:enumeration value="UnconditionedCrawlSpace"/>
+                                             <xsd:enumeration value="UnconditionedGarage"/>
+                                          </xsd:restriction>
+                                       </xsd:simpleType>
                                     </xsd:element>
                                     <xsd:element name="G07_DuctRValue">
                                        <xsd:annotation>
@@ -1253,11 +1280,22 @@ End If</xsd:documentation>
                                           </xsd:restriction>
                                        </xsd:simpleType>
                                     </xsd:element>
-                                    <xsd:element name="G08_ReturnDuctLocation" type="hvac:ReturnDuctLocation">
+                                    <xsd:element name="G08_ReturnDuctLocation">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Return Duct Location</xsd:documentation>
                                           <xsd:documentation source="CalculationsAndRules">User selects from list: ConditionedSpace display term Conditioned space-entirely, ConditionedSpaceExcept12ft display term Conditioned space - except 12ft, UnconditionedCrawlSpace display term Unconditioned crawl space, ControlledVentilationCrawlSpace display term Controlled ventilation crawl space, UnconditionedAttic display term Unconditioned attic, UnconditionedBasement display term Unconditioned basement, UnconditionedGarage display term Unconditioned garage, Outdoors display term Outdoors</xsd:documentation>
                                        </xsd:annotation>
+                                       <xsd:simpleType>
+                                          <xsd:restriction base="hvac:ReturnDuctLocation">
+                                             <xsd:enumeration value="ConditionedSpace"/>
+                                             <xsd:enumeration value="ControlledVentilationCrawlSpace"/>
+                                             <xsd:enumeration value="Outdoors"/>
+                                             <xsd:enumeration value="UnconditionedAttic"/>
+                                             <xsd:enumeration value="UnconditionedBasement"/>
+                                             <xsd:enumeration value="UnconditionedCrawlSpace"/>
+                                             <xsd:enumeration value="UnconditionedGarage"/>
+                                          </xsd:restriction>
+                                       </xsd:simpleType>
                                     </xsd:element>
                                     <xsd:element name="G09_DuctRValue">
                                        <xsd:annotation>
