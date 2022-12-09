@@ -341,7 +341,7 @@ End If</xsd:documentation>
                                        <xsd:element name="D06_EfficiencyMinimumValueAFUE" type="hvac:EfficiencyMinimumValueAFUE" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If D04_ResidentialHvacHeatiingComponentType ==  NoHeatingComponentsAltered then result = N/A stored in the NotApplicableMessage, Else If D05_EfficiencyType == AFUE  default minimum result = 0.80  with display term 80 percent ;  Allow user to overwrite the default minimum value but, flag it as a non-default value and report it in project status notes field.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If D04_ResidentialHvacHeatiingComponentType ==  NoHeatingComponentsAltered then result = N/A stored in the NotApplicableMessage, Else If D05_EfficiencyType == AFUE  default minimum result = 80  with display term 80 percent ;  Allow user to overwrite the default minimum value but, flag it as a non-default value and report it in project status notes field.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="D06_EfficiencyMinimumValueCOP" type="hvac:EfficiencyMinimumValueCOP" >
@@ -582,7 +582,7 @@ End If</xsd:documentation>
                                        <xsd:element name="E06_EfficiencyMinimumValueAFUE" type="hvac:EfficiencyMinimumValueAFUE" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Minimum  Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If E04_ResidentialHvacHeatiingComponentType ==  NoHeatingComponentsAltered then result = N/A stored in the NotApplicableMessage, Else If E05_EfficiencyType == AFUE  default minimum result = 0.80  with display term 80 percent ;    Allow user to overwrite the default minimum value but, flag it as a non-default value and report it in project status notes field.
+                                             <xsd:documentation source="CalculationsAndRules">If E04_ResidentialHvacHeatiingComponentType ==  NoHeatingComponentsAltered then result = N/A stored in the NotApplicableMessage, Else If E05_EfficiencyType == AFUE  default minimum result = 80  with display term 80 percent ;    Allow user to overwrite the default minimum value but, flag it as a non-default value and report it in project status notes field.
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
@@ -812,7 +812,7 @@ End If</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If F04_ResidentialHvacHeatiingComponentType ==  NoHeatingComponentsAltered then 
 result = N/A stored in the NotApplicableMessage, 
 Else If F05_EfficiencyType == AFUE  
-default minimum result = 0.80  with display term 80 percent ;  Allow user to overwrite the default minimum value but, flag it as a non-default value and report it in project status notes field.
+default minimum result = 80  with display term 80 percent ;  Allow user to overwrite the default minimum value but, flag it as a non-default value and report it in project status notes field.
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>

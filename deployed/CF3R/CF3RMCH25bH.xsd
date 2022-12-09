@@ -354,6 +354,17 @@ Mch23c  - field E02
 (Mch23d not applicable)</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
+                                       <xsd:element name="E02_NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Minimum Required System Airflow Rate (cfm)</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">if A12 = no, then N/A;</xsd:documentation>
+                                          </xsd:annotation>
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="comp:NotApplicableMessage">
+                                                <xsd:enumeration value="N/A"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
+                                       </xsd:element>
                                     </xsd:choice>
                                     <xsd:element name="E03_MinimumAirflowRateVerificationStatus">
                                        <xsd:annotation>

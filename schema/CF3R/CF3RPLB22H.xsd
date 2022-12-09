@@ -435,13 +435,7 @@ Require one row of data for each water heater identified in Section_A TableDesig
                                              <xsd:documentation source="CalculationsAndRules">If A08_NotApplicableMeaage == N/A result = N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
-                                    </xsd:choice>
-                                    <xsd:element name="B09_IsDHW_Central" type="comp:IsDHW_Central" >
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Central DHW System Distribution Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from A09</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
+                                    </xsd:choice>                                   
                                     <xsd:element name="B10_ResidentialDHWDwellingUnitDistributionType" type="hvac:ResidentialDHWDwellingUnitDistributionType" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Dwelling Unit DHW System Distribution Type</xsd:documentation>

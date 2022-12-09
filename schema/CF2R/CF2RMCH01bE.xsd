@@ -373,7 +373,7 @@ result = NotApplicable stored in NotApplicablemessage
 Else If C05_EfficiencyType == AFUE
  reference AFUE value from parent CC as default; but allow user to override the default to enter numeric value xx.x;  
 End If
-Check: default minimum value for AFUE= 0.80 display term 0.80; Flag non-default values and report in project status notes field a revised parent CC may be required.</xsd:documentation>
+Check: default minimum value for AFUE= 80 display term 80; Flag non-default values and report in project status notes field a revised parent CC may be required.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C06_EfficiencyMinimumValueCOP" type="hvac:EfficiencyMinimumValueCOP" >
