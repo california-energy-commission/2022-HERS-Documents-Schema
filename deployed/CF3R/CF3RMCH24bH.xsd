@@ -186,6 +186,7 @@
                   <xsd:element name="A16After" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"/>
+                        <xsd:documentation source="AdditionalRequirements">MCH24b - Single Point Air Tightness Test With Automatic Meter</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">If A16_AirLeakageTestProcedure == SinglePointTestAutomaticMeter, Then variant result = MCH24b Single Point Air Tightness Test With Automatic Meter.  Use this variant for the remainder of this document.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
@@ -432,6 +433,12 @@
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Corrected CFM50</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Calculated field:  PRODUCT (C06__NominalCFM50,  D01_AltitudeTemperatureCorrectionFactor)</xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
+                  <xsd:element name="D03_ACH50" type="comp:ACH50">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">ACH50</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field:  ((D02_CFM50TempAltCorrected * 60) div A13_BuildingTotalVolume}</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>

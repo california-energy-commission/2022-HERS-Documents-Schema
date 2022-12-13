@@ -3,6 +3,15 @@
    <xsd:import namespace="http://www.lmonte.com/besm/bld" schemaLocation="ResBuilding.xsd"/>
    <xsd:import namespace="http://www.lmonte.com/besm/com" schemaLocation="ResCommon.xsd"/>
    <xsd:import namespace="http://www.lmonte.com/besm/dtyp" schemaLocation="DataTypes.xsd"/>
+   <xsd:simpleType name="ACH50">
+      <xsd:annotation>
+         <xsd:documentation>Units: ACH</xsd:documentation>
+         <xsd:appinfo source="displaytermType">
+            <dtyp:displayterm>ACH 50</dtyp:displayterm>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:restriction base="dtyp:DecimalNonnegative"/>
+   </xsd:simpleType>
    <xsd:simpleType name="ACH50Adjusted">
       <xsd:annotation>
          <xsd:documentation>Units: ACH</xsd:documentation>
