@@ -1621,7 +1621,7 @@ End If</xsd:documentation>
                                                 <xsd:enumeration value="CEER"/>
                                                 <xsd:enumeration value="EER"/>
                                                 <xsd:enumeration value="EER2"/>
-						<xsd:enumeration value="EERSEER"/>
+						                              <xsd:enumeration value="EERSEER"/>
                                                 <xsd:enumeration value="EER2SEER2"/>
                                              </xsd:restriction>
                                           </xsd:simpleType>
@@ -1637,39 +1637,46 @@ eND iF</xsd:documentation>
                                     <xsd:choice maxOccurs="1">
                                        <xsd:element name="K07_EfficiencyMinimumValueSEER" type="hvac:EfficiencyMinimumValueSEER" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If K05_ResidentialCoolingSystemType == NoCooling result = N/A stored in NotApplicableMessage; Else User input DecimalNonnegative SEER, value</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If value in K05 = no cooling, then value = N/A; Else user Input: DecimalNonnegative;</xsd:documentation>
                                           </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="K07_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If K05_ResidentialCoolingSystemType == NoCooling result = N/A stored in NotApplicableMessage; Else User input DecimalNonnegative EER  value</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="K07_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If K05_ResidentialCoolingSystemType == NoCooling result = N/A stored in NotApplicableMessage; Else User input DecimalNonnegative CEER value</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="K07_EfficiencyEER2" type="hvac:EfficiencyEER2" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If K05_ResidentialCoolingSystemType == NoCooling result = N/A stored in NotApplicableMessage; Else User input DecimalNonnegative EER2 value</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
+                                       </xsd:element>                                      
                                        <xsd:element name="K07_EfficiencySEER2" type="hvac:EfficiencySEER2" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If K05_ResidentialCoolingSystemType == NoCooling result = N/A stored in NotApplicableMessage; Else User input DecimalNonnegative SEER2 value</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If value in K05 = no cooling, then value = N/A; Else user Input: DecimalNonnegative;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="K07_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If K05_ResidentialCoolingSystemType == NoCooling result = N/A stored in NotApplicableMessage; 
-End If</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If value in K05 = no cooling, then value = N/A; Else user Input: DecimalNonnegative;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
+                                    <xsd:choice maxOccurs="1">                                       
+                                       <xsd:element name="K07b_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If value in K05 = no cooling, then value = N/A; Else user input: DecimalNonnegative;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="K07b_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If value in K05 = no cooling, then value = N/A; Else user input: DecimalNonnegative;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="K07b_EfficiencyEER2" type="hvac:EfficiencyEER2" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If value in K05 = no cooling, then value = N/A; Else user input: DecimalNonnegative;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>                                       
+                                       <xsd:element name="K07b_NotApplicableMessage" type="comp:NotApplicableMessage" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed Cooling Efficiency EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If value in K05 = no cooling, then value = N/A; Else user input: DecimalNonnegative;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>

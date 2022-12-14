@@ -108,7 +108,7 @@
                                        <xsd:element name="B02_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Water Heating System Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If Performance, reference values from NRCC-PRF; Allowed values are: DHW display term DHW,  Hydronic display term Hydronic and  HydronicSpaceConditioningDHW display term Combined Hydronic; Else If Prescriptive result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Allow user to select from list (DHW, Hydronic, or Combined Hydronic)</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>

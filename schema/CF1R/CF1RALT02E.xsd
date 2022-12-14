@@ -407,51 +407,63 @@ CentralLargePackagedAC, CentralLargePackagedHP, CentralPackagedAC, CentralPackag
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
-                                    <xsd:choice maxOccurs="1">
-                                       <xsd:element name="D10_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage; 
-Else If EfficiencyType == EER user input numeric; 
-End If</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="D10_EfficiencyMinimumValueEER2" type="hvac:EfficiencyMinimumValueEER2" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage; 
-Else If EfficiencyType == EER2  user input numeric  
-End If</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="D10_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage;  
-Else If EfficiencyType == CEER user input numeric; 
-End If</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
+                                    <xsd:choice maxOccurs="1">                                       
                                        <xsd:element name="D10_EfficiencyMinimumValueSEER" type="hvac:EfficiencyMinimumValueSEER" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage;  
-Else If EfficiencyType == SEER,  default minimum result = 14 and allow user overwrites the default minimum value, but flag it as a non-default value and report it in project status notes field.
-End If</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If D08= no cooling component altered, then value =N/A; 
+                                                Else user enter value:  xx.x;  default minimum value for EER/SEER=14;or default minimum value for EER2/SEER2=13.4;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="D10_EfficiencyMinimumValueSEER2" type="hvac:EfficiencyMinimumValueSEER2" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage; 
-Else If EfficiencyType == SEER2,  default minimum result = 13.4 and allow user overwrites the default minimum value, but flag it as a non-default value and report it in project status notes field
-End If.</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If D08= no cooling component altered, then value =N/A; 
+                                                Else user enter value:  xx.x;  default minimum value for EER/SEER=14;or default minimum value for EER2/SEER2=13.4;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="D10_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage; Else If EfficiencyType == EER user input numeric; Else If EfficiencyType == CEER user input numeric;  Else If EfficiencyType == SEER,  default minimum result = 14 and allow user overwrites the default minimum value, but flag it as a non-default value and report it in project status notes field.</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If D08= no cooling component altered, then value =N/A; 
+                                                Else user enter value:  xx.x;  default minimum value for EER/SEER=14;or default minimum value for EER2/SEER2=13.4;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="D10b_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If D08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="D10b_EfficiencyMinimumValueEER2" type="hvac:EfficiencyMinimumValueEER2" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If D08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="D10b_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If D08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>                                       
+                                       <xsd:element name="D10b_NotApplicableMessage" type="comp:NotApplicableMessage" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If D08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -654,54 +666,63 @@ CentralLargePackagedAC, CentralLargePackagedHP, CentralPackagedAC, CentralPackag
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
-                                    <xsd:choice maxOccurs="1">
-                                       <xsd:element name="E10_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum  Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage; 
-Else If EfficiencyType == EER user input numeric; 
-End If</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="E10_EfficiencyMinimumValueEER2" type="hvac:EfficiencyMinimumValueEER2" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum  Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage;
-Else If EfficiencyType == EER2 
-user input numeric; 
-End If</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="E10_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum  Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage;
-Else If EfficiencyType == CEER 
-user input numeric;   
-End If</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
+                                    <xsd:choice maxOccurs="1">                                       
                                        <xsd:element name="E10_EfficiencyMinimumValueSEER" type="hvac:EfficiencyMinimumValueSEER" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum  Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage; ;    
-Else If EfficiencyType == SEER,  default minimum result = 14 and allow user overwrites the default minimum value, but flag it as a non-default value and report it in project status notes field.
-End If</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If E08= no cooling component altered, then value =N/A; 
+                                                Else user enter value:  xx.x;  default minimum value for EER/SEER=14;or default minimum value for EER2/SEER2=13.4;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="E10_EfficiencyMinimumValueSEER2" type="hvac:EfficiencyMinimumValueSEER2" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum  Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage; 
-Else If EfficiencyType == SEER2,  default minimum result = 13.4 and allow user overwrites the default minimum value, but flag it as a non-default value and report it in project status notes field.
-End If</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If E08= no cooling component altered, then value =N/A; 
+                                                Else user enter value:  xx.x;  default minimum value for EER/SEER=14;or default minimum value for EER2/SEER2=13.4;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="E10_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum  Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then result = N/A stored in the NotApplicableMessage; 
-End If</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If E08= no cooling component altered, then value =N/A; 
+                                                Else user enter value:  xx.x;  default minimum value for EER/SEER=14;or default minimum value for EER2/SEER2=13.4;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="E10b_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If E08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="E10b_EfficiencyMinimumValueEER2" type="hvac:EfficiencyMinimumValueEER2" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If E08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="E10b_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If E08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>                                       
+                                       <xsd:element name="E10b_NotApplicableMessage" type="comp:NotApplicableMessage" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If E08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -898,63 +919,63 @@ CentralLargePackagedAC, CentralLargePackagedHP, CentralPackagedAC, CentralPackag
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
-                                    <xsd:choice maxOccurs="1">
+                                    <xsd:choice maxOccurs="1">                                       
                                        <xsd:element name="F10_EfficiencyMinimumValueSEER" type="hvac:EfficiencyMinimumValueSEER" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If  F08 ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then 
-result = N/A stored in the NotApplicableMessage;  
-Else If EfficiencyType == SEER,  
-default minimum result = 14 and allow user overwrites the default minimum value, but flag it as a non-default value and report it in project status notes field.
-End If</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If F08= no cooling component altered, then value =N/A; 
+                                                Else user enter value:  xx.x;  default minimum value for EER/SEER=14;or default minimum value for EER2/SEER2=13.4;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="F10_EfficiencyMinimumValueSEER2" type="hvac:EfficiencyMinimumValueSEER2" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If  F08 ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then 
-result = N/A stored in the NotApplicableMessage;   
-Else If EfficiencyType == SEER2,  
-default minimum result = 13.4 and allow user overwrites the default minimum value, but flag it as a non-default value and report it in project status notes field.
-End If</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="F10_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If F08 ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then 
-result = N/A stored in the NotApplicableMessage; 
-Else If EfficiencyType == EER 
-user input numeric;  
-End If</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="F10_EfficiencyMinimumValueEER2" type="hvac:EfficiencyMinimumValueEER2" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If F08 ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then 
-result = N/A stored in the NotApplicableMessage; 
-Else If EfficiencyType == EER2 
-user input numeric;
-End If</xsd:documentation>
-                                          </xsd:annotation>
-                                       </xsd:element>
-                                       <xsd:element name="F10_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER" >
-                                          <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If F08 ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then 
-result = N/A stored in the NotApplicableMessage; 
-Else If EfficiencyType == CEER 
-user input numeric;  
-End If</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If F08= no cooling component altered, then value =N/A; 
+                                                Else user enter value:  xx.x;  default minimum value for EER/SEER=14;or default minimum value for EER2/SEER2=13.4;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="F10_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
-                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If F08 ResidentialHvacCoolingComponentType == NoCoolingComponentsAltered then 
-result = N/A stored in the NotApplicableMessage; 
-End If</xsd:documentation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If F08= no cooling component altered, then value =N/A; 
+                                                Else user enter value:  xx.x;  default minimum value for EER/SEER=14;or default minimum value for EER2/SEER2=13.4;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="F10b_EfficiencyMinimumValueEER" type="hvac:EfficiencyMinimumValueEER" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If F08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="F10b_EfficiencyMinimumValueEER2" type="hvac:EfficiencyMinimumValueEER2" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If F08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="F10b_EfficiencyMinimumValueCEER" type="hvac:EfficiencyMinimumValueCEER" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If F08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>                                       
+                                       <xsd:element name="F10b_NotApplicableMessage" type="comp:NotApplicableMessage" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Minimum Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If F08 = no cooling component altered, then value = N/A; 
+                                                Else user enter value: xx.x; default minimum value for EER and EER/SEER=11.7; or default minimum value for EER2 and EER2/SEER2=11.2; or default minimum value for CEER=8.7;
+                                                Allow user to overwrite default value, but flag non-default values and report in project status notes field;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
