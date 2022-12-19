@@ -293,7 +293,7 @@ End If</xsd:documentation>
                                                 Else result = N/A – See Table D;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
-                                       <xsd:element name="C09_NotApplicableMessage">
+                                       <xsd:element name="C09_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Required Minimum Ventilation Rate</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">Calculated field (results are in CFM):If C09a = Capture Efficiency, then result = N/A – See Table D2; 
@@ -313,18 +313,7 @@ End If</xsd:documentation>
                                                 Elseif the following three conditions are met: (1) C08=Demand Control, (2) A06 = Nonenclosed, and (3) C03 = Other or Downdraft, then result = 300;
                                                 
                                                 Else result = N/A – See Table D;</xsd:documentation>
-                                             <!-- This appinfo is not used Moved into base-->
-                                             <xsd:appinfo source="displayterm">
-                                                <dtyp:displayterm value="N/A-D">N/A - See Table D</dtyp:displayterm>
-                                                <dtyp:displayterm value="N/A-D2">N/A - See Table D2</dtyp:displayterm>
-                                             </xsd:appinfo>
                                           </xsd:annotation>
-                                          <xsd:simpleType>
-                                             <xsd:restriction base="comp:NotApplicableMessage">
-                                                <xsd:enumeration value="N/A-D"/>
-                                                <xsd:enumeration value="N/A-D2"/>
-                                             </xsd:restriction>
-                                          </xsd:simpleType>
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:element name="C10a_SoundRatingException" type="comp:SoundRatingException">
