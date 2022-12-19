@@ -384,7 +384,8 @@ End If</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:DuctLocation">
-                                             <xsd:enumeration value="ConditionedSpace"/>                                            
+                                             <xsd:enumeration value="ConditionedSpace"/>
+                                             <xsd:enumeration value="Ductless"/>
                                              <xsd:enumeration value="DuctsInMultipleLocations"/>
                                              <xsd:enumeration value="Outdoors"/>
                                              <xsd:enumeration value="UnconditionedAttic"/>
