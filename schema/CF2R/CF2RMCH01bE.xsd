@@ -803,7 +803,16 @@ End If</xsd:documentation>
                                                                            Check value must be GTE value in C10 to comply; 
                                                                            Else flag non-compliant value and do not allow this document to be registered;;</xsd:documentation>
                                           </xsd:annotation>
-                                       </xsd:element>                                       
+                                       </xsd:element>
+                                       <xsd:element name="E04_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Efficiency Value SEER/SEER2</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If C10 = NA, then report N/A;
+                                                                           Else user input, numeric, xx.x;  
+                                                                           Check value must be ≥ value in C10 to comply; 
+                                                                           Else flag non-compliant value and do not allow this document to be registered;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
                                     </xsd:choice>
                                     <xsd:choice maxOccurs="1">                                       
                                        <xsd:element name="E04b_EfficiencyInstalledValueEER" type="hvac:EfficiencyInstalledValueEER" >
@@ -827,6 +836,15 @@ End If</xsd:documentation>
                                              <xsd:documentation source="FieldText">Cooling Efficiency Value EER/EER2/CEER</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">User input numeric: xx.x;
                                                                            Check value must be GTE value in C10b to comply; 
+                                                                           Flag non-compliance value and do not allow this document to be registered;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="E04b_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Cooling Efficiency Value EER/EER2/CEER</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If C10b = N/A, then report N/A;
+                                                                           Else user input numeric: xx.x;
+                                                                           Check value must be ≥ value in C10b to comply; 
                                                                            Flag non-compliance value and do not allow this document to be registered;</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
