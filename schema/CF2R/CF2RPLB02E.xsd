@@ -1171,14 +1171,16 @@ Require one row of data for each water heater identified in Section A TableDesig
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If C02 = N/A then allow user to select from list: 
-                                                   *Uniform Energy Factor
                                                    *AFUE
+                                                   *Energy Factor
+                                                   *Uniform Energy Factor
                                                    *Thermal Efficiency; 
                                                    else reference value from C02 as default </xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="hvac:EfficiencyType">
                                                 <xsd:enumeration value="AFUE"/>
+                                                <xsd:enumeration value="EnergyFactor"/>
                                                 <xsd:enumeration value="ThermalEfficiency"/>
                                                 <xsd:enumeration value="UniformEnergyFactor"/>
                                              </xsd:restriction>
