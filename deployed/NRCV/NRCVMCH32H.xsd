@@ -294,7 +294,7 @@ End If</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
                                              <xsd:restriction base="comp:NotApplicableMessage">
-                                                <xsd:enumeration value="N/A-C"/>
+                                                <xsd:enumeration value="N/A"/>
                                                 <xsd:enumeration value="N/A-C2"/>
                                              </xsd:restriction>
                                           </xsd:simpleType>
