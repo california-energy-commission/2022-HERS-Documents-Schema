@@ -14531,6 +14531,7 @@ Builders, Manufacturers, And Suppliers</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="CoolingSystemAlteration">Space cooling system</dtyp:displayterm>
             <dtyp:displayterm value="DuctSystemAlteration">Space conditioning duct system</dtyp:displayterm>
+            <dtyp:displayterm value="ExteriorDoorsAlteration">Opaque Exterior Doors</dtyp:displayterm>
             <dtyp:displayterm value="FenestrationGlazingAddition">Adding Fenestration/Glazing</dtyp:displayterm>
             <dtyp:displayterm value="FenestrationGlazingReplacement">Replacing Fenestration/Glazing</dtyp:displayterm>
             <dtyp:displayterm value="FenestrationGlazingSkylightMinimumFt2Addition">Adding Fenestration/Glazing less than or equal to 16 ft2 Skylights</dtyp:displayterm>
@@ -14548,6 +14549,7 @@ Builders, Manufacturers, And Suppliers</xsd:documentation>
       <xsd:restriction base="dtyp:EnumerationConstant">
          <xsd:enumeration value="CoolingSystemAlteration"/>
          <xsd:enumeration value="DuctSystemAlteration"/>
+         <xsd:enumeration value="ExteriorDoorsAlteration"/>
          <xsd:enumeration value="FenestrationGlazingAddition"/>
          <xsd:enumeration value="FenestrationGlazingReplacement"/>
          <xsd:enumeration value="FenestrationGlazingSkylightMinimumFt2Addition"/>

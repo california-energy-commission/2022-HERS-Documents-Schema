@@ -127,7 +127,9 @@ FenestrationGlazingReplacement display term Replacing Fenestration/Glazing (Show
  
 FenestrationGlazingWindowMinimumFt2Replacement display term Replacing Fenestration/Glazing less than or equal to  75 ft2 Windows (Show tables F and H; If selected do not allow user to also select FenestrationGlazingReplacement  End If);  
  
-FenestrationGlazingSkylightMinimumFt2Replacement,  display term Replacing Fenestration/Glazing Skylight (Show tables F and H).</xsd:documentation>
+FenestrationGlazingSkylightMinimumFt2Replacement,  display term Replacing Fenestration/Glazing Skylight (Show tables F and H)
+
+ExteriorDoorsAlteration, display term Opaque Exterior Doors (Show table H1).</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="AEndNote1" minOccurs="0">
@@ -1784,6 +1786,86 @@ End If</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Section_H1" minOccurs="0">
+            <xsd:annotation>
+               <xsd:documentation source="FieldText">Opaque Swinging Doors to Exterior (Section 150.1(c)5)</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This section is required if A13__ProjectScopeAlerations includes ExteriorDoorsAlteration</xsd:documentation>
+               <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
+            </xsd:annotation>
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="TableDoors">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText"/>
+                     </xsd:annotation>
+                     <xsd:complexType>
+                        <xsd:sequence>
+                           <xsd:element name="Row" minOccurs="1" maxOccurs="unbounded">
+                              <xsd:complexType>
+                                 <xsd:sequence>
+                                    <xsd:element name="H1dr01_DoorName" type="env:DoorName">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Tag/ID</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input string (max 50 characters)</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="H1dr02_DoorArea" type="env:DoorArea">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Area</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input DecimalNonnegative xxx.xx</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="H1dr03_UFactor" type="com:UFactor">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Proposed U-factor</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input DecimalNonnegative x.xxx</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="H1dr04_DoorCertificationMethod" type="env:DoorCertificationMethod">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Proposed U-factor Source</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">user selects from list: NFRCRated display term NFRC, AreaWeightedWorksheet display term Area-weighted Average Worksheet (ENV-02)</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="H1dr05_UFactorLimit" type="com:UFactorLimit">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Required Maximum U-factor</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">default result = 0.20</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="H1dr06_IsValueWeightedAverage" type="comp:IsValueWeightedAverage">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Weighted average (Yes/No)</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Calculated field: If H1dr03_UFactor GT 0.20 result = true display term Yes; Else result = false display term No.</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element name="H1dr07_ComplianceDocumentTableComments" type="comp:ComplianceDocumentTableComments" minOccurs="0">
+                                       <xsd:annotation>
+                                          <xsd:documentation source="FieldText">Comments</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">User input text</xsd:documentation>
+                                       </xsd:annotation>
+                                    </xsd:element>
+                                 </xsd:sequence>
+                              </xsd:complexType>
+                           </xsd:element>
+                        </xsd:sequence>
+                     </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="H1EndNote1" minOccurs="0">
+                     <xsd:annotation>
+                        <xsd:documentation source="FieldText">Notes:</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">Notes: 
+                           <d:l t="*">
+                              <d:list>Any door wiht 25% or more glass is counted as a fenestration product in Tables F, G and H. </d:list>
+                              <d:list> Do not include fire-rated doors between garage or unconditioned space and conditioned space.</d:list>
+                              <d:list> If using weighted average to achieve required maximum U-factor, attach CF1R-ENV-02-E.</d:list>
+                           </d:l>
+                        </xsd:documentation>
+                     </xsd:annotation>
+                  </xsd:element>
                </xsd:sequence>
             </xsd:complexType>
          </xsd:element>
