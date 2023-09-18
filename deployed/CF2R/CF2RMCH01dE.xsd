@@ -195,7 +195,7 @@ Note: assuming new VCHP  and multisplit system types: VCHP_IndoorUnitDucted, VCH
                                     <xsd:element name="B04_ResidentialCoolingSystemType" type="hvac:ResidentialCoolingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Cooling System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If parent CC-PRF Y02_ResidentialCoolingSystemType == VCHP, 
+                                          <xsd:documentation source="CalculationsAndRules">If parent CC-PRF Y02_ResidentialHeatingSystemType == VCHP, 
 allow user to select from list: VCHP_IndoorUnitDucted,  VCHP_IndoorUnitDuctless, VCHP_IndoorUnitDuctedAndDuctless
 Else  auto fill from parent CC-PRF;   
 End If
