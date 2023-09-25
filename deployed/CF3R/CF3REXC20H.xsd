@@ -159,11 +159,17 @@
                         <xsd:documentation source="CalculationsAndRules">User input date</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
-                  <xsd:element name="Env02_AirLeakageTestProcedure" type="comp:AirLeakageTestProcedure">
+                  <xsd:element name="Env02_AirLeakageTestProcedure">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Test Procedure Used</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">User selects from list:  SinglePointTestManualMeter, display term Single-Point Test with Manual Meter    SinglePointTestAutomaticMeter,  display term Single-Point Test with Automatic Meter</xsd:documentation>
                      </xsd:annotation>
+                     <xsd:simpleType>
+                        <xsd:restriction base="comp:AirLeakageTestProcedure">
+                           <xsd:enumeration value="SinglePointTestAutomaticMeter"/>
+                           <xsd:enumeration value="SinglePointTestManualMeter"/>
+                        </xsd:restriction>
+                     </xsd:simpleType>
                   </xsd:element>
                   <xsd:element name="Env03_ManometerMake" type="comp:ManometerMake">
                      <xsd:annotation>

@@ -240,14 +240,22 @@ Else reference value in A04
 End If</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
-                                    <xsd:element name="B05_SolarWaterHeatingCollectorCount" type="hvac:SolarWaterHeatingCollectorCount" >
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText"># of Collectors</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">User input
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="B05_SolarWaterHeatingCollectorCount" type="hvac:SolarWaterHeatingCollectorCount" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText"># of Collectors</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input
 Else reference value in A05
 End If</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="B05_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText"># of Collectors</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If value in A05 is NotApplicable result = NotApplicable End If</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
                                     <xsd:element name="B06_SolarWaterHeatingCollectorAngleFromNorth" type="comp:SolarWaterHeatingCollectorAngleFromNorth" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Azimuth from North (in degrees)</xsd:documentation>
@@ -264,14 +272,22 @@ Else reference value in A07
 End If</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
-                                    <xsd:element name="B08_StorageCapacity" type="hvac:StorageCapacity" >
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Tank Volume (gal)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">IUser input
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="B08_StorageCapacity" type="hvac:StorageCapacity" >
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume (gal)</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">IUser input
 Else reference value in A08
 End If</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="B08_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText"># of Collectors</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If value in A08 is NotApplicable result = NotApplicable End If</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
                                     <xsd:element name="B09_SolarWaterSystemSRCC_CertificationNumber" type="hvac:SolarWaterSystemSRCC_CertificationNumber" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">SRCC/IAPMO  Number</xsd:documentation>

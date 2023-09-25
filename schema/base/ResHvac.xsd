@@ -6013,13 +6013,13 @@
             <dtyp:displayterm value="RheemPROPH80T2RH37530">PROPH80 T2 RH37530  (80 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T2RH375SO">PROPH80 T2 RH375SO (80 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE40T10H15U0">XE40T10H15U0  (40 gal)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemXE50T10H15U0">XE50T10H15U0  (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE40T10H22U0">XE40T10H22U0  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE40T10H45U0">XE40T10H45U0  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE40T10HM00U0">XE40T10HM00U0  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE40T10HMS00U0">XE40T10HMS00U0  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE40T10HS45U0">XE40T10HS45U0  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE50T10">XE50T10HD50U0  (50 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemXE50T10H15U0">XE50T10H15U0  (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE50T10H22U0">XE50T10H22U0  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE50T10H45U0">XE50T10H45U0  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE50T10HD22U0">XE50T10HD22U0  (50 gal)</dtyp:displayterm>
@@ -6102,14 +6102,16 @@
             <dtyp:displayterm value="RuudPROUH50RU350D15">PROUH50 T2 RU350 D15  (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH50RU350DCB">PROUH50 T2 RU350 DCB  (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH50T0RU120">PROUH50 T0 RU120  (50 gal)</dtyp:displayterm>
-            <dtyp:displayterm value="RuudPROUH65T0RU120M">PROUH65 T0 RU120-M  (65 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RuudPROUH65T0RU120MSO">PROUH65 T0 RU120-MSO  (65 gal, JA13)</dtyp:displayterm>
+            <dtyp:displayterm value="RuudPROUH50T0RU120M">PROUH50 T0 RU120-M  (50 gal, JA13)</dtyp:displayterm>
+            <dtyp:displayterm value="RuudPROUH50T0RU120MSO">PROUH50 T0 RU120-MSO  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH50T2RU37515">PROUH50 T2 RU37515  (50 gal. JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH50T2RU37530">PROUH50 T2 RU37530  (50 gal. JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH50T2RU375SO">PROUH50 T2 RU375SO  (50 gal. JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH65RU350D">PROUH65 T2 RU350 D  (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH65RU350D15">PROUH65 T2 RU350 D15  (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH65RU350DCB">PROUH65 T2 RU350 DCB  (65 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RuudPROUH65T0RU120M">PROUH65 T0 RU120-M  (65 gal, JA13)</dtyp:displayterm>
+            <dtyp:displayterm value="RuudPROUH65T0RU120MSO">PROUH65 T0 RU120-MSO  (65 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH65T2RU37515">PROUH65 T2 RU37515  (65 gal. JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH65T2RU37530">PROUH65 T2 RU37530  (65 gal. JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROUH65T2RU375SO">PROUH65 T2 RU375SO  (65 gal. JA13)</dtyp:displayterm>
@@ -10895,6 +10897,7 @@
             <dtyp:displayterm value="GasSpaceHeater">Gas space heater</dtyp:displayterm>
             <dtyp:displayterm value="GasWallFurnace">Gas wall furnace</dtyp:displayterm>
             <dtyp:displayterm value="GroundSourceHeatPump">Ground source heat pump</dtyp:displayterm>
+            <dtyp:displayterm value="HeatPumpDHWCombo">Heat Pump DHW Combo</dtyp:displayterm>
             <dtyp:displayterm value="Hydronic">Hydronic</dtyp:displayterm>
             <dtyp:displayterm value="HydronicForcedAir">Hydronic + forced air</dtyp:displayterm>
             <dtyp:displayterm value="HydronicHP">Hydronic HP</dtyp:displayterm>
@@ -10935,6 +10938,7 @@
             <dtyp:CBECCresXMLterm value="GasSpaceHeater">gas space heater</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="GasWallFurnace">gas wall furnace</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="GroundSourceHeatPump">GroundSourceHeatPump - Ground source heat pump (able to heat DHW)</dtyp:CBECCresXMLterm>
+            <dtyp:CBECCresXMLterm value="HeatPumpDHWCombo">Heat Pump DHW Combo</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="Hydronic">hydronic</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="HydronicForcedAir">hydronic+forced air</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="HydronicHP">hydronic HP</dtyp:CBECCresXMLterm>
@@ -10976,6 +10980,7 @@
          <xsd:enumeration value="GasSpaceHeater"/>
          <xsd:enumeration value="GasWallFurnace"/>
          <xsd:enumeration value="GroundSourceHeatPump"/>
+         <xsd:enumeration value="HeatPumpDHWCombo"/>
          <xsd:enumeration value="Hydronic"/>
          <xsd:enumeration value="HydronicForcedAir"/>
          <xsd:enumeration value="HydronicHP"/>
