@@ -16779,6 +16779,7 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
             <dtyp:displayterm value="ReadyElecCooktop">Electric Cooktop Ready (For systems using gas or proprane cooktop)</dtyp:displayterm>
             <dtyp:displayterm value="ReadyElecDryer">Electric Clothes Dryer Ready - Systems Serving Individual Dwelling Units (Clothes dryers with gas or proprane plumbing)</dtyp:displayterm>
             <dtyp:displayterm value="ReadyElecDryerCommon">Electric Clothes Dryer Ready - Systems in Common Areas (Clothes dryers with gas or proprane plumbing)</dtyp:displayterm>
+            <dtyp:displayterm value="ReadyEnergyStorageSystem">Energy Storage System Ready</dtyp:displayterm>
             <dtyp:displayterm value="ReadyHeatingHP">Heat Pump Space Heater Ready (For systems using gas or proprane furnace)</dtyp:displayterm>
          </xsd:appinfo>
       </xsd:annotation>
@@ -16786,6 +16787,7 @@ the inside surface of gable ends or other exterior vertical surfaces in attics t
          <xsd:enumeration value="ReadyElecCooktop"/>
          <xsd:enumeration value="ReadyElecDryer"/>
          <xsd:enumeration value="ReadyElecDryerCommon"/>
+         <xsd:enumeration value="ReadyEnergyStorageSystem"/>
          <xsd:enumeration value="ReadyHeatingHP"/>
       </xsd:restriction>
    </xsd:simpleType>
