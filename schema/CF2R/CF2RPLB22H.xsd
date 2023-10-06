@@ -780,7 +780,7 @@ If Hpd10_HeatPumpWaterHeaterSimulationGroup ==    RheemHBDR4580 list = RheemHBDR
 End If</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInDedicated40SimulationGroup" type="hvac:RheemPlugInDedicated40SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInDedicated40SimulationGroup" type="hvac:RheemPlugInDedicated40SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">Reference value from A2hp03_HeatPumpWaterHeaterModel as default and allow user to override with an equivalent system based on the simulated equipment as follows: 
@@ -788,7 +788,7 @@ If A2hp09_HeatPumpWaterHeaterSimulationGroup ==     RheemPlugInDedicated40 list 
 End If</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInDedicated50SimulationGroup" type="hvac:RheemPlugInDedicated50SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInDedicated50SimulationGroup" type="hvac:RheemPlugInDedicated50SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">Reference value from A2hp03_HeatPumpWaterHeaterModel as default and allow user to override with an equivalent system based on the simulated equipment as follows: 
@@ -796,7 +796,7 @@ If A2hp09_HeatPumpWaterHeaterSimulationGroup ==     RheemPlugInDedicated50 list 
 End If</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInShared40SimulationGroup" type="hvac:RheemPlugInShared40SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInShared40SimulationGroup" type="hvac:RheemPlugInShared40SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">Reference value from A2hp03_HeatPumpWaterHeaterModel as default and allow user to override with an equivalent system based on the simulated equipment as follows: 
@@ -804,7 +804,7 @@ If A2hp09_HeatPumpWaterHeaterSimulationGroup ==     RheemPlugInShared40 list = R
 End If</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInShared50SimulationGroup" type="hvac:RheemPlugInShared50SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInShared50SimulationGroup" type="hvac:RheemPlugInShared50SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">Reference value from A2hp03_HeatPumpWaterHeaterModel as default and allow user to override with an equivalent system based on the simulated equipment as follows: 
@@ -812,7 +812,7 @@ If A2hp09_HeatPumpWaterHeaterSimulationGroup ==     RheemPlugInShared50 list = R
 End If</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInShared65SimulationGroup" type="hvac:RheemPlugInShared65SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInShared65SimulationGroup" type="hvac:RheemPlugInShared65SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">Reference value from A2hp03_HeatPumpWaterHeaterModel as default and allow user to override with an equivalent system based on the simulated equipment as follows: 
@@ -820,19 +820,11 @@ If A2hp09_HeatPumpWaterHeaterSimulationGroup ==     RheemPlugInShared65 list = R
 End If</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInShared80SimulationGroup" type="hvac:RheemPlugInShared80SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInShared80SimulationGroup" type="hvac:RheemPlugInShared80SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">Reference value from A2hp03_HeatPumpWaterHeaterModel as default and allow user to override with an equivalent system based on the simulated equipment as follows: 
 If A2hp09_HeatPumpWaterHeaterSimulationGroup ==     RheemPlugInShared80 list = RheemPlugInShared80SimulationGroup values; 
-End If</xsd:documentation>
-                                                            </xsd:annotation>
-                                                         </xsd:element>
-                                                         <xsd:element name="B2hp03_Sanden40SimulationGroup" type="hvac:Sanden40SimulationGroup" >
-                                                            <xsd:annotation>
-                                                               <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
-                                                               <xsd:documentation source="CalculationsAndRules">Reference value from A2hp03_HeatPumpWaterHeaterModel as default and allow user to override with an equivalent system based on the simulated equipment as follows: 
-If A2hp09_HeatPumpWaterHeaterSimulationGroup ==   Sanden40 list = Sanden40SimulationGroup values;
 End If</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
@@ -918,6 +910,24 @@ Else If M03_WaterHeatingSystemOption == OptionTier3SingleHWH (display term "2") 
                                                                <xsd:documentation source="CalculationsAndRules">If prescriptive for Tier 3 or higher HPWH user can select  from all Tier 3 heat pump water heaters in this list</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
+                                                         <xsd:element name="Hpi03_AOSmithHPTS50SimulationGroup" type="hvac:AOSmithHPTS50SimulationGroup" >
+                                                            <xsd:annotation>
+                                                               <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
+                                                               <xsd:documentation source="CalculationsAndRules">If prescriptive for Tier 3 or higher HPWH user can select  a heat pump water heater from this Tier 3 group: AOSmithHPTS50SimulationGroup</xsd:documentation>
+                                                            </xsd:annotation>
+                                                         </xsd:element>
+                                                         <xsd:element name="Hpi03_AOSmithHPTS66SimulationGroup" type="hvac:AOSmithHPTS66SimulationGroup" >
+                                                            <xsd:annotation>
+                                                               <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
+                                                               <xsd:documentation source="CalculationsAndRules">If prescriptive for Tier 3 or higher HPWH user can select  a heat pump water heater from this Tier 3 group: AOSmithHPTS66SimulationGroup</xsd:documentation>
+                                                            </xsd:annotation>
+                                                         </xsd:element>
+                                                         <xsd:element name="Hpi03_AOSmithHPTS80SimulationGroup" type="hvac:AOSmithHPTS80SimulationGroup" >
+                                                            <xsd:annotation>
+                                                               <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
+                                                               <xsd:documentation source="CalculationsAndRules">If prescriptive for Tier 3 or higher HPWH user can select  a heat pump water heater from this Tier 3 group: AOSmithHPTS80SimulationGroup</xsd:documentation>
+                                                            </xsd:annotation>
+                                                         </xsd:element>
                                                          <xsd:element name="Hpi03_AOSmithHPTU50SimulationGroup" type="hvac:AOSmithHPTU50SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
@@ -996,25 +1006,25 @@ Else If M03_WaterHeatingSystemOption == OptionTier3SingleHWH (display term "2") 
                                                                <xsd:documentation source="CalculationsAndRules">If prescriptive for Tier 3 or higher HPWH user can select  a heat pump water heater from this Tier 3 group:  RheemHBDR2280SimulationGroup</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInShared40SimulationGroup" type="hvac:RheemPlugInShared40SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInShared40SimulationGroup" type="hvac:RheemPlugInShared40SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">If prescriptive for Tier 3 or higher HPWH user can select  a heat pump water heater from this Tier 3 group:  RheemPlugInShared40SimulationGroup</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInShared50SimulationGroup" type="hvac:RheemPlugInShared50SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInShared50SimulationGroup" type="hvac:RheemPlugInShared50SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">If prescriptive for Tier 3 or higher HPWH user can select  a heat pump water heater from this Tier 3 group:  RheemPlugInShared50SimulationGroup</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInShared65SimulationGroup" type="hvac:RheemPlugInShared65SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInShared65SimulationGroup" type="hvac:RheemPlugInShared65SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">If prescriptive for Tier 3 or higher HPWH user can select  a heat pump water heater from this Tier 3 group:  RheemPlugInShared65SimulationGroup</xsd:documentation>
                                                             </xsd:annotation>
                                                          </xsd:element>
-                                                         <xsd:element name="B2hp03_RheemPlugInShared80SimulationGroup" type="hvac:RheemPlugInShared80SimulationGroup" >
+                                                         <xsd:element name="Hpi03_RheemPlugInShared80SimulationGroup" type="hvac:RheemPlugInShared80SimulationGroup" >
                                                             <xsd:annotation>
                                                                <xsd:documentation source="FieldText">Make and Model</xsd:documentation>
                                                                <xsd:documentation source="CalculationsAndRules">If prescriptive for Tier 3 or higher HPWH user can select  a heat pump water heater from this Tier 3 group:  RheemPlugInShared80SimulationGroup</xsd:documentation>
