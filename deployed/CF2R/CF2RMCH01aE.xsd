@@ -371,7 +371,7 @@ Require one row of data for each SC System in Section B;  do not allow user to o
                                        <xsd:element name="C02_EfficiencyType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, HeatPumpDHWCombo Or WoodHeat result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
  for this system name</xsd:documentation>
                                           </xsd:annotation>
                                           <xsd:simpleType>
@@ -386,7 +386,7 @@ Require one row of data for each SC System in Section B;  do not allow user to o
                                        <xsd:element name="C02_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Heating Efficiency Type</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, HeatPumpDHWCombo Or WoodHeat result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
  for this system name</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
@@ -395,35 +395,35 @@ Require one row of data for each SC System in Section B;  do not allow user to o
                                        <xsd:element name="C03_EfficiencyMinimumValueAFUE" type="hvac:EfficiencyMinimumValueAFUE">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, HeatPumpDHWCombo Or WoodHeat result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
  for this system name if it is AFUE.  Result value is stored as fraction but displayed as percent</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_EfficiencyMinimumValueCOP" type="hvac:EfficiencyMinimumValueCOP">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in the  NotAppplicableMessage;  Else auto filled text: referenced from parent CC-PRF
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, HeatPumpDHWCombo Or WoodHeat result = N/A stored in the  NotAppplicableMessage;  Else auto filled text: referenced from parent CC-PRF
  for this system name if it is COP. Result value is stored as fraction but displayed as percent</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_EfficiencyMinimumValueHSPF" type="hvac:EfficiencyMinimumValueHSPF">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, HeatPumpDHWCombo Or WoodHeat result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
  for this system name  if it is HSPF. Result value is stored as fraction but displayed as percent</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_EfficiencyMinimumValueHSPF2" type="hvac:EfficiencyMinimumValueHSPF2">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, HeatPumpDHWCombo Or WoodHeat result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
  for this system name  if it is HSPF2. Result value is stored as fraction but displayed as percent</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="C03_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Minimum Heating Efficiency Value</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If B03_ResidentialHeatingSystemType == CombinedHydronic, HeatPumpDHWCombo Or WoodHeat result = N/A stored in the  NotAppplicableMessage; Else auto filled text: referenced from parent CC-PRF
  for this system name</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
@@ -663,7 +663,8 @@ Require one row of data to be entered in this table for each space conditioning 
                                     <xsd:element name="D04_ResidentialHeatingSystemType" type="hvac:ResidentialHeatingSystemType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Heating System Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from B03_ResidentialHeatingSystemType as default;  If B03_ResidentialHeatingSystemType == DuctedMiniSplitHP, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessSplitHP (display term Ductless mini-split HP), DuctlessVRF_HP, RoomHP;   SmallDuctHighVelocityHP,  VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless,  VCHP_IndoorUnitDuctedAndDuctless,  AirToWaterHeatPump Or GroundSourceHeatPump do not allow user to override;  Else allow user to override the default and select one from list:  BoilerSystem,  CentralGasFurnace   CentralLargePackagedHP,  CentralPackagedHP, CentralSplitHP,  CombinedHydronic, CombinedHydronicForcedAir,  Electric, GasPackagedFurnace, GasSpaceHeater,  GasWallFurnace, Hydronic, HydronicForcedAir, HydronicHP, HydronicHP_ForcedAir, SPVHP, PTHP, and WoodHeat.  Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference value from B03_ResidentialHeatingSystemType as default;  If B03_ResidentialHeatingSystemType == DuctedMiniSplitHP, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessSplitHP (display term Ductless mini-split HP), DuctlessVRF_HP, RoomHP;   SmallDuctHighVelocityHP,  VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless,  VCHP_IndoorUnitDuctedAndDuctless,  AirToWaterHeatPump Or GroundSourceHeatPump do not allow user to override;  Else allow user to override the default and select one from list:  
+BoilerSystem,  CentralGasFurnace   CentralLargePackagedHP,  CentralPackagedHP, CentralSplitHP,  CombinedHydronic, CombinedHydronicForcedAir,  Electric, GasPackagedFurnace, GasSpaceHeater,  GasWallFurnace, HeatPumpDHWCombo, Hydronic, HydronicForcedAir, HydronicHP, HydronicHP_ForcedAir, SPVHP, PTHP, and WoodHeat.  Flag non-default values and report in project status notes field; a revised parent CC-PRF may be required.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="D05_ResidentialCoolingSystemType" type="hvac:ResidentialCoolingSystemType">
@@ -793,7 +794,10 @@ Flag non-default values and report in project status notes field; a revised pare
                <xsd:documentation source="FieldText">Installed Heating System Equipment Information (not heat pumps)</xsd:documentation>
                <xsd:documentation source="CalculationsAndRules">In this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC) 
  
-This Section is applicable only if at least one row in D04_ResidentialHeatingSystemType != one of these Heat Pump types: CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, DuctlessSplitHP (display term Ductless mini-split HP), DuctedMultiSplitHP, DuctlessMultiSplitHP,  DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless . For each SC that satisfies this condition, do one of the following:  If SC system in D02 has D06_NotApplicableMessage value, require one row of data; Else If  SC System has D06_IndoorUnitsCount GTE 1 And D04 == CentralGasFurnace require one row of data for each of the quantity of indoor units specified in D06 for that system.</xsd:documentation>
+This Section is applicable only if at least one row in D04_ResidentialHeatingSystemType != one of these Heat Pump types: CentralLargePackagedHP, CentralPackagedHP, 
+CentralSplitHP,  DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, DuctlessSplitHP (display term Ductless mini-split HP), DuctedMultiSplitHP, DuctlessMultiSplitHP,  
+DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, HeatPumpDHWCombo, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless . 
+For each SC that satisfies this condition, do one of the following:  If SC system in D02 has D06_NotApplicableMessage value, require one row of data; Else If  SC System has D06_IndoorUnitsCount GTE 1 And D04 == CentralGasFurnace require one row of data for each of the quantity of indoor units specified in D06 for that system.</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -1154,7 +1158,9 @@ End If</xsd:documentation>
                <xsd:documentation source="CalculationsAndRules">In this section parent CC-PRF refers to the parent CF1R-PRF Certificate of Compliance (CC)
  
 This Section is applicable if one or more systems in section D has D04_ResidentialHeatingSystemType Or  D05_ResidentialCoolingSystemType
-  equal to one of the following: CentralSplitAC, CentralSplitHP,DuctedMultiSplitAC, DuctlessMultiSplitAC, DuctedDuctlessMultiSplitAC, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessSplitAC (display term Ductless mini-split AC), DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitAC, DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, DuctlessVRF_AC, DuctlessVRF_HP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless, VCHP_IndoorUnitDuctedAndDuctless, EvaporativelyCooledCondenser, GasAbsorptionAC, CombinedHydronicForcedAir, HydronicForcedAir, HydronicHP_ForcedAir, IceStorageAC, SmallDuctHighVelocityHP, Or SmallDuctHighVelocityAC . Require user to enter one row of data for each indoor unit in the count D06_IndoorUnitsCount applicable to the system</xsd:documentation>
+  equal to one of the following: CentralSplitAC, CentralSplitHP,DuctedMultiSplitAC, DuctlessMultiSplitAC, DuctedDuctlessMultiSplitAC, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessSplitAC (display term Ductless mini-split AC), DuctlessSplitHP (display term Ductless mini-split HP), 
+DuctedMiniSplitAC, DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, DuctlessVRF_AC, DuctlessVRF_HP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless, VCHP_IndoorUnitDuctedAndDuctless, 
+EvaporativelyCooledCondenser, GasAbsorptionAC, CombinedHydronicForcedAir, HydronicForcedAir, HydronicHP_ForcedAir, IceStorageAC, SmallDuctHighVelocityHP, SmallDuctHighVelocityAC Or HeatPumpDHWCombo. Require user to enter one row of data for each indoor unit in the count D06_IndoorUnitsCount applicable to the system</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -1286,7 +1292,10 @@ This Section is applicable if one or more systems in section D has D04_Residenti
          <xsd:element name="Section_H" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Installed Heat Pump System - Split System Condensing Unit or Package Unit Equipment Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable only if at least one  system in section D has D04_ResidentialHeatingSystemType Or  D05_ResidentialCoolingSystemType ==  CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP,  VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless. Require one row of data in this table for each of the SC Systems listed in Section B that is  in this list.</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This Section is applicable only if at least one  system in section D has D04_ResidentialHeatingSystemType Or  
+D05_ResidentialCoolingSystemType ==  CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, 
+AirToWaterHeatPump, GroundSourceHeatPump, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, 
+HydronicHP_ForcedAir, RoomHP,  VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless, VCHP_IndoorUnitDuctedAndDuctless Or HeatPumpDHWCombo. Require one row of data in this table for each of the SC Systems listed in Section B that is  in this list.</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -1371,7 +1380,10 @@ This Section is applicable if one or more systems in section D has D04_Residenti
          <xsd:element name="Section_I" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Installed Heat Pump System -Efficiency and Performance Compliance Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This Section is applicable only if at least one system in section D has D04_ResidentialHeatingSystemType Or  D05_ResidentialCoolingSystemType ==  CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, AirToWaterHeatPump, GroundSourceHeatPump, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, HydronicHP_ForcedAir, RoomHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless or VCHP_IndoorUnitDuctedAndDuctless.   Require one row of data in this table for each of the SC Systems listed in Section B that is in this list.</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This Section is applicable only if at least one system in section D has D04_ResidentialHeatingSystemType 
+Or  D05_ResidentialCoolingSystemType ==  CentralLargePackagedHP, CentralPackagedHP, CentralSplitHP,  DuctlessSplitHP (display term Ductless mini-split HP), DuctedMiniSplitHP, 
+AirToWaterHeatPump, GroundSourceHeatPump, DuctedMultiSplitHP, DuctlessMultiSplitHP, DuctedDuctlessMultiSplitHP, DuctlessVRF_HP, SmallDuctHighVelocityHP, HydronicHP, 
+HydronicHP_ForcedAir, RoomHP, VCHP_IndoorUnitDucted, VCHP_IndoorUnitDuctless, VCHP_IndoorUnitDuctedAndDuctless Or HeatPumpDHWCombo.   Require one row of data in this table for each of the SC Systems listed in Section B that is in this list.</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>

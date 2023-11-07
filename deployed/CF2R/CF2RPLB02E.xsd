@@ -254,6 +254,20 @@ This  section is required if the parent CC  has any HPWH systems, Require one ro
                                        </xsd:element>
                                     </xsd:choice>
                                     <xsd:choice maxOccurs="1">
+                                       <xsd:element name="A2hp06a_StorageCapacity" type="hvac:StorageCapacity" minOccurs="0">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference values from  performance parent CC Else If prescriptive parent CC allow user input; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="A2hp06a_NotApplicableMessage" type="comp:NotApplicableMessage" minOccurs="0">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference values from  performance parent CC Else If prescriptive parent CC allow user input; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
+                                    <xsd:choice maxOccurs="1">
                                        <xsd:element name="A2hp07_ResidentialDHWDwellingUnitDistributionType" type="hvac:ResidentialDHWDwellingUnitDistributionType">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Dwelling Unit DHW System Distribution Type</xsd:documentation>
@@ -1024,6 +1038,20 @@ Else If M03_WaterHeatingSystemOption == OptionTier3SingleHWH (display term "2") 
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Exterior Tank Insulation R-Value</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">User input; Check: If result GTE A2hp06_ExteriorTankInsulation result complies; Else flag non-compliant value and do not allow the doc to be registered. Value may be N/A if A2hp06_NotApplicableMessage == N/A</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="B2hp06a_StorageCapacity" type="hvac:StorageCapacity" minOccurs="0">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input; check that result GTE A2hp06a_StorageCapacity to comply; Else flag non-compliant values and do not allow the doc to be registered. Value may be NA if A2hp06a == N/A</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="B2hp06a_NotApplicableMessage" type="comp:NotApplicableMessage" minOccurs="0">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference values from  performance parent CC Else If prescriptive parent CC allow user input; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>

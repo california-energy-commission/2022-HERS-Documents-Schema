@@ -275,6 +275,20 @@ End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="Hpd06a_StorageCapacity" type="hvac:StorageCapacity" minOccurs="0">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference values from  performance parent CC Else If prescriptive parent CC allow user input; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="Hpd06a_NotApplicableMessage" type="comp:NotApplicableMessage" minOccurs="0">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Reference values from  performance parent CC Else If prescriptive parent CC allow user input; Else result = N/A stored in NotApplicableMessage</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
                                     <xsd:element name="Hpd07_ResidentialDHWDwellingUnitDistributionType" type="hvac:ResidentialDHWDwellingUnitDistributionType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Dwelling Unit DHW System Distribution Type</xsd:documentation>
@@ -1015,6 +1029,20 @@ Else If M03_WaterHeatingSystemOption == OptionTier3SingleHWH (display term "2") 
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Exterior Tank Insulation R-Value</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">User input; Check: If result GTE Hpd06_ExteriorTankInsulation result complies; Else flag non-compliant value and do not allow the doc to be registered. Value may be N/A if Hpd06_NotApplicableMessage == N/A</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="Hpi06a_StorageCapacity" type="hvac:StorageCapacity" minOccurs="0">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input; check that result GTE Hpd06a_StorageCapacity to comply; Else flag non-compliant values and do not allow the doc to be registered. Value may be NA if Hpd06a_NotApplicableMessage == N/A</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="Hpi06a_NotApplicableMessage" type="comp:NotApplicableMessage" minOccurs="0">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Tank Volume</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User input; check that result GTE Hpd06a_StorageCapacity to comply; Else flag non-compliant values and do not allow the doc to be registered. Value may be NA if Hpd06a_NotApplicableMessage == N/A</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>

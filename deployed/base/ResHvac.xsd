@@ -4651,6 +4651,7 @@
    </xsd:simpleType>
    <xsd:simpleType name="HeatPumpWaterHeaterModel">
       <xsd:annotation>
+         <xsd:documentation>Oct 2023 Removed incorrect P from RheemPROPH40T2RH310UM, RheemPROPH50T2RH310UM, RheemPROPH65T2RH310UM, RheemPROPH80T2RH310UM</xsd:documentation>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="AmericanHPE10260">HPE10260H045DV  (60 gal)</dtyp:displayterm>
             <dtyp:displayterm value="AmericanHPE10280">HPE10280H045DV  (80 gal)</dtyp:displayterm>
@@ -4846,7 +4847,10 @@
             <dtyp:displayterm value="RheemPROH50T2RH310BM">PROH50 T2 RH310BM  (50 gal, JA13l)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROH65T2RH310BM">PROH65 T2 RH310BM  (65 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROH80T2RH310BM">PROH80 T2 RH310BM  (80 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH40T2RH310UM">Rheem PRO H40 T2 RH310UM (40 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH40T2RH310UM">Rheem PRO H40 T2 RH310UM (40 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH50T2RH310UM">Rheem PRO H50 T2 RH310UM (50 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH65T2RH310UM">Rheem PRO H65 T2 RH310UM (65 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH80T2RH310UM">Rheem PRO H80 T2 RH310UM (80 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH40T2RH37515">PROPH40 T2 RH37515  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH40T2RH37530">PROPH40 T2 RH37530  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH40T2RH375SO">PROPH40 T2 RH375SO  (40 gal, JA13)</dtyp:displayterm>
@@ -4857,7 +4861,6 @@
             <dtyp:displayterm value="RheemPROPH50T0RH120">PROPH50 T0 RH120  (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T0RH120M">PROPH50 T0 RH120-M  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T0RH120MSO">PROPH50 T0 RH120-MSO  (50 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH50T2RH310UM">Rheem PRO H50 T2 RH310UM (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T2RH37515">PROPH50 T2 RH37515  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T2RH37530">PROPH50 T2 RH37530  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T2RH375SO">PROPH50 T2 RH375SO  (50 gal, JA13)</dtyp:displayterm>
@@ -4867,7 +4870,6 @@
             <dtyp:displayterm value="RheemPROPH65RH350DCB">PROPH65 T2 RH350 DCB  (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T0RH120M">PROPH65 T0 RH120-M  (65 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T0RH120MSO">PROPH65 T0 RH120-MSO  (65 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH65T2RH310UM">Rheem PRO H65 T2 RH310UM (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T2RH37515">PROPH65 T2 RH37515  (65 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T2RH37530">PROPH65 T2 RH37530 (65 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T2RH375SO">PROPH65 T2 RH375SO (65 gal, JA13)</dtyp:displayterm>
@@ -4878,7 +4880,6 @@
             <dtyp:displayterm value="RheemPROPH80RH350DCB">PROPH80 T2 RH350 DCB  (80gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T0RH120M">PROPH80 T0 RH120-M  (80 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T0RH120MSO">PROPH80 T0 RH120-MSO  (80 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH80T2RH310UM">Rheem PRO H80 T2 RH310UM (80 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T2RH37515">PROPH80 T2 RH37515  (80 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T2RH37530">PROPH80 T2 RH37530  (80 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T2RH375SO">PROPH80 T2 RH375SO (80 gal, JA13)</dtyp:displayterm>
@@ -5253,10 +5254,13 @@
          <xsd:enumeration value="RheemPROH50T2RH310BM"/>
          <xsd:enumeration value="RheemPROH65T2RH310BM"/>
          <xsd:enumeration value="RheemPROH80T2RH310BM"/>
+         <xsd:enumeration value="RheemPROH40T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH50T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH65T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH80T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH40T0RH120"/>
          <xsd:enumeration value="RheemPROPH40T0RH120M"/>
          <xsd:enumeration value="RheemPROPH40T0RH120MSO"/>
-         <xsd:enumeration value="RheemPROPH40T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH40T2RH37515"/>
          <xsd:enumeration value="RheemPROPH40T2RH37530"/>
          <xsd:enumeration value="RheemPROPH40T2RH375SO"/>
@@ -5267,7 +5271,6 @@
          <xsd:enumeration value="RheemPROPH50T0RH120"/>
          <xsd:enumeration value="RheemPROPH50T0RH120M"/>
          <xsd:enumeration value="RheemPROPH50T0RH120MSO"/>
-         <xsd:enumeration value="RheemPROPH50T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH50T2RH37515"/>
          <xsd:enumeration value="RheemPROPH50T2RH37530"/>
          <xsd:enumeration value="RheemPROPH50T2RH375SO"/>
@@ -5277,7 +5280,6 @@
          <xsd:enumeration value="RheemPROPH65RH350DCB"/>
          <xsd:enumeration value="RheemPROPH65T0RH120M"/>
          <xsd:enumeration value="RheemPROPH65T0RH120MSO"/>
-         <xsd:enumeration value="RheemPROPH65T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH65T2RH37515"/>
          <xsd:enumeration value="RheemPROPH65T2RH37530"/>
          <xsd:enumeration value="RheemPROPH65T2RH375SO"/>
@@ -5288,7 +5290,6 @@
          <xsd:enumeration value="RheemPROPH80RH350DCB"/>
          <xsd:enumeration value="RheemPROPH80T0RH120M"/>
          <xsd:enumeration value="RheemPROPH80T0RH120MSO"/>
-         <xsd:enumeration value="RheemPROPH80T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH80T2RH37515"/>
          <xsd:enumeration value="RheemPROPH80T2RH37530"/>
          <xsd:enumeration value="RheemPROPH80T2RH375SO"/>
@@ -5473,8 +5474,9 @@
    </xsd:simpleType>
    <xsd:simpleType name="HeatPumpWaterHeaterModelNEEA">
       <xsd:annotation>
+         <xsd:documentation>Oct 2023 Removed incorrect P from RheemPROPH40T2RH310UM, RheemPROPH50T2RH310UM, RheemPROPH65T2RH310UM, RheemPROPH80T2RH310UM</xsd:documentation>
          <xsd:appinfo source="displaytermType">
-            <dtyp:displayterm>Simulated Model Group A O Smith HPTU 50</dtyp:displayterm>
+            <dtyp:displayterm>NEEA Heat Pump Water Heaters</dtyp:displayterm>
          </xsd:appinfo>
          <xsd:appinfo source="displayterm">
             <dtyp:displayterm value="AmericanHPE10260">HPE10260H045DV  (60 gal)</dtyp:displayterm>
@@ -5627,10 +5629,13 @@
             <dtyp:displayterm value="RheemPROPH40T0RH120M">PROPH40 T0 RH120-M  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH40T0RH120MSO">PROPH40 T0 RH120-MSO  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROH40T2RH310BM">PROH40 T2 RH310BM  (40 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROH50T2RH310BM">PROH50 T2 RH310BM  (50 gal, JA13l)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH50T2RH310BM">PROH50 T2 RH310BM  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROH65T2RH310BM">PROH65 T2 RH310BM  (65 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROH80T2RH310BM">PROH80 T2 RH310BM  (80 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH40T2RH310UM">Rheem PRO H40 T2 RH310UM (40 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH40T2RH310UM">Rheem PRO H40 T2 RH310UM (40 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH50T2RH310UM">Rheem PRO H50 T2 RH310UM (50 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH65T2RH310UM">Rheem PRO H65 T2 RH310UM (65 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH80T2RH310UM">Rheem PRO H80 T2 RH310UM (80 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH40T2RH37515">PROPH40 T2 RH37515  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH40T2RH37530">PROPH40 T2 RH37530  (40 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH40T2RH375SO">PROPH40 T2 RH375SO  (40 gal, JA13)</dtyp:displayterm>
@@ -5641,7 +5646,6 @@
             <dtyp:displayterm value="RheemPROPH50T0RH120">PROPH50 T0 RH120  (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T0RH120M">PROPH50 T0 RH120-M  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T0RH120MSO">PROPH50 T0 RH120-MSO  (50 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH50T2RH310UM">Rheem PRO H50 T2 RH310UM (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T2RH37515">PROPH50 T2 RH37515  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T2RH37530">PROPH50 T2 RH37530  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50T2RH375SO">PROPH50 T2 RH375SO  (50 gal, JA13)</dtyp:displayterm>
@@ -5651,7 +5655,6 @@
             <dtyp:displayterm value="RheemPROPH65RH350DCB">PROPH65 T2 RH350 DCB  (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T0RH120M">PROPH65 T0 RH120-M  (65 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T0RH120MSO">PROPH65 T0 RH120-MSO  (65 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH65T2RH310UM">Rheem PRO H65 T2 RH310UM (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T2RH37515">PROPH65 T2 RH37515  (65 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T2RH37530">PROPH65 T2 RH37530 (65 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65T2RH375SO">PROPH65 T2 RH375SO (65 gal, JA13)</dtyp:displayterm>
@@ -5662,7 +5665,6 @@
             <dtyp:displayterm value="RheemPROPH80RH350DCB">PROPH80 T2 RH350 DCB  (80gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T0RH120M">PROPH80 T0 RH120-M  (80 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T0RH120MSO">PROPH80 T0 RH120-MSO  (80 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH80T2RH310UM">Rheem PRO H80 T2 RH310UM (80 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T2RH37515">PROPH80 T2 RH37515  (80 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T2RH37530">PROPH80 T2 RH37530  (80 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH80T2RH375SO">PROPH80 T2 RH375SO (80 gal, JA13)</dtyp:displayterm>
@@ -5979,10 +5981,13 @@
          <xsd:enumeration value="RheemPROH50T2RH310BM"/>
          <xsd:enumeration value="RheemPROH65T2RH310BM"/>
          <xsd:enumeration value="RheemPROH80T2RH310BM"/>
+         <xsd:enumeration value="RheemPROH40T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH50T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH65T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH80T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH40T0RH120"/>
          <xsd:enumeration value="RheemPROPH40T0RH120M"/>
          <xsd:enumeration value="RheemPROPH40T0RH120MSO"/>
-         <xsd:enumeration value="RheemPROPH40T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH40T2RH37515"/>
          <xsd:enumeration value="RheemPROPH40T2RH37530"/>
          <xsd:enumeration value="RheemPROPH40T2RH375SO"/>
@@ -5993,7 +5998,6 @@
          <xsd:enumeration value="RheemPROPH50T0RH120"/>
          <xsd:enumeration value="RheemPROPH50T0RH120M"/>
          <xsd:enumeration value="RheemPROPH50T0RH120MSO"/>
-         <xsd:enumeration value="RheemPROPH50T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH50T2RH37515"/>
          <xsd:enumeration value="RheemPROPH50T2RH37530"/>
          <xsd:enumeration value="RheemPROPH50T2RH375SO"/>
@@ -6003,7 +6007,6 @@
          <xsd:enumeration value="RheemPROPH65RH350DCB"/>
          <xsd:enumeration value="RheemPROPH65T0RH120M"/>
          <xsd:enumeration value="RheemPROPH65T0RH120MSO"/>
-         <xsd:enumeration value="RheemPROPH65T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH65T2RH37515"/>
          <xsd:enumeration value="RheemPROPH65T2RH37530"/>
          <xsd:enumeration value="RheemPROPH65T2RH375SO"/>
@@ -6014,7 +6017,6 @@
          <xsd:enumeration value="RheemPROPH80RH350DCB"/>
          <xsd:enumeration value="RheemPROPH80T0RH120M"/>
          <xsd:enumeration value="RheemPROPH80T0RH120MSO"/>
-         <xsd:enumeration value="RheemPROPH80T2RH310UM"/>
          <xsd:enumeration value="RheemPROPH80T2RH37515"/>
          <xsd:enumeration value="RheemPROPH80T2RH37530"/>
          <xsd:enumeration value="RheemPROPH80T2RH375SO"/>
@@ -11118,6 +11120,7 @@
    </xsd:simpleType>
    <xsd:simpleType name="Rheem2020Build40SimulationGroup">
       <xsd:annotation>
+         <xsd:documentation>Oct 2023 Removed incorrect P from RheemPROPH40T2RH310UM</xsd:documentation>
          <xsd:appinfo source="displaytermType">
             <dtyp:displayterm>Simulated Model Group Rheem HBDR-45-80</dtyp:displayterm>
          </xsd:appinfo>
@@ -11125,7 +11128,7 @@
             <dtyp:displayterm value="DirectEnergyECEH40">ECE H40 T2 RH310BM (40 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemCanCPROH40T2RH310BM">Rheem Canada CPRO H40 T2 RH310BM (40 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROH40T2RH310BM">PROH40 T2 RH310BM  (40 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH40T2RH310UM">Rheem PRO H40 T2 RH310UM (40 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH40T2RH310UM">Rheem PRO H40 T2 RH310UM (40 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROH40T2RU310BM">PROH40 T2 RU310BM  (40 gal. JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROH40T2RU310UM">Ruud PRO H40 T2 RH310UM (40 gal)</dtyp:displayterm>
          </xsd:appinfo>
@@ -11134,7 +11137,7 @@
          <xsd:enumeration value="DirectEnergyECEH40"/>
          <xsd:enumeration value="RheemCanCPROH40T2RH310BM"/>
          <xsd:enumeration value="RheemPROH40T2RH310BM"/>
-         <xsd:enumeration value="RheemPROPH40T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH40T2RH310UM"/>
          <xsd:enumeration value="RuudPROH40T2RU310BM"/>
          <xsd:enumeration value="RuudPROH40T2RU310UM"/>
       </xsd:restriction>
@@ -11148,7 +11151,7 @@
             <dtyp:displayterm value="DirectEnergyECEH50">ECE H50 T2 RH310BM (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemCanCPROH50T2RH310BM">Rheem Canada CPRO H50 T2 RH310BM (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROH50T2RH310BM">PROH50 T2 RH310BM  (50 gal, JA13l)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH50T2RH310UM">Rheem PRO H50 T2 RH310UM (50 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH50T2RH310UM">Rheem PRO H50 T2 RH310UM (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROH50T2RU310BM">PROH50 T2 RU310BM  (50 gal. JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROH50T2RU310UM">Ruud PRO H50 T2 RU310UM (50 gal)</dtyp:displayterm>
          </xsd:appinfo>
@@ -11157,7 +11160,7 @@
          <xsd:enumeration value="DirectEnergyECEH50"/>
          <xsd:enumeration value="RheemCanCPROH50T2RH310BM"/>
          <xsd:enumeration value="RheemPROH50T2RH310BM"/>
-         <xsd:enumeration value="RheemPROPH50T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH50T2RH310UM"/>
          <xsd:enumeration value="RuudPROH50T2RU310BM"/>
          <xsd:enumeration value="RuudPROH50T2RU310UM"/>
       </xsd:restriction>
@@ -11171,7 +11174,7 @@
             <dtyp:displayterm value="DirectEnergyECEH65">ECE H65 T2 RH310BM (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemCanCPROH65T2RH310BM">Rheem Canada CPRO H65 T2 RH310BM (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROH65T2RH310BM">PROH65 T2 RH310BM  (65 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH65T2RH310UM">Rheem PRO H65 T2 RH310UM (65 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH65T2RH310UM">Rheem PRO H65 T2 RH310UM (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROH65T2RU310BM">PROH65 T2 RU310BM  (65 gal. JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROH65T2RU310UM">Ruud PRO H65 T2 RU310UM (65 gal)</dtyp:displayterm>
          </xsd:appinfo>
@@ -11180,7 +11183,7 @@
          <xsd:enumeration value="DirectEnergyECEH65"/>
          <xsd:enumeration value="RheemCanCPROH65T2RH310BM"/>
          <xsd:enumeration value="RheemPROH65T2RH310BM"/>
-         <xsd:enumeration value="RheemPROPH65T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH65T2RH310UM"/>
          <xsd:enumeration value="RuudPROH65T2RU310BM"/>
          <xsd:enumeration value="RuudPROH65T2RU310UM"/>
       </xsd:restriction>
@@ -11194,7 +11197,7 @@
             <dtyp:displayterm value="DirectEnergyECEH80">ECE H80 T2 RH310BM (80 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemCanCPROH80T2RH310BM">Rheem Canada CPRO H80T2 RH310BM (80 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROH80T2RH310BM">PROH80 T2 RH310BM  (80 gal, JA13)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH80T2RH310UM">Rheem PRO H80 T2 RH310UM (80 gal)</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH80T2RH310UM">Rheem PRO H80 T2 RH310UM (80 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROH80T2RU310BM">PROH80 T2 RU310BM  (80 gal. JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RuudPROH80T2RU310UM">Ruud PRO H80 T2 RU310UM (80 gal)</dtyp:displayterm>
          </xsd:appinfo>
@@ -11203,7 +11206,7 @@
          <xsd:enumeration value="DirectEnergyECEH80"/>
          <xsd:enumeration value="RheemCanCPROH80T2RH310BM"/>
          <xsd:enumeration value="RheemPROH80T2RH310BM"/>
-         <xsd:enumeration value="RheemPROPH80T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH80T2RH310UM"/>
          <xsd:enumeration value="RuudPROH80T2RU310BM"/>
          <xsd:enumeration value="RuudPROH80T2RU310UM"/>
       </xsd:restriction>
@@ -12772,7 +12775,7 @@
             <dtyp:displayterm value="RheemCanCPROH40T2RH310BM">"Rheem Canada CPRO H40 T2 RH310BM (40 gal)"</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH40T0RH120M">"PROPH T0 RH120-M (40 gal, JA13)"</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH40T0RH120MSO">"PROPH T0 RH120-MSO (40 gal, JA13)"</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH40T2RH310UM">"Rheem PRO H40 T2 RH310UM (40 gal)"</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH40T2RH310UM">"Rheem PRO H40 T2 RH310UM (40 gal)"</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE40T10HM00U0">"XE40T10HM00U0 (40 gal, JA13)"</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE40T10HMS00U0">"XE40T10HMS00U0 (40 gal, JA13)"</dtyp:displayterm>
             <dtyp:displayterm value="Richmond10E40HP120M">"10E40-HP120M  (40 gal, JA13)"</dtyp:displayterm>
@@ -12789,7 +12792,7 @@
          <xsd:enumeration value="RheemCanCPROH40T2RH310BM"/>
          <xsd:enumeration value="RheemPROPH40T0RH120M"/>
          <xsd:enumeration value="RheemPROPH40T0RH120MSO"/>
-         <xsd:enumeration value="RheemPROPH40T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH40T2RH310UM"/>
          <xsd:enumeration value="RheemXE40T10HM00U0"/>
          <xsd:enumeration value="RheemXE40T10HMS00U0"/>
          <xsd:enumeration value="Richmond10E40HP120M"/>
@@ -12840,7 +12843,7 @@
             <dtyp:displayterm value="RheemPROPH50RH350">PROPH50 T2 RH350 D  (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50RH350DC">PROPH50 T2 RH350 DC  (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH50RH350DCB">PROPH50 T2 RH350 DCB  (50 gal)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH50T2RH310UM">"Rheem PRO H50 T2 RH310UM (50 gal)"</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH50T2RH310UM">"Rheem PRO H50 T2 RH310UM (50 gal)"</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE50T10">XE50T10HD50U0  (50 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE50T10H22U0">XE50T10H22U0  (50 gal, JA13)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE50T10U1">XE50T10HD50U1  (50 gal)</dtyp:displayterm>
@@ -12893,7 +12896,7 @@
          <xsd:enumeration value="RheemPROPH50RH350"/>
          <xsd:enumeration value="RheemPROPH50RH350DC"/>
          <xsd:enumeration value="RheemPROPH50RH350DCB"/>
-         <xsd:enumeration value="RheemPROPH50T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH50T2RH310UM"/>
          <xsd:enumeration value="RheemXE50T10"/>
          <xsd:enumeration value="RheemXE50T10H22U0"/>
          <xsd:enumeration value="RheemXE50T10U1"/>
@@ -12942,7 +12945,7 @@
             <dtyp:displayterm value="RheemPROPH65RH350D15">PROPH65 T2 RH350 D15  (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65RH350DC">PROPH65 T2 RH350 DC  (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemPROPH65RH350DCB">PROPH65 T2 RH350 DCB  (65 gal)</dtyp:displayterm>
-            <dtyp:displayterm value="RheemPROPH65T2RH310UM">"Rheem PRO H65 T2 RH310UM (65 gal)"</dtyp:displayterm>
+            <dtyp:displayterm value="RheemPROH65T2RH310UM">"Rheem PRO H65 T2 RH310UM (65 gal)"</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE65T10">XE65T10HD50U0  (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="RheemXE65T10U1">XE65T10HD50U1  (65 gal)</dtyp:displayterm>
             <dtyp:displayterm value="Richmond10E65HP4D">10E65-HP4D  (65 gal)</dtyp:displayterm>
@@ -12984,7 +12987,7 @@
          <xsd:enumeration value="RheemPROPH65RH350D15"/>
          <xsd:enumeration value="RheemPROPH65RH350DC"/>
          <xsd:enumeration value="RheemPROPH65RH350DCB"/>
-         <xsd:enumeration value="RheemPROPH65T2RH310UM"/>
+         <xsd:enumeration value="RheemPROH65T2RH310UM"/>
          <xsd:enumeration value="RheemXE65T10"/>
          <xsd:enumeration value="RheemXE65T10U1"/>
          <xsd:enumeration value="Richmond10E65HP4D"/>
