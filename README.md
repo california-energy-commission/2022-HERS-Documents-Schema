@@ -15,3 +15,6 @@ Get started here [CONTRIBUTING](CONTRIBUTING.md)
 to a `deployed` folder.
 
 Check out the [Scripts repository](https://github.com/california-energy-commission/Scripts).
+
+## High Priority Issues
+The HIGH PRIORITY label is ONLY for Issues in the production server that are preventing a rater from submitting a form.
