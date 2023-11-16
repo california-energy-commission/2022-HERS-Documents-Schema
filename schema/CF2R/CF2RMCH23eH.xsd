@@ -330,7 +330,7 @@ End If.</xsd:documentation>
                   <xsd:element name="E01_AirflowRequiredMinimumTarget" type="hvac:AirflowRequiredMinimumTarget" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Required Minimum Ventilation System Airflow Rate (cfm)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Auto-filled with value from Mch01 C11 Central Fan Ventilation Cooling Airflow</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If CF2R-MCH-01b parent document result = 300 Else reference value from CF2R-MCH-01 C11 Central Fan Ventilation Cooling Airflow</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="E02_AirflowMeasuredRate" type="hvac:AirflowMeasuredRate" >
