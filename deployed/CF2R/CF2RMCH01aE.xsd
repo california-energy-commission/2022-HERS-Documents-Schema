@@ -269,6 +269,7 @@ End If</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:ThermostatType">
+                                             <xsd:enumeration value="NonSetbackThermostat"/>
                                              <xsd:enumeration value="OccupantControlledSmartThermostat"/>
                                              <xsd:enumeration value="SetbackThermostat"/>
                                           </xsd:restriction>
@@ -737,11 +738,12 @@ Flag non-default values and report in project status notes field; a revised pare
                                     <xsd:element name="D08_ThermostatType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">SC System Thermostat Type</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference value from B07 as default;   allow user to override the default and select one from list. Choices for ThermostatType: SetbackThermostat , OccupantControlledSmartThermostat,  EnergyManagementSystem</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference value from B07 as default;   allow user to override the default and select one from list. Choices for ThermostatType: SetbackThermostat , NonSetbackThermostat, OccupantControlledSmartThermostat,  EnergyManagementSystem</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:ThermostatType">
                                              <xsd:enumeration value="EnergyManagementSystem"/>
+                                             <xsd:enumeration value="NonSetbackThermostat"/>
                                              <xsd:enumeration value="OccupantControlledSmartThermostat"/>
                                              <xsd:enumeration value="SetbackThermostat"/>
                                           </xsd:restriction>
@@ -1207,7 +1209,7 @@ EvaporativelyCooledCondenser, GasAbsorptionAC, CombinedHydronicForcedAir, Hydron
                                     <xsd:element name="G05_IndoorUnitDucts" type="hvac:IndoorUnitDucts">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Indoor Unit Duct Status</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If D06_IndoorUnitsCount  GTE 1 And all of the following conditions are true:  E01 == G01 And E02 == G02 And D04 == CentralGasFurnace result = E05;  Else If D07_DuctLocation == Ductless: result = Ductless; Else If  D07_DuctLocation == UnconditionedAttic, UnconditionedGarage, UnconditionedCrawlSpace, Outdoor, ConditionedSpaceExcept12ft, ConditionedSpace, ConditionedSpaceDuctsVLL, Or DuctsInMultipleLocations, user selects from DuctsGT10Ft display term Ducted greater than 10ft length and DuctsLTE10Ft display term Ducted less than or equal to 10ft length; Else If D07_DuctLocation == DuctedAndDuctlessIndoorUnits  user selects from DuctsGT10Ft display term Ducted greater than 10ft length, DuctsLTE10Ft display term Ducted less than or equal to 10ft length and Ductless display term No ducts</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If D06_IndoorUnitsCount  GTE 1 And all of the following conditions are true:  E01 == G01 And E02 == G02 And D04 == CentralGasFurnace result = E05;  Else If D07_DuctLocation == Ductless: result = Ductless; Else If  D07_DuctLocation == UnconditionedAttic, UnconditionedGarage, UnconditionedCrawlSpace, Outdoor, ConditionedSpaceExcept12ft, ConditionedSpace, ConditionedSpaceDuctsVLL, Or DuctsInMultipleLocations, user selects from DuctsGT10Ft display term Ducted greater than 10ft length and DuctsLTE10Ft display term Ducted less than or equal to 10ft length; Else If D07_DuctLocation == DuctedAndDuctlessIndoorUnits OR (D04_ResidentialHeatingSystemType == DuctedDuctlessMultiSplitHP Or VCHP_IndoorUnitDuctedAndDuctless) user selects from DuctsGT10Ft display term Ducted greater than 10ft length, DuctsLTE10Ft display term Ducted less than or equal to 10ft length and Ductless display term No ducts</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="G06_DoesUnitProvideCFI_IAQ" type="comp:DoesUnitProvideCFI_IAQ">
