@@ -1316,7 +1316,8 @@ End If</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:SupplyDuctLocation">
-                                             <xsd:enumeration value="ConditionedSpace"/>                                            
+                                             <xsd:enumeration value="ConditionedSpace"/>
+			                     <xsd:enumeration value="ConditionedSpaceExcept12ft"/>                                            
                                              <xsd:enumeration value="ControlledVentilationCrawlSpace"/>
                                              <xsd:enumeration value="Outdoors"/>
                                              <xsd:enumeration value="UnconditionedAttic"/>
@@ -1361,7 +1362,8 @@ End If</xsd:documentation>
                                        </xsd:annotation>
                                        <xsd:simpleType>
                                           <xsd:restriction base="hvac:ReturnDuctLocation">
-                                             <xsd:enumeration value="ConditionedSpace"/>                                            
+                                             <xsd:enumeration value="ConditionedSpace"/>
+			                     <xsd:enumeration value="ConditionedSpaceExcept12ft"/>                                             
                                              <xsd:enumeration value="ControlledVentilationCrawlSpace"/>
                                              <xsd:enumeration value="Outdoors"/>
                                              <xsd:enumeration value="UnconditionedAttic"/>
