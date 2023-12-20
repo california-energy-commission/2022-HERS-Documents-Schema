@@ -2150,7 +2150,7 @@ Else If B04_ResidentialCoolingSystemType == SmallDuctHighVelocityAC
 And C06_EfficiencyMinimumValueSEER Or C06_EfficiencyMinimumValueSEER2 GT 12 
 result = true; 
  
-Else If C06_EfficiencyMinimumValueSEER Or C06_EfficiencyMinimumValueSEER2 GT 14 
+Else If C06_EfficiencyMinimumValueSEER IsPresent And GT 15.0 Or C06_EfficiencyMinimumValueSEER2 IsPresent And GT 14.3  
 result = true; 
  
  
