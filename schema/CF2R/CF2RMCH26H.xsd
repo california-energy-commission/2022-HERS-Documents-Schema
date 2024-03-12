@@ -96,7 +96,7 @@
                   <xsd:element name="A03_VerificationRequiredSEER" type="comp:VerificationRequiredSEER" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Status:  SEER/SEER2 Performance Compliance Credit Check</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: If the parent CC flags HERS Verification of SEER  Performance result = true display term Yes; Else result = false display term No</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: If the parent CC flags HERS Verification of SEER  Performance result = true display term Yes; Else result = false display term No.  Special condition: If In CF1R-PRF XML A07b_ComplianceSoftwareVersionDetail == EnergyPro 9.0.1.0 And Ea02_CoolingSystemFeatureHERS == VerifiedSEER_SEER2 result = true</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="A04_VerificationRequiredEER" type="comp:VerificationRequiredEER" >
