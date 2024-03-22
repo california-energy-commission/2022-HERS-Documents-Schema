@@ -37,10 +37,13 @@
                         <xsd:documentation source="FieldText">Dwelling Unit Total  Conditioned Floor Area (ft<d:sup>2</d:sup>)</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Value is numeric: xxxxx  
 If parent  CC is CF1R-PRF, then 
-If project scope = Newly Constructed (Addition Alone) 
-prompt user to enter a value equal to dwelling unit existing CFA + addition CFA, 
+If project scope = Newly Constructed (Addition Alone) Then
+If CF1R-PRF B02_BuildingAdditionalConditionedFloorArea == Adu03_BuildingAdditionalConditionedFloorArea
+result = Adu03_BuildingAdditionalConditionedFloorArea
+Else prompt user to enter a value equal to dwelling unit existing CFA + addition CFA, 
 Else reference the value from CF1R PRF 
-End If        
+End If
+End If         
  
 Else If parent  CC is CF1R-NCB-01, then 
 If project scope =  AdditionGT1000 then 
@@ -123,7 +126,12 @@ End If
                   <xsd:element name="A09_BedroomCount" type="com:BedroomCount">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Dwelling Unit Number of Bedrooms</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: integer xx;  If A05_ComplianceMethod == Performance Then use as default the value referenced from the parent CC Or allow user to override  default and input a new value, constrained to be GTE to default value from parent CC, flag non-default values and report of change in the project status notes field.  
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: integer xx;  
+If A05_ComplianceMethod == Performance Then 
+If CF1R-PRF B05_BedroomsAdditionCount == Adu06_BedroomsAdditionCount
+result = Adu06_BedroomsAdditionCount
+Else use as default the value referenced from the parent CC Or allow user to override  default and input a new value, constrained to be GTE to default value from parent CC, flag non-default values and report of change in the project status notes field.  
+End If
 Else If ComplianceMethod != Performance  then user inputs integer value.
 End If</xsd:documentation>
                      </xsd:annotation>
