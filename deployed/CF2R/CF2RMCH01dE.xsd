@@ -40,7 +40,8 @@ If parent  CC is CF1R-PRF, then
 If project scope = Newly Constructed (Addition Alone) Then
 If CF1R-PRF B02_BuildingAdditionalConditionedFloorArea == Adu03_BuildingAdditionalConditionedFloorArea
 result = Adu03_BuildingAdditionalConditionedFloorArea
-Else prompt user to enter a value equal to dwelling unit existing CFA + addition CFA, 
+Else prompt user to enter a value equal to dwelling unit existing CFA + addition CFA
+End If 
 Else reference the value from CF1R PRF 
 End If
 End If         
