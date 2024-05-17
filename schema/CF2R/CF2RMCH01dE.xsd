@@ -862,13 +862,17 @@ Flag non-default values and report in project status notes field; a revised pare
                                        <xsd:element name="D13_DuctedIndoorUnitsCount" type="hvac:DuctedIndoorUnitsCount" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Number of Ducted Indoor Units for this System</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If D07_DuctSystemTypePerf == Ductless then result is N/A stored in the NotApplicableMessage Else If D07_DuctSystemTypePerf == UnconditionedAttic, UnconditionedGarage, Outdoor, UnconditionedCrawlSpace, ConditionedSpaceExcept12ft ConditionedSpace, ConditionedSpaceDuctsVLL, Or   DuctsInMultipleLocations, result = D06_IndoorUnitsCount; Else If  D07_DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits then user input numeric integer that must be LTE D06__IndoorUnitsCount</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If D07_DuctSystemTypePerf == Ductless then result is N/A stored in the NotApplicableMessage 
+Else If D07_DuctSystemTypePerf == UnconditionedAttic, UnconditionedGarage, Outdoor, UnconditionedCrawlSpace, ConditionedSpaceExcept12ft ConditionedSpace, ConditionedSpaceDuctsVLL, Or   DuctsInMultipleLocations, result = D06_IndoorUnitsCount; 
+Else If  D07_DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits OR D04_ResidentialHeatingSystemType == DuctedDuctlessMultiSplitHP then user input numeric integer that must be LTE D06__IndoorUnitsCount</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="D13_NotApplicableMessage" type="comp:NotApplicableMessage" >
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Number of Ducted Indoor Units for this System</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If D07_DuctSystemTypePerf == Ductless then result is N/A stored in the NotApplicableMessage Else If D07_DuctSystemTypePerf == UnconditionedAttic, UnconditionedGarage, Outdoor, UnconditionedCrawlSpace, ConditionedSpaceExcept12ft ConditionedSpace, ConditionedSpaceDuctsVLL, Or   DuctsInMultipleLocations, result = D06_IndoorUnitsCount; Else If  D07_DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits then user input numeric integer that must be LTE D06__IndoorUnitsCount</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">Calculated field:  If D07_DuctSystemTypePerf == Ductless then result is N/A stored in the NotApplicableMessage 
+Else If D07_DuctSystemTypePerf == UnconditionedAttic, UnconditionedGarage, Outdoor, UnconditionedCrawlSpace, ConditionedSpaceExcept12ft ConditionedSpace, ConditionedSpaceDuctsVLL, Or   DuctsInMultipleLocations, result = D06_IndoorUnitsCount; 
+Else If  D07_DuctSystemTypePerf == DuctedAndDuctlessIndoorUnits OR D04_ResidentialHeatingSystemType == DuctedDuctlessMultiSplitHP then user input numeric integer that must be LTE D06__IndoorUnitsCount</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
