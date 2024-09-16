@@ -951,12 +951,21 @@ End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
-                                    <xsd:element name="F06b_SHGC_LimitSkylight" type="com:SHGC_LimitSkylight">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Maximum Allowed SHGC (Skylights)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If F01_ProjectScopeAlteration contains FenestrationGlazingSkylightMinimumFt2Addition Or FenestrationGlazingSkylightMinimumFt2Replacement (which now applies to all skylight replacements. The name is not changing to be backward compatible)  result = 0.30; Else result is 0.23;</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="F06b_SHGC_LimitSkylight" type="com:SHGC_LimitSkylight">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Maximum Allowed SHGC (Skylights)</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else If F01_ProjectScopeAlteration contains 
+FenestrationGlazingSkylightMinimumFt2Addition Or FenestrationGlazingSkylightMinimumFt2Replacement (which now applies to all skylight replacements. The name is not changing to be backward compatible)  result = 0.30; Else result is 0.23;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="F06b_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Maximum Allowed SHGC (Skylights)</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
                                     <xsd:element name="F07_ComplianceDocumentTableComments" type="comp:ComplianceDocumentTableComments" minOccurs="0">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Comments</xsd:documentation>
@@ -1120,26 +1129,42 @@ End If</xsd:documentation>
                                           </xsd:restriction>
                                        </xsd:simpleType>
                                     </xsd:element>
-                                    <xsd:element name="G11_SHGC" type="com:SHGC">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Proposed SHGC</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">User input: DecimalNonnegative</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
-                                    <xsd:element name="G12_FenestrationCertificationMethod">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Proposed SHGC Source</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">User selects from list: NFRCRated, display text: NFRC;  CECDefaultPerformance, display term Tables 110.6A and 110.6B;  NA6Equations, display term Equations NA6-1 and NA6-2; and CF1R_ENV_02 display term Area-weighted Average Worksheet (CF1R-ENV-02)</xsd:documentation>
-                                       </xsd:annotation>
-                                       <xsd:simpleType>
-                                          <xsd:restriction base="env:FenestrationCertificationMethod">
-                                             <xsd:enumeration value="CECDefaultPerformance"/>
-                                             <xsd:enumeration value="CF1R_ENV_02"/>
-                                             <xsd:enumeration value="NA6Equations"/>
-                                             <xsd:enumeration value="NFRCRated"/>
-                                          </xsd:restriction>
-                                       </xsd:simpleType>
-                                    </xsd:element>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="G11_SHGC" type="com:SHGC">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed SHGC</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else User input: DecimalNonnegative</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="G11_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed SHGC</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="G12_FenestrationCertificationMethod">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed SHGC Source</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If G11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage; Else User selects from list: NFRCRated, display text: NFRC;  CECDefaultPerformance, display term Tables 110.6A and 110.6B;  NA6Equations, display term Equations NA6-1 and NA6-2; and CF1R_ENV_02 display term Area-weighted Average Worksheet (CF1R-ENV-02)</xsd:documentation>
+                                          </xsd:annotation>
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="env:FenestrationCertificationMethod">
+                                                <xsd:enumeration value="CECDefaultPerformance"/>
+                                                <xsd:enumeration value="CF1R_ENV_02"/>
+                                                <xsd:enumeration value="NA6Equations"/>
+                                                <xsd:enumeration value="NFRCRated"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
+                                       </xsd:element>
+                                       <xsd:element name="G12_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed SHGC Source</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If G11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
                                     <xsd:element name="G13_ExternalShadingObjectType" type="env:ExternalShadingObjectType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Exterior Shading Device</xsd:documentation>
@@ -1150,13 +1175,13 @@ End If</xsd:documentation>
                                        <xsd:element name="G14_SolarHeatGainCoefficientExteriorShading" type="com:SolarHeatGainCoefficientExteriorShading">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Combined SHGC from CF1R-ENV-03</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If G13_ExternalShadingObjectType == NoExternalShadingDevice or If G04_DynamicGlazingType ==  ChromogenicGlazing result = N/A stored in NotApplicableMessage, Else result =  value from CF-1R-ENV-03.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else If G13_ExternalShadingObjectType == NoExternalShadingDevice or If G04_DynamicGlazingType ==  ChromogenicGlazing result = N/A stored in NotApplicableMessage, Else result =  value from CF-1R-ENV-03.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="G14_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Combined SHGC from CF1R-ENV-03</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If G13_ExternalShadingObjectType == NoExternalShadingDevice or If G04_DynamicGlazingType ==  ChromogenicGlazing result = N/A stored in NotApplicableMessage, Else result =  value from CF-1R-ENV-03.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else If G13_ExternalShadingObjectType == NoExternalShadingDevice or If G04_DynamicGlazingType ==  ChromogenicGlazing result = N/A stored in NotApplicableMessage, Else result =  value from CF-1R-ENV-03.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -1288,13 +1313,13 @@ End If</xsd:documentation>
                      <xsd:element name="G24_ProposedAllWindowFenestrationSHGC" type="comp:ProposedAllWindowFenestrationSHGC">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Proposed Fenestration SHGC (Windows)</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Calculated field: If  all G02_FenestrationProductType values != FixedWindow or OperableWindow result = N/A stored in the NotApplicableMessage, Else  for all rows where G02_FenestrationProductType == FixedWindow or OperableWindow  If  G11_SolarHeatGainCoefficient values Or  G14_SolarHeatGainCoefficientExteriorShading values LTE 0.23, then result = Largest (all G11_SolarHeatGainCoefficient values, all G14_SolarHeatGainCoefficientExteriorShading values); Else enter the weighted average value from the CF1R-ENV-02</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field: If G11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage; Else If all G02_FenestrationProductType values != FixedWindow or OperableWindow result = N/A stored in the NotApplicableMessage, Else  for all rows where G02_FenestrationProductType == FixedWindow or OperableWindow  If  G11_SolarHeatGainCoefficient values Or  G14_SolarHeatGainCoefficientExteriorShading values LTE 0.23, then result = Largest (all G11_SolarHeatGainCoefficient values, all G14_SolarHeatGainCoefficientExteriorShading values); Else enter the weighted average value from the CF1R-ENV-02</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="G24_NotApplicableMessage" type="comp:NotApplicableMessage">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Proposed Fenestration SHGC (Windows)</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Calculated field: If  all G02_FenestrationProductType values != FixedWindow or OperableWindow result = N/A stored in the NotApplicableMessage, Else  for all rows where G02_FenestrationProductType == FixedWindow or OperableWindow  If  G11_SolarHeatGainCoefficient values Or  G14_SolarHeatGainCoefficientExteriorShading values LTE 0.23, then result = Largest (all G11_SolarHeatGainCoefficient values, all G14_SolarHeatGainCoefficientExteriorShading values); Else enter the weighted average value from the CF1R-ENV-02</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field: If G11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage; Else If all G02_FenestrationProductType values != FixedWindow or OperableWindow result = N/A stored in the NotApplicableMessage, Else for all rows where G02_FenestrationProductType == FixedWindow or OperableWindow  If  G11_SolarHeatGainCoefficient values Or  G14_SolarHeatGainCoefficientExteriorShading values LTE 0.23, then result = Largest (all G11_SolarHeatGainCoefficient values, all G14_SolarHeatGainCoefficientExteriorShading values); Else enter the weighted average value from the CF1R-ENV-02</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
@@ -1364,22 +1389,30 @@ End If</xsd:documentation>
                      <xsd:element name="G30_ProposedAllSkylightFenestrationSHGC" type="comp:ProposedAllSkylightFenestrationSHGC">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Proposed Fenestration SHGC (Skylights)</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Calculated field: Calculated field: If  all G02_FenestrationProductType values !=Skylight  result = N/A stored in the NotApplicableMessage, Else for all rows where G02_FenestrationProductType values ==Skylight  result = Largest (all G11_SolarHeatGainCoefficient values, all G14_SolarHeatGainCoefficientExteriorShading values);</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field: If G11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage; Else If  all G02_FenestrationProductType values !=Skylight  result = N/A stored in the NotApplicableMessage, Else for all rows where G02_FenestrationProductType values ==Skylight  result = Largest (all G11_SolarHeatGainCoefficient values, all G14_SolarHeatGainCoefficientExteriorShading values);</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="G30_NotApplicableMessage" type="comp:NotApplicableMessage">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Proposed Fenestration SHGC (Skylights)</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Calculated field: Calculated field: If  all G02_FenestrationProductType values !=Skylight  result = N/A stored in the NotApplicableMessage, Else for all rows where G02_FenestrationProductType values ==Skylight  result = Largest (all G11_SolarHeatGainCoefficient values, all G14_SolarHeatGainCoefficientExteriorShading values);</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field: If G11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage; Else If  all G02_FenestrationProductType values !=Skylight  result = N/A stored in the NotApplicableMessage, Else for all rows where G02_FenestrationProductType values ==Skylight  result = Largest (all G11_SolarHeatGainCoefficient values, all G14_SolarHeatGainCoefficientExteriorShading values);</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
-                  <xsd:element name="G31_SHGC_LimitSkylight" type="com:SHGC_LimitSkylight">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">Required Fenestration SHGC (Skylights)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: If F01_ProjectScopeAlteration == FenestrationGlazingSkylightMinimumFt2Addition, result = 0.30 Else result = 0.23</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
+                  <xsd:choice maxOccurs="1">
+                     <xsd:element name="G31_SHGC_LimitSkylight" type="com:SHGC_LimitSkylight">
+                        <xsd:annotation>
+                           <xsd:documentation source="FieldText">Required Fenestration SHGC (Skylights)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field: If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else If F01_ProjectScopeAlteration == FenestrationGlazingSkylightMinimumFt2Addition, result = 0.30 Else result = 0.23</xsd:documentation>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element name="G31_NotApplicableMessage" type="comp:NotApplicableMessage">
+                        <xsd:annotation>
+                           <xsd:documentation source="FieldText">Required Fenestration SHGC (Skylights)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field: If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else If F01_ProjectScopeAlteration == FenestrationGlazingSkylightMinimumFt2Addition, result = 0.30 Else result = 0.23</xsd:documentation>
+                        </xsd:annotation>
+                     </xsd:element>
+                  </xsd:choice>
                   <xsd:choice maxOccurs="1">
                      <xsd:element name="G32_IsSkylightFenestrationAllowedSHGC_Compliant" type="comp:IsSkylightFenestrationAllowedSHGC_Compliant">
                         <xsd:annotation>
@@ -1570,26 +1603,42 @@ End If</xsd:documentation>
                                           </xsd:restriction>
                                        </xsd:simpleType>
                                     </xsd:element>
-                                    <xsd:element name="H11_SHGC" type="com:SHGC">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Proposed SHGC</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">User input: DecimalNonnegative</xsd:documentation>
-                                       </xsd:annotation>
-                                    </xsd:element>
-                                    <xsd:element name="H12_FenestrationCertificationMethod">
-                                       <xsd:annotation>
-                                          <xsd:documentation source="FieldText">Proposed SHGC Source</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">User selects from list: Choice NFRCRated, display text: NFRC;  Choice CECDefaultPerformance, display text: Tables 110.6A and 110.6B; Choice NA6Equations, display text: Equations NA6-1 and NA6-2; and Choice CF1R_ENV_02 display text: Area-weighted Average Worksheet (CF1R-ENV-02)</xsd:documentation>
-                                       </xsd:annotation>
-                                       <xsd:simpleType>
-                                          <xsd:restriction base="env:FenestrationCertificationMethod">
-                                             <xsd:enumeration value="CECDefaultPerformance"/>
-                                             <xsd:enumeration value="CF1R_ENV_02"/>
-                                             <xsd:enumeration value="NA6Equations"/>
-                                             <xsd:enumeration value="NFRCRated"/>
-                                          </xsd:restriction>
-                                       </xsd:simpleType>
-                                    </xsd:element>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="H11_SHGC" type="com:SHGC">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed SHGC</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else User input: DecimalNonnegative</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                       <xsd:element name="H11_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed SHGC</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
+                                    <xsd:choice maxOccurs="1">
+                                       <xsd:element name="H12_FenestrationCertificationMethod">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed SHGC Source</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">User selects from list: Choice NFRCRated, display text: NFRC;  Choice CECDefaultPerformance, display text: Tables 110.6A and 110.6B; Choice NA6Equations, display text: Equations NA6-1 and NA6-2; and Choice CF1R_ENV_02 display text: Area-weighted Average Worksheet (CF1R-ENV-02)</xsd:documentation>
+                                          </xsd:annotation>
+                                          <xsd:simpleType>
+                                             <xsd:restriction base="env:FenestrationCertificationMethod">
+                                                <xsd:enumeration value="CECDefaultPerformance"/>
+                                                <xsd:enumeration value="CF1R_ENV_02"/>
+                                                <xsd:enumeration value="NA6Equations"/>
+                                                <xsd:enumeration value="NFRCRated"/>
+                                             </xsd:restriction>
+                                          </xsd:simpleType>
+                                       </xsd:element>
+                                       <xsd:element name="H12_NotApplicableMessage" type="comp:NotApplicableMessage">
+                                          <xsd:annotation>
+                                             <xsd:documentation source="FieldText">Proposed SHGC Source</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If H11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage;</xsd:documentation>
+                                          </xsd:annotation>
+                                       </xsd:element>
+                                    </xsd:choice>
                                     <xsd:element name="H13_ExternalShadingObjectType" type="env:ExternalShadingObjectType">
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Exterior Shading Device</xsd:documentation>
@@ -1600,13 +1649,13 @@ End If</xsd:documentation>
                                        <xsd:element name="H14_SolarHeatGainCoefficientExteriorShading" type="com:SolarHeatGainCoefficientExteriorShading">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Combined SHGC from CF1R-ENV-03</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If H13_ExternalShadingObjectType == NoExternalShadingDevice Or H04_DynamicGlazingType == ChromogenicGlazing  result = N/A stored in NotApplicableMessage, Else result = value from CF-1R-ENV-03.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else If H13_ExternalShadingObjectType == NoExternalShadingDevice Or H04_DynamicGlazingType == ChromogenicGlazing  result = N/A stored in NotApplicableMessage, Else result = value from CF-1R-ENV-03.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                        <xsd:element name="H14_NotApplicableMessage" type="comp:NotApplicableMessage">
                                           <xsd:annotation>
                                              <xsd:documentation source="FieldText">Combined SHGC from CF1R-ENV-03</xsd:documentation>
-                                             <xsd:documentation source="CalculationsAndRules">If H13_ExternalShadingObjectType == NoExternalShadingDevice Or H04_DynamicGlazingType == ChromogenicGlazing  result = N/A stored in NotApplicableMessage, Else result = value from CF-1R-ENV-03.</xsd:documentation>
+                                             <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else If H13_ExternalShadingObjectType == NoExternalShadingDevice Or H04_DynamicGlazingType == ChromogenicGlazing  result = N/A stored in NotApplicableMessage, Else result = value from CF-1R-ENV-03.</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
                                     </xsd:choice>
@@ -1680,13 +1729,13 @@ End If</xsd:documentation>
                      <xsd:element name="H22_ProposedAllWindowFenestrationSHGC" type="comp:ProposedAllWindowFenestrationSHGC">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Proposed Fenestration SHGC (Windows)</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Calculated field:   If  all values for H02_FenestrationProductType != FixedWindow Or OperableWindow result = N/A stored in the NotApplicableMessage;  Else for all rows where  H02_FenestrationProductType == FixedWindow Or OperableWindow result = Largest (all H11_SolarHeatGainCoefficient values, all H14_SolarHeatGainCoefficientExteriorShading values)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field:   If H11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage; Else If  all values for H02_FenestrationProductType != FixedWindow Or OperableWindow result = N/A stored in the NotApplicableMessage;  Else for all rows where  H02_FenestrationProductType == FixedWindow Or OperableWindow result = Largest (all H11_SolarHeatGainCoefficient values, all H14_SolarHeatGainCoefficientExteriorShading values)</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="H22_NotApplicableMessage" type="comp:NotApplicableMessage">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Proposed Fenestration SHGC (Windows)</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Calculated field:   If  all values for H02_FenestrationProductType != FixedWindow Or OperableWindow result = N/A stored in the NotApplicableMessage;  Else for all rows where  H02_FenestrationProductType == FixedWindow Or OperableWindow result = Largest (all H11_SolarHeatGainCoefficient values, all H14_SolarHeatGainCoefficientExteriorShading values)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field:  If H11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage; Else If  all values for H02_FenestrationProductType != FixedWindow Or OperableWindow result = N/A stored in the NotApplicableMessage;  Else for all rows where  H02_FenestrationProductType == FixedWindow Or OperableWindow result = Largest (all H11_SolarHeatGainCoefficient values, all H14_SolarHeatGainCoefficientExteriorShading values)</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
@@ -1756,22 +1805,30 @@ End If</xsd:documentation>
                      <xsd:element name="H28_ProposedAllSkylightFenestrationSHGC" type="comp:ProposedAllSkylightFenestrationSHGC">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Proposed Fenestration SHGC (Skylights)</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Calculated field:   If  all values for H02_FenestrationProductType != Skylight result = N/A stored in the NotApplicableMessage;  Else for all rows where H02_FenestrationProductType == Skylight result = Largest (all H11_SolarHeatGainCoefficient values, all H14_SolarHeatGainCoefficientExteriorShading values)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field:  If H11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage; Else If  all values for H02_FenestrationProductType != Skylight result = N/A stored in the NotApplicableMessage;  Else for all rows where H02_FenestrationProductType == Skylight result = Largest (all H11_SolarHeatGainCoefficient values, all H14_SolarHeatGainCoefficientExteriorShading values)</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                      <xsd:element name="H28_NotApplicableMessage" type="comp:NotApplicableMessage">
                         <xsd:annotation>
                            <xsd:documentation source="FieldText">Proposed Fenestration SHGC (Skylights)</xsd:documentation>
-                           <xsd:documentation source="CalculationsAndRules">Calculated field:   If  all values for H02_FenestrationProductType != Skylight result = N/A stored in the NotApplicableMessage;  Else for all rows where H02_FenestrationProductType == Skylight result = Largest (all H11_SolarHeatGainCoefficient values, all H14_SolarHeatGainCoefficientExteriorShading values)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field:  If H11_NotApplicableMessage == N/A result = N/A stored in the NotApplicableMessage; Else If  all values for H02_FenestrationProductType != Skylight result = N/A stored in the NotApplicableMessage;  Else for all rows where H02_FenestrationProductType == Skylight result = Largest (all H11_SolarHeatGainCoefficient values, all H14_SolarHeatGainCoefficientExteriorShading values)</xsd:documentation>
                         </xsd:annotation>
                      </xsd:element>
                   </xsd:choice>
-                  <xsd:element name="H29_SHGC_LimitSkylight" type="com:SHGC_LimitSkylight" fixed="0.30">
-                     <xsd:annotation>
-                        <xsd:documentation source="FieldText">Required Fenestration SHGC (Skylights)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: result = 0.30</xsd:documentation>
-                     </xsd:annotation>
-                  </xsd:element>
+                  <xsd:choice maxOccurs="1">
+                     <xsd:element name="H29_SHGC_LimitSkylight" type="com:SHGC_LimitSkylight" fixed="0.30">
+                        <xsd:annotation>
+                           <xsd:documentation source="FieldText">Required Fenestration SHGC (Skylights)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else If  all values for H02_FenestrationProductType != Skylight result = N/A stored in the NotApplicableMessage; Else Calculated field: result = 0.30</xsd:documentation>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element name="H29_NotApplicableMessage" type="comp:NotApplicableMessage">
+                        <xsd:annotation>
+                           <xsd:documentation source="FieldText">Required Fenestration SHGC (Skylights)</xsd:documentation>
+                           <xsd:documentation source="CalculationsAndRules">Calculated field:  If A09_ClimateZone == 1,3, 5 Or 16 result = N/A stored in the NotApplicableMessage; Else If  all values for H02_FenestrationProductType != Skylight result = N/A stored in the NotApplicableMessage;  Else Calculated field: result = 0.30</xsd:documentation>
+                        </xsd:annotation>
+                     </xsd:element>
+                  </xsd:choice>
                   <xsd:choice maxOccurs="1">
                      <xsd:element name="H30_IsSkylightFenestrationAllowedSHGC_Compliant" type="comp:IsSkylightFenestrationAllowedSHGC_Compliant">
                         <xsd:annotation>
