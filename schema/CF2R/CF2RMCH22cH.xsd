@@ -289,13 +289,13 @@
                   <xsd:element name="D04_FanEfficacy" type="hvac:FanEfficacy" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Actual Fan Efficacy (Watts/cfm)</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field:  C01_FanPowerActual  /  C02_AirflowMeasuredRate</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field:  D01_FanPowerActual  /  D02_AirflowMeasuredRate</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="D05_DoesSystemFanEfficacyComply" type="comp:DoesSystemFanEfficacyComply" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Compliance Statement:</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">If C04_FanEfficacy LTE C03_FanEfficacyRequired result = true display term: System fan efficacy complies.  Else result =  false display term   System does not comply with fan efficacy requirement.</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">If D04_FanEfficacy LTE D03_FanEfficacyRequired result = true display term: System fan efficacy complies.  Else result =  false display term   System does not comply with fan efficacy requirement.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
