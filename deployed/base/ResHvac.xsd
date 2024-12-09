@@ -10867,6 +10867,7 @@
             <dtyp:displayterm value="EvaporativelyCooledCondenser">Evaporatively cooled condenser</dtyp:displayterm>
             <dtyp:displayterm value="GasAbsorptionAC">Gas absorption AC</dtyp:displayterm>
             <dtyp:displayterm value="GroundSourceHeatPump">Ground source heat pump</dtyp:displayterm>
+            <dtyp:displayterm value="HeatPumpDHWCombo">Heat Pump DHW Combo</dtyp:displayterm>
             <dtyp:displayterm value="Hydronic">Hydronic</dtyp:displayterm>
             <dtyp:displayterm value="HydronicHP">Hydronic HP</dtyp:displayterm>
             <dtyp:displayterm value="HydronicHP_ForcedAir">Hydronic HP + forced air</dtyp:displayterm>
@@ -10914,6 +10915,7 @@
             <dtyp:CBECCresXMLterm value="EvaporativelyCooledCondenser">evaporatively cooled condenser</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="GasAbsorptionAC">gas absorption AC</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="GroundSourceHeatPump">GroundSourceHeatPump - Ground source heat pump (able to heat DHW)</dtyp:CBECCresXMLterm>
+            <dtyp:CBECCresXMLterm value="HeatPumpDHWCombo">Heat Pump DHW Combo</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="Hydronic">hydronic</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="HydronicHP">hydronic HP</dtyp:CBECCresXMLterm>
             <dtyp:CBECCresXMLterm value="HydronicHP_ForcedAir">hydronic HP+forced air</dtyp:CBECCresXMLterm>
@@ -10962,6 +10964,7 @@
          <xsd:enumeration value="EvaporativelyCooledCondenser"/>
          <xsd:enumeration value="GasAbsorptionAC"/>
          <xsd:enumeration value="GroundSourceHeatPump"/>
+         <xsd:enumeration value="HeatPumpDHWCombo"/>
          <xsd:enumeration value="Hydronic"/>
          <xsd:enumeration value="HydronicHP"/>
          <xsd:enumeration value="HydronicHP_ForcedAir"/>
