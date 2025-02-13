@@ -83,7 +83,7 @@
                   </xsd:element>
                   <xsd:element name="A04_ResidentialLowriseBuildingType" type="com:ResidentialLowriseBuildingType" >
                      <xsd:annotation>
-                        <xsd:documentation source="FieldText">Building Type from from parent CC</xsd:documentation>
+                        <xsd:documentation source="FieldText">Building Type from parent CC</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Data from parent MCH-20</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>

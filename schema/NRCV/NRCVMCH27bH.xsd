@@ -206,7 +206,7 @@
                                     <xsd:element name="C03_VentilationOperationRuntime" type="hvac:VentilationOperationRuntime" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Runtime (min/hr)</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Calculated field: If A07__VentilationOperationSchedule == Continuous result = 60; Else If A07__VentilationOperationSchedule == ShortTermAverage, user input postive integer LTE 60.</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Calculated field: If A07__VentilationOperationSchedule == Continuous result = 60; Else If A07__VentilationOperationSchedule == ShortTermAverage, user input positive integer LTE 60.</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="C04_MechanicalVentilationInstalledRate" type="comp:MechanicalVentilationInstalledRate" >

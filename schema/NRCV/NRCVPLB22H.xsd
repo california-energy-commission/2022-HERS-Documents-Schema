@@ -1914,13 +1914,13 @@ This section is applicable if at least one drain water heat recovery system in S
                                     <xsd:element name="I09_DWHR_Configuration" type="comp:DWHR_Configuration" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Installation Configuration</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If peformance, reference value in I03; Else user selects from list: EqualFlow display term Equal Flow, UnequalFlowShower display term Unequal to Shower, UnequalFlowWaterHeater display term Unequal to Water Heater</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If performance, reference value in I03; Else user selects from list: EqualFlow display term Equal Flow, UnequalFlowShower display term Unequal to Shower, UnequalFlowWaterHeater display term Unequal to Water Heater</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="I10_DWHR_PercentShowerServed" type="comp:DWHR_PercentShowerServed" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Percent of shower served by the DWHR device</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">If peformance, reference value in I04; Else user input; Result is decimal value no units GT 0 LTE 1.00 and  displayed term is whole number with units of percent = PRODUCT ( result, 100)  Check on displayed term is GT 0 And LT 100</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">If performance, reference value in I04; Else user input; Result is decimal value no units GT 0 LTE 1.00 and  displayed term is whole number with units of percent = PRODUCT ( result, 100)  Check on displayed term is GT 0 And LT 100</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="I11_DWHR_CertifiedByCEC" type="comp:DWHR_CertifiedByCEC" >
@@ -2308,7 +2308,7 @@ This section is applicable if at least one drain water heat recovery system in S
                   <xsd:element name="Q01" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText"></xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">HERS rater shall perform a visual inspection to verify that the demand pump, manual/sensor controls and thermo-sensor are present and operationg properly consistent with the applicable requirements of RA4.4.9 and RA4.4.10</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">HERS rater shall perform a visual inspection to verify that the demand pump, manual/sensor controls and thermo-sensor are present and operating properly consistent with the applicable requirements of RA4.4.9 and RA4.4.10</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="Q02_DoesSystemComplyWithRequirements" type="comp:DoesSystemComplyWithRequirements" >
