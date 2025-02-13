@@ -80,7 +80,7 @@
                   <xsd:element name="B_BeginNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Begin Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">This table reports features of he water heating system other than CHPWH system that were specified on the registered NRCC  compliance document for this project.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">This table reports features of the water heating system other than CHPWH system that were specified on the registered NRCC  compliance document for this project.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="TableDesignSystem" >
@@ -456,7 +456,7 @@ If prescriptive, this field is not required; Else If performance reference value
                   <xsd:element name="C_BeginNote1" minOccurs="0">
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Begin Note 1</xsd:documentation>
-                        <xsd:documentation source="AdditionalRequirements">This table reports features of he water heating system other than CHPWH system that were specified on the registered NRCC  compliance document for this project.</xsd:documentation>
+                        <xsd:documentation source="AdditionalRequirements">This table reports features of the water heating system other than CHPWH system that were specified on the registered NRCC  compliance document for this project.</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                   <xsd:element name="TableInstalledSystem" >
@@ -645,7 +645,7 @@ If prescriptive, this field is not required; Else If performance reference value
                   <xsd:element name="C13_DoesCentralWaterHeatingSystemComply" type="comp:DoesCentralWaterHeatingSystemComply" >
                      <xsd:annotation>
                         <xsd:documentation source="FieldText">Compliance Statement</xsd:documentation>
-                        <xsd:documentation source="CalculationsAndRules">Calculated field: If in every row C08 LTE B07 And C10 GTE B10 and C11 LTE B11 and C12 GTE B12 then result = true display term System complies; Else result = false dsiplay term System does not comply</xsd:documentation>
+                        <xsd:documentation source="CalculationsAndRules">Calculated field: If in every row C08 LTE B07 And C10 GTE B10 and C11 LTE B11 and C12 GTE B12 then result = true display term System complies; Else result = false display term System does not comply</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -654,7 +654,7 @@ If prescriptive, this field is not required; Else If performance reference value
          <xsd:element name="Section_C2" minOccurs="0">
             <xsd:annotation>
                <xsd:documentation source="FieldText">Installed HERS Verified CHPWH System Information</xsd:documentation>
-               <xsd:documentation source="CalculationsAndRules">This secction is required If Section_B2 IsPresent;  Require one row of data for each water heater identified on the Section_B2 TableHpwhd</xsd:documentation>
+               <xsd:documentation source="CalculationsAndRules">This section is required If Section_B2 IsPresent;  Require one row of data for each water heater identified on the Section_B2 TableHpwhd</xsd:documentation>
                <xsd:documentation source="MinOccurs">If this section doesn't apply, display only the section FieldText and the statement 'This section does not apply to this project.'</xsd:documentation>
             </xsd:annotation>
             <xsd:complexType>
@@ -692,7 +692,7 @@ If prescriptive, this field is not required; Else If performance reference value
                                              <xsd:documentation source="FieldText">Modeled Equipment Make and Model</xsd:documentation>
                                              <xsd:documentation source="CalculationsAndRules">If Performance NRCC, reference value from Hpd02_HeatPumpWaterHeaterModel as default
 If user does not override it, store it in HeatPumpWaterHeaterModel  
-Else If user chooses to override default, allow selection of an equivalent system based on the simluated equipment selected in Hpd12_HeatPumpWaterHeaterSimulationGroup
+Else If user chooses to override default, allow selection of an equivalent system based on the simulated equipment selected in Hpd12_HeatPumpWaterHeaterSimulationGroup
 End If</xsd:documentation>
                                           </xsd:annotation>
                                        </xsd:element>
@@ -982,7 +982,7 @@ End If</xsd:documentation>
                         <xsd:documentation source="FieldText">Compliance Statement</xsd:documentation>
                         <xsd:documentation source="CalculationsAndRules">Calculated field: If in every row  Hpi03 == Hpd03 And Hpi05 GTE Hpd05 And Hpi06 GTE Hpd06 And Hpi08 GTE Hpd08 And Hpd09 GTE Hpi09 And Hpd10 
  then result = true display term System complies; 
-Else result = false dsiplay term System does not comply</xsd:documentation>
+Else result = false display term System does not comply</xsd:documentation>
                      </xsd:annotation>
                   </xsd:element>
                </xsd:sequence>
@@ -1014,7 +1014,7 @@ Else result = false dsiplay term System does not comply</xsd:documentation>
                                     <xsd:element name="D01_WaterHeatingSystemName" type="hvac:WaterHeatingSystemName" >
                                        <xsd:annotation>
                                           <xsd:documentation source="FieldText">Water Heating System ID or Name</xsd:documentation>
-                                          <xsd:documentation source="CalculationsAndRules">Reference values from from B01 or B2.01.  (See rule in header)</xsd:documentation>
+                                          <xsd:documentation source="CalculationsAndRules">Reference values from B01 or B2.01.  (See rule in header)</xsd:documentation>
                                        </xsd:annotation>
                                     </xsd:element>
                                     <xsd:element name="D02_ResidentialDHWCentralDistributionType" >
